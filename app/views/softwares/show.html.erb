@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @software.name %>
+</p>
+
+<p>
+  <b>Logo:</b>
+  <%=h @software.logo %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%=h @software.website %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @software.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_software_path(@software) %> |
+<%= link_to 'Back', softwares_path %>
