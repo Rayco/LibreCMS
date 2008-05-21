@@ -1,6 +1,6 @@
-class CreateSoftwares < ActiveRecord::Migration
+class CreateApplications < ActiveRecord::Migration
   def self.up
-    create_table :softwares do |t|
+    create_table :applications do |t|
       t.string :name
       t.string :logo
       t.string :website
@@ -11,6 +11,6 @@ class CreateSoftwares < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :softwares
+    drop_table :applications
   end
 end
