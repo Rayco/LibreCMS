@@ -1,0 +1,23 @@
+<p>
+  <b>Application:</b>
+  <%=h @resource.application %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @resource.name %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @resource.url %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @resource.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_resource_path(@resource) %> |
+<%= link_to 'Back', resources_path %>
