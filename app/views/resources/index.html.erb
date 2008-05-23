@@ -10,13 +10,13 @@
 
 <% for resource in @resources %>
   <tr>
-  	<td><%=h resource.application_id %></td> <!-- WTF? -->
-    <td><%=h resource.application %></td> <!-- WTF? -->
+  	<td><%=h resource.application_id %></td>
+    <!-- <td><%=h resource.application %></td> WTF? -->
     <td><%=h resource.name %></td>
     <td><%=h resource.url %></td>
     <td><%=h resource.description %></td>
     <td><%= link_to 'Show', [@application, resource] %></td>
-    <td><%= link_to 'Edit', [:edit, @application resource] %></td>
+    <td><%= link_to 'Edit', [:edit, @application, resource] %></td>
     <td><%= link_to 'Destroy', [@application, resource], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

@@ -1,7 +1,13 @@
 <% form_for([@application, @resource]) do |f| %>
+ <!-- WTF?
   <p>
     <b>Application</b><br />
     <%= f.text_field :application %>
+  </p>
+  --> 
+  <p>
+  	<b>Application_id:</b>
+  	<%=h @resource.application_id %>
   </p>
 
   <p>
