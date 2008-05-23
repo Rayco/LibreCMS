@@ -18,6 +18,15 @@
   <%=h @application.description %>
 </p>
 
+<% unless @application.resources.empty? %>
+	<h3>Resources</h3>
+	<% @application.resources.each do |resource| %>
+	<p>
+		<%= link_to resource.name, [@application, resource] %>
+	</p>
+	<% end %>
+<% end %>
+
 <%= link_to 'Resources', application_resources_path(@application) %> |
 <%= link_to 'Edit', edit_application_path(@application) %> |
 <%= link_to 'Back', applications_path %>
