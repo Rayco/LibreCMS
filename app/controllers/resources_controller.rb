@@ -1,5 +1,5 @@
 class ResourcesController < ApplicationController
-  before_filter :load_application
+  before_filter :get_application
   
   # GET /resources
   # GET /resources.xml
@@ -84,8 +84,9 @@ class ResourcesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  def load_application
+
+  private
+  def get_application
     @application = Application.find(params[:application_id])
   end
 end
