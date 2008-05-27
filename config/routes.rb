@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  map.root :controller => 'applications'
-  map.resources :applications, :has_many => :resources
+  map.root :controller => 'categories'
+  map.resources :categories, :has_many => :applications, :has_many => :resources
 
   # The priority is based upon order of creation: first created -> highest priority.
 

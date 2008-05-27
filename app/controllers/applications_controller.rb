@@ -1,4 +1,6 @@
 class ApplicationsController < ApplicationController
+  before_filter :get_category
+  
   # GET /applications
   # GET /applications.xml
   def index
@@ -81,5 +83,10 @@ class ApplicationsController < ApplicationController
       format.html { redirect_to(applications_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  def get_category
+    @category = Category.find(params[])
   end
 end
