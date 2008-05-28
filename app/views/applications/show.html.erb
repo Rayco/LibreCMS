@@ -1,4 +1,9 @@
 <p>
+  <b>Category_id:</b>
+  <%=h @application.category_id %>
+</p>
+	
+<p>
   <b>Name:</b>
   <%=h @application.name %>
 </p>
@@ -22,11 +27,11 @@
 	<h3>Resources</h3>
 	<% @application.resources.each do |resource| %>
 	<p>
-		<%= link_to resource.name, [@application, resource] %>
+		<%= link_to resource.name, [@category, @application, resource] %>
 	</p>
 	<% end %>
 <% end %>
 
-<%= link_to 'Resources', application_resources_path(@application) %> |
-<%= link_to 'Edit', edit_application_path(@application) %> |
-<%= link_to 'Back', applications_path %>
+<%= link_to 'Resources', category_application_resources_path([@category, @application]) %> |
+<%= link_to 'Edit', [:edit, @category, @application] %> |
+<%= link_to 'Back', category_applications_path(@category) %>

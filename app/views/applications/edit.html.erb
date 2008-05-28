@@ -2,31 +2,7 @@
 
 <%= error_messages_for :application %>
 
-<% form_for(@application) do |f| %>
-  <p>
-    <b>Name</b><br />
-    <%= f.text_field :name %>
-  </p>
+<%= render :partial => @application, :locals => { :button_name => "Update"} %>
 
-  <p>
-    <b>Logo</b><br />
-    <%= f.text_field :logo %>
-  </p>
-
-  <p>
-    <b>Website</b><br />
-    <%= f.text_field :website %>
-  </p>
-
-  <p>
-    <b>Description</b><br />
-    <%= f.text_area :description %>
-  </p>
-
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
-
-<%= link_to 'Show', @application %> |
-<%= link_to 'Back', applications_path %>
+<%= link_to 'Show', [@category, @application] %> |
+<%= link_to 'Back', category_applications_path(@category) %>

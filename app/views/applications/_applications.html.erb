@@ -1,0 +1,29 @@
+<% form_for([@category, @application]) do |f| %>
+  <p>
+  	<b>Category_id:</b>
+  	<%=h @application.category_id %>
+  </p>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>Logo</b><br />
+    <%= f.text_field :logo %>
+  </p>
+
+  <p>
+    <b>Website</b><br />
+    <%= f.text_field :website %>
+  </p>
+
+  <p>
+    <b>Description</b><br />
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.submit button_name %>
+  </p>
+<% end %>
