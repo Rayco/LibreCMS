@@ -32,6 +32,6 @@
 	<% end %>
 <% end %>
 
-<%= link_to 'Resources', category_application_resources_path([@category, @application]) %> |
+<%= link_to 'Resources', category_application_resources_path(@category, @application) %> |
 <%= link_to 'Edit', [:edit, @category, @application] %> |
 <%= link_to 'Back', category_applications_path(@category) %>

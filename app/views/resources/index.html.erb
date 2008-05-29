@@ -1,4 +1,4 @@
-<h1>Listing resources</h1>
+<h1>Listing resources for <%=h @application.name %> in <%=h @category.name %></h1>
 
 <table>
   <tr>
@@ -11,17 +11,16 @@
 <% for resource in @resources %>
   <tr>
   	<td><%=h resource.application_id %></td>
-    <!-- <td><%=h resource.application %></td> WTF? -->
     <td><%=h resource.name %></td>
     <td><%=h resource.url %></td>
     <td><%=h resource.description %></td>
-    <td><%= link_to 'Show', [@application, resource] %></td>
-    <td><%= link_to 'Edit', [:edit, @application, resource] %></td>
-    <td><%= link_to 'Destroy', [@application, resource], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', [@category, @application, resource] %></td>
+    <td><%= link_to 'Edit', [:edit, @category, @application, resource] %></td>
+    <td><%= link_to 'Destroy', [@category, @application, resource], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New resource', new_application_resource_path(@application) %>
+<%= link_to 'New resource', new_category_application_resource_path(@category, @application) %>

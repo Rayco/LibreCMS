@@ -1,4 +1,5 @@
 class ResourcesController < ApplicationController
+  before_filter :get_category
   before_filter :get_application
   
   # GET /resources
@@ -26,7 +27,7 @@ class ResourcesController < ApplicationController
   # GET /resources/new
   # GET /resources/new.xml
   def new
-    @resource = @application.resources.build
+    @resource = @application.resources.build #new or build?
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,8 +48,7 @@ class ResourcesController < ApplicationController
     respond_to do |format|
       if @resource.save
         flash[:notice] = 'Resource was successfully created.'
-        #format.html { redirect_to([@application, @resource]) }
-        format.html { redirect_to(@application) }
+        format.html { redirect_to(category_application_resources_url(@category, @application)) }
         format.xml  { render :xml => @resource, :status => :created, :location => @resource }
       else
         format.html { render :action => "new" }
@@ -65,7 +65,7 @@ class ResourcesController < ApplicationController
     respond_to do |format|
       if @resource.update_attributes(params[:resource])
         flash[:notice] = 'Resource was successfully updated.'
-        format.html { redirect_to([@application, @resource]) }
+        format.html { redirect_to(category_application_resource_url(@category, @application, @resource)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -81,13 +81,17 @@ class ResourcesController < ApplicationController
     @resource.destroy
 
     respond_to do |format|
-      format.html { redirect_to(application_resources_url(@application)) }
+      format.html { redirect_to(category_application_resources_url(@category, @application)) }
       format.xml  { head :ok }
     end
   end
 
   private
+  def get_category
+    @category = Category.find(params[:category_id])
+  end
+  
   def get_application
-    @application = Application.find(params[:application_id])
+    @application = Category.find(params[:category_id]).applications.find(params[:application_id])
   end
 end

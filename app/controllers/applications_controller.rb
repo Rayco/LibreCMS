@@ -47,8 +47,8 @@ class ApplicationsController < ApplicationController
     respond_to do |format|
       if @application.save
         flash[:notice] = 'Application was successfully created.'
-        #format.html { redirect_to([@category, @application]) }
-        format.hml { redirect_to(@category) }
+        format.html { redirect_to([@category, @application]) }
+        #format.hml { redirect_to(@category) }
         format.xml  { render :xml => @application, :status => :created, :location => @application }
       else
         format.html { render :action => "new" }

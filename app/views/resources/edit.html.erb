@@ -4,5 +4,5 @@
 
 <%= render :partial => @resource, :locals => { :button_name => "Update"} %>
 
-<%= link_to 'Show', [@application, @resource] %> |
-<%= link_to 'Back', application_resources_path(@application) %>
+<%= link_to 'Show', [@category, @application, @resource] %> |
+<%= link_to 'Back', category_application_resources_path(@category, @application) %>

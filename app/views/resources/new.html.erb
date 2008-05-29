@@ -4,4 +4,4 @@
 
 <%= render :partial => @resource, :locals => { :button_name => "Create"} %>
 
-<%= link_to 'Back', application_resources_path(@application) %>
+<%= link_to 'Back', category_application_resources_path(@category, @application) %>
