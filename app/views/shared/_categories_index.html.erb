@@ -1,19 +1,13 @@
-<% content_for :categories_index do %>
-  <!-- <h1>Listing categories</h1> -->
-
-  <table>
+<table>
   <% for category in @categories %>
     <tr>
-	  <!-- <td><%= link_to category.name, category %></td> -->
       <td><%= link_to category.name, category_applications_path(category) %></td>
       <td><%= link_to 'Edit', edit_category_path(category) %></td>
       <td><%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
-  </table>
+</table>
 
-  <br />
+<br />
 
-  <%= link_to 'New category', new_category_path %>
-<% end %>
-  
+<%= link_to 'New category', new_category_path %>
