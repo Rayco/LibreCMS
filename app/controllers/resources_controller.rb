@@ -1,6 +1,7 @@
 class ResourcesController < ApplicationController
   before_filter :get_category
   before_filter :get_application
+  before_filter :get_all_categories
   
   # GET /resources
   # GET /resources.xml
@@ -93,5 +94,9 @@ class ResourcesController < ApplicationController
   
   def get_application
     @application = Category.find(params[:category_id]).applications.find(params[:application_id])
+  end
+  
+  def get_all_categories
+    @categories = Category.find(:all)
   end
 end

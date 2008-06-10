@@ -1,5 +1,6 @@
 class ApplicationsController < ApplicationController
   before_filter :get_category
+  before_filter :get_all_categories
   
   # GET /applications
   # GET /applications.xml
@@ -89,5 +90,9 @@ class ApplicationsController < ApplicationController
   private
   def get_category
     @category = Category.find(params[:category_id])
+  end
+  
+  def get_all_categories
+    @categories = Category.find(:all)
   end
 end
