@@ -87,6 +87,12 @@ class ResourcesController < ApplicationController
     end
   end
 
+
+  protected
+  def application?
+    false
+  end
+
   private
   def get_category
     @category = Category.find(params[:category_id])
