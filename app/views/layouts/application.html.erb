@@ -9,9 +9,6 @@
   <%= stylesheet_link_tag 'style' %>
 </head>
 <body>
-
-<p style="color: green"><%= flash[:notice] %></p>
-
   <div class="content">
   	
 	<!-- HEADER -->
@@ -42,7 +39,7 @@
 	<!-- TEXT ABOVE THE HEAD -->
 	<div class="header_bottom"></div>
 	<div class="subheader">
-	  <p><a href="#">Lorem ipsum dolor</a> sit amet, consectetuer adipiscing elit, sed diam nonummy <a href="#">nibh euismod tincidunt ut laoreet</a> dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex.</p>
+	  <p style="color: green"><%= flash[:notice] %></p>
 	</div>
 	<div class="header_top"></div>
 	
