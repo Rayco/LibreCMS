@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_filter :get_categories
   # GET /categories
   # GET /categories.xml
   def index
@@ -81,5 +82,10 @@ class CategoriesController < ApplicationController
       format.html { redirect_to(categories_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  def get_categories 
+    @categories = Category.find(:all)
   end
 end

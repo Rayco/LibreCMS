@@ -82,14 +82,16 @@
 	
 	<!-- LEFT BLOCK -->
 	<div class="right">
-	  <div class="box_top">
-		<h2>Recursos:</h2>
-	  </div>	
-	  <div class="box">	
-	  CACA
-	  	<!-- %= render :partial => '/shared/resources_index' if application? %> -->
-	  </div>
-	  <div class="box_bottom"></div>
+	<% if @application %>	
+		  <div class="box_top">
+			<h2>Recursos:</h2>
+		  </div>
+	  
+		  <div class="box">
+		  	<%= render :partial => '/shared/resources_index' %>
+		  </div>
+		  <div class="box_bottom"></div>
+	  <% end %>
 	  
 	  <!-- otra caja -->
 	  <div class="box_top">
