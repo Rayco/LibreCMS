@@ -1,0 +1,11 @@
+.application {
+	height: 75px;
+	margin-top: 10px;
+	padding-right: 15px;
+}
+
+img {
+	float: left;
+	height: 75px;
+	border: none;
+}
