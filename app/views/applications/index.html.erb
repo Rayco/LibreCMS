@@ -1,27 +1,22 @@
-<h1>Listing applications in <%=h @category.name %></h1>
+<%= stylesheet_link_tag 'applications' %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Logo</th>
-    <th>Website</th>
-    <th>Description</th>
-  </tr>
+<h1><%=h @category.name %></h1>
 
 <% for application in @applications %>
-  <tr>
-  	<td><%=h application.category_id %></td>
-    <td><%=h application.name %></td>
-    <td><%=h application.logo %></td>
-    <td><%=h application.website %></td>
-    <td><%=h application.description %></td>
-    <td><%= link_to 'Show', [@category, application] %></td>
-    <td><%= link_to 'Edit', [:edit, @category, application] %></td>
-    <td><%= link_to 'Destroy', [@category, application], :confirm => 'Are you sure?', :method => :delete %></td>
+	<p class="application">
+		<%= link_to (image_tag "rails.png"), [@category, application] %>
+		<%= link_to application.name, [@category, application] %><br />
+		<%=h application.description[0,170] %>
+		<%=h '...' if application.description.length > 170 %><br />
+		<%=h application.website %><br />
+	</p>
+<!--
+    <td>< %= link_to 'Show', [@category, application] %></td>
+    <td>< %= link_to 'Edit', [:edit, @category, application] %></td>
+    <td>< %= link_to 'Destroy', [@category, application], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
+-->
 <% end %>
-</table>
 
 <br />
-
 <%= link_to 'New application', new_category_application_path(@category) %>

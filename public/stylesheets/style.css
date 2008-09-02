@@ -84,7 +84,8 @@ input.submit { height: 24px; font-weight: bold; width: 53px; border: none; backg
 
 .left {
 	float: left;
-	width: 595px;
+	/*width: 595px;*/
+	width: inherit;
 	margin: 0 0 10px 0;
 }
 
@@ -122,7 +123,7 @@ input.submit { height: 24px; font-weight: bold; width: 53px; border: none; backg
 	
 		/* left and central column */
 		.left_side { float: left; width: 159px; padding: 0px 5px 8px 8px; }
-		.right_side { float: right; width: 405px; margin: 0 5px 0 0; text-align: justify; }
+		.right_side { float: right; /*width: 405px*/ width: 585px; margin: 0 5px 0 0; text-align: justify; }
 		
 		.article { padding: 0 5px 0 0px; margin-bottom: 20px; }
 		
