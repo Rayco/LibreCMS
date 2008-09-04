@@ -18,7 +18,7 @@ h3 { font: 90% Arial, Sans-Serif; margin: 0 0 10px 0; padding: 0; color: #5f5f5f
 p {	margin: 0 0 0px 0; line-height: 1.5em; }
 form { margin: 0; }
 .dark  { color: #737373; background: inherit; font-weight: bold; }
-.logo { padding-top: 10px; float: right; }
+.logo { padding-top: 10px; float: right; border: none; }
 /*.logo {	padding: 18px 0 0 3px; }*/
 /*
 .icon { width: 32px; height: 32px; }
