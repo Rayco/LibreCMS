@@ -13,6 +13,7 @@
   	
 	<!-- HEADER -->
 	<div class="header_top"></div>
+	<!--
     <div class="header">
       <div class="sf_right">
         <div id="nav">
@@ -35,14 +36,27 @@
 	    <h1><a href="#">Internet Market</a></h1>
 	  </div>
 	</div>
+	-->
+	<div class="header">
+		<a href="http://osl.ull.es/"><%= image_tag "osl.png", :alt => "OSL", :class => "logo" %></a>
+		<h1><a href="http://windowslibre.osl.ull.es">Software Libre <span class="dark">para Windows</span></a></h1>
+
+		<div class="sf_search">
+		  <form method="post" action="?">
+		    <p><b>Buscar:</b> <input type="text" name="search" class="search" /> <input type="submit" value="Go" class="submit" /></p>
+		  </form>
+		</div>
+		
+	</div>	
+	<div class="header_bottom"></div>
 	
 	<!-- TEXT ABOVE THE HEAD -->
-	<div class="header_bottom"></div>
 	<div class="subheader">
+		BREADCRUMS >> AQUI!
 	  <p style="color: green"><%= flash[:notice] %></p>
 	</div>
-	<div class="header_top"></div>
 	
+	<div class="header_top"></div>
 	<!-- LEFT BLOCKS -->
 	<div class="left">
 	  <div class="left_side">
@@ -69,7 +83,7 @@
 	
 	  <!-- CONTENT -->
 	  <div class="right_side">
-	  	<%= yield  %>
+	  	<%= yield %>
 		<!--
 		<div class="article">
 		  <h2>What's new?</h2>
