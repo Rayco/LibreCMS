@@ -1,31 +1,15 @@
-<h1><%=h @category.name + ' -> ' + @application.name %></h1>
+<%= stylesheet_link_tag 'applications' %>
 
-<p>
-  <b>Category_id:</b>
-  <%=h @application.category_id %>
-</p>
-	
-<p>
-  <b>Name:</b>
-  <%=h @application.name %>
-</p>
+<h4><%=h @category.name + ' -> ' + @application.name %></h4>
 
-<p>
-  <b>Logo:</b>
-  <%=h @application.logo %>
-</p>
-
-<p>
-  <b>Website:</b>
-  <%= link_to (image_tag "web.png")+"web", @application.website %><br />
-</p>
-
-<p>
-  <b>Description:</b>
-  <%=h @application.description %>
-</p>
-
+<div class="app_details">
+	<%= image_tag "rails.png", :class => "logos" %>
+	<p><b>Nombre:</b> <%=h @application.name %></p>
+	<p><b>Categor&iacute;a:</b> <%=h @application.category.name %></p>
+	<p><b>Website:</b> <%= link_to @application.website, @application.website %></p>
+	<p><b>Descripci&oacute;n:</b> <%=h @application.description %></p>
+</div>
 
 <!-- < %= link_to 'Resources', category_application_resources_path(@category, @application) %> | -->
-<%= link_to 'Edit', [:edit, @category, @application] %> |
-<%= link_to 'Back', category_applications_path(@category) %>
+<%= link_to 'Edit', [:edit, @category, @application] %>
+<!-- | < %= link_to 'Back', category_applications_path(@category) %> -->
