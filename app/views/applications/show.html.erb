@@ -3,7 +3,7 @@
 <h4><%=h @category.name + ' -> ' + @application.name %></h4>
 
 <div class="app_details">
-	<%= image_tag "rails.png", :class => "logos" %>
+	<%= image_tag @application.logo.url(:resized), :class => "logos" %>
 	<p><b>Nombre:</b> <%=h @application.name %></p>
 	<p><b>Categor&iacute;a:</b> <%=h @application.category.name %></p>
 	<p><b>Website:</b> <%= link_to @application.website, @application.website %></p>
