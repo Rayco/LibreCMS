@@ -10,28 +10,6 @@
 </head>
 <body>
   <div class="content">
-  	
-	<ul>
-		<% if logged_in? %>
-			<li>Logged in as:</li>
-			<li><%= link_to h(current_user.login.capitalize), user_path(current_user) %></li>
-			<ul>
-				<li><%= link_to 'Edit Profile', edit_user_path(current_user) %></li>
-				<li><%= link_to 'Change Password', change_password_path %></li>
-				<li><%= link_to 'Log Out', logout_url %></li>
-			</ul>
-			<% if current_user.has_role?('administrator') %>
-				<li><%= link_to 'Administer Users', users_path %></li>
-			<% end %>
-			<% else %>
-				<li><%= link_to 'Log In', new_session_path %></li>
-				<li><%= link_to 'Sign Up', new_user_path %></li>      
-				<li><%= link_to 'Forgot Password?', forgot_password_path %></li>    
-			<% end %>     
-  </ul>
-
-
-	
 	<!-- HEADER -->
 	<div class="header_top"></div>
 	<!--
@@ -61,19 +39,20 @@
 	<div class="header">
 		<a href="http://osl.ull.es/"><%= image_tag "osl.png", :alt => "OSL", :class => "logo" %></a>
 		<h1><a href="http://windowslibre.osl.ull.es">Software Libre <span class="dark">para Windows</span></a></h1>
-
-		<div class="sf_search">
-		  <form method="post" action="?">
-		    <p><b>Buscar:</b> <input type="text" name="search" class="search" /> <input type="submit" value="Go" class="submit" /></p>
-		  </form>
-		</div>
-		
 	</div>	
 	<div class="header_bottom"></div>
 	
 	<!-- TEXT ABOVE THE HEAD -->
 	<div class="subheader">
-		BREADCRUMS >> AQUI!
+		<div class="sf_breadcrum">
+			BREADCRUMS >> AQUI!
+		</div>
+		
+		<div class="sf_search">
+		  <form method="post" action="?">
+		    <p><b>Buscar:</b> <input type="text" name="search" class="search" /> <input type="submit" value="Go" class="submit" /></p>
+		  </form>
+		</div>
 	  <p style="color: green"><%= flash[:notice] %></p>
 	</div>
 	
@@ -86,7 +65,7 @@
 			<h2>Login:</h2>
 		</div>
 		<div class="box">
-			Login:
+			<%= render :partial => '/shared/login_menu' %>
 		</div>
 		<div class="box_bottom"></div>
 		
@@ -98,11 +77,10 @@
 		</div>
 		<div class="box_bottom"></div>
 		
-		<% if @application %>	
+		<% if @application and !@application.resources.empty? %>	
 		  <div class="box_top">
 			<h2>Recursos:</h2>
 		  </div>
-	  
 		  <div class="box">
 		  	<%= render :partial => '/shared/resources_index' %>
 		  </div>

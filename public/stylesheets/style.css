@@ -72,13 +72,17 @@ form { margin: 0; }
 input.search { width: 199px; border: thin color #000000; background: #FFF /*url(../images/input.gif)*/; padding: 4px; color: #808080; }
 input.submit { height: 24px; font-weight: bold; width: 53px; border: none; background: #D96855 url(../images/button.gif); padding: 3px; color: #FFF; }
 .sf_search {
-	clear: left;
+	float: right;
 	/*background: #CA090D url(../images/searchbg.gif) repeat-x bottom left; */
 	color: #000000; /*#FFE4E0;*/
 	/*border-top: 1px solid #AA1717;
 	border-bottom: 1px solid #000;*/
-	padding: 18px 0 17px 15px;
-	margin-top: -2px;
+	/*padding: 18px 0 17px 15px;
+	margin-top: -2px;*/
+}
+
+.sf_breadcrums {
+	float: left;
 }
 	
 .subheader {
@@ -89,6 +93,11 @@ input.submit { height: 24px; font-weight: bold; width: 53px; border: none; backg
 
 /* left side
    --------- */
+
+.list {
+	list-style: none;
+	padding: 0;
+}
 
 .left {
 	float: left;

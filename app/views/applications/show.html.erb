@@ -10,6 +10,10 @@
 	<p><b>Descripci&oacute;n:</b> <%=h @application.description %></p>
 </div>
 
-<!-- < %= link_to 'Resources', category_application_resources_path(@category, @application) % > | -->
-<%= link_to 'Edit', [:edit, @category, @application] %>
-<!-- | < %= link_to 'Back', category_applications_path(@category) % > -->
+<% if logged_in? and current_user.has_role?('administrator') %>
+	<%= link_to 'Edit', [:edit, @category, @application] %>
+<% end %>
+
+<!-- < %= link_to 'Resources', category_application_resources_path(@category, @application) % > |
+| < %= link_to 'Back', category_applications_path(@category) % > -->
+

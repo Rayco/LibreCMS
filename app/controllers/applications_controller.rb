@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
+  before_filter :check_administrator_role, :except => [:show, :index]
   before_filter :get_category
-  before_filter :get_categories
   
   # GET /applications
   # GET /applications.xml
@@ -91,8 +91,5 @@ class ApplicationsController < ApplicationController
   def get_category
     @category = Category.find(params[:category_id])
   end
-  
-  def get_categories
-    @categories = Category.find(:all)
-  end  
+
 end

@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_filter :get_categories
+  before_filter :check_administrator_role, :except => :index
   # GET /categories
   # GET /categories.xml
   def index
@@ -83,9 +83,5 @@ class CategoriesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  private
-  def get_categories 
-    @categories = Category.find(:all)
-  end
+
 end

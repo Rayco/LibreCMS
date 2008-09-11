@@ -18,4 +18,6 @@
 <% end %>
 
 <br />
-<%= link_to 'New application', new_category_application_path(@category) %>
+<% if logged_in? and current_user.has_role?('administrator') %>
+	<%= link_to 'New application', new_category_application_path(@category) %>
+<% end %>
