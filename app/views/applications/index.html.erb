@@ -4,7 +4,7 @@
 
 <% for application in @applications %>
 	<p class="application">
-		<%= link_to (image_tag application.logo.url(:resized), :class => "logos"), [@category, application] %>
+		<%= link_to (image_tag application.logo.url, :class => "logos"), [@category, application] %>
 		<%= link_to application.name, [@category, application] %> 
 		<%=h application.description[0,320] %>
 		<%=h '...' if application.description.length > 320 %><br />

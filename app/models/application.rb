@@ -9,5 +9,6 @@ class Application < ActiveRecord::Base
   
   validates_presence_of :name
   
-  has_attached_file :logo, :styles => { :resized => "63x63>" }
+  has_attached_file :logo, :styles => { :normal => "63x63>", :small => "32x32>" },
+                    :default_style => :normal
 end

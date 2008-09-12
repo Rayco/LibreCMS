@@ -37,23 +37,28 @@
 	</div>
 	-->
 	<div class="header">
-		<a href="http://osl.ull.es/"><%= image_tag "osl.png", :alt => "OSL", :class => "logo" %></a>
-		<h1><a href="http://windowslibre.osl.ull.es">Software Libre <span class="dark">para Windows</span></a></h1>
-	</div>	
+		<%= link_to (image_tag "osl.png", :alt => "OSL", :class => "logo"), 'http://osl.ull.es/' %>
+		<h1><%= link_to 'Software Libre <span class="dark">para Windows</span>', 'http://windowslibre.osl.ull.es' %></h1>
+		<div id="login_menu"><%= render :partial => '/shared/login_menu' %></div>
+	</div>
 	<div class="header_bottom"></div>
 	
 	<!-- TEXT ABOVE THE HEAD -->
 	<div class="subheader">
+		<!-- BREADCRUMS
 		<div class="sf_breadcrum">
 			BREADCRUMS >> AQUI!
 		</div>
+		-->
 		
+		<!-- BUSCADOR
 		<div class="sf_search">
 		  <form method="post" action="?">
 		    <p><b>Buscar:</b> <input type="text" name="search" class="search" /> <input type="submit" value="Go" class="submit" /></p>
 		  </form>
 		</div>
-	  <p style="color: green"><%= flash[:notice] %></p>
+		-->
+	  <p class="notice"><%= flash[:notice] %></p>
 	</div>
 	
 	<div class="header_top"></div>
@@ -61,14 +66,6 @@
 	<div class="left">
 	  <div class="left_side">
 	  	
-		<div class="box_top">
-			<h2>Login:</h2>
-		</div>
-		<div class="box">
-			<%= render :partial => '/shared/login_menu' %>
-		</div>
-		<div class="box_bottom"></div>
-		
 	    <div class="box_top">
 		  <h2>Directorio:</h2>
 		</div>	
