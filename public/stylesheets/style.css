@@ -62,7 +62,7 @@ p.text-content:first-letter {
 h1 {
 	font: 2.6em  Georgia, "Times New Roman", Times, serif;
 	margin: 0 0 10px 40px;
-	border-bottom: 1px solid #4C8CA6;
+	/*border-bottom: 1px solid #4C8CA6;*/
 	width: 55%;
 	padding: 15px 0 5px 0;
 }
@@ -128,7 +128,7 @@ ul {
 
 #header {
 	margin: 0 auto;
-	height: 157px;
+	height: 100px;
 	position: relative;
 	background: #004E6C url('../images/header-bg.gif') repeat-x 0 0;
 	border-top: 4px solid #003042;
@@ -136,10 +136,16 @@ ul {
 }
 
 .header-logo {
+	margin: 12px 20px 0 0;
 	border: none;
 	float: right;
 }
-.dark  { color: #737373; background: inherit; font-weight: bold; }
+
+.dark  { 
+	color: #97B3C1;
+	background: inherit;
+	font-weight: bold;
+}
 
 
 /* Login Menu */
