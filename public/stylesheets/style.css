@@ -64,7 +64,7 @@ h1 {
 	margin: 0 0 10px 40px;
 	/*border-bottom: 1px solid #4C8CA6;*/
 	width: 55%;
-	padding: 15px 0 5px 0;
+	padding: 24px 0 5px 0;
 }
 
 h1 a:link, h1 a:visited {
@@ -128,7 +128,7 @@ ul {
 
 #header {
 	margin: 0 auto;
-	height: 100px;
+	height: 90px;
 	position: relative;
 	background: #004E6C url('../images/header-bg.gif') repeat-x 0 0;
 	border-top: 4px solid #003042;
@@ -136,7 +136,7 @@ ul {
 }
 
 .header-logo {
-	margin: 12px 20px 0 0;
+	margin: 8px 20px 0 0;
 	border: none;
 	float: right;
 }
