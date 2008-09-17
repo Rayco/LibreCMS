@@ -60,8 +60,10 @@ p.text-content:first-letter {
 }
 
 h1 {
-	font: 2.6em  Georgia, "Times New Roman", Times, serif;
+	font: 2.6em Arial, Sans-Serif;
+	letter-spacing: 1px;
 	margin: 0 0 10px 40px;
+	white-space: nowrap;
 	/*border-bottom: 1px solid #4C8CA6;*/
 	width: 55%;
 	padding: 24px 0 5px 0;
@@ -136,7 +138,7 @@ ul {
 }
 
 .header-logo {
-	margin: 8px 20px 0 0;
+	margin: 0 20px 0 0;
 	border: none;
 	float: right;
 }

@@ -30,7 +30,7 @@
 
 		<!-- Header -->
 		<div id="header">
-			<%= link_to (image_tag "osl.png", :alt => "OSL", :class => "header-logo"), 'http://osl.ull.es/' %>
+			<%= link_to (image_tag "blur.png", :alt => "OSL", :class => "header-logo"), 'http://osl.ull.es/' %>
 			<h1><%= link_to 'Software Libre <span class="dark">para Windows</span>', 'http://windowslibre.osl.ull.es' %></h1>
 		</div>
 		<!-- Header end -->
@@ -54,6 +54,7 @@
 			<a name="skip-menu"></a>
 			<!-- Content left -->
 			<div class="content-box-left">
+				
 				<div class="content-box-left-in">
 					<!--
 					<h3>Welcome here</h3>
@@ -74,9 +75,9 @@
 					</div>
 					-->
 					<%= yield %>
+					<div id="login_menu"><%= render :partial => '/shared/login_menu' %></div>
+					<p class="notice"><%= flash[:notice] %></p>
 				</div>
-				<div id="login_menu"><%= render :partial => '/shared/login_menu' %></div>
-				<p class="notice"><%= flash[:notice] %></p>
 			</div>
 			<!-- Content left end -->
 

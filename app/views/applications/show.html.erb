@@ -3,12 +3,13 @@
 <h4><%=h @category.name + ' -> ' + @application.name %></h4>
 
 <div class="app_details">
-	<%= image_tag @application.logo.url, :class => "logos" %>
-	<p><b>Nombre:</b> <%=h @application.name %></p>
+	<%= image_tag @application.logo.url(:big), :class => "app_logo" %>
+	<p><b>Aplicaci&oacute;n:</b> <%=h @application.name %></p>
 	<p><b>Categor&iacute;a:</b> <%=h @application.category.name %></p>
-	<p><b>Website:</b> <%= link_to @application.website, @application.website %></p>
+	<p><b>P&aacute;gina web:</b> <%= link_to @application.website, @application.website %></p>
 	<p><b>Descripci&oacute;n:</b> <%=h @application.description %></p>
 </div>
+<div id="app_details_bottom">&nbsp;</div>
 
 <% if logged_in? and current_user.has_role?('administrator') %>
 	<%= link_to 'Edit', [:edit, @category, @application] %>

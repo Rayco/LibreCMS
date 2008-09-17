@@ -4,10 +4,10 @@
 
 <% for application in @applications %>
 	<p class="application">
-		<%= link_to (image_tag application.logo.url, :class => "logos"), [@category, application] %>
+		<%= link_to (image_tag application.logo.url, :class => "app_logo"), [@category, application] %>
 		<%= link_to application.name, [@category, application] %> 
-		<%=h application.description[0,320] %>
-		<%=h '...' if application.description.length > 320 %><br />
+		<%=h application.description[0,260] %>
+		<%=h '...' if application.description.length > 260 %><br />
 	</p>
 <!--
     <td>< %= link_to 'Show', [@category, application] % ></td>

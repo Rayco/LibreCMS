@@ -1,14 +1,26 @@
 .application {
 	height: 75px;
 	margin-top: 15px;
-	padding-right: 15px;
+	padding: 10px;
+	border: thin solid #005E85;
+	background-color: #DBF3FF;
+	text-align: justify;
 }
 
-.logos {
+.app_logo {
 	float: left;
 	border: none;
+	margin-right: 10px;
+	margin-top: 5px;
 }
 
 .app_details {
-	padding: 15px 15px 15px 5px;
+	background-color: #DBF3FF;
+	padding: 15px;
+	text-align: justify;
+}
+
+#app_details_bottom {
+	background: #DBF3FF url('../images/column-left-bottom.gif') no-repeat 0 0;
+	height: 20px;
 }
