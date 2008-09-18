@@ -30,7 +30,7 @@
 
 		<!-- Header -->
 		<div id="header">
-			<%= link_to (image_tag "blur.png", :alt => "OSL", :class => "header-logo"), 'http://osl.ull.es/' %>
+			<%= link_to (image_tag "blur.png", :alt => "OSL", :class => "header-logo"), 'http://osl.ull.es/', :title => "Oficina de Software Libre" %>
 			<h1><%= link_to 'Software Libre <span class="dark">para Windows</span>', 'http://windowslibre.osl.ull.es' %></h1>
 		</div>
 		<!-- Header end -->
@@ -38,11 +38,12 @@
 		<!-- Menu -->
 		<a href="#skip-menu" class="hidden">Skip menu</a>
 		<ul id="menu" class="cleaning-box">
-			<li class="first"><a href="#" class="active">HOME</a></li>
+			<li class="first"><a href="#" class="active">Portada</a></li>
 			<li><a href="#">ABOUT US</a></li>
 			<li><a href="#">OUR OFFER</a></li>
 			<li><a href="#">TESTIMONIALS</a></li>
 			<li><a href="#">CONTACT</a></li>
+			<li class="right"><%= link_to (image_tag "ull.png", :alt => "ULL", :class => "menu-logo"), 'http://www.ull.es', :title => "Universidad de La Laguna" %></li>
 		</ul>
 		<!-- Menu end -->
 

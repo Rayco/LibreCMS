@@ -103,6 +103,10 @@ h4 {
 	padding: 6px 10px;
 }
 
+h5 {
+	font-size: 1.5em;
+}
+
 ul {
 	list-style-type: none; 
 }
@@ -196,6 +200,17 @@ ul {
 #menu li.first a {
 	margin-left: 1.6em;
 	display: inline;
+}
+
+#menu li.right {
+	float: right;
+}
+
+.menu-logo {
+	border: none;
+	float: inherit;
+	margin-top: 6px;
+	margin-right: 9px;
 }
 
 #menu li a {
