@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :pages
+
   map.root :controller => 'categories'
   #map.resources :categories, :has_many => :applications, :has_many => :resources
 
@@ -14,6 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :categories do |category|
     category.resources :applications do |application|
       application.resources :resources
+      application.resources :screenshots
     end
   end
 

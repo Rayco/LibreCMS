@@ -1,0 +1,17 @@
+one:
+  application: 
+  name: MyString
+  shot_file_name: MyString
+  shot_content_type: MyString
+  shot_file_size: 1
+  shot_updated_at: 2008-09-23 12:21:13
+  view: 1
+
+two:
+  application: 
+  name: MyString
+  shot_file_name: MyString
+  shot_content_type: MyString
+  shot_file_size: 1
+  shot_updated_at: 2008-09-23 12:21:13
+  view: 1

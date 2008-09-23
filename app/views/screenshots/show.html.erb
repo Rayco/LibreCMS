@@ -1,0 +1,36 @@
+<!-- < % title "Screenshot" % > -->
+
+<p>
+  <strong>Application:</strong>
+  <%=h @screenshot.application %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%=h @screenshot.name %>
+</p>
+<p>
+  <strong>Shot File Name:</strong>
+  <%=h @screenshot.shot_file_name %>
+</p>
+<p>
+  <strong>Shot Content Type:</strong>
+  <%=h @screenshot.shot_content_type %>
+</p>
+<p>
+  <strong>Shot File Size:</strong>
+  <%=h @screenshot.shot_file_size %>
+</p>
+<p>
+  <strong>Shot Updated At:</strong>
+  <%=h @screenshot.shot_updated_at %>
+</p>
+<p>
+  <strong>View:</strong>
+  <%=h @screenshot.view %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_screenshot_path(@screenshot) %> |
+  <%= link_to "Destroy", @screenshot, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", screenshots_path %>
+</p>

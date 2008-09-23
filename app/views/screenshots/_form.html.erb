@@ -1,0 +1,32 @@
+<%= error_messages_for :screenshot %>
+<% form_for @screenshot do |f| %>
+  <p>
+    <%= f.label :application %><br />
+    <%= f.text_field :application %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :shot_file_name %><br />
+    <%= f.text_field :shot_file_name %>
+  </p>
+  <p>
+    <%= f.label :shot_content_type %><br />
+    <%= f.text_field :shot_content_type %>
+  </p>
+  <p>
+    <%= f.label :shot_file_size %><br />
+    <%= f.text_field :shot_file_size %>
+  </p>
+  <p>
+    <%= f.label :shot_updated_at %><br />
+    <%= f.datetime_select :shot_updated_at %>
+  </p>
+  <p>
+    <%= f.label :view %><br />
+    <%= f.text_field :view %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
