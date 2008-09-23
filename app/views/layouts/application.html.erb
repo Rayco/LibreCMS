@@ -38,11 +38,12 @@
 		<!-- Menu -->
 		<a href="#skip-menu" class="hidden">Skip menu</a>
 		<ul id="menu" class="cleaning-box">
-			<li class="first"><a href="#" class="active">Portada</a></li>
-			<li><a href="#">ABOUT US</a></li>
+			<li class="first"><%= link_to 'Portada', root_path, :class => "active" %></li>
+			<!--<li><a href="#">ABOUT US</a></li>
 			<li><a href="#">OUR OFFER</a></li>
 			<li><a href="#">TESTIMONIALS</a></li>
-			<li><a href="#">CONTACT</a></li>
+			<li><a href="#">CONTACT</a></li> -->
+			<%= render :partial => '/shared/login_menu' %>
 			<li class="right"><%= link_to (image_tag "ull.png", :alt => "ULL", :class => "menu-logo"), 'http://www.ull.es', :title => "Universidad de La Laguna" %></li>
 		</ul>
 		<!-- Menu end -->
@@ -76,7 +77,6 @@
 					</div>
 					-->
 					<%= yield %>
-					<div id="login_menu"><%= render :partial => '/shared/login_menu' %></div>
 					<p class="notice"><%= flash[:notice] %></p>
 				</div>
 			</div>
