@@ -1,5 +1,5 @@
-<!--< % title "New Screenshot" % >-->
+<% title "New Screenshot" %>
 
-<%= render :partial => 'form' %>
+<%= render :partial => @screenshot, :locals => { :button_name => "Create" } %>
 
-<p><%= link_to "Back to List", screenshots_path %></p>
+<p><%= link_to "Back to List", category_application_screenshots_path(@category, @application) %></p>

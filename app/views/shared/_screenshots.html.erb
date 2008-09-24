@@ -1,0 +1,13 @@
+<% unless @application.screenshots.empty? %>
+
+	<div class="gallery">
+		
+		<% @application.screenshots.each do |screenshot| %>
+			<%= link_to (image_tag screenshot.shot.url(:thumb),
+						:alt => screenshot.name, :title => screenshot.name),
+						[@category, @application, screenshot] %>
+		<% end %>
+		
+	</div>
+	
+<% end %>

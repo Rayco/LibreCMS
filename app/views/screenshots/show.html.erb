@@ -1,13 +1,14 @@
-<!-- < % title "Screenshot" % > -->
+<% title "Screenshot" %>
 
 <p>
   <strong>Application:</strong>
-  <%=h @screenshot.application %>
+  <%=h @screenshot.application.name %>
 </p>
 <p>
   <strong>Name:</strong>
   <%=h @screenshot.name %>
 </p>
+<%= image_tag @screenshot.shot.url(:thumb) %>
 <p>
   <strong>Shot File Name:</strong>
   <%=h @screenshot.shot_file_name %>
@@ -30,7 +31,6 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_screenshot_path(@screenshot) %> |
-  <%= link_to "Destroy", @screenshot, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", screenshots_path %>
+  <%= link_to "Edit", [:edit, @category, @application, @screenshot] %> |
+  <%= link_to "View All", category_application_screenshots_path(@category, @application) %>
 </p>

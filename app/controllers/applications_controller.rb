@@ -86,10 +86,4 @@ class ApplicationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  private
-  def get_category
-    @category = Category.find(params[:category_id])
-  end
-
 end

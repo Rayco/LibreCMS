@@ -13,6 +13,14 @@ class ApplicationController < ActionController::Base
   private
   def get_categories
     @categories = Category.find(:all)
-  end 
+  end
+  
+  def get_category
+    @category = Category.find(params[:category_id])
+  end
+  
+  def get_application
+    @application = Category.find(params[:category_id]).applications.find(params[:application_id])
+  end
   
 end

@@ -86,20 +86,4 @@ class ResourcesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
-
-  protected
-  def application?
-    false
-  end
-
-  private
-  def get_category
-    @category = Category.find(params[:category_id])
-  end
-  
-  def get_application
-    @application = Category.find(params[:category_id]).applications.find(params[:application_id])
-  end
-  
 end

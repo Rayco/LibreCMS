@@ -1,8 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :pages
-
   map.root :controller => 'categories'
-  #map.resources :categories, :has_many => :applications, :has_many => :resources
 
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.login '/login', :controller => 'sessions', :action => 'new'
@@ -11,6 +8,9 @@ ActionController::Routing::Routes.draw do |map|
   map.forgot_password '/forgot_password', :controller => 'passwords', :action => 'new'
   map.reset_password '/reset_password/:id', :controller => 'passwords', :action => 'edit'
   map.change_password '/change_password', :controller => 'accounts', :action => 'edit'
+
+  map.resources :pages
+  map.static 'static/:permalink', :controller => 'pages', :action => 'show'
 
   # See how all your routes lay out with "rake routes"
   map.resources :categories do |category|

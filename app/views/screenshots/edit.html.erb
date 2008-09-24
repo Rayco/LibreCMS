@@ -1,8 +1,8 @@
-<!--< % title "Edit Screenshot" % >-->
+<% title "Edit Screenshot" %>
 
-<%= render :partial => 'form' %>
+<%= render :partial => @screenshot, :locals => { :button_name => "Update" } %>
 
 <p>
-  <%= link_to "Show", @screenshot %> |
-  <%= link_to "View All", screenshots_path %>
+  <%= link_to "Show", [@category, @application, @screenshot] %> |
+  <%= link_to "View All", category_application_screenshots_path(@category, @application) %>
 </p>
