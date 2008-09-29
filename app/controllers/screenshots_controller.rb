@@ -4,7 +4,15 @@ class ScreenshotsController < ApplicationController
   before_filter :get_application
 
   def index
-    @screenshots = @application.screenshots.find(:all)
+    screenshots_per_page = 4
+    @total = @application.screenshots.count(:all)
+    @screenshots_pages, @screenshots = paginate :screenshots, :per_page => screenshots_per_page
+    #@screenshots = @application.screenshots.find(:all)
+    
+    if request.xml_http_request?
+      render :partial => "/shared/screenshots", layout => false
+    end
+    
   end
   
   def show

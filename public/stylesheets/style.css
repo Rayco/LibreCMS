@@ -297,6 +297,7 @@ ul {
 }
 
 .gallery a img, .gallery a:visited img {
+	/* con la paginacion deberian de desaparecer los margenes en los screenshots */
 	margin: 0 11px 16px 0;
 	border: 4px solid #EEEEEE;
 }

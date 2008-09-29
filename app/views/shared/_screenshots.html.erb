@@ -1,4 +1,17 @@
-<% unless @application.screenshots.empty? %>
+<!--< % unless @application.screenshots.empty? % >-->
+
+<% if @total = 0 %>
+	<p>No hay capturas.</p>
+	
+<% else %>
+	<!--< %= javascript_include_tag :defaults % >-->
+	<p> Hay <%= @total %> capturas.</p>
+	<p>
+		<% if @screenshots_pages.page_count > 1 %>
+		Page&nbsp;:
+		<%= pagination_links_remote @screenshots_pages %>
+		<% end %>
+	</p>
 
 	<div class="gallery">
 		
@@ -7,6 +20,13 @@
 						:alt => screenshot.name, :title => screenshot.name),
 						[@category, @application, screenshot] %>
 		<% end %>
+		
+		<!--< %= image_tag("ajax-loader.gif", :align => 'absmiddle', :boder => 0,
+						:id => "ajax-loader", :style => "display: none;") % >-->
+						
+		<!-- observer -->
+				
+		
 		
 	</div>
 	
