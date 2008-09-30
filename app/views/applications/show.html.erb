@@ -9,7 +9,11 @@
 	<p><b>Categor&iacute;a:</b> <%=h @application.category.name %></p>
 	<p><b>P&aacute;gina web:</b> <%= link_to @application.website, @application.website %></p>
 	<p><b>Descripci&oacute;n:</b> <%=h @application.description %></p>
-	<%= render :partial => '/shared/screenshots' %>
+	
+	<div id="gallery">
+		<%= render :partial => '/shared/screenshots' %>
+	</div>
+	
 </div>
 <div id="app_details_bottom">&nbsp;</div>
 

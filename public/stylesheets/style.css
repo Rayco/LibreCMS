@@ -292,17 +292,17 @@ ul {
 	margin: 0.4em 1.7em 0 2em;
 }
 
-.gallery {
+#gallery {
 	margin-top: 18px;
 }
 
-.gallery a img, .gallery a:visited img {
+#gallery a img, #gallery a:visited img {
 	/* con la paginacion deberian de desaparecer los margenes en los screenshots */
 	margin: 0 11px 16px 0;
 	border: 4px solid #EEEEEE;
 }
 
-.gallery a:hover img {
+#gallery a:hover img {
 	border: 4px solid #74BDDC;
 }
 
