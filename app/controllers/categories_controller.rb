@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.xml
   def index
-    @categories = Category.find(:all)
+    @categories = Category.find(:all, :order => 'name')
 
     respond_to do |format|
       format.html # index.html.erb

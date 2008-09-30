@@ -9,6 +9,7 @@ class Application < ActiveRecord::Base
   validates_associated :category
   
   validates_presence_of :name
+  validates_uniqueness_of :name
   
   has_attached_file :logo, :styles => { :normal => "63x63>", :small => "32x32>", :big => "128x128>" },
                     :default_style => :normal

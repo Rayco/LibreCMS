@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   
   private
   def get_categories
-    @categories = Category.find(:all)
+    @categories = Category.find(:all, :order => 'name')
   end
   
   def get_category
