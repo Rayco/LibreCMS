@@ -18,7 +18,7 @@ class ApplicationsController < ApplicationController
   def show
     @application = @category.applications.find(params[:id])
     @screenshots = @application.screenshots.paginate :per_page => 4, :page => params[:page]
-    @resources = @application.resources.find(:all, :order => 'name')
+    #@resources = @application.resources.find(:all, :order => 'name')
 
     respond_to do |format|
       format.html # show.html.erb
