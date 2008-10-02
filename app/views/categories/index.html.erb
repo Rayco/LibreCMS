@@ -1,19 +1,17 @@
-<% content_for :categories_index do %>
-  <!-- <h1>Listing categories</h1> -->
+<h4>Listado de Categorias</h4>
 
-  <table>
-  <% for category in @categories %>
-    <tr>
-	  <!-- <td><%= link_to category.name, category %></td> -->
-      <td><%= link_to category.name, category_applications_path(category) %></td>
-      <td><%= link_to 'Edit', edit_category_path(category) %></td>
-      <td><%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-  </table>
-
-  <br />
-
-  <%= link_to 'New category', new_category_path %>
+<ul id="categories_index" class="cleaning-box">
+<% for category in @categories %>
+	<li>
+		<%= link_to (image_tag category.icon.url(:big)), category_applications_path(category) %><br />
+    	<%= link_to category.name, category_applications_path(category) %>
+	</li>
+    <!-- <td>< %= link_to 'Edit', edit_category_path(category) % ></td>
+    <td>< %= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete % ></td> -->
 <% end %>
+</ul>
+
+<br />
+
+<%= link_to 'New category', new_category_path %>
   

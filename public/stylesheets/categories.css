@@ -1,0 +1,33 @@
+#categories_index {
+	text-align: center;
+	margin: 0 auto;
+	font-size: 1.5em;
+}
+
+#categories_index li {
+	display: inline;
+	float: left;
+	margin: 0.5em 1em; 
+}
+
+#categories_index li img {
+	border: none;
+}
+
+#categories_index li a {
+	text-decoration: none;
+}
+
+#categories_index li a:hover {
+	text-decoration: underline;
+}
+
+#categories_index li a.active {
+	font-weight: bold;
+	color: #B1EEFF;
+}
+
+.category_icon {
+	vertical-align: middle;
+	border: none;
+}

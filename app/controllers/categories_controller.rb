@@ -1,9 +1,11 @@
 class CategoriesController < ApplicationController
   before_filter :check_administrator_role, :except => :index
+  
   # GET /categories
   # GET /categories.xml
   def index
     @categories = Category.find(:all, :order => 'name')
+    @hide = true
 
     respond_to do |format|
       format.html # index.html.erb

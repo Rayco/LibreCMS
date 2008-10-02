@@ -8,7 +8,7 @@ class Category < ActiveRecord::Base
   
   #validates_attachment_content_type :icon, :content_type => ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png', 'image/jpg']
   
-  has_attached_file :icon, :styles => { :normal => "32x32", :big => "128x128" },
+  has_attached_file :icon, :styles => { :normal => "32x32", :big => "128x128", :small => "16x16" },
                     :url => "/attached/:class/:id/:attachment/:style_:basename.:extension",
                     :path => ":rails_root/public/attached/:class/:id/:attachment/:style_:basename.:extension",
                     :default_style => :normal,

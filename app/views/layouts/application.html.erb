@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Software Libre para Windows: <%= controller.action_name %></title>
 
-<!-- This template was created by Mantis-a [http://www.mantisa.cz/]. For more templates visit Free website templates [http://www.mantisatemplates.com/]. -->
+<!-- This template was created by Mantis-a [http://www.mantisa.cz/] and modified by Ancor Cruz [http://www.ancorcruz.com]. For more templates visit Free website templates [http://www.mantisatemplates.com/]. -->
 
 <meta name="Description" content="..." />
 <meta name="Keywords" content="..." />
@@ -14,11 +14,9 @@
 <!-- Javascript -->
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 
-<!-- CSS
-<link rel="stylesheet" href="stylesheets/style.css" type="text/css" media="screen, projection, tv" />
-<link rel="stylesheet" href="stylesheets/style-print.css" type="text/css" media="print" />
--->
+<!-- CSS -->
 <%= stylesheet_link_tag 'style' %>
+<%= stylesheet_link_tag 'categories' %>
 <%= stylesheet_link_tag 'applications' %>
 
 <!-- Favicon -->
@@ -40,10 +38,6 @@
 		<a href="#skip-menu" class="hidden">Skip menu</a>
 		<ul id="menu" class="cleaning-box">
 			<li class="first"><%= link_to 'Portada', root_path, :class => "active" %></li>
-			<!--<li><a href="#">ABOUT US</a></li>
-			<li><a href="#">OUR OFFER</a></li>
-			<li><a href="#">TESTIMONIALS</a></li>
-			<li><a href="#">CONTACT</a></li> -->
 			<%= render :partial => '/shared/login_menu' %>
 			<li class="right"><%= link_to (image_tag "ull.png", :alt => "ULL", :class => "menu-logo"), 'http://www.ull.es', :title => "Universidad de La Laguna" %></li>
 		</ul>
@@ -59,24 +53,6 @@
 			<div class="content-box-left">
 				
 				<div class="content-box-left-in">
-					<!--
-					<h3>Welcome here</h3>
-					<p class="text-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur rhoncus mollis risus. 
-					 Aenean in pede eget ipsum feugiat lobortis. Vivamus dapibus. In luctus placerat purus. Etiam ultrices varius nulla. 
-					Phasellus odio leo, <a href="#">rhoncus vitae</a>, ultrices nec, pulvinar vel, enim. Suspendisse sit amet nunc. 
-					Proin id neque nec felis fringilla hendrerit. Nulla at odio. In vel enim quis est consectetuer aliquet.</p>
-					<p class="text-content">Nunc tincidunt pulvinar nulla. Aliquam erat volutpat. Nunc eros urna, vulputate pretium, 
-					lacinia vitae, bibendum nec, nulla. Sed id leo. Pellentesque semper eleifend lacus. Lorem ipsum dolor sit amet, 
-					<a href="#">consectetuer adipiscing elit</a>. Praesent a lorem. Quisque metus ipsum, sodales et, convallis non, 
-					molestie et, nisl.</p>
-					<h3>Our latest work</h3>
-					<div class="gallery">
-					<a href="#"><img src="../images/image.jpg" width="120" height="90" alt="image 1" /></a>
-					<a href="#"><img src="../images/image.jpg" width="120" height="90" alt="image 2" /></a>
-					<a href="#"><img src="../images/image.jpg" width="120" height="90" alt="image 3" /></a>
-					<a href="#"><img src="../images/image.jpg" width="120" height="90" alt="image 4" /></a>
-					</div>
-					-->
 					<%= yield %>
 					<p class="notice"><%= flash[:notice] %></p>
 				</div>
@@ -86,41 +62,25 @@
 <hr class="noscreen" />
 
 			<!-- Content right -->
+			<% if !@hide %> 
 			<div class="content-box-right">
-				<h4>News</h4>
-				<div class="content-box-right-in">
-					<%= render :partial => '/shared/categories_index' %>
-					<!--
-					<dl>
-						<dt>25. 4. 08</dt>
-							<dd class="heading"><a href="#">Lorem ipsum dolor</a></dd>
-							<dd>Sed porttitor purus non libero. Aliquam pulvinar, sem vitae euismod tempus, quam orci&hellip;</dd>
-
-						<dt>12. 4. 08</dt>
-							<dd class="heading"><a href="#">Lorem ipsum dolor</a></dd>
-							<dd>Sed porttitor purus non libero. Aliquam pulvinar, sem vitae euismod tempus, quam orci&hellip;</dd>
-					</dl>
-					-->
-				</div>
-				<% if @application and !@application.resources.empty? %>
-				<h4>Contact</h4>
-				<div class="content-box-right-in">
-					<%= render :partial => '/shared/resources_index' %>
-					<!--
-					<address>
-					Company name<br />
-					Street 1212/36<br />
-					500003 City Park<br />
-					<br />
-					E-mail: info&#64;< !---- >company.com<br />
-					Fax: 0 123 456 789<br />
-					Tel.: 0 123 456 789
-					</address>
-					-->
-				</div>
+				<% if @categories %>
+					<h4>Categorias:</h4>
+					<div class="content-box-right-in">
+						<%= render :partial => '/shared/categories_index' %>
+					</div>
 				<% end %>
+				
+				<% if @application and !@application.resources.empty? %>
+					<h4>Otros recursos:</h4>
+					<div class="content-box-right-in">
+						<%= render :partial => '/shared/resources_index' %>
+					</div>
+				<% end %>
+				
 			<div id="column-right-bottom">&nbsp;</div>
 			</div>
+			<% end %>
 			<!-- Content right end -->
 			<div class="cleaner">&nbsp;</div>
 		</div>

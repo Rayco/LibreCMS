@@ -1,7 +1,7 @@
 <ul>
 <% for category in @categories %>
 	<li>
-		<%= link_to (image_tag category.icon.url), category_applications_path(category) %>
+		<%= link_to (image_tag category.icon.url(:small), :class => 'category_icon'), category_applications_path(category) %>
 		<%= link_to category.name, category_applications_path(category) %>
 
 	<!--
