@@ -43,7 +43,7 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.xml
   def create
-    @category = Category.new(params[:category])
+    @category = Category.create(params[:category])
 
     respond_to do |format|
       if @category.save

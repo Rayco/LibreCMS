@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
   has_many :applications, :dependent => :destroy
   
   validates_presence_of :name
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, :case_sensitive => false, :mesage => 'Ya existe'
   
   #validates_attachment_content_type :icon, :content_type => ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png', 'image/jpg']
   
