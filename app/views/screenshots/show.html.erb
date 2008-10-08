@@ -8,22 +8,22 @@
   <strong>Name:</strong>
   <%=h @screenshot.name %>
 </p>
-<%= image_tag @screenshot.shot.url(:thumb) %>
+<%= image_tag @screenshot.image.url(:thumb) %>
 <p>
-  <strong>Shot File Name:</strong>
-  <%=h @screenshot.shot_file_name %>
+  <strong>Image File Name:</strong>
+  <%=h @screenshot.image_file_name %>
 </p>
 <p>
-  <strong>Shot Content Type:</strong>
-  <%=h @screenshot.shot_content_type %>
+  <strong>Image Content Type:</strong>
+  <%=h @screenshot.image_content_type %>
 </p>
 <p>
-  <strong>Shot File Size:</strong>
-  <%=h @screenshot.shot_file_size %>
+  <strong>Image File Size:</strong>
+  <%=h @screenshot.image_file_size %>
 </p>
 <p>
-  <strong>Shot Updated At:</strong>
-  <%=h @screenshot.shot_updated_at %>
+  <strong>Image Updated At:</strong>
+  <%=h @screenshot.image_updated_at %>
 </p>
 <p>
   <strong>View:</strong>

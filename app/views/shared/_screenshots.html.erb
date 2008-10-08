@@ -1,6 +1,6 @@
 <% unless @screenshots.empty? %>
 	<% @screenshots.each do |screenshot| %>
-		<%= link_to (image_tag screenshot.shot.url(:thumb),
+		<%= link_to (image_tag screenshot.image.url(:thumb),
 					:alt => screenshot.name, :title => screenshot.name),
 					[@category, @application, screenshot] %>
 	<% end %>

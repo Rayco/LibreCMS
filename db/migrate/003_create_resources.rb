@@ -2,7 +2,7 @@ class CreateResources < ActiveRecord::Migration
   def self.up
     create_table :resources do |t|
       t.references :application
-      t.string :name
+      t.string :name, :unique => true, :null => false 
       t.string :url
       t.text :description
 

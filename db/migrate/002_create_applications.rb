@@ -2,7 +2,7 @@ class CreateApplications < ActiveRecord::Migration
   def self.up
     create_table :applications do |t|
       t.references :category
-      t.string :name
+      t.string :name, :unique => true, :null => false
       t.string :logo
       t.string :website
       t.text :description

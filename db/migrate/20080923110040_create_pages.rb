@@ -1,8 +1,8 @@
 class CreatePages < ActiveRecord::Migration
   def self.up
     create_table :pages do |t|
-      t.string :name
-      t.string :permalink
+      t.string :name, :unique => true, :null => false, :limit => 100
+      t.string :permalink, :unique => true, :null => false, :limit => 20
       t.text :content
       t.timestamps
     end
