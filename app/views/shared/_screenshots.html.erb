@@ -1,9 +1,9 @@
 <% unless @screenshots.empty? %>
 	<% @screenshots.each do |screenshot| %>
-		<%= link_to (image_tag screenshot.image.url(:thumb),
+		<!-- < %= link_to (image_tag screenshot.image.url(:thumb),
 					:alt => screenshot.name, :title => screenshot.name),
-					[@category, @application, screenshot] %>
+					[@category, @application, screenshot] % > -->
+		<a href="<%= screenshot.image.url %>" rel="lightbox" title="<%= screenshot.name %>"><%= image_tag screenshot.image.url(:thumb), :alt => screenshot.name, :title => screenshot.name %></a>
 	<% end %>
-	
 	<%= will_paginate @screenshots %>
 <% end %>
