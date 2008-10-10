@@ -271,20 +271,20 @@ ul {
 
 .content-box-left {
 	float: left;
-	width: 735px;
+	width: 755px;
 	margin-bottom: 4em;
 }
 
 .content-box-right {
 	float: right;
-	width: 220px;
+	width: 200px;
 	margin-bottom: 4em;
 	background-color: #DBF3FF;
 }
 
 #column-right-bottom {
 	background: #DBF3FF url('../images/column-right-bottom.gif') no-repeat 0 0;
-	width: 220px;
+	width: 200px;
 	height: 20px;
 }
 
