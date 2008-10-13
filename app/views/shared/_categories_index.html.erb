@@ -1,3 +1,4 @@
+<div class="categories_list">
 <ul>
 <% for category in @categories %>
 	<li>
@@ -16,3 +17,4 @@
 <% if logged_in? and current_user.has_role?('administrator') %>
 	<%= link_to 'New category', new_category_path %>
 <% end %>
+</div>
