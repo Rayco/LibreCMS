@@ -1,0 +1,10 @@
+--- 
+cwd: /var/www/devrails
+log_file: log/mongrel.log
+port: "8001"
+environment: production
+address: 127.0.0.1
+pid_file: tmp/pids/mongrel.pid
+servers: 4
+user: rails
+group: rails
