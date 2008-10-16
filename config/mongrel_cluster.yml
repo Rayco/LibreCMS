@@ -1,5 +1,5 @@
 --- 
-cwd: /var/www/devrails
+cwd: /var/www/devrails/current
 log_file: log/mongrel.log
 port: "8001"
 environment: production
