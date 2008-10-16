@@ -1,7 +1,7 @@
 set :user, 'rails'
 set :domain, 'mechada.osl.ull.es'
 set :project, 'devrails' #'windowsLibre'
-set :application, 'devrails.osl.ull.es' #'windowslibre.osl.ull.es'
+set :application, 'devrails' #'windowslibre'
 set :applicationdir, "/var/www/#{application}"
 
 # Configuracion de control de versiones
