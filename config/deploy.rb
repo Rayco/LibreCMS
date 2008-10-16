@@ -1,4 +1,4 @@
-set :user, 'root'
+set :user, 'rails'
 set :domain, 'mechada.osl.ull.es'
 set :project, 'devrails' #'windowsLibre'
 set :application, 'devrails' #'windowslibre'
@@ -29,4 +29,4 @@ set :deploy_via, :export
 default_run_options[:pty] = true  # Forgo errors when deploying from windows
 ssh_options[:keys] = %w(~/.ssh/id_rsa)            # If you are using ssh_keys
 set :chmod755, "app config db lib public vendor script script/* public/disp*"
-#set :use_sudo, false   # On DreamHost's shared hosts, sudo can't be used to restart the app
+set :use_sudo, false   # On DreamHost's shared hosts, sudo can't be used to restart the app
