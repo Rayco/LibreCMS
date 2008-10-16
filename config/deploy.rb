@@ -1,4 +1,4 @@
-set :user, 'rails'
+set :user, 'root'
 set :domain, 'mechada.osl.ull.es'
 set :project, 'devrails' #'windowsLibre'
 set :application, 'devrails' #'windowslibre'
@@ -8,8 +8,6 @@ set :applicationdir, "/var/www/#{application}"
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
 # set :scm, :subversion
-set :scm_username, 'ancor'
-set :scm_password, '17801hWg'
 set :repository,  "https://svn.osl.ull.es/windowsLibre/trunk"
 
 # Roles (servers)
