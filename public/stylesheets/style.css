@@ -141,10 +141,16 @@ ul {
 	border-bottom: 1px solid #46A0CA;
 }
 
-.header-logo {
+.header-osl {
 	margin: 0 20px 0 0;
 	border: none;
 	float: right;
+}
+
+.header-ull {
+	margin: 0 70px 0 20px;
+	border: none;
+	float: left;
 }
 
 .dark  { 
@@ -200,17 +206,6 @@ ul {
 #menu li.first a {
 	margin-left: 1.6em;
 	display: inline;
-}
-
-#menu li.right {
-	float: right;
-}
-
-.menu-logo {
-	border: none;
-	float: inherit;
-	margin-top: 6px;
-	margin-right: 9px;
 }
 
 #menu li a {
@@ -279,6 +274,7 @@ ul {
 	float: right;
 	width: 200px;
 	margin-bottom: 4em;
+	background-color: #DBF3FF
 }
 
 #column-right-bottom {
@@ -292,7 +288,7 @@ ul {
 }
 
 #gallery {
-	margin-top: 18px;
+	margin-top: 45px;
 }
 
 #gallery a img, #gallery a:visited img {

@@ -27,7 +27,8 @@
 
 		<!-- Header -->
 		<div id="header">
-			<%= link_to (image_tag "blur.png", :alt => "OSL", :class => "header-logo"), 'http://osl.ull.es/', :title => "Oficina de Software Libre" %>
+			<%= link_to (image_tag "ull.png", :alt => "ULL", :class => "header-ull"), 'http://www.ull.es', :title => "Universidad de La Laguna" %>
+			<%= link_to (image_tag "osl.png", :alt => "OSL", :class => "header-osl"), 'http://osl.ull.es/', :title => "Oficina de Software Libre" %>
 			<h1><%= link_to 'Software Libre <span class="dark">para Windows</span>', 'http://windowslibre.osl.ull.es' %></h1>
 		</div>
 		<!-- Header end -->
@@ -36,8 +37,7 @@
 		<a href="#skip-menu" class="hidden">Skip menu</a>
 		<ul id="menu" class="cleaning-box">
 			<li class="first"><%= link_to 'Portada', root_path, :class => "active" %></li>
-			<%= render :partial => '/shared/login_menu' %>
-			<li class="right"><%= link_to (image_tag "ull.png", :alt => "ULL", :class => "menu-logo"), 'http://www.ull.es', :title => "Universidad de La Laguna" %></li>
+			<li class="right"></li>
 		</ul>
 		<!-- Menu end -->
 
@@ -60,13 +60,14 @@
 <hr class="noscreen" />
 
 			<!-- Content right -->
-			<% if !@hide %> 
-			<div class="content-box-right">
+			<% if !@hide %>
+				<div class="content-box-right">
 				<% if @categories %>
 					<h4>Categorias:</h4>
 					<div class="content-box-right-in">
 						<%= render :partial => '/shared/categories_index' %>
 					</div>
+					<div id="column-right-bottom">&nbsp;</div>
 				<% end %>
 				
 				<% if @application and !@application.resources.empty? %>
@@ -74,9 +75,8 @@
 					<div class="content-box-right-in">
 						<%= render :partial => '/shared/resources_index' %>
 					</div>
+					<div id="column-right-bottom">&nbsp;</div>
 				<% end %>
-				
-			<div id="column-right-bottom">&nbsp;</div>
 			</div>
 			<% end %>
 			<!-- Content right end -->
@@ -89,7 +89,7 @@
 
 	<!-- Footer -->
 	<div id="footer">
-		<p class="left">&copy; <a class="b" href="#">MY WEBSITE</a>, 2008.</p>
+		<p class="left"><a class="b" href="#">MY WEBSITE</a>, 2008.</p>
 		<p class="right"><a href="http://www.mantisatemplates.com/">Free web templates</a>, tip 
 		<a class="b" href="http://www.junglegym.cz/uvodni-stranka.aspx" title="Dětská hřiště, skluzavky a houpačky Jungle Gym">Dětská Hřiště</a></p>
 	</div>

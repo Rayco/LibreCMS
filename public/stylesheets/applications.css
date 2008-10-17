@@ -10,8 +10,7 @@
 .app_logo {
 	float: left;
 	border: none;
-	margin-right: 10px;
-	margin-top: 5px;
+	margin: 5px 10px 0 0;
 }
 
 .app_details {
