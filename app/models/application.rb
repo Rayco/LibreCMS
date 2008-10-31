@@ -19,4 +19,9 @@ class Application < ActiveRecord::Base
                     
   validates_attachment_content_type :logo, :content_type => ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png', 'image/jpg']
   
+  has_attached_file :installer,
+                    :url => "/attached/:class/:id/:attachment/:basename.:extension",
+                    :path => ":rails_root/public/attached/:class/:id/:attachment/:basename.:extension",
+                    :default_url => "/images/defaults/:class_:attachment.png"
+  
 end
