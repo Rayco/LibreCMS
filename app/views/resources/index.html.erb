@@ -4,7 +4,6 @@
   <tr>
     <th>Application</th>
     <th>Name</th>
-    <th>Url</th>
     <th>Description</th>
   </tr>
 
@@ -12,7 +11,6 @@
   <tr>
   	<td><%=h resource.application_id %></td>
     <td><%=h resource.name %></td>
-    <td><%=h resource.url %></td>
     <td><%=h resource.description %></td>
     <td><%= link_to 'Show', [@category, @application, resource] %></td>
     <td><%= link_to 'Edit', [:edit, @category, @application, resource] %></td>
