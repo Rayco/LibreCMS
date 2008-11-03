@@ -3,24 +3,32 @@
 <div class="app_details">
 	<%= image_tag @application.logo.url(:big), :class => "app_logo",
 		:alt => @application.name, :title => @application.name %>
-	<p><b>Aplicaci&oacute;n:</b> <%=h @application.name %></p>
+
+	<%= link_to (image_tag 'installer.png', :class => "installer_icon", :alt => "descagar", :title => "Decargar " + @application.name),
+		@application.installer.url if @application.installer_file_name %>
+		
+	<p><b>Aplicaci&oacute;n:</b> <%=h @application.name %>, <b>versi&oacute;n:</b> <%=h @application.version %></p>
 	<p><b>Categor&iacute;a:</b> <%=h @application.category.name %></p>
 	<p><b>P&aacute;gina web:</b> <%= link_to @application.website, @application.website %></p>
-	<p><b>Descripci&oacute;n:</b> <%=h @application.description %></p>
-	<p><b>Instalador:</b> <%= link_to 'instalador', @application.installer.url %></p>
+	<p><b>Recomendada por:</b> <%= @application.user_recommend.name if @application.user_recommend %></p>
+	<p><b>Subida por: </b> <%= @application.user_upload.name if @application.user_upload %></p>
+	<p><b>Descripci&oacute;n:</b> <%=h @application.description %></p>	
+
 	
-	<div id="gallery">
-		<%= render :partial => '/shared/screenshots' %>
-	</div>
+	<% if !@screenshots.empty? #esto parece un poco sucio %>
+		<div id="gallery">
+			<%= render :partial => '/shared/screenshots' %>
+		</div>
+	<% end %>
 	
 </div>
 <div id="app_details_bottom">&nbsp;</div>
 
 <% if logged_in? and current_user.has_role?('administrator') %>
 	<%= link_to 'Edit', [:edit, @category, @application] %> | 
-	<%= link_to 'Screenshots', category_application_screenshots_path(@category, @application) %>
+	<%= link_to 'Screenshots', category_application_screenshots_path(@category, @application) %> | 
+	<%= link_to 'Resources', category_application_resources_path(@category, @application) %>
 <% end %>
 
-<!-- < %= link_to 'Resources', category_application_resources_path(@category, @application) % > |
-| < %= link_to 'Back', category_applications_path(@category) % > -->
+<!-- | < %= link_to 'Back', category_applications_path(@category) % > -->
 

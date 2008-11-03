@@ -1,8 +1,8 @@
 <% unless @application.resources.empty? %>
 	<% @application.resources.each do |resource| %>
 	<p>
-		<!-- < %= link_to resource.name, [@category, @application, resource] % > -->
-		<%= link_to resource.name, resource.url %>
+		<% # link_to resource.name, [@category, @application, resource] %>
+		<%= link_to resource.name, resource.resource.url, :title => resource.description %>
 	</p>
 	<% end %>
 	<br />

@@ -1,9 +1,14 @@
+require 'paperclip'
 class Resource < ActiveRecord::Base
   belongs_to :application
   
   validates_presence_of :application_id
   validates_associated :application
   
-  validates_presence_of :name
-  validates_presence_of :url
+  validates_presence_of :name, :case_sensitive => false, :message => 'Ya existe'
+  
+  has_attached_file :resource,
+                    :url => "/attached/:class/:id/:attachment/:basename.:extension",
+                    :path => ":rails_root/public/attached/:class/:id/:attachment/:basename.:extension"
+
 end

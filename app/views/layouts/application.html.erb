@@ -48,8 +48,8 @@
 
 			<a name="skip-menu"></a>
 			<!-- Content left -->
+			<% if !@hide %>
 			<div class="content-box-left">
-				
 				<div class="content-box-left-in">
 					<%= yield %>
 					<p class="notice"><%= flash[:notice] %></p>
@@ -60,12 +60,12 @@
 <hr class="noscreen" />
 
 			<!-- Content right -->
-			<% if !@hide %>
+			<% # if !@hide %>
 				<div class="content-box-right">
 				<% if @categories %>
 					<h4>Categorias:</h4>
 					<div class="content-box-right-in">
-						<%= render :partial => '/shared/categories_index' %>
+						<%= render :partial => '/shared/categories_list' %>
 					</div>
 					<div id="column-right-bottom">&nbsp;</div>
 				<% end %>
@@ -73,13 +73,20 @@
 				<% if @application and !@application.resources.empty? %>
 					<h4>Otros recursos:</h4>
 					<div class="content-box-right-in">
-						<%= render :partial => '/shared/resources_index' %>
+						<%= render :partial => '/shared/resources_list' %>
 					</div>
 					<div id="column-right-bottom">&nbsp;</div>
 				<% end %>
 			</div>
-			<% end %>
+			<% #end %>
 			<!-- Content right end -->
+			<% else %>
+				<div class="content-box-center">
+					<div class="content-box-center-in">
+						<%= yield %>
+					</div>					
+				</div>
+			<% end %>
 			<div class="cleaner">&nbsp;</div>
 		</div>
 	</div>

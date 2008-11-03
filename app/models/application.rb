@@ -21,7 +21,6 @@ class Application < ActiveRecord::Base
   
   has_attached_file :installer,
                     :url => "/attached/:class/:id/:attachment/:basename.:extension",
-                    :path => ":rails_root/public/attached/:class/:id/:attachment/:basename.:extension",
-                    :default_url => "/images/defaults/:class_:attachment.png"
+                    :path => ":rails_root/public/attached/:class/:id/:attachment/:basename.:extension"
   
 end
