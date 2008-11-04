@@ -37,9 +37,7 @@
 		<a href="#skip-menu" class="hidden">Skip menu</a>
 		<ul id="menu" class="cleaning-box">
 			<li class="first"><%= link_to 'Portada', root_path, :class => "active" %></li>
-			<% if !@pages.empty? %>
-				<%= render :partial => '/shared/pages_list' %>
-			<% end %>
+			<%= render :partial => '/shared/pages_list' %>
 		</ul>
 		<!-- Menu end -->
 

@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   end
   
   def show
+    @hide = true
     if params[:permalink]
       @page = Page.find_by_permalink(params[:permalink])
       raise ActiveRecord::RecordNotFound, "Página no encontrada" if @page.nil?
