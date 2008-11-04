@@ -1,0 +1,7 @@
+<% for page in @pages %>
+	<li><%= link_to page.name, "/static/#{page.permalink}" %></li>
+<% end %>
+
+<% if logged_in? and current_user.has_role?('administrator') %>
+	<li><%= link_to 'New page', new_page_path %></li>
+<% end %>

@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :get_categories
+  before_filter :get_categories, :get_pages
   include AuthenticatedSystem
   helper :all # include all helpers, all the time
 
@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
   
   def get_application
     @application = Category.find(params[:category_id]).applications.find(params[:application_id])
+  end
+  
+  def get_pages
+    @pages = Page.find(:all, :order => 'name')
   end
   
 end

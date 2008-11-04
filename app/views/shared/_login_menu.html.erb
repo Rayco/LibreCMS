@@ -1,6 +1,6 @@
-<ul>
+<ul id="login_menu">
 <% if logged_in? %>
-	<!--<li>Logged in as:</li>-->
+	<li>Logged in as:</li>
 	<li><%= link_to h(current_user.login.capitalize), user_path(current_user) %></li>
 	<li><%= link_to 'Edit Profile', edit_user_path(current_user) %></li>
 	<li><%= link_to 'Change Password', change_password_path %></li>

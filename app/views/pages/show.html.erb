@@ -1,9 +1,13 @@
-<% title @page.name %>
+<h4><%= link_to @page.name, "/static/#{@page.permalink}" %></h4>
 
-<%= RedCloth.new(@page.content).to_html %>
+<div class="static_pages">
+	<%= RedCloth.new(@page.content).to_html %>
+</div>
+<div id="static_pages_bottom">&nbsp;</div>
 
-<p>
+
+<% if logged_in? and current_user.has_role?('administrator') %>
   <%= link_to "Edit", edit_page_path(@page) %> |
   <%= link_to "Destroy", @page, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", pages_path %>
-</p>
+<% end %>

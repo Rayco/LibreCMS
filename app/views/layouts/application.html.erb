@@ -37,7 +37,9 @@
 		<a href="#skip-menu" class="hidden">Skip menu</a>
 		<ul id="menu" class="cleaning-box">
 			<li class="first"><%= link_to 'Portada', root_path, :class => "active" %></li>
-			<li class="right"></li>
+			<% if !@pages.empty? %>
+				<%= render :partial => '/shared/pages_list' %>
+			<% end %>
 		</ul>
 		<!-- Menu end -->
 
@@ -88,6 +90,11 @@
 				</div>
 			<% end %>
 			<div class="cleaner">&nbsp;</div>
+			
+			<% if logged_in? and current_user.has_role?('administrator') %>
+				<%= render :partial => '/shared/login_menu' %>
+			<% end %>
+			
 		</div>
 	</div>
 	
