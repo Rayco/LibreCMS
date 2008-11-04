@@ -28,4 +28,24 @@
 	float: right;
 	border: none;
 	width: 98px;
+	margin: 10px 10px;
+}
+
+#screenshots {
+	margin-top: 20px;
+	text-align: center;
+}
+
+#screenshots a img, #screenshots a:visited img {
+	/* con la paginacion deberian de desaparecer los margenes en los screenshots */
+	margin: 0 15px 10px 15px;
+	border: 4px solid #EEEEEE;
+}
+
+#screenshots a:hover img {
+	border: 4px solid #74BDDC;
+}
+
+.shot-text {
+	font-size: medium;
 }

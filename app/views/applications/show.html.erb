@@ -1,4 +1,4 @@
-<h4><%=h @category.name + ' > ' + @application.name %></h4>
+<h4><%= link_to 'Categor&iacute;as', categories_path %> > <%= link_to @category.name, category_applications_path %> > <%= link_to @application.name, category_application_url %></h4>
 
 <div class="app_details">
 	<%= image_tag @application.logo.url(:big), :class => "app_logo",
@@ -9,14 +9,14 @@
 		
 	<p><b>Aplicaci&oacute;n:</b> <%=h @application.name %>, <b>versi&oacute;n:</b> <%=h @application.version %></p>
 	<p><b>Categor&iacute;a:</b> <%=h @application.category.name %></p>
-	<p><b>P&aacute;gina web:</b> <%= link_to @application.website, @application.website %></p>
+	<p><b>P&aacute;gina web:</b> <%= link_to @application.website.split(/\/\//)[1], @application.website %></p>
 	<p><b>Recomendada por:</b> <%= @application.user_recommend.name if @application.user_recommend %></p>
 	<p><b>Subida por: </b> <%= @application.user_upload.name if @application.user_upload %></p>
 	<p><b>Descripci&oacute;n:</b> <%=h @application.description %></p>	
 
 	
-	<% if !@screenshots.empty? #esto parece un poco sucio %>
-		<div id="gallery">
+	<% if !@screenshots.empty? #dirty? %>
+		<div id="screenshots">
 			<%= render :partial => '/shared/screenshots' %>
 		</div>
 	<% end %>
@@ -30,5 +30,5 @@
 	<%= link_to 'Resources', category_application_resources_path(@category, @application) %>
 <% end %>
 
-<!-- | < %= link_to 'Back', category_applications_path(@category) % > -->
+<% #= link_to 'Back', category_applications_path(@category) %>
 

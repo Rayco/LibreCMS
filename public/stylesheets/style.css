@@ -103,6 +103,15 @@ h4 {
 	padding: 6px 10px;
 }
 
+h4 a:link, h4 a:visited {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+h4 a:hover {
+	text-decoration: underline;
+}
+
 h5 {
 	font-size: 1.5em;
 }
@@ -267,19 +276,19 @@ ul {
 .content-box-left {
 	float: left;
 	width: 755px;
-	margin-bottom: 4em;
+	/*margin-bottom: 4em;*/
 }
 
 .content-box-right {
 	float: right;
 	width: 200px;
-	margin-bottom: 4em;
+	margin-bottom: 1em;
 	background-color: #DBF3FF
 }
 
 .content-box-center {
 	width: 960px;
-	margin-bottom: 4em;
+	/*margin-bottom: 4em;*/
 }
 
 #column-right-bottom {
@@ -290,20 +299,6 @@ ul {
 
 .content-box-left-in {
 	margin: 0.4em 1.7em 0 2em;
-}
-
-#gallery {
-	margin-top: 45px;
-}
-
-#gallery a img, #gallery a:visited img {
-	/* con la paginacion deberian de desaparecer los margenes en los screenshots */
-	margin: 0 11px 16px 0;
-	border: 4px solid #EEEEEE;
-}
-
-#gallery a:hover img {
-	border: 4px solid #74BDDC;
 }
 
 .content-box-right-in {

@@ -1,4 +1,4 @@
-<h4><%=h @category.name %></h4>
+<h4><%= link_to 'Categor&iacute;as', categories_path %> > <%= link_to @category.name, category_applications_path %></h4>
 
 <% for application in @applications %>
 	<p class="application">
@@ -8,12 +8,11 @@
 		<%=h application.description[0,260] %>
 		<%=h '...' if application.description.length > 260 %><br />
 	</p>
-<!--
-    <td>< %= link_to 'Show', [@category, application] % ></td>
-    <td>< %= link_to 'Edit', [:edit, @category, application] % ></td>
-    <td>< %= link_to 'Destroy', [@category, application], :confirm => 'Are you sure?', :method => :delete % ></td>
-  </tr>
--->
+
+    <% #= link_to 'Show', [@category, application] %>
+    <% #= link_to 'Edit', [:edit, @category, application] %>
+    <% #= link_to 'Destroy', [@category, application], :confirm => 'Are you sure?', :method => :delete %>
+
 <% end %>
 
 <br />

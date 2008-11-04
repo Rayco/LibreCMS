@@ -1,4 +1,4 @@
-<h4>Listado de Categorias</h4>
+<h4><%= link_to 'Categor&iacute;as', categories_path %></h4>
 
 <ul id="categories_index" class="cleaning-box">
 <% for category in @categories %>
@@ -6,8 +6,8 @@
 		<%= link_to (image_tag category.icon.url(:big)), category_applications_path(category) %><br />
     	<%= link_to category.name, category_applications_path(category) %>
 	</li>
-    <!-- <td>< %= link_to 'Edit', edit_category_path(category) % ></td>
-    <td>< %= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete % ></td> -->
+    <% #= link_to 'Edit', edit_category_path(category) %>
+    <% #= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %>
 <% end %>
 </ul>
 

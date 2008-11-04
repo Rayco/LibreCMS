@@ -1,13 +1,12 @@
-<% unless @application.resources.empty? %>
-	<% @application.resources.each do |resource| %>
-	<p>
-		<% # link_to resource.name, [@category, @application, resource] %>
+<ul>
+	<% for resource in @application.resources %>
+	<li>
+		<% #= link_to resource.name, [@category, @application, resource] %>
 		<%= link_to resource.name, resource.resource.url, :title => resource.description %>
-	</p>
+	</li>
 	<% end %>
-	<br />
+</ul>
 	
-	<% if logged_in? and current_user.has_role?('administrator') %>
-		<%= link_to 'New resource', new_category_application_resource_path(@category, @application) %>
-	<% end %>
+<% if logged_in? and current_user.has_role?('administrator') %>
+	<%= link_to 'New resource', new_category_application_resource_path(@category, @application) %>
 <% end %>
