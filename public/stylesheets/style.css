@@ -42,7 +42,18 @@ a:hover {
 	display: none;
 }
 
-/*.notice { float: left; color:green; }*/
+.notice {
+	margin: 0 0 0 27px;
+	color: green;
+}
+
+.status {
+	border: thin solid red;
+	margin: 5px 27px 2px 27px;
+	padding: 5px 10px 5px 10px;
+	text-align: justify;
+	background: #ff8161;
+}
 
 /* Paragraphs, headings, ... */
 
@@ -98,8 +109,9 @@ h4 {
 	background-color: #005E85;
 	color: #FFFFFF;
 	letter-spacing: 1px;
-	border: 2px solid #FFFFFF;
-	margin-top: 7px;
+	/*border: 2px solid #FFFFFF;*/
+	border: none;
+	/*margin-top: 7px;*/
 	padding: 6px 10px;
 }
 
@@ -283,7 +295,8 @@ ul {
 	float: right;
 	width: 200px;
 	margin-bottom: 1em;
-	background-color: #DBF3FF
+	margin-top: 0.4em;
+	background-color: #DBF3FF;
 }
 
 .content-box-center {
@@ -335,37 +348,22 @@ address {
 
 #footer {
 	background-color: #00587D;
+	text-align: center;
 	color: white;
 	width: 960px;
 	height: 34px;
+	margin-top: 0.5em;
 	font-size: 0.9em;
 	border-bottom: 2px solid #003042;
 }
 
 #footer a, #footer a:visited {
-	font-weight: normal;
+	font-weight: bold !important;
 	color: white;
 }
 
-#footer p.left, #footer p.right {
-	width: 400px;
+#footer p {
 	display: inline;
 	margin-bottom: 0;
 	line-height: 30px;
-}
-
-#footer a.b, #footer a.b a:visited {
-	font-weight: bold !important;
-}
-
-#footer p.left {
-	float: left;
-	text-align: left;
-	margin-left: 15px;
-}
-
-#footer p.right {
-	float: right;
-	text-align: right;
-	margin-right: 15px;
 }

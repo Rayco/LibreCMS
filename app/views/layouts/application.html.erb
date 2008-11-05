@@ -15,7 +15,7 @@
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 
 <!-- CSS -->
-<%= stylesheet_link_tag 'style', 'categories', 'applications', 'lightbox' %>
+<%= stylesheet_link_tag 'style', 'categories', 'applications', 'pages', 'lightbox' %>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
@@ -45,14 +45,18 @@
 
 	<div id="content-box">
 		<div id="content-box-in">
-
+			<p class="status">
+				<strong>ATENCI&Oacute;N:</strong> actualmente <b>WindowsLibre</b> esta en <i>ALFA</i>,
+				esto quiere decir que puede contener algún error, además, muchas de las funcionalidades
+				previstas para la aplicación aún no están disponibles.   
+			</p>
+			<p class="notice"><%= flash[:notice] %></p>
 			<a name="skip-menu"></a>
 			<!-- Content left -->
 			<% if !@hide %>
 			<div class="content-box-left">
 				<div class="content-box-left-in">
 					<%= yield %>
-					<p class="notice"><%= flash[:notice] %></p>
 				</div>
 			</div>
 			<!-- Content left end -->
@@ -63,18 +67,12 @@
 			<% # if !@hide %>
 				<div class="content-box-right">
 				<% if @categories %>
-					<h4>Categor&iacute;as:</h4>
-					<div class="content-box-right-in">
-						<%= render :partial => '/shared/categories_list' %>
-					</div>
+					<%= render :partial => '/shared/categories_list' %>
 					<div id="column-right-bottom">&nbsp;</div>
 				<% end %>
 				
 				<% if @application and !@application.resources.empty? %>
-					<h4>Otros recursos:</h4>
-					<div class="content-box-right-in">
-						<%= render :partial => '/shared/resources_list' %>
-					</div>
+					<%= render :partial => '/shared/resources_list' %>
 					<div id="column-right-bottom">&nbsp;</div>
 				<% end %>
 			</div>
@@ -101,13 +99,15 @@
 
 	<!-- Footer -->
 	<div id="footer">
-		<p class="left"><a class="b" href="#">MY WEBSITE</a>, 2008.</p>
-		<p class="right"><a href="http://www.mantisatemplates.com/">Free web templates</a>, tip 
-		<a class="b" href="http://www.junglegym.cz/uvodni-stranka.aspx" title="Dětská hřiště, skluzavky a houpačky Jungle Gym">Dětská Hřiště</a></p>
+		<p>&copy; <a href="http://osl.ull.es">Oficina de Software Libre</a> - <a href="http://www.ull.es">Universidad de La Laguna</p>
 	</div>
 	<!-- Footer end -->
 </div>
 </div>
+<br />
+<p><a href="http://www.mantisatemplates.com/">Free web templates</a>, tip 
+<a href="http://www.junglegym.cz/uvodni-stranka.aspx" title="Dětská hřiště, skluzavky a houpačky Jungle Gym">Dětská Hřiště</a></p>
+<br />
 </body>
 </html>
 

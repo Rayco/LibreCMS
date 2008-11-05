@@ -1,3 +1,5 @@
+<h4>Otros recursos:</h4>
+<div class="content-box-right-in">
 <ul>
 	<% for resource in @application.resources %>
 	<li>
@@ -10,3 +12,4 @@
 <% if logged_in? and current_user.has_role?('administrator') %>
 	<%= link_to 'New resource', new_category_application_resource_path(@category, @application) %>
 <% end %>
+</div>

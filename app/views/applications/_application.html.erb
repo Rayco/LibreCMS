@@ -1,3 +1,5 @@
+<%= error_messages_for :application %>
+
 <% form_for ([@category, @application]), :url => [@category, application], :html => { :multipart => true } do |f| %>
   <p>
   	<b>Category:</b>
