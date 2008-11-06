@@ -7,4 +7,3 @@ task :before_symlink do
   run "rm -drf #{release_path}/public/attached"
   run "ln -s #{shared_path}/attached #{release_path}/public/attached"
 end
-

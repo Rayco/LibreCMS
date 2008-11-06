@@ -1,7 +1,7 @@
 set :user, 'rails'
 set :domain, 'mechada.osl.ull.es'
-set :project, 'devrails' #'windowsLibre'
-set :application, 'devrails' #'windowslibre'
+set :project, 'windowsLibre'
+set :application, 'windowsLibre'
 set :applicationdir, "/var/www/#{application}"
 
 # Configuracion de control de versiones
@@ -11,12 +11,12 @@ set :applicationdir, "/var/www/#{application}"
 set :repository,  "https://svn.osl.ull.es/windowsLibre/trunk"
 
 # Roles (servers)
-role :app, "devrails.osl.ull.es"
-role :web, "devrails.osl.ull.es"
-role :db,  "devrails.osl.ull.es", :primary => true
-#role :app, "windowsLibre.osl.ull.es"
-#role :web, "windowsLibre.osl.ull.es"
-#role :db,  "windowsLibre.osl.ull.es", :primary => true
+#role :app, "devrails.osl.ull.es"
+#role :web, "devrails.osl.ull.es"
+#role :db,  "devrails.osl.ull.es", :primary => true
+role :app, "windowsLibre.osl.ull.es"
+role :web, "windowsLibre.osl.ull.es"
+role :db,  "windowsLibre.osl.ull.es", :primary => true
 
 # Deploy config
 # If you aren't deploying to /u/apps/#{application} on the target
