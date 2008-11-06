@@ -1,5 +1,5 @@
 <% for page in @pages %>
-	<li><%= link_to page.name, "/static/#{page.permalink}" %></li>
+	<li><%= link_to page.name, "/static/#{page.permalink}", :class => "active" %></li>
 <% end %>
 
 <% if logged_in? and current_user.has_role?('administrator') %>

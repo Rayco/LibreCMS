@@ -24,11 +24,17 @@
 	height: 20px;
 }
 
-.installer_icon {
+.app_download {
 	float: right;
 	border: none;
-	width: 98px;
+	width: 130px;
 	margin: 10px 10px;
+	text-align: center
+}
+
+.app_download img {
+	border: none;
+	width: 98px;
 }
 
 #screenshots {

@@ -52,7 +52,7 @@ a:hover {
 	margin: 5px 27px 2px 27px;
 	padding: 5px 10px 5px 10px;
 	text-align: justify;
-	background: #ff8161;
+	background: #e65b5b;
 }
 
 /* Paragraphs, headings, ... */
@@ -72,7 +72,7 @@ p.text-content:first-letter {
 
 h1 {
 	font: 2.6em Arial, Sans-Serif;
-	letter-spacing: 1px;
+	/*letter-spacing: 1px;*/
 	margin: 0 0 10px 40px;
 	white-space: nowrap;
 	/*border-bottom: 1px solid #4C8CA6;*/
@@ -180,6 +180,11 @@ ul {
 	font-weight: bold;
 }
 
+.mini {
+	vertical-align: top;
+	font-size: 0.5em;
+	color: #ffffff;
+}
 
 /* Login Menu -- no se esta usando */
 
@@ -293,20 +298,22 @@ ul {
 
 .content-box-right {
 	float: right;
-	width: 200px;
+	width: 177px;
 	margin-bottom: 1em;
+	margin-right: 2.1em;
 	margin-top: 0.4em;
 	background-color: #DBF3FF;
 }
 
 .content-box-center {
 	width: 960px;
+	margin-top: 0.6em;
 	/*margin-bottom: 4em;*/
 }
 
 #column-right-bottom {
 	background: #DBF3FF url('/images/column-right-bottom.gif') no-repeat 0 0;
-	width: 200px;
+	width: 177px;
 	height: 20px;
 }
 
