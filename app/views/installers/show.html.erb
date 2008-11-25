@@ -1,0 +1,33 @@
+<p>
+  <b>Application:</b>
+  <%=h @installer.application %>
+</p>
+
+<p>
+  <b>Platform:</b>
+  <%=h @installer.platform %>
+</p>
+
+<p>
+  <b>Version:</b>
+  <%=h @installer.version %>
+</p>
+
+<p>
+  <b>Installer file name:</b>
+  <%=h @installer.installer_file_name %>
+</p>
+
+<p>
+  <b>Installer content type:</b>
+  <%=h @installer.installer_content_type %>
+</p>
+
+<p>
+  <b>Installer file size:</b>
+  <%=h @installer.installer_file_size %>
+</p>
+
+
+<%= link_to 'Edit', [:edit, @category, @application, @installer] %> |
+<%= link_to 'Back', category_application_installers_path(@category, @application) %>

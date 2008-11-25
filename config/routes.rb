@@ -17,8 +17,10 @@ ActionController::Routing::Routes.draw do |map|
     category.resources :applications do |application|
       application.resources :resources
       application.resources :screenshots
+      application.resources :installers
     end
   end
+  map.resources :platforms
 
   map.resources :users, :member => { :enable => :put } do |users|
     users.resource :account

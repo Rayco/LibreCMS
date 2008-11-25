@@ -1,0 +1,28 @@
+<p>
+  <b>Osname:</b>
+  <%=h @platform.osname %>
+</p>
+
+<p>
+  <b>Arch:</b>
+  <%=h @platform.arch %>
+</p>
+
+<p>
+  <b>Icon file name:</b>
+  <%=h @platform.icon_file_name %>
+</p>
+
+<p>
+  <b>Icon content type:</b>
+  <%=h @platform.icon_content_type %>
+</p>
+
+<p>
+  <b>Icon file size:</b>
+  <%=h @platform.icon_file_size %>
+</p>
+
+
+<%= link_to 'Edit', edit_platform_path(@platform) %> |
+<%= link_to 'Back', platforms_path %>

@@ -1,0 +1,32 @@
+<h1>Editing platform</h1>
+
+<% form_for(@platform) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :osname %><br />
+    <%= f.text_field :osname %>
+  </p>
+  <p>
+    <%= f.label :arch %><br />
+    <%= f.text_field :arch %>
+  </p>
+  <p>
+    <%= f.label :icon_file_name %><br />
+    <%= f.text_field :icon_file_name %>
+  </p>
+  <p>
+    <%= f.label :icon_content_type %><br />
+    <%= f.text_field :icon_content_type %>
+  </p>
+  <p>
+    <%= f.label :icon_file_size %><br />
+    <%= f.text_field :icon_file_size %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @platform %> |
+<%= link_to 'Back', platforms_path %>

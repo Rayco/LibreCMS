@@ -1,0 +1,8 @@
+<h1>Editing installer</h1>
+
+<%= render :partial => @installer, :locals => { :buttom_name => "Update" } %>
+
+<p>
+	<%= link_to "Show", [@category, @application, @installer] %> |
+	<%= link_to "View all", category_application_installers_path(@category, @application) %>
+</p>

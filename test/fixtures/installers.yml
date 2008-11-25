@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  application: 
+  platform: 
+  version: MyString
+  installer_file_name: MyString
+  installer_content_type: MyString
+  installer_file_size: 1
+
+two:
+  application: 
+  platform: 
+  version: MyString
+  installer_file_name: MyString
+  installer_content_type: MyString
+  installer_file_size: 1

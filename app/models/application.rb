@@ -4,6 +4,7 @@ class Application < ActiveRecord::Base
   belongs_to :category
   has_many :resources, :dependent => :destroy
   has_many :screenshots, :dependent => :destroy
+  has_many :installers, :dependent => :destroy
   
   validates_presence_of :category_id
   validates_associated :category
@@ -18,9 +19,5 @@ class Application < ActiveRecord::Base
                     :default_url => "/images/defaults/:class_:attachment_:style.png"
                     
   validates_attachment_content_type :logo, :content_type => ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png', 'image/jpg']
-  
-  has_attached_file :installer,
-                    :url => "/attached/:class/:id/:attachment/:basename.:extension",
-                    :path => ":rails_root/public/attached/:class/:id/:attachment/:basename.:extension"
-  
+
 end

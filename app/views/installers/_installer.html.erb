@@ -1,0 +1,21 @@
+<%= error_messages_for :installer %>
+<% form_for([@category, @application, @installer]), :url => [@category, @application, installer], :html => { :multipart => true } do |f| %>
+
+  <p>
+    <%= f.label :application %><br />
+    <%=h @application.name %>
+  </p>
+  <p>
+    <%= f.label :platform %><br />
+    <%=h @platform.name %>
+  </p>
+  <p>
+    <%= f.label :version %><br />
+    <%= f.text_field :version %>
+  </p>
+  <p>
+    <%= f.label :installer_file_name %><br />
+    <%= f.file_field :installer %>
+  </p>
+  <p><%= f.submit button_name %></p>
+<% end %>

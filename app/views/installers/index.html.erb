@@ -1,0 +1,28 @@
+<h1>Listing installers</h1>
+
+<table>
+  <tr>
+    <th>Application</th>
+    <th>Platform</th>
+    <th>Version</th>
+    <th>Installer file name</th>
+    <th>Installer content type</th>
+    <th>Installer file size</th>
+  </tr>
+
+<% for installer in @installers %>
+  <tr>
+    <td><%=h installer.application %></td>
+    <td><%=h installer.platform %></td>
+    <td><%=h installer.version %></td>
+    <td><%=h installer.installer_file_name %></td>
+    <td><%=h installer.installer_content_type %></td>
+    <td><%=h installer.installer_file_size %></td>
+    <td><%= link_to 'Show', installer %></td>
+    <td><%= link_to 'Edit', edit_installer_path(installer) %></td>
+    <td><%= link_to 'Destroy', installer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<p><%= link_to 'New installer', new_category_application_screenshot_path(@category, @application) %></p>

@@ -4,15 +4,15 @@
 	<%= image_tag @application.logo.url(:big), :class => "app_logo",
 		:alt => @application.name, :title => @application.name %>
 
-	<% if @application.installer_file_name %> 
-		<div class="app_download">
-			<%= link_to (image_tag 'installer.png', :alt => "descagar", :title => "Descargar " + @application.name),
-				@application.installer.url %><br />
-			<%= link_to 'Click para descargar', @application.installer.url, :title => "Descargar " + @application.name %>
-		</div>
-	<% end %>
+	<% #if @application.installer_file_name %> 
+		<!--<div class="app_download">
+			< %= link_to (image_tag 'installer.png', :alt => "descagar", :title => "Descargar " + @application.name),
+				@application.installer.url % ><br />
+			< %= link_to 'Click para descargar', @application.installer.url, :title => "Descargar " + @application.name % >
+		</div> -->
+	<% #end %>
 		
-	<p><b>Aplicaci&oacute;n:</b> <%=h @application.name %>, <b>versi&oacute;n:</b> <%=h @application.version %></p>
+	<p><b>Aplicaci&oacute;n:</b> <%=h @application.name %></p>
 	<p><b>Categor&iacute;a:</b> <%=h @application.category.name %></p>
 	<p><b>P&aacute;gina web:</b> <%= link_to @application.website.split(/\/\//)[1], @application.website %></p>
 	<p><b>Recomendada por:</b> <%= @application.user_recommend.name if @application.user_recommend %></p>
