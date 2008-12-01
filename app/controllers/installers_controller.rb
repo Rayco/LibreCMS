@@ -22,7 +22,7 @@ class InstallersController < ApplicationController
   end
 
   def new
-    @installer = @application.installer.build #or new?
+    @installer = @application.installers.build #or new?
     
     respond_to do |format|
       format.html # new.html.erb

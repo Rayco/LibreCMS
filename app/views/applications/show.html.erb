@@ -32,7 +32,8 @@
 <% if logged_in? and current_user.has_role?('administrator') %>
 	<%= link_to 'Edit', [:edit, @category, @application] %> | 
 	<%= link_to 'Screenshots', category_application_screenshots_path(@category, @application) %> | 
-	<%= link_to 'Resources', category_application_resources_path(@category, @application) %>
+	<%= link_to 'Resources', category_application_resources_path(@category, @application) %> |
+	<%= link_to 'Installers', category_application_installers_path(@category, @application) %>
 <% end %>
 
 <% #= link_to 'Back', category_applications_path(@category) %>

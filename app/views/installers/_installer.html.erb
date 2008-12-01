@@ -1,5 +1,5 @@
 <%= error_messages_for :installer %>
-<% form_for([@category, @application, @installer]), :url => [@category, @application, installer], :html => { :multipart => true } do |f| %>
+<% form_for ([@category, @application, @installer]), :url => [@category, @application, installer], :html => { :multipart => true } do |f| %>
 
   <p>
     <%= f.label :application %><br />
@@ -7,7 +7,7 @@
   </p>
   <p>
     <%= f.label :platform %><br />
-    <%=h @platform.name %>
+    <% #=h @platform.name #A list with available platforms %>
   </p>
   <p>
     <%= f.label :version %><br />
