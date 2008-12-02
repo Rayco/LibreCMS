@@ -7,7 +7,7 @@
   </p>
   <p>
     <%= f.label :platform %><br />
-    <% #=h @platform.name #A list with available platforms %>
+	<%= collection_select :installer, :platform_id, @platforms, :id, :name %>
   </p>
   <p>
     <%= f.label :version %><br />

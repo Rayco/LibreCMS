@@ -1,0 +1,15 @@
+<h4>Otros instaladores:</h4>
+<div class="content-box-right-in">
+<ul>
+	<% for installer in @application.installers %>
+	<li>
+		<%= link_to installer.version, installer.installer.url ,
+			:title => @application.name + " " + installer.version + ", " + installer.platform.name if installer.application %>
+	</li>
+	<% end %>
+</ul>
+	
+<% if logged_in? and current_user.has_role?('administrator') %>
+	<%= link_to 'New installer', new_category_application_installer_path(@category, @application) %>
+<% end %>
+</div>

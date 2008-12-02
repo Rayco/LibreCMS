@@ -1,5 +1,4 @@
 class RolesController < ApplicationController
-  layout 'application'
   before_filter :check_administrator_role
   
   # GET /roles

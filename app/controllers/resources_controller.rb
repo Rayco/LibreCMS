@@ -1,5 +1,5 @@
 class ResourcesController < ApplicationController
-  before_filter :check_administrator_role, :except => :index
+  before_filter :check_administrator_role
   before_filter :get_category
   before_filter :get_application
   

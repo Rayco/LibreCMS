@@ -1,5 +1,4 @@
 class AccountsController < ApplicationController
-  layout 'application'
   before_filter :login_required, :except => :show
   before_filter :not_logged_in_required, :only => :show
  

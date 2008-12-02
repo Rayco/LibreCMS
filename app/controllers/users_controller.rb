@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   #include AuthenticatedSystem
-  layout 'application'
   #before_filter :not_logged_in_required, :only => [:new, :create] 
   before_filter :login_required, :only => [:show, :edit, :update]
   before_filter :check_administrator_role, :only => [:index, :destroy, :enable, :new, :create] #new and create disable singup

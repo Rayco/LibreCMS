@@ -12,15 +12,15 @@
 
 <% for installer in @installers %>
   <tr>
-    <td><%=h installer.application %></td>
-    <td><%=h installer.platform %></td>
+    <td><%=h installer.application.name %></td>
+    <td><%=h installer.platform.name %></td>
     <td><%=h installer.version %></td>
     <td><%=h installer.installer_file_name %></td>
     <td><%=h installer.installer_content_type %></td>
     <td><%=h installer.installer_file_size %></td>
-    <td><%= link_to 'Show', installer %></td>
-    <td><%= link_to 'Edit', edit_installer_path(installer) %></td>
-    <td><%= link_to 'Destroy', installer, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', [@category, @application, installer] %></td>
+    <td><%= link_to 'Edit', [:edit, @category, @application, installer] %></td>
+    <td><%= link_to 'Destroy', [@category, @application, installer], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

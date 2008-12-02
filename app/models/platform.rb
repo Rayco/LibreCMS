@@ -15,4 +15,8 @@ class Platform < ActiveRecord::Base
                     
   validates_attachment_content_type :icon, :content_type => ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png', 'image/jpg']
 
+  def name
+    osname + ' ' + arch
+  end
+
 end

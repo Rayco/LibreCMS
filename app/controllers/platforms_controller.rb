@@ -1,4 +1,6 @@
 class PlatformsController < ApplicationController
+  before_filter :check_administrator_role
+  
   # GET /platforms
   # GET /platforms.xml
   def index

@@ -64,10 +64,14 @@
 <hr class="noscreen" />
 
 			<!-- Content right -->
-			<% # if !@hide %>
 				<div class="content-box-right">
 				<% if @categories %>
 					<%= render :partial => '/shared/categories_list' %>
+					<div id="column-right-bottom">&nbsp;</div>
+				<% end %>
+				
+				<% if @application and !@application.installers.empty? %>
+					<%= render :partial => '/shared/installers_list' %>
 					<div id="column-right-bottom">&nbsp;</div>
 				<% end %>
 				
@@ -76,7 +80,7 @@
 					<div id="column-right-bottom">&nbsp;</div>
 				<% end %>
 			</div>
-			<% #end %>
+
 			<!-- Content right end -->
 			<% else %>
 				<div class="content-box-center">
@@ -99,7 +103,7 @@
 
 	<!-- Footer -->
 	<div id="footer">
-		<p>&copy; <a href="http://osl.ull.es">Oficina de Software Libre</a> - <a href="http://www.ull.es">Universidad de La Laguna</p>
+		<p>&copy; <a href="http://osl.ull.es">Oficina de Software Libre</a> - <a href="http://www.ull.es">Universidad de La Laguna</a></p>
 	</div>
 	<!-- Footer end -->
 </div>
