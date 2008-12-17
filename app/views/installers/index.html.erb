@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Application</th>
-    <th>Platform</th>
     <th>Version</th>
     <th>Installer file name</th>
     <th>Installer content type</th>
@@ -13,7 +12,6 @@
 <% for installer in @installers %>
   <tr>
     <td><%=h installer.application.name %></td>
-    <td><%=h installer.platform.name %></td>
     <td><%=h installer.version %></td>
     <td><%=h installer.installer_file_name %></td>
     <td><%=h installer.installer_content_type %></td>

@@ -4,7 +4,7 @@
 	<% for installer in @application.installers %>
 	<li>
 		<%= link_to installer.version, installer.installer.url,
-			:title => @application.name + " " + installer.version + ", " + installer.platform.name if installer.version %>
+			:title => @application.name + " " + installer.version if installer.version %>
 	</li>
 	<% end %>
 </ul>

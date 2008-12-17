@@ -6,10 +6,6 @@
     <%=h @application.name %>
   </p>
   <p>
-    <%= f.label :platform %><br />
-	<%= collection_select :installer, :platform_id, @platforms, :id, :name %>
-  </p>
-  <p>
     <%= f.label :version %><br />
     <%= f.text_field :version %>
   </p>
