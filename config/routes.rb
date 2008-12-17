@@ -20,8 +20,6 @@ ActionController::Routing::Routes.draw do |map|
       application.resources :installers
     end
   end
-  map.resources :platforms
-
   map.resources :users, :member => { :enable => :put } do |users|
     users.resource :account
     users.resources :roles
