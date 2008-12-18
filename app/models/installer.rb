@@ -12,4 +12,8 @@ class Installer < ActiveRecord::Base
                     
   validates_attachment_presence :installer
 
+  def name
+    application.name + ' ' + version
+  end
+
 end

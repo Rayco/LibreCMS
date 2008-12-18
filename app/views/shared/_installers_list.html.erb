@@ -1,10 +1,10 @@
-<h4>Otros instaladores:</h4>
+<h4>Instaladores:</h4>
 <div class="content-box-right-in">
 <ul>
 	<% for installer in @application.installers %>
 	<li>
-		<%= link_to installer.version, installer.installer.url,
-			:title => @application.name + " " + installer.version if installer.version %>
+		<%= link_to installer.name, installer.installer.url,
+			:title => 'descarga ' + installer.name if installer.version %>
 	</li>
 	<% end %>
 </ul>
