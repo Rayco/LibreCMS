@@ -23,7 +23,6 @@ class InstallersController < ApplicationController
 
   def new
     @installer = @application.installers.build #or new?
-    @platforms = Platform.find(:all, :order => "osname")
     
     respond_to do |format|
       format.html # new.html.erb
@@ -33,7 +32,6 @@ class InstallersController < ApplicationController
 
   def edit
     @installer = @application.installers.find(params[:id])
-    @platforms = Platform.find(:all, :order => "osname")
   end
 
   def create
