@@ -1,5 +1,5 @@
 --- 
-cwd: /var/www/devrails/current
+cwd: /var/rails/windowsLibre/current
 log_file: log/mongrel.log
 port: "8001"
 environment: production

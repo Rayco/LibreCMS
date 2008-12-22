@@ -1,8 +1,9 @@
 set :user, 'rails'
+set :group, 'rails'
 set :domain, 'mechada.osl.ull.es'
 set :project, 'windowsLibre'
 set :application, 'windowsLibre'
-set :applicationdir, "/var/www/#{application}"
+set :applicationdir, "/var/rails/#{application}"
 
 # Configuracion de control de versiones
 # If you aren't using Subversion to manage your source code, specify
@@ -30,3 +31,22 @@ default_run_options[:pty] = true  # Forgo errors when deploying from windows
 ssh_options[:keys] = %w(~/.ssh/id_rsa)            # If you are using ssh_keys
 set :chmod755, "app config db lib public vendor script script/* public/disp*"
 set :use_sudo, false   # On DreamHost's shared hosts, sudo can't be used to restart the app
+
+namespace :deploy do
+  task :restart do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+
+  task :start do
+  end
+
+  task :stop do
+  end
+
+  desc "Link shared files"
+  task :before_symlink do
+#    run "rm -drf #{release_path}/public/attached" #Not remove public/attached please!
+    run "ln -s #{shared_path}/attached #{release_path}/public/attached"
+    run "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  end
+end
