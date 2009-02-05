@@ -1,13 +1,11 @@
 require 'paperclip'
 
 class Application < ActiveRecord::Base
-  belongs_to :category
   has_many :resources, :dependent => :destroy
   has_many :screenshots, :dependent => :destroy
   has_many :installers, :dependent => :destroy
   
-  validates_presence_of :category_id
-  validates_associated :category
+  acts_as_taggable_on :tags
   
   validates_presence_of :name
   validates_uniqueness_of :name, :case_sensitive => false, :message => 'Ya existe'

@@ -1,21 +1,16 @@
-<h4><%= link_to 'Categor&iacute;as', categories_path %> > <%= link_to @category.name, category_applications_path %></h4>
-
+<h4>New Breadcrums here!</h4>
 <% for application in @applications %>
 	<p class="application">
 		<%= link_to (image_tag application.logo.url, :class => "app_logo", :alt => application.name,
-					:title => application.name), [@category, application] %>
-		<%= link_to application.name, [@category, application] %> 
+					:title => application.name), app_path(@taglist, application.name)  %>
+		<%= link_to application.name, app_path(@taglist, application.name) %> 
 		<%=h application.description[0,260] %>
 		<%=h '...' if application.description.length > 260 %><br />
 	</p>
-
-    <% #= link_to 'Show', [@category, application] %>
-    <% #= link_to 'Edit', [:edit, @category, application] %>
-    <% #= link_to 'Destroy', [@category, application], :confirm => 'Are you sure?', :method => :delete %>
 
 <% end %>
 
 <br />
 <% if logged_in? and current_user.has_role?('administrator') %>
-	<%= link_to 'New application', new_category_application_path(@category) %>
+	<%= link_to 'New application', new_application_path %>
 <% end %>

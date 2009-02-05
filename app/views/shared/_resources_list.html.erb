@@ -3,7 +3,6 @@
 <ul>
 	<% for resource in @application.resources %>
 	<li>
-		<% #= link_to resource.name, [@category, @application, resource] %>
 		<%= link_to resource.name, resource.resource.url,
 			:title => resource.description if resource.name %>
 	</li>
@@ -11,6 +10,6 @@
 </ul>
 	
 <% if logged_in? and current_user.has_role?('administrator') %>
-	<%= link_to 'New resource', new_category_application_resource_path(@category, @application) %>
+	<%= link_to 'New resource', new_application_resource_path(@application) %>
 <% end %>
 </div>

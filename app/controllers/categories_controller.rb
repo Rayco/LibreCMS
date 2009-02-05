@@ -1,12 +1,20 @@
 class CategoriesController < ApplicationController
   before_filter :check_administrator_role, :except => :index
+  skip_before_filter :get_categories, :only => :index
   
   # GET /categories
   # GET /categories.xml
   def index
-    @categories = Category.find(:all, :order => 'name')
+    @tags = params[:taglist].split("+") unless params[:taglist].nil?
+    if params[:taglist].nil?
+      @taglist = ""
+      @categories = @site_config.root_category.children_in_site
+    else
+      @taglist = params[:taglist] + "+"
+      @categories = Category.find_by_name(@tags[-1]).children_in_site
+    end
+    
     @hide = true
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @categories }

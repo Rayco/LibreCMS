@@ -3,6 +3,6 @@
 <%= render :partial => @screenshot, :locals => { :button_name => "Update" } %>
 
 <p>
-  <%= link_to "Show", [@category, @application, @screenshot] %> |
-  <%= link_to "View All", category_application_screenshots_path(@category, @application) %>
+  <%= link_to "Show", [@application, @screenshot] %> |
+  <%= link_to "View All", application_screenshots_path(@application) %>
 </p>

@@ -1,10 +1,15 @@
-<h4><%= link_to 'Categor&iacute;as', categories_path %></h4>
+<h4>BreadCrums here!</h4>
 
 <ul id="categories_index" class="cleaning-box">
 <% for category in @categories %>
 	<li>
-		<%= link_to (image_tag category.icon.url(:big)), category_applications_path(category) %><br />
-    	<%= link_to category.name, category_applications_path(category) %>
+		<% if category.children_in_site.empty? %>
+			<%= link_to (image_tag category.icon.url(:big)), applications_tagged_with_path(@taglist + category.name) %><br />
+			<%= link_to category.name, applications_tagged_with_path(@taglist + category.name) %>
+		<% else %> 
+			<%= link_to (image_tag category.icon.url(:big)), categories_path(@taglist + category.name) %><br />
+			<%= link_to category.name, categories_path(@taglist) %>
+		<% end %>
 	</li>
     <% #= link_to 'Edit', edit_category_path(category) %>
     <% #= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %>
@@ -14,6 +19,6 @@
 <br />
 
 <% if logged_in? and current_user.has_role?('administrator') %>
-	<%= link_to 'New category', new_category_path %>
+	<% #= link_to 'New category', new_category_path %>
 <% end %>
   

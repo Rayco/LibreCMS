@@ -1,5 +1,5 @@
 <%= error_messages_for :installer %>
-<% form_for ([@category, @application, @installer]), :url => [@category, @application, installer], :html => { :multipart => true } do |f| %>
+<% form_for ([@application, @installer]), :url => [@application, installer], :html => { :multipart => true } do |f| %>
 
   <p>
     <%= f.label :application %><br />

@@ -9,17 +9,24 @@ ActionController::Routing::Routes.draw do |map|
   map.reset_password '/reset_password/:id', :controller => 'passwords', :action => 'edit'
   map.change_password '/change_password', :controller => 'accounts', :action => 'edit'
 
-  map.resources :pages
   map.static 'static/:permalink', :controller => 'pages', :action => 'show'
+  map.resources :pages
+  
+  map.applications_tagged_with '/:taglist/apps', :controller => 'applications', :action => 'index'
+  #map.applications_tagged '/filter/:taglist', :controller => 'applications', :action => 'index'
+  map.categories '/:taglist', :controller => 'categories', :action => 'index'
+  map.app '/:taglist/apps/:app_name', :controller => 'applications', :action => 'show'
+  #map.resources :categories
+  map.resources :menu_nodes
+  map.resources :site_configurations
 
   # See how all your routes lay out with "rake routes"
-  map.resources :categories do |category|
-    category.resources :applications do |application|
-      application.resources :resources
-      application.resources :screenshots
-      application.resources :installers
-    end
+  map.resources :applications do |application|
+    application.resources :resources
+    application.resources :screenshots
+    application.resources :installers
   end
+  
   map.resources :users, :member => { :enable => :put } do |users|
     users.resource :account
     users.resources :roles

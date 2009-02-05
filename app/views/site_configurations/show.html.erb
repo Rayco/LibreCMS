@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @site_configuration.name %>
+</p>
+
+<p>
+  <b>Header:</b>
+  <%=h @site_configuration.header %>
+</p>
+
+<p>
+  <b>Root category:</b>
+  <%=h @site_configuration.root_category_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_configuration_path(@site_configuration) %> |
+<%= link_to 'Back', site_configurations_path %>

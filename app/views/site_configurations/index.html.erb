@@ -1,0 +1,24 @@
+<h1>Listing site_configurations</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Header</th>
+    <th>Root category</th>
+  </tr>
+
+<% for site_configuration in @site_configurations %>
+  <tr>
+    <td><%=h site_configuration.name %></td>
+    <td><%=h site_configuration.header %></td>
+    <td><%=h site_configuration.root_category_id %></td>
+    <td><%= link_to 'Show', site_configuration %></td>
+    <td><%= link_to 'Edit', edit_site_configuration_path(site_configuration) %></td>
+    <td><%= link_to 'Destroy', site_configuration, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New site_configuration', new_site_configuration_path %>

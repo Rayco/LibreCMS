@@ -2,5 +2,5 @@
 
 <%= render :partial => @application, :locals => { :button_name => "Update"} %>
 
-<%= link_to 'Show', [@category, @application] %> |
-<%= link_to 'Back', category_applications_path(@category) %>
+<%= link_to 'Show', @application %> |
+<%= link_to 'Back', applications_path %>

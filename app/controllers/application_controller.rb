@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :get_categories, :get_pages
+  before_filter :get_site_configuration, :get_categories, :get_pages
   include AuthenticatedSystem
   helper :all # include all helpers, all the time
 
@@ -12,11 +12,7 @@ class ApplicationController < ActionController::Base
   
   private
   def get_categories
-    @categories = Category.find(:all, :order => 'name')
-  end
-  
-  def get_category
-    @category = Category.find(params[:category_id])
+    @categories = @site_config.root_category.children_in_site
   end
   
   def get_application
@@ -25,6 +21,10 @@ class ApplicationController < ActionController::Base
   
   def get_pages
     @pages = Page.find(:all, :order => 'name')
+  end
+  
+  def get_site_configuration
+    @site_config = SiteConfiguration.find(:first)
   end
   
 end

@@ -1,0 +1,18 @@
+<p>
+  <b>Parent:</b>
+  <%=h @menu_node.parent_id %>
+</p>
+
+<p>
+  <b>Child:</b>
+  <%=h @menu_node.child_id %>
+</p>
+
+<p>
+  <b>Site:</b>
+  <%=h @menu_node.site_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_menu_node_path(@menu_node) %> |
+<%= link_to 'Back', menu_nodes_path %>

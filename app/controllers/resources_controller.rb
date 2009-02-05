@@ -1,6 +1,5 @@
 class ResourcesController < ApplicationController
   before_filter :check_administrator_role
-  before_filter :get_category
   before_filter :get_application
   
   # GET /resources
@@ -49,7 +48,7 @@ class ResourcesController < ApplicationController
     respond_to do |format|
       if @resource.save
         flash[:notice] = 'Resource was successfully created.'
-        format.html { redirect_to(category_application_resources_url(@category, @application)) }
+        format.html { redirect_to(application_resources_url(@application)) }
         format.xml  { render :xml => @resource, :status => :created, :location => @resource }
       else
         format.html { render :action => "new" }
@@ -66,7 +65,7 @@ class ResourcesController < ApplicationController
     respond_to do |format|
       if @resource.update_attributes(params[:resource])
         flash[:notice] = 'Resource was successfully updated.'
-        format.html { redirect_to(category_application_resource_url(@category, @application, @resource)) }
+        format.html { redirect_to(application_resource_url(@application, @resource)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -82,7 +81,7 @@ class ResourcesController < ApplicationController
     @resource.destroy
 
     respond_to do |format|
-      format.html { redirect_to(category_application_resources_url(@category, @application)) }
+      format.html { redirect_to(application_resources_url(@application)) }
       format.xml  { head :ok }
     end
   end

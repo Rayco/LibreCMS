@@ -1,6 +1,5 @@
 class ScreenshotsController < ApplicationController
   before_filter :check_administrator_role
-  before_filter :get_category
   before_filter :get_application
 
   def index
@@ -19,7 +18,7 @@ class ScreenshotsController < ApplicationController
     @screenshot = @application.screenshots.new(params[:screenshot])
     if @screenshot.save
       flash[:notice] = "Successfully created screenshot."
-      redirect_to(category_application_screenshots_url(@category, @application))
+      redirect_to(application_screenshots_url(@application))
     else
       render :action => 'new'
     end
@@ -33,7 +32,7 @@ class ScreenshotsController < ApplicationController
     @screenshot = @application.screenshots.find(params[:id])
     if @screenshot.update_attributes(params[:screenshot])
       flash[:notice] = "Successfully updated screenshot."
-      redirect_to(category_application_screenshot_url(@category, @application, @screenshot))
+      redirect_to(application_screenshot_url(@application, @screenshot))
     else
       render :action => 'edit'
     end
@@ -43,6 +42,6 @@ class ScreenshotsController < ApplicationController
     @screenshot = @application.screenshots.find(params[:id])
     @screenshot.destroy
     flash[:notice] = "Successfully destroyed screenshot."
-    redirect_to(category_application_screenshots_url(@category, @application))
+    redirect_to(application_screenshots_url(@application))
   end
 end

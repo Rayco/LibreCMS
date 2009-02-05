@@ -1,0 +1,24 @@
+<h1>Editing menu_node</h1>
+
+<% form_for(@menu_node) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :parent_id %><br />
+    <%= f.text_field :parent_id %>
+  </p>
+  <p>
+    <%= f.label :child_id %><br />
+    <%= f.text_field :child_id %>
+  </p>
+  <p>
+    <%= f.label :site_id %><br />
+    <%= f.text_field :site_id %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @menu_node %> |
+<%= link_to 'Back', menu_nodes_path %>

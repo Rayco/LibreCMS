@@ -1,0 +1,24 @@
+<h1>Listing menu_nodes</h1>
+
+<table>
+  <tr>
+    <th>Parent</th>
+    <th>Child</th>
+    <th>Site</th>
+  </tr>
+
+<% for menu_node in @menu_nodes %>
+  <tr>
+    <td><%=h menu_node.parent_id %></td>
+    <td><%=h menu_node.child_id %></td>
+    <td><%=h menu_node.site_id %></td>
+    <td><%= link_to 'Show', menu_node %></td>
+    <td><%= link_to 'Edit', edit_menu_node_path(menu_node) %></td>
+    <td><%= link_to 'Destroy', menu_node, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New menu_node', new_menu_node_path %>

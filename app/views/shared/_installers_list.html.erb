@@ -10,6 +10,6 @@
 </ul>
 	
 <% if logged_in? and current_user.has_role?('administrator') %>
-	<%= link_to 'New installer', new_category_application_installer_path(@category, @application) %>
+	<%= link_to 'New installer', new_application_installer_path(@application) %>
 <% end %>
 </div>

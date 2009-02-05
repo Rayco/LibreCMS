@@ -58,6 +58,8 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
   config.gem "RedCloth", :version => "= 4.0.4", :source => "http://code.whytheluckystiff.net"
+  config.gem "mbleigh-acts-as-taggable-on", :source => "http://gems.github.com", :lib => "acts-as-taggable-on"
+  # paperclip
 end
 
 require "will_paginate"
