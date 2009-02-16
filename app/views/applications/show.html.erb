@@ -1,5 +1,3 @@
-<h4>New Breadcums here!</h4>
-
 <div class="app_details">
 	<%= image_tag @application.logo.url(:big), :class => "app_logo",
 		:alt => @application.name, :title => @application.name %>
@@ -11,11 +9,8 @@
 	<p><b>Subida por: </b> <%= @application.user_upload.name if @application.user_upload %></p>
 	<p><b>Descripci&oacute;n:</b> <%=h @application.description %></p>	
 
-	
-	<% if !@screenshots.empty? #dirty? %>
-		<div id="screenshots">
-			<%= render :partial => '/shared/screenshots' %>
-		</div>
+	<% if !@application.installers.empty? %>
+		<%= render :partial => '/shared/installers_list' %>
 	<% end %>
 	
 </div>

@@ -12,10 +12,6 @@ ActionController::Routing::Routes.draw do |map|
   map.static 'static/:permalink', :controller => 'pages', :action => 'show'
   map.resources :pages
   
-  map.applications_tagged_with '/:taglist/apps', :controller => 'applications', :action => 'index'
-  #map.applications_tagged '/filter/:taglist', :controller => 'applications', :action => 'index'
-  map.categories '/:taglist', :controller => 'categories', :action => 'index'
-  map.app '/:taglist/apps/:app_name', :controller => 'applications', :action => 'show'
   #map.resources :categories
   map.resources :menu_nodes
   map.resources :site_configurations
@@ -34,6 +30,18 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
   map.resource :password
+  
+#  # http://www.myapp.com/tag1+tag2+tag3/apps/applink
+#  map.app '/:taglist/apps/:app_url', :controller => 'applications', :action => 'show'
+#  map.applications_tagged_with '/:taglist/apps', :controller => 'applications', :action => 'index'
+#  map.applications_tagged '/filter/:taglist', :controller => 'applications', :action => 'index'
+#  map.categories '/:taglist', :controller => 'categories', :action => 'index'
+
+  # http://www.myapp.com/tag1/tag2/tag3/apps/applink
+  map.applications_tagged_with '/*tags/apps', :controller => 'applications', :action => 'index'
+  map.app '/*tags/apps/:app_url', :controller => 'applications', :action => 'show'
+  map.categories '/*tags', :controller => 'categories', :action => 'index'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
 

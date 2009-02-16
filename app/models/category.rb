@@ -29,4 +29,8 @@ class Category < ActiveRecord::Base
     return children.sort {|x,y| x.name <=> y.name }
   end
   
+  def to_param
+    "#{name.gsub(/[\s]+/i, '-')}"
+  end
+  
 end

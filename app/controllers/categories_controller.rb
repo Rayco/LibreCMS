@@ -5,15 +5,16 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.xml
   def index
-    @tags = params[:taglist].split("+") unless params[:taglist].nil?
-    if params[:taglist].nil?
-      @taglist = ""
+    if params[:tags].nil?
+      @tags = []
       @categories = @site_config.root_category.children_in_site
     else
-      @taglist = params[:taglist] + "+"
-      @categories = Category.find_by_name(@tags[-1]).children_in_site
+      #@tags = params[:tagslist].split("+") unless params[:taglist].nil? #array
+      #@taglist = params[:taglist]
+      @tags = params[:tags]
+      @categories = Category.find_by_name(params[:tags][-1]).children_in_site 
     end
-    
+
     @hide = true
     respond_to do |format|
       format.html # index.html.erb

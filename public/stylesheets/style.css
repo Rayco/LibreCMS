@@ -276,6 +276,30 @@ ul {
 	overflow: hidden;
 }
 
+/* BreadCrums */
+#breadcrums {
+	font-size: 1em;
+	background-color: #005E85;
+	color: #FFFFFF;
+	letter-spacing: 1px;
+	/*border: 2px solid #FFFFFF;*/
+	border: none;
+	/*margin-top: 7px;*/
+	padding: 6px 10px;
+}
+
+#breadcrums a:link, #breadcrums a:visited {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#breadcrums a:hover {
+	text-decoration: underline;
+}
+
+#breacrums .see_apps {
+	text-align: right;
+}
 
 /* Content boxes */
 

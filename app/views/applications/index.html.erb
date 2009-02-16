@@ -1,9 +1,8 @@
-<h4>New Breadcrums here!</h4>
 <% for application in @applications %>
 	<p class="application">
 		<%= link_to (image_tag application.logo.url, :class => "app_logo", :alt => application.name,
-					:title => application.name), app_path(@taglist, application.name)  %>
-		<%= link_to application.name, app_path(@taglist, application.name) %> 
+					:title => application.name), app_path(@tags, application)  %>
+		<%= link_to application.name, app_path(@tags, application) %> 
 		<%=h application.description[0,260] %>
 		<%=h '...' if application.description.length > 260 %><br />
 	</p>

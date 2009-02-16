@@ -4,8 +4,8 @@ class ApplicationsController < ApplicationController
   # GET /applications
   # GET /applications.xml
   def index
-    @taglist = params[:taglist]
-    @applications = Application.tagged_with(params[:taglist].gsub("+", ", "), :on => :tags)
+    @tags = params[:tags]
+    @applications = Application.find_by_tags(@tags)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,9 +16,8 @@ class ApplicationsController < ApplicationController
   # GET /applications/1
   # GET /applications/1.xml
   def show
-    @application = Application.find_by_name(params[:app_name])
-    @screenshots = @application.screenshots.paginate :per_page => 4, :page => params[:page]
-    #@resources = @application.resources.find(:all, :order => 'name')
+    @application = Application.find_by_name(params[:app_url].gsub(/[-]+/i, "\s"))
+    @screenshots = @application.screenshots.paginate :per_page => 1, :page => params[:page]
 
     respond_to do |format|
       format.html # show.html.erb

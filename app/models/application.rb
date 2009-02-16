@@ -18,4 +18,19 @@ class Application < ActiveRecord::Base
                     
   validates_attachment_content_type :logo, :content_type => ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png', 'image/jpg']
 
+
+  def self.find_by_tags(tags)
+    applications = Application.tagged_with(tags.join(", "), :on => :tags)
+    for tag in tags
+      apps_on_tag = Application.tagged_with(tag, :on => :tags)
+      for app in applications
+        applications.delete(app) if !apps_on_tag.include?(app)
+      end
+    end
+    applications.sort { | a,b | a.name <=> b.name }
+  end
+
+  def to_param
+    "#{name.gsub(/[\s]+/i, '-')}"
+  end
 end
