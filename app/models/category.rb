@@ -26,7 +26,7 @@ class Category < ActiveRecord::Base
     self.category_as_parent.each do |relation|
       children << relation.child if relation.site_id == 1 # @site_config.id
     end
-    return children.sort {|x,y| x.name <=> y.name }
+    return children.sort {|x,y| x.name.downcase <=> y.name.downcase }
   end
   
   def to_param

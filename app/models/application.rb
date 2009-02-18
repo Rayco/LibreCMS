@@ -25,7 +25,7 @@ class Application < ActiveRecord::Base
       apps_on_tag = Application.tagged_with(tag, :on => :tags)
       applications = applications & apps_on_tag 
     end
-    applications.sort { | a,b | a.name <=> b.name }
+    applications.sort { | a,b | a.name.downcase <=> b.name.downcase }
   end
 
   def to_param
