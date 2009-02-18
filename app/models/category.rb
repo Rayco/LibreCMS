@@ -30,7 +30,7 @@ class Category < ActiveRecord::Base
   end
   
   def to_param
-    "#{name.gsub(/[\s]+/i, '-')}"
+    cat_url = String.new(name)
+    "#{cat_url.to_url}"
   end
-  
 end

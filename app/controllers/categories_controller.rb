@@ -9,10 +9,8 @@ class CategoriesController < ApplicationController
       @tags = []
       @categories = @site_config.root_category.children_in_site
     else
-      #@tags = params[:tagslist].split("+") unless params[:taglist].nil? #array
-      #@taglist = params[:taglist]
       @tags = params[:tags]
-      @categories = Category.find_by_name(params[:tags][-1]).children_in_site 
+      @categories = Category.find_by_name(String.new(@tags[-1]).from_url).children_in_site 
     end
 
     @hide = true

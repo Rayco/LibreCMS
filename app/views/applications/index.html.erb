@@ -2,9 +2,10 @@
 	<p class="application">
 		<%= link_to (image_tag application.logo.url, :class => "app_logo", :alt => application.name,
 					:title => application.name), app_path(@tags, application)  %>
-		<%= link_to application.name, app_path(@tags, application) %> 
-		<%=h application.description[0,260] %>
-		<%=h '...' if application.description.length > 260 %><br />
+		<%= link_to application.name, app_path(@tags, application) %>
+		<% if !application.description.nil? %> 
+			<%=h application.description[0,260] %><%=h '...' if application.description.length > 260 %><br />
+		<% end %>
 	</p>
 
 <% end %>

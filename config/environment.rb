@@ -38,7 +38,7 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_windowsLibre_session',
+    :session_key => '_LibreCMS_session',
     :secret      => '7153d7f298ac54950f303d897e0dd5fd3b4bfce3d63c8b6a3ecf956d67f7c4da7a48a305e18deeb1327e34ce4cc8feb5704b02ffe9e783d402a06b0c7eee5707'
   }
 
@@ -63,3 +63,4 @@ Rails::Initializer.run do |config|
 end
 
 require "will_paginate"
+require "extended_string"

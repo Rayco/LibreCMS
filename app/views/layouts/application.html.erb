@@ -51,7 +51,8 @@
 			<% if !@hide %>
 			<div class="content-box-left">
 				<div class="content-box-left-in">
-					<h4>BreadCrums Here!</h4> <!-- DRY -->
+					<%= render :partial => '/shared/bread_crums' unless @tags.nil? %>
+					<%= link_to 'Ver categorias', categories_path(@tags) unless @tags.nil? or @tags.empty? or @application %>
 					<%= yield %>
 				</div>
 			</div>
@@ -75,20 +76,23 @@
 					<%= render :partial => '/shared/screenshots' %>
 					<div id="column-right-bottom">&nbsp;</div>
 				<% end %>
-			</div>
-
+				</div>
 			<!-- Content right end -->
+			
+			
+			<!-- Content center -->
 			<% else %>
 				<div class="content-box-center">
 					<div class="content-box-center-in">
-						<div id="breadcrums">
-							BreadCrums Here!
-							<%= link_to 'Ver aplicaciones', applications_tagged_with_path(@tags) %><!-- DRY -->
-						</div>
+						<%= render :partial => '/shared/bread_crums' unless @tags.nil? %>	
+						<%= link_to 'Ver aplicaciones', applications_tagged_with_path(@tags) unless @tags.nil? or @tags.empty? %>
 						<%= yield %>
 					</div>					
 				</div>
 			<% end %>
+			<!-- Content center end -->
+			
+			
 			<div class="cleaner">&nbsp;</div>
 			
 			<% if logged_in? and current_user.has_role?('administrator') %>
