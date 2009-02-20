@@ -8,15 +8,17 @@
 			<%= link_to (image_tag category.icon.url(:big)), categories_path(Array.new(@tags) << category) %><br />
 			<%= link_to category.name, categories_path(Array.new(@tags) << category) %><br /><br />
 		<% end %>
+		<% if logged_in? and current_user.has_role?('administrator') %>
+    		<%= link_to 'Edit', edit_category_path(category) %> | 
+    		<%= link_to 'Destroy', categories_path(category), :confirm => 'Are you sure?', :method => :delete %>
+		<% end %>
 	</li>
-    <% #= link_to 'Edit', edit_category_path(category) %>
-    <% #= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %>
 <% end %>
 </ul>
 
 <br />
 
 <% if logged_in? and current_user.has_role?('administrator') %>
-	<% #= link_to 'New category', new_category_path %>
+	<%= link_to 'New category', new_category_path %>
 <% end %>
   

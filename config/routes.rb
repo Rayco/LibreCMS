@@ -12,9 +12,16 @@ ActionController::Routing::Routes.draw do |map|
   map.static 'static/:permalink', :controller => 'pages', :action => 'show'
   map.resources :pages
   
-  #map.resources :categories
   map.resources :menu_nodes
   map.resources :site_configurations
+
+  map.resources :users, :member => { :enable => :put } do |users|
+    users.resource :account
+    users.resources :roles
+  end
+
+  map.resource :session
+  map.resource :password
 
   # See how all your routes lay out with "rake routes"
   map.resources :applications do |application|
@@ -23,24 +30,19 @@ ActionController::Routing::Routes.draw do |map|
     application.resources :installers
   end
   
-  map.resources :users, :member => { :enable => :put } do |users|
-    users.resource :account
-    users.resources :roles
-  end
-
-  map.resource :session
-  map.resource :password
-  
-#  # http://www.myapp.com/tag1+tag2+tag3/apps/applink
-#  map.app '/:taglist/apps/:app_url', :controller => 'applications', :action => 'show'
-#  map.applications_tagged_with '/:taglist/apps', :controller => 'applications', :action => 'index'
-#  map.applications_tagged '/filter/:taglist', :controller => 'applications', :action => 'index'
-#  map.categories '/:taglist', :controller => 'categories', :action => 'index'
-
   # http://www.myapp.com/tag1/tag2/tag3/apps/applink
   map.applications_tagged_with '/*tags/apps', :controller => 'applications', :action => 'index'
   map.app '/*tags/apps/:app_url', :controller => 'applications', :action => 'show'
+  
+  #map.resources :categories # para usar este tipo de rutas el metodo to_param de category debe pasar a llamarse to_slug
+  map.edit_category '/*tags/edit', :controller => 'categories', :action => 'edit'
+  map.new_category '/*tags/new', :controller => 'categories', :action => 'new'
+  map.add_category '/*tags/add', :controller => 'categories', :action => 'add'
+  map.category '/*tags', :controller => 'categories', :action => 'index'
   map.categories '/*tags', :controller => 'categories', :action => 'index'
+  
+  #map.new_category '/categories/new', :controller => 'categories', :action => 'new'
+  #map.edit_category '/categories/edit/:id', :controller => 'categories', :action => 'edit'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

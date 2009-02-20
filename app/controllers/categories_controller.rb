@@ -20,17 +20,6 @@ class CategoriesController < ApplicationController
     end
   end
 
-  # GET /categories/1
-  # GET /categories/1.xml
-  def show
-    @category = Category.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @category }
-    end
-  end
-
   # GET /categories/new
   # GET /categories/new.xml
   def new
@@ -44,7 +33,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
-    @category = Category.find(params[:id])
+    @category = Category.find_by_name(String.new(params[:tags][-1]).from_url)
   end
 
   # POST /categories
@@ -55,7 +44,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         flash[:notice] = 'Category was successfully created.'
-        format.html { redirect_to(@category) }
+        format.html { redirect_to(categories_url) }
         format.xml  { render :xml => @category, :status => :created, :location => @category }
       else
         format.html { render :action => "new" }
@@ -67,12 +56,12 @@ class CategoriesController < ApplicationController
   # PUT /categories/1
   # PUT /categories/1.xml
   def update
-    @category = Category.find(params[:id])
+    @category = Category.find_by_name(String.new(params[:tags][-1]).from_url)
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
         flash[:notice] = 'Category was successfully updated.'
-        format.html { redirect_to(@category) }
+        format.html { redirect_to(categories_url) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -84,7 +73,7 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.xml
   def destroy
-    @category = Category.find(params[:id])
+    @category = Category.find_by_name(String.new(params[:tags][-1]).from_url)
     @category.destroy
 
     respond_to do |format|
