@@ -35,10 +35,8 @@ ActionController::Routing::Routes.draw do |map|
   map.app '/*tags/apps/:app_url', :controller => 'applications', :action => 'show'
   
   #map.resources :categories # para usar este tipo de rutas el metodo to_param de category debe pasar a llamarse to_slug
-  map.edit_category '/*tags/edit', :controller => 'categories', :action => 'edit'
-  map.new_category '/*tags/new', :controller => 'categories', :action => 'new'
-  map.add_category '/*tags/add', :controller => 'categories', :action => 'add'
-  map.category '/*tags', :controller => 'categories', :action => 'index'
+  map.new_category '/categories/new', :controller => 'categories', :action => 'new'
+  map.edit_category '/:category_name/edit', :controller => 'categories', :action => 'edit'
   map.categories '/*tags', :controller => 'categories', :action => 'index'
   
   #map.new_category '/categories/new', :controller => 'categories', :action => 'new'
