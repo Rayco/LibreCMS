@@ -24,15 +24,17 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :password
 
   # See how all your routes lay out with "rake routes"
-  map.resources :applications do |application|
-    application.resources :resources
-    application.resources :screenshots
-    application.resources :installers
-  end
+  #map.resources :applications, :path_prefix => '/*tags/apps/:app_url' do |application|
+  #  application.resources :resources
+  #  application.resources :screenshots
+  #  application.resources :installers
+  #end
+
+  map.resources :applications, :path_prefix => '/*tags'
   
   # http://www.myapp.com/tag1/tag2/tag3/apps/applink
-  map.applications_tagged_with '/*tags/apps', :controller => 'applications', :action => 'index'
-  map.app '/*tags/apps/:app_url', :controller => 'applications', :action => 'show'
+  # map.applications_tagged_with '/*tags/apps', :controller => 'applications', :action => 'index'
+  # map.app '/*tags/apps/:app_url', :controller => 'applications', :action => 'show'
   
   #map.resources :categories # para usar este tipo de rutas el metodo to_param de category debe pasar a llamarse to_slug
   map.new_category '/categories/new', :controller => 'categories', :action => 'new'

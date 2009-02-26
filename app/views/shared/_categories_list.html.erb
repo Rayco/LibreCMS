@@ -3,8 +3,8 @@
 <ul>
 <% for category in @categories %>
 	<li>
-		<%= link_to (image_tag category.icon.url(:small), :class => 'category_icon'), applications_tagged_with_path(category.name) %>
-		<%= link_to category.name, applications_tagged_with_path(category.name) %>
+		<%= link_to (image_tag category.icon.url(:small), :class => 'category_icon'), applications_path(category) %>
+		<%= link_to category.name, applications_path(category) %>
 	</li>
 <% end %>
 </ul>

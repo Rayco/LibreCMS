@@ -28,7 +28,7 @@ class Application < ActiveRecord::Base
     applications.sort { | a,b | a.name.downcase <=> b.name.downcase }
   end
 
-  def to_slug
+  def to_param
     app_url = String.new(name)
     "#{app_url.to_url}"
   end

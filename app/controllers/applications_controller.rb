@@ -17,7 +17,7 @@ class ApplicationsController < ApplicationController
   # GET /applications/1.xml
   def show
     @tags = params[:tags]
-    @application = Application.find_by_name(params[:app_url].from_url)
+    @application = Application.find_by_name(params[:id].from_url)
     @screenshots = @application.screenshots.paginate :per_page => 1, :page => params[:page]
 
     respond_to do |format|
@@ -29,7 +29,8 @@ class ApplicationsController < ApplicationController
   # GET /applications/new
   # GET /applications/new.xml
   def new
-    @application = Application.build
+    @tags = params[:tags]
+    @application = Application.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,18 +40,19 @@ class ApplicationsController < ApplicationController
 
   # GET /applications/1/edit
   def edit
-    @application = Application.find(params[:id])
+    @application = Application.find_by_name(params[:id].from_url)
   end
 
   # POST /applications
   # POST /applications.xml
   def create
+    @tags = params[:tags]
     @application = Application.build(params[:application])
 
     respond_to do |format|
       if @application.save
         flash[:notice] = 'Application was successfully created.'
-        format.html { redirect_to(@application) }
+        format.html { redirect_to(application_path(@tags, @application)) }
         format.xml  { render :xml => @application, :status => :created, :location => @application }
       else
         format.html { render :action => "new" }
@@ -62,12 +64,13 @@ class ApplicationsController < ApplicationController
   # PUT /applications/1
   # PUT /applications/1.xml
   def update
-    @application = Application.find(params[:id])
+    @tags = params[:tags]
+    @application = Application.find_by_name(params[:id].from_url)
 
     respond_to do |format|
       if @application.update_attributes(params[:application])
         flash[:notice] = 'Application was successfully updated.'
-        format.html { redirect_to(@application) }
+        format.html { redirect_to(application_path(@tags, @application)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -79,7 +82,8 @@ class ApplicationsController < ApplicationController
   # DELETE /applications/1
   # DELETE /applications/1.xml
   def destroy
-    @application = Application.find(params[:id])
+    @tags = params[:tags]
+    @application = Application.find_by_name(params[:id].from_url)
     @application.destroy
 
     respond_to do |format|

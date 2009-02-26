@@ -1,8 +1,8 @@
 <% for application in @applications %>
 	<p class="application">
 		<%= link_to (image_tag application.logo.url, :class => "app_logo", :alt => application.name,
-					:title => application.name), app_path(@tags, application.to_slug)  %>
-		<%= link_to application.name, app_path(@tags, application.to_slug) %>
+					:title => application.name), application_path(@tags, application)  %>
+		<%= link_to application.name, application_path(@tags, application) %>
 		<% if !application.description.nil? %> 
 			<%=h application.description[0,260] %><%=h '...' if application.description.length > 260 %><br />
 		<% end %>
@@ -12,5 +12,5 @@
 
 <br />
 <% if logged_in? and current_user.has_role?('administrator') %>
-	<%= link_to 'New application', new_application_path %>
+	<%= link_to 'New application', new_application_path(@tags) %>
 <% end %>

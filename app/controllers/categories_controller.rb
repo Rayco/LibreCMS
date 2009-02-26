@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
       @categories = Category.find_by_name(String.new(@tags[-1]).from_url).children_in_site 
     end
 
-    @hide = true
+    #@hide = true
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @categories }

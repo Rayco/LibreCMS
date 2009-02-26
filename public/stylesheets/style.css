@@ -297,8 +297,9 @@ ul {
 	text-decoration: underline;
 }
 
-#breacrums .see_apps {
-	text-align: right;
+#breadcrums .goto {
+  position: absolute;
+  right: 240px;
 }
 
 /* Content boxes */

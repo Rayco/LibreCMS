@@ -48,11 +48,10 @@
 			<p class="notice"><%= flash[:notice] %></p>
 			<a name="skip-menu"></a>
 			<!-- Content left -->
-			<% if !@hide %>
+			<% unless @hide %>
 			<div class="content-box-left">
 				<div class="content-box-left-in">
 					<%= render :partial => '/shared/bread_crums' unless @tags.nil? %>
-					<%= link_to 'Ver categorias', categories_path(@tags) unless @tags.nil? or @tags.empty? or @application %>
 					<%= yield %>
 				</div>
 			</div>
@@ -83,10 +82,9 @@
 			<!-- Content center -->
 			<% else %>
 				<div class="content-box-center">
-					<div class="content-box-center-in">
-						<%= render :partial => '/shared/bread_crums' unless @tags.nil? %>	
-						<%= link_to 'Ver aplicaciones', applications_tagged_with_path(@tags) unless @tags.nil? or @tags.empty? %>
-						<%= yield %>
+          <div class="content-box-center-in">
+  					<%= render :partial => '/shared/bread_crums' unless @tags.nil? %>	
+            <%= yield %>
 					</div>					
 				</div>
 			<% end %>
