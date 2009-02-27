@@ -30,7 +30,9 @@ class Category < ActiveRecord::Base
   end
   
   def to_param
-    cat_url = String.new(name)
-    "#{cat_url.to_url}"
+    unless name.nil?
+      cat_url = String.new(name)
+      "#{cat_url.to_url}"
+    end
   end
 end

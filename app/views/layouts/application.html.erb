@@ -65,16 +65,20 @@
 					<%= render :partial => '/shared/categories_list' %>
 					<div id="column-right-bottom">&nbsp;</div>
 				<% end %>
-				
-				<% if @application and !@application.resources.empty? %>
-					<%= render :partial => '/shared/resources_list' %>
+
+        <!--
+				< % if @application and !@application.resources.empty? % >
+					< %= render :partial => '/shared/resources_list' % >
 					<div id="column-right-bottom">&nbsp;</div>
-				<% end %>
-				
-				<% if @application and !@application.screenshots.empty? %>
-					<%= render :partial => '/shared/screenshots' %>
-					<div id="column-right-bottom">&nbsp;</div>
-				<% end %>
+        < % end % >
+        -->
+
+        <!--
+				< % if @application and !@application.screenshots.empty? % >
+					< %= render :partial => '/shared/screenshots' % >
+          <div id="column-right-bottom">&nbsp;</div>
+        < % end % >
+        -->
 				</div>
 			<!-- Content right end -->
 			

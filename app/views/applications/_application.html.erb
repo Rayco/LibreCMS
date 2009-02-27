@@ -1,6 +1,6 @@
 <%= error_messages_for :application %>
 
-<% form_for ([@tags, @application]), :url => [application], :html => { :multipart => true } do |f| %>
+<% form_for ([@application]), :url => application_path(@tags, application), :html => { :multipart => true } do |f| %>
   <p>
   	<b>Tags:</b>
   	<%=h @application.tag_list %> 

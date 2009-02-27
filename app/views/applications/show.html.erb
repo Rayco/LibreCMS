@@ -8,17 +8,19 @@
 	<p><b>Recomendada por:</b> <%= @application.user_recommend.name if @application.user_recommend %>Ofincia de Software Libre</p>
 	<p><b>Descripci&oacute;n:</b> <%=h @application.description %></p>	
 
-	<% if !@application.installers.empty? %>
-		<%= render :partial => '/shared/installers_list' %>
-	<% end %>
+  <!--
+	< % if !@application.installers.empty? % >
+		< %= render :partial => '/shared/installers_list' % >
+  < % end % >
+  -->
 	
 </div>
 <div id="app_details_bottom">&nbsp;</div>
 
 <% if logged_in? and current_user.has_role?('administrator') %>
 	<%= link_to 'Edit', edit_application_path(@tags, @application.to_param) %> | 
-	<% #= link_to 'Screenshots', application_screenshots_path(@application) %> | 
-	<% #= link_to 'Resources', application_resources_path(@application) %> |
-	<% #= link_to 'Installers', application_installers_path(@application) %>
+	<%= link_to 'Screenshots', application_screenshots_path(@tags, @application) %> | 
+	<%= link_to 'Resources', application_resources_path(@tags, @application) %> |
+	<%= link_to 'Installers', application_installers_path(@tags, @application) %>
 <% end %>
 

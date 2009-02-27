@@ -21,7 +21,7 @@ class InstallersController < ApplicationController
   end
 
   def new
-    @installer = @application.installers.build #or new?
+    @installer = @application.installers.build
     
     respond_to do |format|
       format.html # new.html.erb
@@ -39,7 +39,7 @@ class InstallersController < ApplicationController
     respond_to do |format|
       if @installer.save
         flash[:notice] = 'Installer was successfully created.'
-        format.html { redirect_to(application_installers_url(@application)) }
+        format.html { redirect_to(application_installers_url(@tags, @application)) }
         format.xml  { render :xml => @installer, :status => :created, :location => @installer }
       else
         format.html { render :action => "new" }
@@ -54,7 +54,7 @@ class InstallersController < ApplicationController
     respond_to do |format|
       if @installer.update_attributes(params[:installer])
         flash[:notice] = 'Installer was successfully updated.'
-        format.html { redirect_to(application_installer_url(@application, @installer)) }
+        format.html { redirect_to(application_installer_url(@tags, @application, @installer)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -69,7 +69,7 @@ class InstallersController < ApplicationController
     
     respond_to do |format|
       flash[:notice] = "Successfully destroyed installer."
-      format.html { redirect_to(application_installers_url(@application)) }
+      format.html { redirect_to(application_installers_url(@tags, @application)) }
       format.xml  { head :ok }
     end
   end

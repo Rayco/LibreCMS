@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :get_site_configuration, :get_categories, :get_pages
+  before_filter :get_site_configuration, :get_categories, :get_pages, :get_tags
   include AuthenticatedSystem
   helper :all # include all helpers, all the time
 
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
   
   def get_application
-    @application = Category.find(params[:category_id]).applications.find(params[:application_id])
+    @application = Application.find_by_name(params[:application_id].from_url)
   end
   
   def get_pages
@@ -27,4 +27,8 @@ class ApplicationController < ActionController::Base
     @site_config = SiteConfiguration.find(:first)
   end
   
+  def get_tags
+    @tags = params[:tags]
+    @tags = [] if @tags.nil?
+  end
 end

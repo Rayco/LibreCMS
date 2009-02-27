@@ -29,7 +29,9 @@ class Application < ActiveRecord::Base
   end
 
   def to_param
-    app_url = String.new(name)
-    "#{app_url.to_url}"
+    unless name.nil?
+      app_url = String.new(name)
+      "#{app_url.to_url}"
+    end
   end
 end

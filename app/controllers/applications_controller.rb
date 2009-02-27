@@ -4,8 +4,7 @@ class ApplicationsController < ApplicationController
   # GET /applications
   # GET /applications.xml
   def index
-    @tags = params[:tags]
-    @applications = Application.find_by_tags(params[:tags])
+    @applications = Application.find_by_tags(@tags)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +15,6 @@ class ApplicationsController < ApplicationController
   # GET /applications/1
   # GET /applications/1.xml
   def show
-    @tags = params[:tags]
     @application = Application.find_by_name(params[:id].from_url)
     @screenshots = @application.screenshots.paginate :per_page => 1, :page => params[:page]
 
@@ -29,7 +27,6 @@ class ApplicationsController < ApplicationController
   # GET /applications/new
   # GET /applications/new.xml
   def new
-    @tags = params[:tags]
     @application = Application.new
 
     respond_to do |format|
@@ -46,8 +43,7 @@ class ApplicationsController < ApplicationController
   # POST /applications
   # POST /applications.xml
   def create
-    @tags = params[:tags]
-    @application = Application.build(params[:application])
+    @application = Application.new(params[:application])
 
     respond_to do |format|
       if @application.save
@@ -64,7 +60,6 @@ class ApplicationsController < ApplicationController
   # PUT /applications/1
   # PUT /applications/1.xml
   def update
-    @tags = params[:tags]
     @application = Application.find_by_name(params[:id].from_url)
 
     respond_to do |format|
@@ -82,7 +77,6 @@ class ApplicationsController < ApplicationController
   # DELETE /applications/1
   # DELETE /applications/1.xml
   def destroy
-    @tags = params[:tags]
     @application = Application.find_by_name(params[:id].from_url)
     @application.destroy
 

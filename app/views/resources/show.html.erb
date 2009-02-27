@@ -14,5 +14,5 @@
 </p>
 
 
-<%= link_to 'Edit', [:edit, @application, @resource] %> |
-<%= link_to 'Back', application_resources_path(@application) %>
+<%= link_to 'Edit', edit_application_resource_path(@tags, @application, @resource) %> |
+<%= link_to 'Back', application_resources_path(@tags, @application) %>

@@ -5,6 +5,6 @@
 		<%= link_to image_tag(screenshot.image.url(:thumb),
 					:alt => screenshot.name, :title => screenshot.name),
 					screenshot.image.url, {:rel => "lightbox", :title => "<text class='shot_text'>#{screenshot.name}</text>"} %>
-	<% end %>
+  <% end %>
 	<%= will_paginate @screenshots %>
 </div>

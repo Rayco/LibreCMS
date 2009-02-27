@@ -1,4 +1,4 @@
-<h1>Listing resources for <%=h @application.name %> in <%=h @category.name %></h1>
+<% title @application.name+"Screenshots" %>
 
 <table>
   <tr>
@@ -12,13 +12,13 @@
   	<td><%=h resource.application_id %></td>
     <td><%=h resource.name %></td>
     <td><%=h resource.description %></td>
-    <td><%= link_to 'Show', [@application, resource] %></td>
-    <td><%= link_to 'Edit', [:edit, @application, resource] %></td>
-    <td><%= link_to 'Destroy', [@application, resource], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', application_resource_path(@tags, @application, resource) %></td>
+    <td><%= link_to 'Edit', edit_application_resource_path(@tags, @application, resource) %></td>
+    <td><%= link_to 'Destroy', application_resource_path(@tags, @application, resource), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New resource', new_application_resource_path(@application) %>
+<%= link_to 'New resource', new_application_resource_path(@tags, @application) %>

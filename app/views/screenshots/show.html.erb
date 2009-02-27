@@ -27,6 +27,6 @@
 </p>
 
 <p>
-  <%= link_to "Edit", [:edit, @application, @screenshot] %> |
-  <%= link_to "View All", application_screenshots_path(@application) %>
+  <%= link_to "Edit", edit_application_screenshot_path(@tags, @application, @screenshot) %> |
+  <%= link_to "View All", application_screenshots_path(@tags, @application) %>
 </p>

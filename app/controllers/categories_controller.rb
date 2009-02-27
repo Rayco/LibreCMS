@@ -1,15 +1,14 @@
 class CategoriesController < ApplicationController
   before_filter :check_administrator_role, :except => :index
   skip_before_filter :get_categories, :only => :index
+  skip_before_filter :get_tags, :except => :index
   
   # GET /categories
   # GET /categories.xml
   def index
-    if params[:tags].nil?
-      @tags = []
+    if @tags.empty?
       @categories = @site_config.root_category.children_in_site
     else
-      @tags = params[:tags]
       @categories = Category.find_by_name(String.new(@tags[-1]).from_url).children_in_site 
     end
 
@@ -33,7 +32,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
-    @category = Category.find_by_name(String.new(params[:category_name]).from_url)
+    @category = Category.find_by_name(String.new(params[:id]).from_url)
   end
 
   # POST /categories
@@ -56,7 +55,7 @@ class CategoriesController < ApplicationController
   # PUT /categories/1
   # PUT /categories/1.xml
   def update
-    @category = Category.find_by_name(String.new(params[:category_name]).from_url)
+    @category = Category.find_by_name(String.new(params[:id]).from_url)
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
@@ -73,7 +72,7 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.xml
   def destroy
-    @category = Category.find_by_name(String.new(params[:tags][-1]).from_url)
+    @category = Category.find_by_name(String.new(params[:id]).from_url)
     @category.destroy
 
     respond_to do |format|
