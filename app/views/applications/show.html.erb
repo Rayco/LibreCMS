@@ -8,11 +8,7 @@
 	<p><b>Recomendada por:</b> <%= @application.user_recommend.name if @application.user_recommend %>Ofincia de Software Libre</p>
 	<p><b>Descripci&oacute;n:</b> <%=h @application.description %></p>	
 
-  <!--
-	< % if !@application.installers.empty? % >
-		< %= render :partial => '/shared/installers_list' % >
-  < % end % >
-  -->
+	<%= render :partial => '/shared/installers_list' unless @application.installers.empty? %>
 	
 </div>
 <div id="app_details_bottom">&nbsp;</div>
@@ -23,4 +19,3 @@
 	<%= link_to 'Resources', application_resources_path(@tags, @application) %> |
 	<%= link_to 'Installers', application_installers_path(@tags, @application) %>
 <% end %>
-

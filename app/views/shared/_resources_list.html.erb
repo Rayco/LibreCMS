@@ -1,15 +1,18 @@
-<h4>Otros recursos:</h4>
-<div class="content-box-right-in">
-<ul>
-	<% for resource in @application.resources %>
-	<li>
-		<%= link_to resource.name, resource.resource.url,
-			:title => resource.description if resource.name %>
-	</li>
-	<% end %>
-</ul>
+<div class="column-right-box">
+  <h4>Otros recursos:</h4>
+  <div id="generic-right-box">
+  <ul>
+	  <% for resource in @application.resources %>
+  	<li>
+	  	<%= link_to resource.name, resource.resource.url,
+		  	:title => resource.description if resource.name %>
+  	</li>
+	  <% end %>
+  </ul>
 	
-<% if logged_in? and current_user.has_role?('administrator') %>
-	<%= link_to 'New resource', new_application_resource_path(@application) %>
-<% end %>
+  <% if logged_in? and current_user.has_role?('administrator') %>
+	  <%= link_to 'New resource', new_application_resource_path(@tags, @application) %>
+  <% end %>
+  </div>
 </div>
+<div class="column-right-bottom">&nbsp;</div>

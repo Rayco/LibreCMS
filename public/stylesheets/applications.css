@@ -37,14 +37,20 @@
 	width: 98px;
 }
 
+#installers {
+}
+
+#generic-right-box {
+  padding: 7px 7px 0 7px;
+}
+
 #screenshots {
-	margin-top: 20px;
+	padding-top: 7px;
+  padding-bottom: 5px;
 	text-align: center;
 }
 
 #screenshots a img, #screenshots a:visited img {
-	/* con la paginacion deberian de desaparecer los margenes en los screenshots */
-	margin: 0 15px 10px 15px;
 	border: 4px solid #EEEEEE;
 }
 

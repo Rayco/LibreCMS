@@ -1,16 +1,18 @@
-<h4>Categor&iacute;as:</h4>
-<div class="content-box-right-in">
-<ul>
-<% for category in @categories %>
-	<li>
-		<%= link_to (image_tag category.icon.url(:small), :class => 'category_icon'), applications_path(category) %>
-		<%= link_to category.name, applications_path(category) %>
-	</li>
-<% end %>
-</ul>
+<div class="column-right-box">
+  <h4>Categor&iacute;as:</h4>
+  <div id="generic-right-box">
+    <ul>
+    <% for category in @categories %>
+    	<li>
+    		<%= link_to (image_tag category.icon.url(:small), :class => 'category_icon'), applications_path(category) %>
+    		<%= link_to category.name, applications_path(category) %>
+    	</li>
+    <% end %>
+    </ul>
 
-
-<% if logged_in? and current_user.has_role?('administrator') %>
-	<% #= link_to 'New category', new_category_path %>
-<% end %>
+    <% if logged_in? and current_user.has_role?('administrator') %>
+    	<%= link_to 'New category', new_category_path %>
+    <% end %>
+  </div>
 </div>
+<div class="column-right-bottom">&nbsp;</div>

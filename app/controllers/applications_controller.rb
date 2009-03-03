@@ -16,7 +16,7 @@ class ApplicationsController < ApplicationController
   # GET /applications/1.xml
   def show
     @application = Application.find_by_name(params[:id].from_url)
-    @screenshots = @application.screenshots.paginate :per_page => 1, :page => params[:page]
+    @screenshots_list = @application.screenshots.paginate :per_page => 1, :page => params[:page]
 
     respond_to do |format|
       format.html # show.html.erb

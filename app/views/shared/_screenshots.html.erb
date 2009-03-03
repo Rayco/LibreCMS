@@ -1,10 +1,13 @@
 <%= javascript_include_tag :defaults, 'lightbox' %>
-<h4>Capturas:</h4>
-<div class="content-box-right-in">
-	<% @screenshots.each do |screenshot| %>
-		<%= link_to image_tag(screenshot.image.url(:thumb),
-					:alt => screenshot.name, :title => screenshot.name),
-					screenshot.image.url, {:rel => "lightbox", :title => "<text class='shot_text'>#{screenshot.name}</text>"} %>
-  <% end %>
-	<%= will_paginate @screenshots %>
+<div class="column-right-box">
+  <h4>Capturas:</h4>
+  <div id="screenshots">
+    <% @screenshots_list.each do |screenshot| %>
+  		<%= link_to image_tag(screenshot.image.url(:thumb),
+  					:alt => screenshot.name, :title => screenshot.name),
+  					screenshot.image.url, {:rel => "lightbox", :title => "<text class='shot_text'>#{screenshot.name}</text>"} %>
+    <% end %>
+    <%= will_paginate @screenshots_list %>
+  </div>
 </div>
+<div class="column-right-bottom">&nbsp;</div>

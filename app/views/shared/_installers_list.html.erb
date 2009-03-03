@@ -1,15 +1,15 @@
-<h4>Instaladores:</h4>
-<div id="screenshots">
-<ul>
-	<% for installer in @application.installers %>
-	<li>
-		<%= link_to installer.name, installer.installer.url,
-			:title => 'descarga ' + installer.name if installer.version %>
-	</li>
-	<% end %>
-</ul>
+<div id="installers">
+  <h4>Instaladores:</h4>
+  <ul>
+	  <% for installer in @application.installers %>
+  	<li>
+  		<%= link_to installer.name, installer.installer.url,
+  			:title => 'descarga ' + installer.name if installer.version %>
+  	</li>
+  	<% end %>
+  </ul>
 	
-<% if logged_in? and current_user.has_role?('administrator') %>
-	<%= link_to 'New installer', new_application_installer_path(@application) %>
-<% end %>
+  <% if logged_in? and current_user.has_role?('administrator') %>
+  	<%= link_to 'New installer', new_application_installer_path(@tags, @application) %>
+  <% end %>
 </div>

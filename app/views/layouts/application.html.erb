@@ -60,26 +60,22 @@
 <hr class="noscreen" />
 
 			<!-- Content right -->
-				<div class="content-box-right">
-				<% if @categories %>
-					<%= render :partial => '/shared/categories_list' %>
-					<div id="column-right-bottom">&nbsp;</div>
-				<% end %>
+      <div class="content-box-right">
+        <div class="content-box-right-in">
+  				<% if @categories %>
+	  				<%= render :partial => '/shared/categories_list' %>
+  				<% end %>
 
-        <!--
-				< % if @application and !@application.resources.empty? % >
-					< %= render :partial => '/shared/resources_list' % >
-					<div id="column-right-bottom">&nbsp;</div>
-        < % end % >
-        -->
+  				<% if @application and !@application.resources.empty? %>
+	  				<%= render :partial => '/shared/resources_list' %>
+          <% end %>
 
-        <!--
-				< % if @application and !@application.screenshots.empty? % >
-					< %= render :partial => '/shared/screenshots' % >
-          <div id="column-right-bottom">&nbsp;</div>
-        < % end % >
-        -->
-				</div>
+  				<% if @screenshots_list and !@screenshots_list.empty? %>
+	  				<%= render :partial => '/shared/screenshots' %>
+          <% end %>
+        </div>
+      </div>
+
 			<!-- Content right end -->
 			
 			
