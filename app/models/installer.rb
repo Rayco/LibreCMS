@@ -3,7 +3,7 @@ require 'paperclip'
 class Installer < ActiveRecord::Base
   belongs_to :application
   
-  acts_as_taggable_on :platforms
+  acts_as_taggable_on :platforms, :languages, :licenses
   
   validates_presence_of :application_id
   validates_associated :application

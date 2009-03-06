@@ -37,7 +37,7 @@
 		<a href="#skip-menu" class="hidden">Skip menu</a>
 		<ul id="menu" class="cleaning-box">
 			<li class="first"><%= link_to 'Portada', root_path, :class => "active" %></li>
-			<%= render :partial => '/shared/pages_list' %>
+      <%= render :partial => '/shared/pages_list' %> <!-- No shared -->
 		</ul>
 		<!-- Menu end -->
 
@@ -51,7 +51,7 @@
 			<% unless @hide %>
 			<div class="content-box-left">
 				<div class="content-box-left-in">
-					<%= render :partial => '/shared/bread_crums' unless @tags.nil? %>
+          <%= render :partial => '/shared/bread_crums' unless @tags.nil? %> <!-- No shared -->
 					<%= yield %>
 				</div>
 			</div>
@@ -62,16 +62,8 @@
 			<!-- Content right -->
       <div class="content-box-right">
         <div class="content-box-right-in">
-  				<% if @categories %>
-	  				<%= render :partial => '/shared/categories_list' %>
-  				<% end %>
-
-  				<% if @application and !@application.resources.empty? %>
-	  				<%= render :partial => '/shared/resources_list' %>
-          <% end %>
-
-  				<% if @screenshots_list and !@screenshots_list.empty? %>
-	  				<%= render :partial => '/shared/screenshots' %>
+          <% if @screenshots_list and !@screenshots_list.empty? %>
+	  				<%= render :partial => '/shared/screenshots' %> <!-- Usar content_for -->
           <% end %>
         </div>
       </div>
@@ -83,7 +75,7 @@
 			<% else %>
 				<div class="content-box-center">
           <div class="content-box-center-in">
-  					<%= render :partial => '/shared/bread_crums' unless @tags.nil? %>	
+            <%= render :partial => '/shared/bread_crums' unless @tags.nil? %>	<!-- No shared -->
             <%= yield %>
 					</div>					
 				</div>

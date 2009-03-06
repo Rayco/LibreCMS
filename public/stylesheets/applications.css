@@ -40,6 +40,18 @@
 #installers {
 }
 
+#installers table, #installers th, #installers td {
+  border-collapse: collapse;
+  border: 1px solid black;
+  width: 40%;
+  margin: 15px auto;
+  text-align: center;
+}
+
+#installers table caption {
+  font-weight: bold;
+}  
+
 #generic-right-box {
   padding: 7px 7px 0 7px;
 }

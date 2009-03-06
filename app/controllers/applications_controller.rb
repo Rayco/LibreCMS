@@ -4,7 +4,7 @@ class ApplicationsController < ApplicationController
   # GET /applications
   # GET /applications.xml
   def index
-    @applications = Application.find_by_tags(@tags)
+    @applications = Application.tagged_with(@tags.join(", "), :on => :tags, :match_all => true)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,6 +17,8 @@ class ApplicationsController < ApplicationController
   def show
     @application = Application.find_by_name(params[:id].from_url)
     @screenshots_list = @application.screenshots.paginate :per_page => 1, :page => params[:page]
+    @installer32 = @application.installers.tagged_with("Windows, 32bits", :on => :platforms, :match_all => true) 
+    @installer64 = @application.installers.tagged_with("Windows, 64bits", :on => :platforms, :match_all => true) 
 
     respond_to do |format|
       format.html # show.html.erb
