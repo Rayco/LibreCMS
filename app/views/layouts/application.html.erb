@@ -65,6 +65,10 @@
           <% if @screenshots_list and !@screenshots_list.empty? %>
 	  				<%= render :partial => '/shared/screenshots' %> <!-- Usar content_for -->
           <% end %>
+
+          <% unless @application.nil? and @application.resources.empty? %>
+            <%= render :partial => '/shared/resources_list' %>
+          <% end %>
         </div>
       </div>
 
