@@ -3,7 +3,11 @@
 		:alt => @application.name, :title => @application.name %>
 		
 	<p><b>Aplicaci&oacute;n:</b> <%=h @application.name %>, <%= link_to @application.website.split(/\/\//)[1], @application.website unless @application.website.nil? %></p>
-	<p><b>Tags:</b> <%=h @application.tag_list %></p>
+  <p><b>Etiquetas:</b>
+    <% tag_cloud @application.tag_counts, %w(tag1 tag2 tag3) do |tag, css_class| %>
+      <%= link_to tag, applications_path(tag.name), :class => css_class %>
+    <% end %>
+  </p> 
   <p><b>Recomendada por:</b> <%= @application.user_recommend.name if @application.user_recommend %>Ofincia de Software Libre</p>
   <!--
   <p><b>Idioma:</b></p>
@@ -14,7 +18,7 @@
   <p><b>Recomendaciones:</b></p>
   -->
 
-
+  <% unless @application.installers.empty? %>
   <div id="installers">
     <table>
       <caption>Instaladores:</caption>
@@ -39,11 +43,8 @@
         </tr>
       </tbody>
     </table>
-
-    <% if logged_in? and current_user.has_role?('administrator') %>
-    	<%= link_to 'New installer', new_application_installer_path(@tags, @application) %>
-    <% end %>
   </div>
+  <% end %>
 
 </div>
 <div id="app_details_bottom">&nbsp;</div>

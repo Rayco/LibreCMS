@@ -18,7 +18,18 @@ class Application < ActiveRecord::Base
                     
   validates_attachment_content_type :logo, :content_type => ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png', 'image/jpg']
 
+  def self.find_with_like_by_name(name)
+    find(:first, :conditions => ["name LIKE ?", name])
+  end
+
+  def languages
+    installers.map(&:language_list).flatten.uniq.sort
+  end
   
+  def licenses
+    installers.map(&:license_list).flatten.uniq.sort
+  end
+
   def to_param
     unless name.nil?
       app_url = String.new(name)

@@ -38,6 +38,7 @@
 }
 
 #installers {
+  margin-top: 20px
 }
 
 #installers table, #installers th, #installers td {
@@ -72,4 +73,16 @@
 
 .shot_text {
 	font-size: medium;
+}
+
+.tag1 {
+  color: red;
+}
+
+.tag2 a {
+  color: blue;
+}
+
+.tag3 a {
+  color: green;
 }

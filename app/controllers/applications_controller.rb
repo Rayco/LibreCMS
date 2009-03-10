@@ -15,7 +15,7 @@ class ApplicationsController < ApplicationController
   # GET /applications/1
   # GET /applications/1.xml
   def show
-    @application = Application.find_by_name(params[:id].from_url)
+    @application = Application.find_with_like_by_name(params[:id].from_url)
     @screenshots_list = @application.screenshots.paginate :per_page => 1, :page => params[:page]
     @installer32 = @application.installers.tagged_with("Windows, 32bits", :on => :platforms, :match_all => true) 
     @installer64 = @application.installers.tagged_with("Windows, 64bits", :on => :platforms, :match_all => true) 
@@ -39,7 +39,7 @@ class ApplicationsController < ApplicationController
 
   # GET /applications/1/edit
   def edit
-    @application = Application.find_by_name(params[:id].from_url)
+    @application = Application.find_with_like_by_name(params[:id].from_url)
   end
 
   # POST /applications
@@ -62,7 +62,7 @@ class ApplicationsController < ApplicationController
   # PUT /applications/1
   # PUT /applications/1.xml
   def update
-    @application = Application.find_by_name(params[:id].from_url)
+    @application = Application.find_with_like_by_name(params[:id].from_url)
 
     respond_to do |format|
       if @application.update_attributes(params[:application])
@@ -79,7 +79,7 @@ class ApplicationsController < ApplicationController
   # DELETE /applications/1
   # DELETE /applications/1.xml
   def destroy
-    @application = Application.find_by_name(params[:id].from_url)
+    @application = Application.find_with_like_by_name(params[:id].from_url)
     @application.destroy
 
     respond_to do |format|
