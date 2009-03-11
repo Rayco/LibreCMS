@@ -4,7 +4,7 @@ class ApplicationsController < ApplicationController
   # GET /applications
   # GET /applications.xml
   def index
-    @applications = Application.tagged_with(@tags.join(", "), :on => :tags, :match_all => true)
+    @applications = Application.tagged_with(@tags.join(", "), :on => :tags, :match_all => true).sort { |x, y| x.name.downcase <=> y.name.downcase }
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,9 +16,9 @@ class ApplicationsController < ApplicationController
   # GET /applications/1.xml
   def show
     @application = Application.find_with_like_by_name(params[:id].from_url)
-    @screenshots_list = @application.screenshots.paginate :per_page => 1, :page => params[:page]
-    @installer32 = @application.installers.tagged_with("Windows, 32bits", :on => :platforms, :match_all => true) 
-    @installer64 = @application.installers.tagged_with("Windows, 64bits", :on => :platforms, :match_all => true) 
+    @installers32 = @application.installers.tagged_with("Windows, 32bits", :on => :platforms, :match_all => true).flatten 
+    @installers64 = @application.installers.tagged_with("Windows, 64bits", :on => :platforms, :match_all => true) .flatten
+    @screenshots = @application.screenshots
 
     respond_to do |format|
       format.html # show.html.erb

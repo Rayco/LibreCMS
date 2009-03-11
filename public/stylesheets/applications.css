@@ -37,21 +37,32 @@
 	width: 98px;
 }
 
+
+/* Installers */
 #installers {
   margin-top: 20px
+}
+
+#installers table th{
+  width: 40%;
 }
 
 #installers table, #installers th, #installers td {
   border-collapse: collapse;
   border: 1px solid black;
-  width: 40%;
   margin: 15px auto;
   text-align: center;
+}
+
+#installers table tr.heading th {
+  background: #005e85;
+  color: #fff;
 }
 
 #installers table caption {
   font-weight: bold;
 }  
+
 
 #generic-right-box {
   padding: 7px 7px 0 7px;
@@ -64,7 +75,7 @@
 }
 
 #screenshots a img, #screenshots a:visited img {
-	border: 4px solid #EEEEEE;
+	border: 4px solid #005e85;
 }
 
 #screenshots a:hover img {

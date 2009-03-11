@@ -5,7 +5,7 @@
 	<p><b>Aplicaci&oacute;n:</b> <%=h @application.name %>, <%= link_to @application.website.split(/\/\//)[1], @application.website unless @application.website.nil? %></p>
   <p><b>Etiquetas:</b>
     <% tag_cloud @application.tag_counts, %w(tag1 tag2 tag3) do |tag, css_class| %>
-      <%= link_to tag, applications_path(tag.name), :class => css_class %>
+      <%= link_to tag, applications_path(String.new(tag.name).to_url), :class => css_class %>
     <% end %>
   </p> 
   <p><b>Recomendada por:</b> <%= @application.user_recommend.name if @application.user_recommend %>Ofincia de Software Libre</p>
@@ -18,26 +18,26 @@
   <p><b>Recomendaciones:</b></p>
   -->
 
-  <% unless @application.installers.empty? %>
+  <% unless @installers32.empty? and @installers64.empty? %>
   <div id="installers">
-    <table>
+    <table summary="Relación de instaladores y arquitecturas">
       <caption>Instaladores:</caption>
       <tbody>
-        <tr>
+        <tr class="heading">
           <th>32Bits</th>
           <th>64Bits</th>
         </tr>
         <tr>
           <td>
-            <% for installer in @installer32 %>
+            <% for installer in @installers32 %>
     	  	    <%= link_to installer.name, installer.installer.url, 
-                :title => 'descarga ' + installer.name if installer.version %>
+                :title => 'descarga ' + installer.name if installer.version %><br/>
             <% end %>
           </td>
           <td>
-            <% for installer in @installer64 %>
+            <% for installer in @installers64 %>
     	  	    <%= link_to installer.name, installer.installer.url, 
-                :title => 'descarga ' + installer.name if installer.version %>
+                :title => 'descarga ' + installer.name if installer.version %><br/>
             <% end %>
           </td>
         </tr>
