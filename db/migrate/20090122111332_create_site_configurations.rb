@@ -7,6 +7,9 @@ class CreateSiteConfigurations < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    SiteConfiguration.create :name => 'Default', :header => 'Default'
+
   end
 
   def self.down

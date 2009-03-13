@@ -1,4 +1,5 @@
 class MenuNodesController < ApplicationController
+  before_filter :check_administrator_role
   # GET /menu_nodes
   # GET /menu_nodes.xml
   def index

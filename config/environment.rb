@@ -60,6 +60,7 @@ Rails::Initializer.run do |config|
   config.gem "RedCloth", :version => "= 4.0.4", :source => "http://code.whytheluckystiff.net"
   config.gem "mbleigh-acts-as-taggable-on", :source => "http://gems.github.com", :lib => "acts-as-taggable-on"
   # paperclip
+  # will_paginate
 end
 
 require "will_paginate"

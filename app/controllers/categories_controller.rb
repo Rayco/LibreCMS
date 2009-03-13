@@ -6,6 +6,8 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.xml
   def index
+    redirect_to(edit_site_configuration_path(@site_config)) and return if @site_config.root_category.nil?
+
     if @tags.empty?
       @categories = @site_config.root_category.children_in_site
     else

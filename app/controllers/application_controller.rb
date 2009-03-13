@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :get_site_configuration, :get_categories, :get_pages, :get_tags
+  before_filter :get_site_configuration, :get_pages, :get_tags #, :get_categories
   include AuthenticatedSystem
   helper :all # include all helpers, all the time
 
@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # :secret => 'a8cd8350fd7769a825b7fc67f19a29de'
   
   private
-  def get_categories
-    @categories = @site_config.root_category.children_in_site
-  end
+  #def get_categories
+  #  @categories = @site_config.root_category.children_in_site
+  #end
   
   def get_application
     @application = Application.find_by_name(params[:application_id].from_url)

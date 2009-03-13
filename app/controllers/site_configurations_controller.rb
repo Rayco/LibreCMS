@@ -1,4 +1,5 @@
 class SiteConfigurationsController < ApplicationController
+  before_filter :check_administrator_role
   # GET /site_configurations
   # GET /site_configurations.xml
   def index
@@ -57,7 +58,7 @@ class SiteConfigurationsController < ApplicationController
   # PUT /site_configurations/1
   # PUT /site_configurations/1.xml
   def update
-    @site_configuration = SiteConfiguration.find(params[:id])
+    @site_configuration = SiteConfiguration.find(params[:id]) #find or create para category_root
 
     respond_to do |format|
       if @site_configuration.update_attributes(params[:site_configuration])
