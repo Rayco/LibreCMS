@@ -21,12 +21,24 @@ class Category < ActiveRecord::Base
                     
   validates_attachment_content_type :icon, :content_type => ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png', 'image/jpg']
   
-  def children_in_site
+  def children_in_site(site_config)
     children = []
     self.category_as_parent.each do |relation|
-      children << relation.child if relation.site_id == 1 # @site_config.id
+      children << relation.child if relation.site_id == site_config.id
     end
     return children.sort {|x,y| x.name.downcase <=> y.name.downcase }
+  end
+
+  def parents_in_site(site_config)
+    parents = []
+    self.category_as_child.each do |relation|
+      parents << relation.parent if relation.site_id == site_config.id
+    end
+    return parents.sort {|x,y| x.name.downcase <=> y.name.downcase }
+  end
+
+  def relationship_in_site?(site_id, category_id)
+    !MenuNode.find(:first, :conditions => ["site_id = ? AND category_id = ? AND child_id = ?", site_id, category_id, self.id]).nil?
   end
   
   def to_param
@@ -34,5 +46,21 @@ class Category < ActiveRecord::Base
       cat_url = String.new(name)
       "#{cat_url.to_url}"
     end
+  end
+
+  def parents_names
+    self.parents_in_site(SiteConfiguration.find(:first)).map(&:name).flatten.join(', ') #Warning: site hardcoded
+  end
+
+  def parents_names=(parents_name)
+    #need remove nodes when remove from parents_name
+    parents_name.split(",").each do |p|
+      parent = Category.find_or_create_by_name(p.strip, :conditions => ["name LIKE ?", p.strip])
+      category_as_child.build(:category_id => parent.id, :child_id => self.id, :site_id => 1) unless relationship_in_site?(1, parent.id) #Warning: site_id harcoded
+    end
+  end
+
+  def self.find_with_like_by_name(name)
+    find(:first, :conditions => ["name LIKE ?", name])
   end
 end

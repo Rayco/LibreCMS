@@ -9,9 +9,11 @@ class CategoriesController < ApplicationController
     redirect_to(edit_site_configuration_path(@site_config)) and return if @site_config.root_category.nil?
 
     if @tags.empty?
-      @categories = @site_config.root_category.children_in_site
+      @categories = @site_config.root_category.children_in_site(@site_config)
     else
-      @categories = Category.find_by_name(String.new(@tags[-1]).from_url).children_in_site 
+      category = Category.find_with_like_by_name(String.new(@tags[-1]).from_url)
+      render :file => "#{RAILS_ROOT}/public/404.html", :layout => false, :status => 404 and return if category.nil?
+      @categories = category.children_in_site(@site_config)
     end
 
     #@hide = true
@@ -34,7 +36,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
-    @category = Category.find_by_name(String.new(params[:id]).from_url)
+    @category = Category.find_with_like_by_name(String.new(params[:id]).from_url)
   end
 
   # POST /categories
@@ -57,7 +59,7 @@ class CategoriesController < ApplicationController
   # PUT /categories/1
   # PUT /categories/1.xml
   def update
-    @category = Category.find_by_name(String.new(params[:id]).from_url)
+    @category = Category.find_with_like_by_name(String.new(params[:id]).from_url)
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
@@ -74,7 +76,7 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.xml
   def destroy
-    @category = Category.find_by_name(String.new(params[:id]).from_url)
+    @category = Category.find_with_like_by_name(String.new(params[:id]).from_url)
     @category.destroy
 
     respond_to do |format|

@@ -41,7 +41,9 @@ class SiteConfigurationsController < ApplicationController
   # POST /site_configurations
   # POST /site_configurations.xml
   def create
-    @site_configuration = SiteConfiguration.new(params[:site_configuration])
+    site = params[:site_configuration]
+    site[:root_category_id] = Category.find_or_create_by_name(site[:root_category_id], :conditions => ["name LIKE ?", site[:root_category_id]]).id
+    @site_configuration = SiteConfiguration.new(site)
 
     respond_to do |format|
       if @site_configuration.save
@@ -58,10 +60,12 @@ class SiteConfigurationsController < ApplicationController
   # PUT /site_configurations/1
   # PUT /site_configurations/1.xml
   def update
-    @site_configuration = SiteConfiguration.find(params[:id]) #find or create para category_root
+    @site_configuration = SiteConfiguration.find(params[:id])
 
     respond_to do |format|
-      if @site_configuration.update_attributes(params[:site_configuration])
+      site = params[:site_configuration]
+      site[:root_category_id] = Category.find_or_create_by_name(site[:root_category_id], :conditions => ["name LIKE ?", site[:root_category_id]]).id
+      if @site_configuration.update_attributes(site)
         flash[:notice] = 'SiteConfiguration was successfully updated.'
         format.html { redirect_to(@site_configuration) }
         format.xml  { head :ok }

@@ -10,6 +10,11 @@
   	<b>Icono</b><br />
   	<%= f.file_field :icon %>
   </p>
+
+  <p>
+    <b>Categorías padre (separadas por coma)</b><br />
+    <%= f.text_field :parents_names %>
+  </p>
   
   <p>
     <%= f.submit button_name %>
