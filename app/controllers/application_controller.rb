@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :get_site_configuration, :get_pages, :get_tags #, :get_categories
+  before_filter :get_site_configuration, :get_pages, :get_tags, :prepare_cloud #, :get_categories
   include AuthenticatedSystem
   helper :all # include all helpers, all the time
 
@@ -30,5 +30,10 @@ class ApplicationController < ActionController::Base
   def get_tags
     @tags = params[:tags]
     @tags = [] if @tags.nil?
+  end
+
+  def prepare_cloud
+    @cloud = Application.tag_counts
+    @css_classes = (1 .. 6).map { |i| "tagscloud#{i}" }
   end
 end

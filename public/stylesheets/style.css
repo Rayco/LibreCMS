@@ -353,6 +353,10 @@ ul {
   margin-bottom: 0.5em;
 }
 
+.generic-right-box {
+  padding: 7px 7px 0 7px;
+}
+
 /* Footer */
 
 #footer {

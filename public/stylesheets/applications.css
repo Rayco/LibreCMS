@@ -63,11 +63,6 @@
   font-weight: bold;
 }  
 
-
-#generic-right-box {
-  padding: 7px 7px 0 7px;
-}
-
 #screenshots {
 	padding-top: 7px;
   padding-bottom: 5px;
@@ -86,14 +81,26 @@
 	font-size: medium;
 }
 
-.tag1 {
+.tagscloud1 {
   color: red;
 }
 
-.tag2 a {
+.tagscloud2 {
   color: blue;
 }
 
-.tag3 a {
+.tagscloud3 {
   color: green;
+}
+
+.tagscloud4 {
+  color: yellow;
+}
+
+.tagscloud5 {
+  color: black;
+}
+
+.tagscloud6 {
+  color: white;
 }

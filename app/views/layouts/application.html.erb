@@ -69,6 +69,10 @@
           <% if @screenshots and !@screenshots.empty? %>
 	  				<%= render :partial => '/shared/screenshots' %> <!-- Usar content_for -->
           <% end %>
+
+          <% unless @application and @cloud.empty? %>
+            <%= render :partial => '/shared/tag_cloud' %>
+          <% end %>
         </div>
       </div>
 
