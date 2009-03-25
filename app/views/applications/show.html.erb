@@ -3,8 +3,8 @@
 		:alt => @application.name, :title => @application.name %>
 		
 	<p><b>Aplicaci&oacute;n:</b> <%=h @application.name %>, <%= link_to @application.website.split(/\/\//)[1], @application.website unless @application.website.nil? %></p>
-  <p><b>Etiquetas:</b>
-    <% tag_cloud @application.tag_counts, %w(tag1 tag2 tag3) do |tag, css_class| %>
+  <p id="taglist"><b>Etiquetas:</b>
+    <% tag_cloud @application.tag_counts, %w(tag1 tag2 tag3 tag4 tag5 tag6) do |tag, css_class| %>
       <%= link_to tag, applications_path(String.new(tag.name).to_url), :class => css_class %>
     <% end %>
   </p> 
@@ -53,5 +53,6 @@
 	<%= link_to 'Edit', edit_application_path(@tags, @application.to_param) %> | 
 	<%= link_to 'Screenshots', application_screenshots_path(@tags, @application) %> | 
 	<%= link_to 'Resources', application_resources_path(@tags, @application) %> |
-	<%= link_to 'Installers', application_installers_path(@tags, @application) %>
+  <%= link_to 'Installers', application_installers_path(@tags, @application) %> |
+  <%= link_to "Destroy", application_path(@tags, @application), :confirm => 'Are you sure?', :method => :delete %></td>
 <% end %>

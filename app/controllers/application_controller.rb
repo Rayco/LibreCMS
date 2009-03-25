@@ -34,6 +34,6 @@ class ApplicationController < ActionController::Base
 
   def prepare_cloud
     @cloud = Application.tag_counts
-    @css_classes = (1 .. 6).map { |i| "tagscloud#{i}" }
+    @css_classes = (1 .. 6).map { |i| "tag#{i}" }
   end
 end

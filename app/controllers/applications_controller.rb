@@ -81,9 +81,9 @@ class ApplicationsController < ApplicationController
   def destroy
     @application = Application.find_with_like_by_name(params[:id].from_url)
     @application.destroy
-
+    
     respond_to do |format|
-      format.html { redirect_to(applications_url) }
+      format.html { redirect_to(applications_url(@tags)) }
       format.xml  { head :ok }
     end
   end

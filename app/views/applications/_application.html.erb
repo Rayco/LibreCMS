@@ -2,7 +2,7 @@
 
 <% form_for ([@application]), :url => application_path(@tags, application), :html => { :multipart => true } do |f| %>
   <p>
-    <b>Tags:</b><br/>
+    <b>Tags (separados por comas):</b><br/>
     <%= f.text_field :tag_list %>
   </p>
   <p>

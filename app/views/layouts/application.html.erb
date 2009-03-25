@@ -70,7 +70,7 @@
 	  				<%= render :partial => '/shared/screenshots' %> <!-- Usar content_for -->
           <% end %>
 
-          <% unless @application and @cloud.empty? %>
+          <% unless @application or @cloud.empty? %>
             <%= render :partial => '/shared/tag_cloud' %>
           <% end %>
         </div>
