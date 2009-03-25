@@ -2,7 +2,7 @@
   <%= link_to 'Cat&aacute;logo', categories_path %>
   <% cat_tags = [] %> 
   <% for tag in @tags %>
-  	> <%= link_to_if ((tag != @tags[-1]) or @application), String.new(tag).from_url, categories_path(cat_tags << tag) %>
+  	> <%= link_to_if ((tag != @tags[-1]) or @application), String.new(tag).from_url, applications_path(cat_tags << tag) %>
   <% end %>
   <%=h '> ' + @application.name if @application and @application.name %>
   <%= link_to 'Ver aplicaciones', applications_path(@tags), :class => 'goto' unless @tags.nil? or @tags.empty? if controller.controller_name == 'categories' %>
