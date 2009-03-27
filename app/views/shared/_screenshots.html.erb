@@ -12,7 +12,10 @@
         screenshot.image.url, {:rel => "lightbox[screenshots]", :title => "<text class='shot_text'>#{screenshot.name}</text>"} %>
       <% end %>
     <% end %>
-    <br/><%=h @screenshots.length %> capturas
+    <br/><%=h @screenshots.length %>
+    <% shot_text = "captura" %>
+    <% shot_text = shot_text.pluralize if @screenshots.length > 1 %>
+    <%=h shot_text %>
   </div>
 </div>
 <div class="column-right-bottom">&nbsp;</div>
