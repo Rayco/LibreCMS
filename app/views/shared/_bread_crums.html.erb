@@ -2,9 +2,17 @@
   <%= link_to 'Cat&aacute;logo', categories_path %>
   <% cat_tags = [] %> 
   <% for tag in @tags %>
-  	> <%= link_to_if ((tag != @tags[-1]) or @application), String.new(tag).from_url, applications_path(cat_tags << tag) %>
+    > <%= link_to_if ((tag != @tags[-1]) or @application), String.new(tag).from_url, applications_path(cat_tags << tag) %>
   <% end %>
   <%=h '> ' + @application.name if @application and @application.name %>
-  <%= link_to 'Ver aplicaciones', applications_path(@tags), :class => 'goto' unless @tags.nil? or @tags.empty? if controller.controller_name == 'categories' %>
-  <%= link_to 'Ver categorias', categories_path(@tags), :class => 'goto' unless @tags.nil? or @tags.empty? or @application or Category.find_with_like_by_name(String.new(@tags[0]).from_url).nil? if controller.controller_name == 'applications' %>
+
+  <% if @hide %>
+    <% css_class = 'gotocenter' %>
+  <% else %>
+    <% css_class = 'goto' %>
+  <% end %>
+
+  <%= link_to 'Ver aplicaciones', applications_path(@tags), :class => css_class unless @tags.nil? or @tags.empty? if controller.controller_name == 'categories' %>
+  <% cat = Category.find_with_like_by_name(String.new(@tags[-1]).from_url) if @tags[-1] %>
+  <%= link_to 'Ver categorias', categories_path(@tags), :class => css_class unless @tags.nil? or @tags.empty? or @application or cat.nil? if controller.controller_name == 'applications' && cat && !cat.children_in_site(@site_config).empty? %>
 </div>

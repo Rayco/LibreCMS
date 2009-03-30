@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
       @categories = category.children_in_site(@site_config)
     end
 
-    #@hide = true
+    @hide = true
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @categories }

@@ -1,0 +1,5 @@
+<div class="horizontal-cloud" id="tagcloud">
+  <% tag_cloud @cloud, @css_classes  do |tag, css_class| %>
+    <%= link_to tag, applications_path(String.new(tag.name).to_url), :class => css_class %>
+  <% end %>
+</div>

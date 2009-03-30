@@ -9,12 +9,9 @@ set :applicationdir, "/var/rails/#{application}"
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
 # set :scm, :subversion
-set :repository,  "https://svn.osl.ull.es/windowsLibre/tags/release-0.0.3"
+set :repository,  "https://svn.osl.ull.es/windowsLibre/tags/release-0.0.4"
 
 # Roles (servers)
-#role :app, "devrails.osl.ull.es"
-#role :web, "devrails.osl.ull.es"
-#role :db,  "devrails.osl.ull.es", :primary => true
 role :app, "windowsLibre.osl.ull.es"
 role :web, "windowsLibre.osl.ull.es"
 role :db,  "windowsLibre.osl.ull.es", :primary => true

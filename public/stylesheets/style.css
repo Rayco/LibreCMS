@@ -302,6 +302,11 @@ ul {
   right: 225px;
 }
 
+#breadcrums .gotocenter {
+  position: absolute;
+  right: 25px;
+}
+
 /* Content boxes */
 
 #content-box {
@@ -327,7 +332,6 @@ ul {
 
 .content-box-center {
 	width: 960px;
-	margin-top: 0.6em;
 }
 
 .content-box-left-in {
@@ -339,7 +343,7 @@ ul {
 }
 
 .content-box-center-in {
-	margin: 0.4em 2em 0 2em;
+	margin: 0.4em 1em 0 1em;
 }
 
 .column-right-box {
@@ -382,6 +386,13 @@ ul {
 }
 
 /* TagCloug and TagList */
+.horizontal-cloud {
+	border: thin solid #005E85;
+	background-color: #DBF3FF;
+	padding: 10px;
+  margin-bottom: 15px;
+}
+
 #tagcloud { text-align: center; }
 
 a.tag1 { font-size:0.8em; color:#3E84A2; line-height:1em; }
