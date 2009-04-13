@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   end
 
   def prepare_cloud
-    @cloud = Application.tag_counts
+    @cloud = Application.tag_counts.sort { |x, y| x.name <=> y.name }
     @css_classes = (1 .. 6).map { |i| "tag#{i}" }
   end
 end
