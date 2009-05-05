@@ -17,7 +17,7 @@ class ApplicationsController < ApplicationController
   def show
     @application = Application.find_with_like_by_name(params[:id].from_url)
     @installers32 = @application.installers.tagged_with("Windows, 32bits", :on => :platforms, :match_all => true).flatten 
-    @installers64 = @application.installers.tagged_with("Windows, 64bits", :on => :platforms, :match_all => true) .flatten
+    @installers64 = @application.installers.tagged_with("Windows, 64bits", :on => :platforms, :match_all => true).flatten
     @screenshots = @application.screenshots
 
     respond_to do |format|

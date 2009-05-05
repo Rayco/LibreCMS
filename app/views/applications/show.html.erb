@@ -3,7 +3,7 @@
 		:alt => @application.name, :title => @application.name %>
 		
   <p><b>Aplicaci&oacute;n:</b> <%=h @application.name %></p>
-  <p><b>P&aacute;gina web:</b> <%= link_to @application.website.split(/\/\//)[1], :popup => true ,@application.website unless @application.website.nil? %></p>
+  <p><b>P&aacute;gina web:</b> <%= link_to @application.website.split(/\/\//)[1], @application.website unless @application.website.nil? %></p>
   <p id="taglist"><b>Etiquetas:</b>
     <% tag_cloud @application.tag_counts.sort { |x, y| x.name <=> y.name }, @css_classes do |tag, css_class| %>
       <%= link_to tag, applications_path(String.new(tag.name).to_url), :class => css_class %>
