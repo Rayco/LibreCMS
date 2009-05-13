@@ -364,11 +364,11 @@ ul {
 /* Footer */
 
 #footer {
-	background-color: #00587D;
+	background-color: #FFFFFF;
 	text-align: center;
 	color: white;
 	width: 960px;
-	height: 34px;
+	height: 110px;
 	margin-top: 0.5em;
 	font-size: 0.9em;
 	border-bottom: 2px solid #003042;
@@ -407,3 +407,15 @@ a.tag6 { font-size:1.8em; color:#003553; line-height:1em; }
 
 #taglist a { text-decoration:none; }
 #taglist a:hover { text-decoration:underline; }
+
+/* Descargar ISO */
+
+#descarga-iso {
+    display: block;
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    background-image: url('/images/dvd.png');
+    width: 100px;
+    height: 100px;
+}

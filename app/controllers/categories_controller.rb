@@ -76,7 +76,7 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.xml
   def destroy
-    @category = Category.find_with_like_by_name(String.new(params[:id]).from_url)
+    @category = Category.find_with_like_by_name(String.new(params[:id].from_url))
     @category.destroy
 
     respond_to do |format|
