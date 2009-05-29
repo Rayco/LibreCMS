@@ -14,6 +14,10 @@
 <!-- Javascript -->
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 
+<% # Include TinyMCE -%>
+<%= javascript_include_tiny_mce_if_used %>
+<%= tiny_mce if using_tiny_mce? %>
+
 <!-- CSS -->
 <%= stylesheet_link_tag 'style', 'categories', 'applications', 'pages', 'lightbox' %>
 
@@ -27,8 +31,8 @@
 
 		<!-- Header -->
 		<div id="header">
-			<%= link_to (image_tag "ull.png", :alt => "ULL", :class => "header-ull"), 'http://www.ull.es', :title => "Universidad de La Laguna", :popup => true %>
-			<%= link_to (image_tag "osl_text.png", :alt => "OSL", :class => "header-osl"), 'http://osl.ull.es/', :title => "Oficina de Software Libre", :popup => true %>
+			<%= link_to (image_tag "ull.png", :alt => "Universidad de La Laguna", :class => "header-ull"), 'http://www.ull.es', :title => "Universidad de La Laguna", :popup => true %>
+			<%= link_to (image_tag "osl_text.png", :alt => "Oficina de Software Libre", :class => "header-osl"), 'http://osl.ull.es/', :title => "Oficina de Software Libre", :popup => true %>
       <h1><%= link_to 'Software Libre <span class="dark">para Windows</span>', root_path %> <span class="mini">beta</span></h1>
 		</div>
 		<!-- Header end -->
@@ -108,15 +112,13 @@
 
 	<!-- Footer -->
 	<div id="footer">
-	<%= link_to (image_tag "gobcan.png"), 'http://www.gobcan.es/', :title => "Gobierno de Canarias", :popup => true %>
-        &nbsp; &nbsp;
-	<%= link_to (image_tag "avanza2.png", :size => "180x40"), 'http://www.planavanza.es/', :title => "Plan Avanza", :popup => true %>
-	&nbsp; &nbsp;
-	<%= link_to (image_tag "MITC.png", :size => "210x60"), 'http://www.mityc.es/es-ES/Paginas/index.aspx', :title => "Ministerio de Industria, Turismo y Comercio", :popup => true %>
-	&nbsp; &nbsp;
-	<%= link_to (image_tag "DesarrolloRegional.png", :size => "80x100"), 'http://ec.europa.eu/regional_policy/funds/feder/index_es.htm', :title => "Fondo Europeo de Desarrollo Regional", :popup => true %>
-	&nbsp; &nbsp;
-	<%= link_to (image_tag "SocialEuropeo.png", :size => "80x100"), 'http://ec.europa.eu/employment_social/esf/index_es.htm', :title => "Fondo Social Europeo", :popup => true %>
+	<%= link_to (image_tag "MITYC.png", :size => "230x53", :border => "0"), 'http://www.mityc.es/', :title => "Ministerio de Industria, Turismo y Comercio", :popup => true %>
+	&nbsp; &nbsp; &nbsp;
+	<%= link_to (image_tag "Avanza.png", :size => "230x45", :border => "0"), 'http://www.planavanza.es/', :title => "Plan Avanza", :popup => true %>
+	&nbsp; &nbsp; &nbsp;	
+	<%= link_to (image_tag "FEDER.png", :size => "80x69", :border => "0"), 'http://ec.europa.eu/regional_policy/funds/feder/index_es.htm', :title => "Fondo Europeo de Desarrollo Regional", :popup => true %>
+        &nbsp; &nbsp; &nbsp;
+	<%= link_to (image_tag "ACIISI.png", :size => "230x58", :border => "0"), 'http://www.gobiernodecanarias.org/aciisi/', :title => "Agencia Canaria de Investigación, Innovación y Sociedad de la Información", :popup => true %>
 	</div>
 	<!-- Footer end -->
 

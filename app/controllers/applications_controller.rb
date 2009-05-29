@@ -1,5 +1,22 @@
 class ApplicationsController < ApplicationController
   before_filter :check_administrator_role, :except => [:show, :index]
+
+  uses_tiny_mce(:options => {
+   :theme => 'advanced',
+   :mode => "textareas",
+   :theme_advanced_toolbar_location => "top",
+   :theme_advanced_toolbar_align => "left",
+   :theme_advanced_resizing => true,
+   :theme_advanced_resize_horizontal => false,
+   :paste_auto_cleanup_on_paste => true,
+   :theme_advanced_buttons1 => %w{bold italic underline sub sup separator justifyleft 
+                                  justifycenter justifyright justifyfull indent outdent 
+                                  separator bullist numlist forecolor backcolor separator 
+                                  link unlink},
+   :theme_advanced_buttons2 => [],
+   :theme_advanced_buttons3 => [],
+   :plugins => %w{contextmenu paste}},
+   :only => [:new, :edit, :show, :index])
   
   # GET /applications
   # GET /applications.xml

@@ -4,7 +4,7 @@
 					:title => application.name), application_path(@tags, application)  %>
 		<%= link_to application.name, application_path(@tags, application) %>
 		<% if !application.description.nil? %> 
-			<%=h application.description[0,260] %><%=h '...' if application.description.length > 260 %><br />
+			<%= application.description[0,260].split(/<p>/) %><%= '...' if application.description.length > 260 %><br />
 		<% end %>
 	</p>
 

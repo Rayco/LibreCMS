@@ -1,11 +1,13 @@
 <div class="column-right-box">
-  <h4>Otros recursos</h4>
+  <h4>Recursos</h4>
   <div class="generic-right-box">
   <ul>
 	  <% for resource in @application.resources %>
   	<li>
-	  	<%= link_to resource.name, resource.resource.url,
-		  	:title => resource.description if resource.name %>
+                <%= link_to resource.name, resource.resource.url,
+                        :title => resource.description if resource.website == "" %>
+                <%= link_to resource.name, resource.website,
+                        :title => resource.description, :popup => true if resource.website != "" %>
   	</li>
 	  <% end %>
   </ul>
