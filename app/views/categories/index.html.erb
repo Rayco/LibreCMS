@@ -11,7 +11,7 @@
 		<% end %>
 		<% if logged_in? and current_user.has_role?('administrator') %>
     		<%= link_to 'Edit', edit_category_path(category) %> | 
-    		<%= link_to 'Destroy', categories_path(category), :confirm => 'Are you sure?', :method => :delete %>
+    		<%= link_to 'Destroy', category_path(category), :confirm => 'Are you sure?', :method => :delete %>
 		<% end %>
 	</li>
 <% end %>
