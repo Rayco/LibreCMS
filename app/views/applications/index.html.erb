@@ -3,12 +3,13 @@
 		<%= link_to (image_tag application.logo.url, :class => "app_logo", :alt => application.name,
 					:title => application.name), application_path(@tags, application)  %>
 		<%= link_to application.name, application_path(@tags, application) %>
-		<% if !application.description.nil? %> 
-			<%= strip_tags(application.description)[0,260] %>
-                        <%= link_to "...", application_path(@tags, application) if strip_tags(application.description).length > 260 %><br />
+		<% if !application.description.nil? %>
+                   <%  maxIndex = strip_tags(application.description).index(' ', 260) 
+                       maxIndex = 260 if maxIndex.nil? %> 
+		   <%= strip_tags(application.description)[0,maxIndex] %>
+                   <%= link_to "...", application_path(@tags, application) if strip_tags(application.description).length > 260 %><br />
 		<% end %>
 	</p>
-
 <% end %>
 
 <br />

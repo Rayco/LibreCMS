@@ -1,10 +1,15 @@
 <h4><%= link_to @page.name, "/static/#{@page.permalink}" %></h4>
 
-<div class="static_pages">
-	<%= RedCloth.new(@page.content).to_html %>
-</div>
-<div id="static_pages_bottom">&nbsp;</div>
+<%
+  content = @page.content.gsub(/<h\d/, '</div><div class="static_pages"><h3')
+  content = content.sub(/^<\/div><div class="static_pages">/, '') 
+%>
 
+<div class="static_pages">	
+  <%= content %>
+</div>
+
+<div id="static_pages_bottom">&nbsp;</div>
 
 <% if logged_in? and current_user.has_role?('administrator') %>
   <%= link_to "Edit", edit_page_path(@page) %> |
