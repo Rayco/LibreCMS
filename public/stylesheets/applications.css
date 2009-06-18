@@ -2,8 +2,8 @@
 	height: 75px;
 	margin-top: 15px;
 	padding: 10px;
-	border: thin solid #005E85;
-	background-color: #DBF3FF;
+	/* border: thin solid #005E85; */
+	background-color: #EEEEFF;
 	text-align: justify;
 }
 
@@ -14,13 +14,14 @@
 }
 
 .app_details {
-	background-color: #DBF3FF;
+	background-color: #EEEEFF;
 	padding: 15px;
 	text-align: justify;
 }
 
 #app_details_bottom {
-	background: #DBF3FF url('../images/column-left-bottom.gif') no-repeat 0 0;
+	/* background: #EEEEFF url('../images/column-left-bottom.gif') no-repeat 0 0; */
+	background: #EEEEFF;
 	height: 20px;
 }
 

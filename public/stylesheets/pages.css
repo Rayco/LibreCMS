@@ -1,12 +1,13 @@
 .static_pages {
-	background-color: #DBF3FF;
+	background-color: #EEEEFF;
 	padding: 15px;
 	text-align: justify;
 	min-height: 180px;
 }
 
 #static_pages_bottom {
-	background: #DBF3FF url('../images/column-center-bottom.gif') no-repeat 0 0;
+	/* background: #EEEEFF url('../images/column-center-bottom.gif') no-repeat 0 0; */
+	background: #EEEEFF;
 	height: 20px;
 	margin-bottom: 5px;
 }

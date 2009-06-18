@@ -347,11 +347,12 @@ ul {
 }
 
 .column-right-box {
-	background-color: #DBF3FF;
+	background-color: #EEEEFF;
 }
 
 .column-right-bottom {
-	background: #DBF3FF url('/images/column-right-bottom.gif') no-repeat 0 0;
+	/* background: #EEEEFF url('/images/column-right-bottom.gif') no-repeat 0 0; */
+	background: #EEEEFF;
 	width: 185px;
 	height: 19px;
   margin-bottom: 0.5em;
@@ -387,8 +388,8 @@ ul {
 
 /* TagCloug and TagList */
 .horizontal-cloud {
-	border: thin solid #005E85;
-	background-color: #DBF3FF;
+	/* border: thin solid #005E85; */
+	background-color: #EEEEFF;
 	padding: 10px;
  	margin-bottom: 15px;
 }
@@ -417,5 +418,5 @@ a.tag6 { font-size:1.8em; color:#003553; line-height:1em; }
     right: 5px;
     background-image: url('/images/dvd.png');
     width: 100px;
-    height: 100px;
+    height: 133px;
 }
