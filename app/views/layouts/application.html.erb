@@ -33,7 +33,7 @@
 		<div id="header">
 			<%= link_to (image_tag "ull.png", :alt => "Universidad de La Laguna", :class => "header-ull"), 'http://www.ull.es', :title => "Universidad de La Laguna", :popup => true %>
 			<%= link_to (image_tag "osl_text.png", :alt => "Oficina de Software Libre", :class => "header-osl"), 'http://osl.ull.es/', :title => "Oficina de Software Libre", :popup => true %>
-      <h1><%= link_to 'Software Libre <span class="dark">para Windows</span>', root_path %> <span class="mini">beta</span></h1>
+      <h1><%= link_to 'Software Libre <span class="dark">para Windows</span>', root_path %></h1>
 		</div>
 		<!-- Header end -->
 
@@ -97,7 +97,6 @@
 			<% end %>
 			<!-- Content center end -->
 			
-			
 			<div class="cleaner">&nbsp;</div>
 			
 			<% if logged_in? and current_user.has_role?('administrator') %>
@@ -110,6 +109,8 @@
 
 <hr class="noscreen" />
 
+<br /><p>&nbsp;&nbsp;<a href="/static/credits">Créditos</p></a>
+
 	<!-- Footer -->
 	<div id="footer">
 	<%= link_to (image_tag "MITYC.png", :size => "230x53", :border => "0"), 'http://www.mityc.es/', :title => "Ministerio de Industria, Turismo y Comercio", :popup => true %>
@@ -119,10 +120,8 @@
 	<%= link_to (image_tag "FEDER.png", :size => "80x69", :border => "0"), 'http://ec.europa.eu/regional_policy/funds/feder/index_es.htm', :title => "Fondo Europeo de Desarrollo Regional", :popup => true %>
         &nbsp; &nbsp; &nbsp;
 	<%= link_to (image_tag "ACIISI.png", :size => "230x58", :border => "0"), 'http://www.gobiernodecanarias.org/aciisi/', :title => "Agencia Canaria de Investigación, Innovación y Sociedad de la Información", :popup => true %>
-	</div>
 	<!-- Footer end -->
-
-</div>
+	</div>
 </div>
 <a href="http://windowslibre.osl.ull.es/windowslibre.iso" id="descarga-iso" title="Descargar una ISO de DVD"></a>
 </body>
