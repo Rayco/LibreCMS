@@ -369,17 +369,17 @@ ul {
 	text-align: center;
 	color: white;
 	width: 960px;
-	height: 90px;
+	height: 100px;
 	margin-top: 0.5em;
 	font-size: 0.9em;
 	border-bottom: 2px solid #003042;
 }
-
+/*
 #footer a, #footer a:visited {
 	font-weight: bold !important;
 	color: white;
 }
-
+*/
 #footer p {
 	display: inline;
 	margin-bottom: 0;
