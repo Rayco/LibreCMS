@@ -9,7 +9,7 @@
 
 <% for menu_node in @menu_nodes %>
   <tr>
-    <td><%=h menu_node.parent_id %></td>
+    <td><%=h menu_node.category_id %></td>
     <td><%=h menu_node.child_id %></td>
     <td><%=h menu_node.site_id %></td>
     <td><%= link_to 'Show', menu_node %></td>
