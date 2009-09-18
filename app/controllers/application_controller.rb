@@ -24,7 +24,15 @@ class ApplicationController < ActionController::Base
   end
   
   def get_site_configuration
-    @site_config = SiteConfiguration.find(:first)
+    dominio = request.subdomains.join(".") + "." + request.domain
+    dominio = request.domain if request.subdomains.join(".") == ""
+    @site_config = SiteConfiguration.find_by_website(dominio)
+    if @site_config.nil?
+      @site_config = SiteConfiguration.find(:first)
+      $site_id = 1
+    else
+      $site_id = @site_config.id
+    end
   end
   
   def get_tags

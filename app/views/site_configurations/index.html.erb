@@ -2,14 +2,18 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Name</th>
+    <th>WebSite</th>
     <th>Header</th>
     <th>Root category</th>
   </tr>
 
 <% for site_configuration in @site_configurations %>
   <tr>
+    <td><%=h site_configuration.id %></td>
     <td><%=h site_configuration.name %></td>
+    <td><%=h site_configuration.website %></td>
     <td><%=h site_configuration.header %></td>
     <td><%=h site_configuration.root_category_id %></td>
     <td><%= link_to 'Show', site_configuration %></td>

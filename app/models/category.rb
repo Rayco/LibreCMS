@@ -56,7 +56,7 @@ class Category < ActiveRecord::Base
     #need remove nodes when remove from parents_name
     parents_name.split(",").each do |p|
       parent = Category.find_or_create_by_name(p.strip, :conditions => ["name LIKE ?", p.strip])
-      category_as_child.build(:category_id => parent.id, :child_id => self.id, :site_id => 1) unless relationship_in_site?(1, parent.id) #Warning: site_id harcoded
+      category_as_child.build(:category_id => parent.id, :child_id => self.id, :site_id => $site_id) unless relationship_in_site?($site_id, parent.id) #Warning: site_id harcoded
     end
   end
 

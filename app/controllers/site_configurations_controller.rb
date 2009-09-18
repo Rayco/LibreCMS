@@ -64,7 +64,11 @@ class SiteConfigurationsController < ApplicationController
 
     respond_to do |format|
       site = params[:site_configuration]
-      site[:root_category_id] = Category.find_or_create_by_name(site[:root_category_id], :conditions => ["name LIKE ?", site[:root_category_id]]).id
+      if @site_configuration.name == "Default"
+        site[:root_category_id] = Category.find_or_create_by_name(site[:root_category_id], :conditions => ["name LIKE ?", site[:root_category_id]]).id
+      else
+        site[:root_category_id] = @site_configuration.root_category_id
+      end
       if @site_configuration.update_attributes(site)
         flash[:notice] = 'SiteConfiguration was successfully updated.'
         format.html { redirect_to(@site_configuration) }
