@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><%= @site_config.header %></title>
+<title><%= @site_config.name + ": " + @site_config.header %></title>
 
 <!-- This template was created by Mantis-a [http://www.mantisa.cz/] and modified by Ancor Cruz [http://www.ancorcruz.com]. For more templates visit Free website templates [http://www.mantisatemplates.com/]. -->
 
@@ -29,21 +29,21 @@
 <div id="border">
 <div id="wrapper">
 
-		<!-- Header -->
-		<div id="header">
-			<%= link_to (image_tag "ull.png", :alt => "Universidad de La Laguna", :class => "header-ull"), 'http://www.ull.es', :title => "Universidad de La Laguna", :popup => true %>
-			<%= link_to (image_tag "osl_text.png", :alt => "Oficina de Software Libre", :class => "header-osl"), 'http://osl.ull.es/', :title => "Oficina de Software Libre", :popup => true %>
-      <h1><%= link_to 'Software Libre <span class="dark">para Windows</span>', root_path %></h1>
-		</div>
-		<!-- Header end -->
+<!-- Header -->
+<div id="header">
+<%= link_to (image_tag "ull.png", :alt => "Universidad de La Laguna", :class => "header-ull"), 'http://www.ull.es', :title => "Universidad de La Laguna", :popup => true %>
+<%= link_to (image_tag "osl_text.png", :alt => "Oficina de Software Libre", :class => "header-osl"), 'http://osl.ull.es/', :title => "Oficina de Software Libre", :popup => true %>
+<h1><%= link_to @site_config.header, root_path %></h1>
+</div>
+<!-- Header end -->
 
-		<!-- Menu -->
-		<a href="#skip-menu" class="hidden">Skip menu</a>
-		<ul id="menu" class="cleaning-box">
-			<li class="first"><%= link_to 'Portada', root_path, :class => "active" %></li>
-      <%= render :partial => '/shared/pages_list' %> <!-- No shared -->
-		</ul>
-		<!-- Menu end -->
+<!-- Menu -->
+<a href="#skip-menu" class="hidden">Skip menu</a>
+<ul id="menu" class="cleaning-box">
+	<li class="first"><%= link_to 'Portada', root_path, :class => "active" %></li>
+	<%= render :partial => '/shared/pages_list' %> <!-- No shared -->
+</ul>
+<!-- Menu end -->
 
 <hr class="noscreen" />
 
@@ -122,6 +122,6 @@
 	<br /><p align="center"><a href="/static/credits">Créditos</p></a>
 	</div>
 </div>
-<a href="http://windowslibre.osl.ull.es/WindowsLibre.iso" id="descarga-iso" title="Descargar una ISO de DVD"></a>
+<a href="http://windowslibre.osl.ull.es/windowslibre.iso" id="descarga-iso" title="Descargar una ISO de DVD"></a>
 </body>
 </html>
