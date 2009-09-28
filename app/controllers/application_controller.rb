@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
   
   def get_site_configuration
-    dominio = request.subdomains.join(".") + "." + request.domain
+    dominio = request.subdomains.join(".") + "." + request.domain if !request.domain.nil?
     dominio = request.domain if request.subdomains.join(".") == ""
     @site_config = SiteConfiguration.find_by_website(dominio)
     if @site_config.nil?
