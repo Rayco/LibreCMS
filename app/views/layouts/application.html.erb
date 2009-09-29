@@ -9,7 +9,7 @@
 <meta name="Description" content="..." />
 <meta name="Keywords" content="..." />
 <meta name="robots" content="all,follow" />
-<meta name="author" content="Agustin Ancor Cruz Lorenzo (www.ancorcruz.com)" />
+<meta name="author" content="Agustin Ancor Cruz Lorenzo (www.ancorcruz.com) y Rayco Abad Martin" />
 
 <!-- Javascript -->
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
@@ -122,6 +122,8 @@
 	<br /><p align="center"><a href="/static/credits">Créditos</p></a>
 	</div>
 </div>
-<a href="http://windowslibre.osl.ull.es/windowslibre.iso" id="descarga-iso" title="Descargar una ISO de DVD"></a>
+<% if @site_config.webiso != "" %> 
+     <a href="<%=@site_config.webiso%>" id="descarga-iso" title="Descargar una ISO de DVD"></a>
+<% end %>
 </body>
 </html>
