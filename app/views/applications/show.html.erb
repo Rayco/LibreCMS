@@ -14,10 +14,14 @@
 -->
   <!--
   <p><b>Idioma:</b></p>
-  <p><b>Licencia:</b><p>
-  -->
+-->
+
+  <% if !@application.license.nil? and !@application.license.empty? %>
+    <p><b>Licencia:</b> <%=h @application.license %></p>
+  <% end %>
   
   <p><b>Descripci&oacute;n:</b> <%= @application.name + " " %>
+
   <% expr = /^(\s*)<p>(.*)<\/p>(\s*)$/
   if description = expr.match(@application.description) %>
     <%= description[2] %></p>
@@ -25,9 +29,9 @@
     <%= @application.description %></p> 
   <% end %>
   
-  <!--
-  <p><b>Recomendaciones:</b></p>
-  -->
+  <% if !@application.requisitos.nil? and !@application.requisitos.empty? %> 
+    <p><b>Requisitos:</b> <%= @application.requisitos %></p>
+  <% end %>
 
   <% unless @installers32.empty? and @installers64.empty? %>
   <div id="installers">

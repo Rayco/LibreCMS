@@ -1,19 +1,28 @@
 <%= error_messages_for :application %>
 
 <% form_for ([@application]), :url => application_path(@tags, application), :html => { :multipart => true } do |f| %>
-  <p>
-    <b>Tags (separados por comas):</b><br/>
-    <%= f.text_field :tag_list %>
-  </p>
+ 
   <p>
     <b>Name</b><br />
     <%= f.text_field :name %>
   </p>
   
   <p>
-  	<b>Recomendada por</b><br/>
-	<%= f.text_field :user_recommend %>
+    <b>Tags (separadas por comas):</b><br/>
+    <%= f.text_field :tag_list %>
   </p>
+
+  <p>
+    <b>License</b><br />
+    <%= f.text_field :license %>
+  </p>
+
+<!--
+  <p>
+    <b>Recomendada por</b><br/>
+     f.text_field :user_recommend 
+  </p>
+-->
 
   <p>
     <b>Logo</b><br />
@@ -21,13 +30,18 @@
   </p>
 
   <p>
-    <b>Website</b><br />
+    <b>WebSite</b><br />
     <%= f.text_field :website %>
   </p>
   
   <p>
     <b>Description</b><br />
     <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <b>Requirements</b><br />
+    <%= f.text_area :requisitos %>
   </p>
 
   <p>
