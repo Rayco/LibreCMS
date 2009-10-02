@@ -5,14 +5,19 @@
     <b>Name</b><br />
     <%= f.text_field :name %>
   </p>
+
+  <p>
+    <b>Public Name</b><br />
+    <%= f.text_field :publicname %>
+  </p>
   
   <p>
-  	<b>Icono</b><br />
-  	<%= f.file_field :icon %>
+    <b>Icono</b><br />
+    <%= f.file_field :icon %>
   </p>
 
   <p>
-    <b>Categorías padre (separadas por coma)</b><br />
+    <b>Categorías padre (Debe poner el Name, no el PublicName, separados por comas)</b><br />
     <%= f.text_field :parents_names %>
   </p>
   

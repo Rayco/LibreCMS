@@ -6,15 +6,30 @@
     <b>Name</b><br />
     <%= f.text_field :name %>
   </p>
+ 
+  <p>
+    <b>Logo</b><br />
+	<%= f.file_field :logo %>
+  </p>
   
+  <p>
+    <b>WebSite</b><br />
+    <%= f.text_field :website %>
+  </p>
+  
+  <p>
+    <b>License</b><br />
+    <%= f.text_field :license %>
+  </p>
+
   <p>
     <b>Tags (separadas por comas):</b><br/>
     <%= f.text_field :tag_list %>
   </p>
 
   <p>
-    <b>License</b><br />
-    <%= f.text_field :license %>
+    <b>Demo</b><br />
+    <%= f.text_field :demo %>
   </p>
 
 <!--
@@ -24,16 +39,6 @@
   </p>
 -->
 
-  <p>
-    <b>Logo</b><br />
-	<%= f.file_field :logo %>
-  </p>
-
-  <p>
-    <b>WebSite</b><br />
-    <%= f.text_field :website %>
-  </p>
-  
   <p>
     <b>Description</b><br />
     <%= f.text_area :description %>

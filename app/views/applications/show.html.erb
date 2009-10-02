@@ -19,6 +19,10 @@
   <% if !@application.license.nil? and !@application.license.empty? %>
     <p><b>Licencia:</b> <%=h @application.license %></p>
   <% end %>
+
+  <% if !@application.demo.nil? and !@application.demo.empty? %>
+  <p><%= link_to "Pruébelo On-Line", @application.demo, :popup => true %></p>
+  <% end %>
   
   <p><b>Descripci&oacute;n:</b> <%= @application.name + " " %>
 
