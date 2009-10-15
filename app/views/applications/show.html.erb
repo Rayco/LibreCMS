@@ -1,7 +1,8 @@
-<div class="app_details">
-	<%= image_tag @application.logo.url(:big), :class => "app_logo",
-		:alt => @application.name, :title => @application.name %>
-		
+<table class="app_details">
+<td valign="top">
+  <%= image_tag @application.logo.url(:normal), :class => "app_logo", :alt => @application.name, :title => @application.name %>
+</td>
+<td valign="top">		
   <p><b>Aplicaci&oacute;n:</b> <%=h @application.name %></p>
   <p><b>P&aacute;gina web:</b> <%= link_to @application.website.split(/\/\//)[1], @application.website, :popup => true unless @application.website.nil? %></p>
   <p id="taglist"><b>Etiquetas:</b>
@@ -24,48 +25,137 @@
   <p><%= link_to "Pruébelo On-Line", @application.demo, :popup => true %></p>
   <% end %>
   
+  <% expr = /^(\s*)<p>(.*)<\/p>(\s*)$/ %>
+  
   <p><b>Descripci&oacute;n:</b> <%= @application.name + " " %>
-
-  <% expr = /^(\s*)<p>(.*)<\/p>(\s*)$/
-  if description = expr.match(@application.description) %>
+  <% if description = expr.match(@application.description) %>
     <%= description[2] %></p>
   <% else %>
     <%= @application.description %></p> 
   <% end %>
   
   <% if !@application.requisitos.nil? and !@application.requisitos.empty? %> 
-    <p><b>Requisitos:</b> <%= @application.requisitos %></p>
+    <p><b>Requisitos:</b> 
+      <% if requisitos = expr.match(@application.requisitos) %>
+        <%= requisitos[2] %></p>
+      <% else %>
+        <%= @application.requisitos %></p>
+      <% end %>
   <% end %>
 
-  <% unless @installers32.empty? and @installers64.empty? %>
+</td>
+</table>
+
+<div class="app_details">
+  <% if !@win32.empty? or !@win64.empty? or !@linux.empty? or !@mac.empty? or !@multiplatform.empty? %>
   <div id="installers">
     <table summary="Relación de instaladores y arquitecturas">
-      <caption>Instaladores:</caption>
+      <caption>Descargar:</caption> 
       <tbody>
-        <tr class="heading">
-          <th>32Bits</th>
-          <th>64Bits</th>
-        </tr>
-        <tr>
-          <td>
-            <% for installer in @installers32 %>
-    	  	    <%= link_to installer.name, installer.installer.url, 
-                :title => 'descarga ' + installer.name if installer.version %><br/>
-            <% end %>
-          </td>
-          <td>
-            <% for installer in @installers64 %>
-    	  	    <%= link_to installer.name, installer.installer.url, 
-                :title => 'descarga ' + installer.name if installer.version %><br/>
-            <% end %>
-          </td>
-        </tr>
+      <tr valign=top>
+        <td>
+         
+      <% if !@win32.empty? %>
+        <table>
+          <% installer = @win32[@win32.size - 1] %>
+          <tr class="heading">
+            <th>
+            <%= link_to (image_tag "win32.png", :border => "0"), installer.installer.url, :title => 'descargar ' + installer.name if installer.version %></th>
+            </tr>
+          <tr valign=top>
+            <td>
+    	      <%= link_to "Windows x32", installer.installer.url, :title => 'descargar ' + installer.name if installer.version %> <br/>
+            </td>
+          </tr>
+        </table>
+        </td>
+        <td>&nbsp; &nbsp;</td>
+        <td>
+      <% end %>
+
+      <% if !@win64.empty? %>
+	<table>
+          <% installer = @win64[@win64.size - 1] %>
+ 	  <tr class="heading">
+            <th>
+            <%= link_to (image_tag "win64.png", :border => "0"), installer.installer.url, :title => 'descargar ' + installer.name if installer.version %>
+	    </th>
+          </tr>
+  	  <tr>
+    	    <td valign=top>
+    	       <%= link_to "Windows x64", installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
+            </td>
+          </tr>
+	</table>
+        </td>
+        <td>&nbsp; &nbsp;</td>
+        <td>
+      <% end %>
+
+      <% if !@linux.empty? %>
+	<table>
+          <% installer = @linux[@linux.size - 1] %>
+ 	  <tr class="heading">
+            <th>
+            <%= link_to (image_tag "linux.png", :border => "0"), installer.installer.url, :title => 'descargar ' + installer.name if installer.version %>
+	    </th>
+          </tr>
+  	  <tr>
+    	    <td valign=top>
+    	       <%= link_to "GNU/Linux", installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
+            </td>
+          </tr>
+	</table>
+        </td>
+        <td>&nbsp; &nbsp;</td>
+        <td>
+      <% end %>
+
+      <% if !@mac.empty? %>
+	<table>
+          <% installer = @mac[@mac.size - 1] %>
+ 	  <tr class="heading">
+            <th>
+            <%= link_to (image_tag "mac.png", :border => "0"), installer.installer.url, :title => 'descargar ' + installer.name if installer.version %>
+	    </th>
+          </tr>
+  	  <tr>
+    	    <td valign=top>
+    	       <%= link_to "Mac OS", installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
+            </td>
+          </tr>
+	</table>
+        </td>
+        <td>&nbsp; &nbsp;</td>
+        <td>
+      <% end %>
+
+      <% if !@multiplatform.empty? %>
+	<table>
+          <% installer = @multiplatform[@multiplatform.size - 1] %>
+ 	  <tr class="heading">
+            <th>
+            <%= link_to (image_tag "multi.png", :border => "0"), installer.installer.url, :title => 'descargar ' + installer.name if installer.version %>
+	    </th>
+          </tr>
+  	  <tr>
+    	    <td valign=top>
+    	       <%= link_to "Multiplataforma", installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
+            </td>
+          </tr>
+	</table>
+      <% end %>
+
+        </td>
+      </tr>
+    </table>
+    
       </tbody>
     </table>
   </div>
   <% end %>
-
 </div>
+
 <div id="app_details_bottom">&nbsp;</div>
 
 <% if logged_in? and current_user.has_role?('administrator') %>

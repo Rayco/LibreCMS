@@ -33,8 +33,11 @@ class ApplicationsController < ApplicationController
   # GET /applications/1.xml
   def show
     @application = Application.find_with_like_by_name(params[:id].from_url)
-    @installers32 = @application.installers.tagged_with("Windows, 32bits", :on => :platforms, :match_all => true).flatten 
-    @installers64 = @application.installers.tagged_with("Windows, 64bits", :on => :platforms, :match_all => true).flatten
+    @win32 = @application.installers.tagged_with("Windows, 32bits", :on => :platforms, :match_all => true).flatten 
+    @win64 = @application.installers.tagged_with("Windows, 64bits", :on => :platforms, :match_all => true).flatten
+    @linux = @application.installers.tagged_with("Linux", :on => :platforms, :match_all => true).flatten
+    @mac = @application.installers.tagged_with("Mac", :on => :platforms, :match_all => true).flatten
+    @multiplatform = @application.installers.tagged_with("Multiplatform", :on => :platforms, :match_all => true).flatten
     @screenshots = @application.screenshots
 
     respond_to do |format|
