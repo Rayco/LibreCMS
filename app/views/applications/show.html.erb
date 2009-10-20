@@ -35,7 +35,7 @@
   <% end %>
   
   <% if !@application.requisitos.nil? and !@application.requisitos.empty? %> 
-    <p><b>Requisitos:</b> 
+    <p><b>Requisitos recomendados:</b> 
       <% if requisitos = expr.match(@application.requisitos) %>
         <%= requisitos[2] %></p>
       <% else %>
