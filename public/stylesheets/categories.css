@@ -9,7 +9,8 @@
 	display: inline;
 	float: left;
 	margin: 0.5em 1em;
-	width: 130px; 
+	width: 130px;
+        height: 220px; 
 }
 
 #categories_index li img {

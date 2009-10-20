@@ -1,6 +1,10 @@
 <%= error_messages_for :page %>
 <% form_for @page do |f| %>
   <p>
+    <%= f.label :site %><br />
+    <%= f.text_field :site %>
+  </p>
+  <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
