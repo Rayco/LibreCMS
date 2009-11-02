@@ -122,8 +122,13 @@
 	<br /><p align="center"><a href="/static/credits">Créditos</p></a>
 	</div>
 </div>
-<% if @site_config.webiso != "" and !@site_config.webiso.nil? %> 
+<% if !@site_config.webiso.nil? and !@site_config.webiso.empty? %> 
      <a href="<%=@site_config.webiso%>" id="descarga-iso" title="Descargar una ISO de DVD"></a>
 <% end %>
+
+<% if !@site_config.code.nil? and !@site_config.code.empty? %>
+  <%= @site_config.code %>
+<% end %>
+
 </body>
 </html>
