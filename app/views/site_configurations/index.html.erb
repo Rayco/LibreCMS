@@ -1,22 +1,22 @@
-<h1>Listing site_configurations</h1>
+<div class="app_details">
 
-<table>
-  <tr>
+<h3>Listing Site Configurations</h3>
+
+<table cellspacing=5>
+  <tr align=center>
     <th>ID</th>
     <th>Name</th>
-    <th>WebSite</th>
+    <th>Site Domain</th>
     <th>Header</th>
-    <th>WebISO</th>
     <th>Root category</th>
   </tr>
 
 <% for site_configuration in @site_configurations %>
-  <tr>
+  <tr align=center>
     <td><%=h site_configuration.id %></td>
     <td><%=h site_configuration.name %></td>
     <td><%=h site_configuration.website %></td>
     <td><%=h site_configuration.header %></td>
-    <td><%=h site_configuration.webiso %></td>
     <td><%=h site_configuration.root_category_id %></td>
     <td><%= link_to 'Show', site_configuration %></td>
     <td><%= link_to 'Edit', edit_site_configuration_path(site_configuration) %></td>
@@ -24,7 +24,7 @@
   </tr>
 <% end %>
 </table>
-
+</div>
 <br />
 
 <%= link_to 'New site_configuration', new_site_configuration_path %>

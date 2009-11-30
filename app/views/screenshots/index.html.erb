@@ -1,27 +1,31 @@
 <% title @application.name+"Screenshots" %>
 
-<table>
-  <tr>
-    <th>Application</th>
+<div class="app_details">
+
+<h3>Listing <%=h @application.name %> Screenshots</h3>
+
+<table cellspacing=5>
+  <tr align=center>
+    <th>Image</th>
     <th>Name</th>
-    <th>Image File Name</th>
-    <th>Image Content Type</th>
-    <th>Image File Size</th>
-    <th>View</th>
+    <th>File Name</th>
+    <th>Content Type</th>
+    <th>File Size</th>
   </tr>
   <% for screenshot in @screenshots %>
-    <tr>
-      <td><%=h screenshot.application.name %></td>
+    <tr align=center>
+      <td><%= image_tag screenshot.image.url(:thumb) %></td>
       <td><%=h screenshot.name %></td>
       <td><%=h screenshot.image_file_name %></td>
       <td><%=h screenshot.image_content_type %></td>
       <td><%=h screenshot.image_file_size %></td>
-      <td><%=h screenshot.view %></td>
       <td><%= link_to "Show", application_screenshot_path(@tags, @application, screenshot) %></td>
       <td><%= link_to "Edit", edit_application_screenshot_path(@tags, @application, screenshot) %></td>
       <td><%= link_to "Destroy", application_screenshot_path(@tags, @application, screenshot), :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
+
+</div>
 
 <p><%= link_to "New Screenshot", new_application_screenshot_path(@tags, @application) %></p>

@@ -4,12 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><%= @site_config.name + ": " + @site_config.header %></title>
 
-<!-- This template was created by Mantis-a [http://www.mantisa.cz/] and modified by Ancor Cruz [http://www.ancorcruz.com] and Rayco Abad. For more templates visit Free website templates [http://www.mantisatemplates.com/]. -->
+<!-- This template was created by Mantis-a [http://www.mantisa.cz/] and modified by Ancor Cruz [http://www.ancorcruz.com] and Rayco Abad [http://es.linkedin.com/in/rabad]. For more templates visit Free website templates [http://www.mantisatemplates.com/]. -->
 
 <meta name="Description" content="..." />
 <meta name="Keywords" content="..." />
 <meta name="robots" content="all,follow" />
-<meta name="author" content="Agustin Ancor Cruz Lorenzo (www.ancorcruz.com) y Rayco Abad Martin" />
+<meta name="author" content="Agustin Ancor Cruz Lorenzo (www.ancorcruz.com) and Rayco Abad Martin (es.linkedin.com/in/rabad)" />
 
 <!-- Javascript -->
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
@@ -23,6 +23,7 @@
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
 </head>
 
 <body>
@@ -31,97 +32,97 @@
 
 <!-- Header -->
 <div id="header">
-<%= link_to (image_tag "ull.png", :alt => "Universidad de La Laguna", :class => "header-ull"), 'http://www.ull.es', :title => "Universidad de La Laguna", :popup => true %>
-<%= link_to (image_tag "osl_text.png", :alt => "Oficina de Software Libre", :class => "header-osl"), 'http://osl.ull.es/', :title => "Oficina de Software Libre", :popup => true %>
-<h1 align="center"><%= link_to @site_config.header, root_path %></h1>
+  <%= link_to (image_tag "ull.png", :alt => "Universidad de La Laguna", :class => "header-ull"), 'http://www.ull.es', :title => "Universidad de La Laguna", :popup => true %>
+  <%= link_to (image_tag "osl_text.png", :alt => "Oficina de Software Libre", :class => "header-osl"), 'http://osl.ull.es/', :title => "Oficina de Software Libre", :popup => true %>
+  <h1 align="center"><%= link_to @site_config.header, root_path %></h1>
 </div>
 <!-- Header end -->
 
 <!-- Menu -->
 <a href="#skip-menu" class="hidden">Skip menu</a>
 <ul id="menu" class="cleaning-box">
-	<li class="first"><%= link_to 'Portada', root_path, :class => "active" %></li>
-	<%= render :partial => '/shared/pages_list' %> <!-- No shared -->
+  <li class="first"><%= link_to 'Portada', root_path, :class => "active" %></li>
+  <%= render :partial => '/shared/pages_list' %> <!-- No shared -->
 </ul>
 <!-- Menu end -->
 
 <hr class="noscreen" />
 
-	<div id="content-box">
-		<div id="content-box-in">
-			<p class="notice"><%= flash[:notice] %></p>
-			<a name="skip-menu"></a>
-			<!-- Content left -->
-			<% unless @hide %>
-			<div class="content-box-left">
-				<div class="content-box-left-in">
-          <%= render :partial => '/shared/bread_crums' unless @tags.nil? %> <!-- No shared -->
-					<%= yield %>
-				</div>
-			</div>
-			<!-- Content left end -->
-
-<hr class="noscreen" />
-
-			<!-- Content right -->
-      <div class="content-box-right">
-        <div class="content-box-right-in">
-          <% if @application and !@application.resources.empty? %>
-            <%= render :partial => '/shared/resources_list' %>
-          <% end %>
-
-          <% if @screenshots and !@screenshots.empty? %>
-	  				<%= render :partial => '/shared/screenshots' %> <!-- Usar content_for -->
-          <% end %>
-
-          <% unless @application or @cloud.empty? %>
-            <%= render :partial => '/shared/vertical_tag_cloud' %>
-          <% end %>
-        </div>
+<div id="content-box">
+  <div id="content-box-in">
+    <p class="notice"><%= flash[:notice] %></p>
+    <a name="skip-menu"></a>
+    <!-- Content left -->
+    <% unless @hide %>
+    <div class="content-box-left">
+      <div class="content-box-left-in">
+        <%= render :partial => '/shared/bread_crums' unless @tags.nil? %> <!-- No shared -->
+        <%= yield %>
       </div>
+    </div>
+    <!-- Content left end -->
 
-			<!-- Content right end -->
+    <hr class="noscreen" />
+
+    <!-- Content right -->
+    <div class="content-box-right">
+      <div class="content-box-right-in">
+        <% if @application and !@application.resources.empty? %>
+          <%= render :partial => '/shared/resources_list' %>
+        <% end %>
+
+        <% if @screenshots and !@screenshots.empty? %>
+	  <%= render :partial => '/shared/screenshots' %> <!-- Usar content_for -->
+        <% end %>
+
+        <% unless @application or @cloud.empty? %>
+          <%= render :partial => '/shared/vertical_tag_cloud' %>
+        <% end %>
+      </div>
+    </div>
+    <!-- Content right end -->
 			
-			
-			<!-- Content center -->
-			<% else %>
-				<div class="content-box-center">
-          <div class="content-box-center-in">
-            <%= render :partial => '/shared/bread_crums' unless @tags.nil? || controller.params[:controller] == 'pages' %>	<!-- No shared -->
-            <%= yield %>
-            <% unless @cloud.empty? %>
-              <%= render :partial => '/shared/horizontal_tag_cloud' %>
-            <% end %>
-					</div>					
-				</div>
-			<% end %>
-			<!-- Content center end -->
-			
-			<div class="cleaner">&nbsp;</div>
-			
-			<% if logged_in? and current_user.has_role?('administrator') %>
-				<%= render :partial => '/shared/login_menu' %>
-			<% end %>
-			
-		</div>
-	</div>
+    <!-- Content center -->
+    <% else %>
+      <div class="content-box-center">
+        <div class="content-box-center-in">
+          <%= render :partial => '/shared/bread_crums' unless @tags.nil? || controller.params[:controller] == 'pages' %>	<!-- No shared -->
+          <%= yield %>
+          <% unless @cloud.empty? %>
+          <%= render :partial => '/shared/horizontal_tag_cloud' %>
+          <% end %>
+	</div>					
+      </div>
+    <% end %>
+    <!-- Content center end -->
+
+    <div class="cleaner">&nbsp;</div>			
+      <% if logged_in? and current_user.has_role?('administrator') %>
+        <%= render :partial => '/shared/login_menu' %>
+      <% end %>
+    </div>
+  </div>
 	
+  <hr class="noscreen" />
 
-<hr class="noscreen" />
+  <!-- Footer -->
+  <div id="footer">
+    <%= link_to (image_tag "MITYC.png", :size => "230x53", :border => "0"), 'http://www.mityc.es/', :title => "Ministerio de Industria, Turismo y Comercio", :popup => true %>
+    &nbsp; &nbsp; &nbsp;
+    <%= link_to (image_tag "Avanza.png", :size => "230x45", :border => "0"), 'http://www.planavanza.es/', :title => "Plan Avanza", :popup => true %>
+    &nbsp; &nbsp; &nbsp;	
+    <%= link_to (image_tag "FEDER.png", :size => "80x69", :border => "0"), 'http://ec.europa.eu/regional_policy/funds/feder/index_es.htm', :title => "Fondo Europeo de Desarrollo Regional", :popup => true %>
+    &nbsp; &nbsp; &nbsp;
+    <%= link_to (image_tag "ACIISI.png", :size => "230x58", :border => "0"), 'http://www.gobiernodecanarias.org/aciisi/', :title => "Agencia Canaria de Investigación, Innovación y Sociedad de la Información", :popup => true %>
+    <!-- Footer end -->
 
-	<!-- Footer -->
-	<div id="footer">
-	<%= link_to (image_tag "MITYC.png", :size => "230x53", :border => "0"), 'http://www.mityc.es/', :title => "Ministerio de Industria, Turismo y Comercio", :popup => true %>
-	&nbsp; &nbsp; &nbsp;
-	<%= link_to (image_tag "Avanza.png", :size => "230x45", :border => "0"), 'http://www.planavanza.es/', :title => "Plan Avanza", :popup => true %>
-	&nbsp; &nbsp; &nbsp;	
-	<%= link_to (image_tag "FEDER.png", :size => "80x69", :border => "0"), 'http://ec.europa.eu/regional_policy/funds/feder/index_es.htm', :title => "Fondo Europeo de Desarrollo Regional", :popup => true %>
-        &nbsp; &nbsp; &nbsp;
-	<%= link_to (image_tag "ACIISI.png", :size => "230x58", :border => "0"), 'http://www.gobiernodecanarias.org/aciisi/', :title => "Agencia Canaria de Investigación, Innovación y Sociedad de la Información", :popup => true %>
-	<!-- Footer end -->
-	<br /><p align="center"><a href="/static/credits">Créditos</p></a>
-	</div>
+    <br />
+
+    <p align="center"><a href="/static/credits">Créditos</p></a>
+
+  </div>
 </div>
+
 <% if !@site_config.webiso.nil? and !@site_config.webiso.empty? %> 
      <a href="<%=@site_config.webiso%>" id="descarga-iso" title="Descargar una ISO de DVD"></a>
 <% end %>

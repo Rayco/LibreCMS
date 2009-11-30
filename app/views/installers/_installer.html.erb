@@ -2,18 +2,14 @@
 <% form_for ([@application, @installer]), :url => application_installer_path(@tags, @application, installer), :html => { :multipart => true } do |f| %>
 
   <p>
-    <%= f.label :application %><br />
-    <%=h @application.name %>
-  </p>
-  <p>
-    <b>Tags de Plataforma/Arquitectura (separados por comas):</b><br/>
+    <b>Tags Platforms and Architecture (Separated by commas):</b><br/>
     <%= f.text_field :platform_list %>
   <p>
-    <%= f.label :version %><br />
+    <b>Version</b><br />
     <%= f.text_field :version %>
   </p>
   <p>
-    <%= f.label :installer_file_name %><br />
+    <b>File Name</b><br />
     <%= f.file_field :installer %>
   </p>
   <p><%= f.submit button_name %></p>

@@ -1,19 +1,19 @@
 <%= error_messages_for :page %>
 <% form_for @page do |f| %>
   <p>
-    <%= f.label :site %><br />
+    <b>Site Name (Empty for all sites)</b><br />
     <%= f.text_field :site %>
   </p>
   <p>
-    <%= f.label :name %><br />
+    <b>Page Name</b><br />
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :permalink %><br />
+    <b>Permanent Link</b><br />
     <%= f.text_field :permalink %>
   </p>
   <p>
-    <%= f.label :content %><br />
+    <b>Content</b><br />
     <%= f.text_area :content %>
   </p>
   <p><%= f.submit "Submit" %></p>

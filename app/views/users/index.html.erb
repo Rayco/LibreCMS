@@ -1,11 +1,14 @@
-<h2>All Users</h2>
-<table>
-	<tr>
-		<th>Username</th>
-		<th>Email</th>
-		<th>Enabled?</th>
-		<th>Roles</th>
-	</tr>
-	<%= render :partial => 'user', :collection => @users %>
-</table>
+<div class="app_details">
 
+<h3>Listing All Users</h3>
+
+<table cellspacing=5>
+  <tr align=center>
+    <th>Username</th>
+    <th>E-mail</th>
+    <th>Enabled</th>
+    <th>Roles</th>
+  </tr>
+  <%= render :partial => 'user', :collection => @users %>
+</table>
+</div>

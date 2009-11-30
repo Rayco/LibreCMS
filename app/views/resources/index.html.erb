@@ -1,15 +1,17 @@
-<% title @application.name+"Screenshots" %>
+<% title @application.name+"Resources" %>
 
-<table>
-  <tr>
-    <th>Application</th>
+<div class="app_details">
+
+<h3>Listing <%=h @application.name %> Resources</h3>
+
+<table cellspacing=5>
+  <tr align=center>
     <th>Name</th>
     <th>Description</th>
   </tr>
 
 <% for resource in @resources %>
-  <tr>
-  	<td><%=h resource.application_id %></td>
+  <tr align=center>
     <td><%=h resource.name %></td>
     <td><%=h resource.description %></td>
     <td><%= link_to 'Show', application_resource_path(@tags, @application, resource) %></td>
@@ -18,6 +20,8 @@
   </tr>
 <% end %>
 </table>
+
+</div>
 
 <br />
 

@@ -1,17 +1,19 @@
-<h1>Listing installers</h1>
+<div class="app_details">
 
-<table>
-  <tr>
-    <th>Application</th>
+<h3>Listing <%=h @application.name %> Installers</h3>
+
+<table cellspacing=5>
+  <tr align=center>
+    <th>Platforms and Architecture</th>
     <th>Version</th>
-    <th>Installer file name</th>
-    <th>Installer content type</th>
-    <th>Installer file size</th>
+    <th>File Name</th>
+    <th>Content Type</th>
+    <th>File Size</th>
   </tr>
 
 <% for installer in @installers %>
-  <tr>
-    <td><%=h installer.application.name %></td>
+  <tr align=center>
+    <td><%=h installer.platform_list %></td>
     <td><%=h installer.version %></td>
     <td><%=h installer.installer_file_name %></td>
     <td><%=h installer.installer_content_type %></td>
@@ -22,5 +24,6 @@
   </tr>
 <% end %>
 </table>
+</div>
 
 <p><%= link_to 'New installer', new_application_installer_path(@tags, @application) %></p>

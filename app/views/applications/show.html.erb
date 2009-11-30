@@ -10,17 +10,13 @@
       <%= link_to tag, applications_path(String.new(tag.name).to_url), :class => css_class %>
     <% end %>
   </p>
-<!-- 
-  <p><b>Recomendada por:</b> Oficina de Software Libre</p>
--->
-  <!--
-  <p><b>Idioma:</b></p>
--->
 
-  <% if !@application.license.nil? and !@application.license.empty? %>
+<% if !@application.license.nil? and !@application.license.empty? %>
     <p><b>Licencia:</b> <%=h @application.license %></p>
   <% end %>
 
+  <!-- <p><b>Idioma:</b></p> -->
+  
   <% if !@application.demo.nil? and !@application.demo.empty? %>
   <p><%= link_to "Pruébelo On-Line", @application.demo, :popup => true %></p>
   <% end %>

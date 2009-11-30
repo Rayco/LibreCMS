@@ -1,21 +1,17 @@
 <% form_for ([@application, @resource]), :url => application_resource_path(@tags, @application, resource), :html => { :multipart => true } do |f| %>
+  
   <p>
-  	<b>Application:</b>
-  	<%=h @application.name %>
-  </p>
-
-  <p>
-    <b>Name</b><br />
+    <b>Resource Name</b><br />
     <%= f.text_field :name %>
   </p>
 
   <p>
-    <b><%= f.label :resource_file_name %></b><br />
+    <b>File Name</b><br />
     <%= f.file_field :resource %>
   </p>
 
   <p>
-    <b>Website</b><br />
+    <b>WebSite</b><br />
     <%= f.text_field :website%>
   </p>
 

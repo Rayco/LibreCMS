@@ -1,29 +1,27 @@
 <% title "Screenshot" %>
 
+<h3><%= @application.name%> Screenshot</h3>
+
+<%= image_tag @screenshot.image.url(:thumb) %>
+
 <p>
-  <strong>Application:</strong>
-  <%=h @screenshot.application.name %>
-</p>
-<p>
-  <strong>Name:</strong>
+  <b>Screenshot Name:</b>
   <%=h @screenshot.name %>
 </p>
-<%= image_tag @screenshot.image.url(:thumb) %>
+
 <p>
-  <strong>Image File Name:</strong>
+  <b>Image File Name:</b>
   <%=h @screenshot.image_file_name %>
 </p>
+
 <p>
-  <strong>Image Content Type:</strong>
+  <b>Image Content Type:</b>
   <%=h @screenshot.image_content_type %>
 </p>
+
 <p>
-  <strong>Image File Size:</strong>
+  <b>Image File Size:</b>
   <%=h @screenshot.image_file_size %>
-</p>
-<p>
-  <strong>View:</strong>
-  <%=h @screenshot.view %>
 </p>
 
 <p>

@@ -20,7 +20,7 @@ class Category < ActiveRecord::Base
                     :default_url => "/images/defaults/:class_:attachment_:style.png"
                     
   validates_attachment_content_type :icon, :content_type => ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png', 'image/jpg']
-  
+
   def children_in_site(site_config)
     children = []
     self.category_as_parent.each do |relation|

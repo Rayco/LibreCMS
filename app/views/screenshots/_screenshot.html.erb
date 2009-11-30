@@ -1,15 +1,12 @@
 <%= error_messages_for :screenshot %>
 <% form_for ([@application, @screenshot]), :url => application_screenshot_path(@tags, @application, screenshot), :html => { :multipart => true } do |f| %>
+  
   <p>
-  	<%= f.label :Application %>
-	<%=h @application.name %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
+    <b>Screenshot Name</b><br />
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :image_file_name %><br />
+    <b>Image File Name</b><br />
     <%= f.file_field :image %>
   </p>
   <p><%= f.submit button_name %></p>

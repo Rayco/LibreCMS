@@ -1,7 +1,4 @@
-<p>
-  <b>Application:</b>
-  <%=h @installer.application.name %>
-</p>
+<h3><%= @application.name%> Installer</h3>
 
 <p>
   <b>Version:</b>
@@ -9,17 +6,22 @@
 </p>
 
 <p>
-  <b>Installer file name:</b>
+  <b>Tags Platforms and Architecture:</b>
+  <%= @installer.platform_list %>
+</p>
+
+<p>
+  <b>File Name:</b>
   <%=h @installer.installer_file_name %>
 </p>
 
 <p>
-  <b>Installer content type:</b>
+  <b>Content Type:</b>
   <%=h @installer.installer_content_type %>
 </p>
 
 <p>
-  <b>Installer file size:</b>
+  <b>File Size:</b>
   <%=h @installer.installer_file_size %>
 </p>
 

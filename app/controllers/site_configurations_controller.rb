@@ -42,6 +42,7 @@ class SiteConfigurationsController < ApplicationController
   # POST /site_configurations.xml
   def create
     site = params[:site_configuration]
+    site[:root_category_id] = site[:name]
     site[:root_category_id] = Category.find_or_create_by_name(site[:root_category_id], :conditions => ["name LIKE ?", site[:root_category_id]]).id
     @site_configuration = SiteConfiguration.new(site)
 

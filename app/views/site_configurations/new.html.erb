@@ -1,31 +1,27 @@
-<h1>New site_configuration</h1>
+<h3>New Site Configuration</h3>
 
 <% form_for(@site_configuration) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :name %><br />
+    <b>Name</b><br />
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :website %><br />
+    <b>Site Domain</b><br /> 
     <%= f.text_field :website %>
   </p>
   <p>
-    <%= f.label :header %><br />
+    <b>Header</b><br />
     <%= f.text_field :header %>
   </p>
   <p>
-    <%= f.label :webiso %><br />
+    <b>Web ISO</b><br />
     <%= f.text_field :webiso %>
   </p>
   <p>
-    <%= f.label :code %><br />
+    <b>Tracking Code (Google Analytics)</b><br />
     <%= f.text_area :code %>
-  </p>
-  <p>
-    <%= f.label :root_category_id %><br />
-    <%= f.text_field :root_category_id %>
   </p>
   <p>
     <%= f.submit "Create" %>
