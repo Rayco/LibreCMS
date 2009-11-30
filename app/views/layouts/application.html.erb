@@ -115,10 +115,14 @@
     &nbsp; &nbsp; &nbsp;
     <%= link_to (image_tag "ACIISI.png", :size => "230x58", :border => "0"), 'http://www.gobiernodecanarias.org/aciisi/', :title => "Agencia Canaria de Investigación, Innovación y Sociedad de la Información", :popup => true %>
     <!-- Footer end -->
-
+  
+    <!-- Credits -->
     <br />
-
-    <p align="center"><a href="/static/credits">Créditos</p></a>
+    <% $credits = @site_config.name + "_credits" %>
+    <% if !Page.find_by_permalink($credits).nil? %>
+      <p align="center"><a href="/static/<%= $credits %>">Créditos</p></a>
+    <% end %>
+    <!-- Credits end -->
 
   </div>
 </div>
