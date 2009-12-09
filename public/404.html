@@ -1,30 +1,81 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- This template was created by Mantis-a [http://www.mantisa.cz/] and modified by Rayco Abad [http://es.linkedin.com/in/rabad] and Ancor Cruz [http://www.ancorcruz.com]. For more templates visit Free website templates [http://www.mantisatemplates.com/]. -->
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<meta name="Description" content="..." />
+<meta name="Keywords" content="..." />
+<meta name="robots" content="all,follow" />
+<meta name="author" content="Rayco Abad Martin (es.linkedin.com/in/rabad) and Agustin Ancor Cruz Lorenzo (www.ancorcruz.com)" />
 
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <title>The page you were looking for doesn't exist (404)</title>
-	<style type="text/css">
-		body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-		div.dialog {
-			width: 25em;
-			padding: 0 4em;
-			margin: 4em auto 0 auto;
-			border: 1px solid #ccc;
-			border-right-color: #999;
-			border-bottom-color: #999;
-		}
-		h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-	</style>
+<!-- Javascript -->
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<!-- CSS -->
+<%= stylesheet_link_tag 'style', 'categories', 'applications', 'pages', 'lightbox' %>
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+<title>404: Pagina no encontrada</title>
+
 </head>
 
 <body>
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <h1>The page you were looking for doesn't exist.</h1>
-    <p>You may have mistyped the address or the page may have moved.</p>
+
+<div id="border">
+<div id="wrapper" class=nivel2>
+
+  <!-- Header -->
+  <div id="header">
+    <%= link_to (image_tag "ull.png", :alt => "Universidad de La Laguna", :class => "header-ull"), 'http://www.ull.es', :title => "Universidad de La Laguna", :popup => true %>
+    <%= link_to (image_tag "osl_text.png", :alt => "Oficina de Software Libre", :class => "header-osl"), 'http://osl.ull.es/', :title => "Oficina de Software Libre", :popup => true %>
+    <h1><%= link_to @site_config.header, root_path %></h1>
   </div>
+  <!-- Header end -->
+
+  <!-- Menu -->
+  <a href="#skip-menu" class="hidden">Skip menu</a>
+  <ul id="menu" class="cleaning-box">
+    <li class="first"><%= link_to 'Portada', root_path, :class => "active" %></li>
+    <%= render :partial => '/shared/pages_list' %> <!-- No shared -->
+  </ul>
+  <!-- Menu end -->
+
+  <!-- This file lives in public/404.html -->
+  <p><br /></p>
+  <div align=center>
+    <table>
+      <th>
+        <p style="color: red; font-size: 14pt" align=center> Página no encontrada </p></font>
+      </th>
+      <th>
+        <img src="../../images/aviso.png" alt="Aviso" width="82" height="74" /></p>
+      </th>
+    </table>
+    <p>La página solicitada puede no estar disponible, haber cambiado de dirección (URL) o no existir. <b> Disculpe las molestias.</b></p>
+    <p>Con frecuencia es debido a algún error al escribir la dirección de la página (URL). Compruébela de nuevo para ver si es correcta. </p>
+  </div>
+  <br /><br />
+
+  <!-- Footer -->
+  <div id="footer">
+    <%= link_to (image_tag "MITYC.png", :size => "230x53", :border => "0"), 'http://www.mityc.es/', :title => "Ministerio de Industria, Turismo y Comercio", :popup => true %>
+    &nbsp; &nbsp; &nbsp;
+    <%= link_to (image_tag "Avanza.png", :size => "230x45", :border => "0"), 'http://www.planavanza.es/', :title => "Plan Avanza", :popup => true %>
+    &nbsp; &nbsp; &nbsp;
+    <%= link_to (image_tag "FEDER.png", :size => "80x69", :border => "0"), 'http://ec.europa.eu/regional_policy/funds/feder/index_es.htm', :title => "Fondo Europeo de Desarrollo Regional", :popup => true %>
+    &nbsp; &nbsp; &nbsp;
+    <%= link_to (image_tag "ACIISI.png", :size => "230x58", :border => "0"), 'http://www.gobiernodecanarias.org/aciisi/', :title => "Agencia Canaria de Investigación, Innovación y Sociedad de la Información", :popup => true %>
+    <!-- Footer end -->
+
+    <!-- Credits -->
+    <br />
+    <% $credits = @site_config.name + "_credits" %>
+    <% if !Page.find_by_permalink($credits).nil? %>
+      <p align="center"><a href="/static/<%= $credits %>">Créditos</p></a>
+    <% end %>
+    <!-- Credits end -->
+  </div>
+
+</div>
+
 </body>
 </html>
