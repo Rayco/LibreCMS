@@ -44,4 +44,5 @@ class ScreenshotsController < ApplicationController
     flash[:notice] = "Successfully destroyed screenshot."
     redirect_to(application_screenshots_url(@tags, @application))
   end
+
 end

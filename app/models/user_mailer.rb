@@ -1,7 +1,8 @@
 class UserMailer < ActionMailer::Base
+
   def signup_notification(user)
     setup_email(user)
-    @subject    += 'Porfavor active su cuenta windowsLibre'
+    @subject    += 'Por favor active su cuenta windowsLibre'
   
     @body[:url]  = 'Su registro en el sitio example.com está a punto de ser completado.
     Para que se complete el registro es necesario que visite "http://localhost:3000/activate/#{user.activation_code}"
@@ -33,4 +34,5 @@ class UserMailer < ActionMailer::Base
       @sent_on     = Time.now
       @body[:user] = user
     end
+
 end

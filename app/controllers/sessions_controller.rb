@@ -1,4 +1,5 @@
 # This controller handles the login/logout function of the site.  
+
 class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   #include AuthenticatedSystem
@@ -36,9 +37,8 @@ class SessionsController < ApplicationController
     redirect_to login_path
   end
 
-  
   protected
-  # Updated 2/20/08
+  
   def password_authentication(login, password)
     user = User.authenticate(login, password)
     if user == nil
@@ -55,6 +55,7 @@ class SessionsController < ApplicationController
 
 
   private
+  
   def failed_login(message)
     flash.now[:error] = message
     render :action => 'new'

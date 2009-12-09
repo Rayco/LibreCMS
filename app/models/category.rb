@@ -49,18 +49,19 @@ class Category < ActiveRecord::Base
   end
 
   def parents_names
-    self.parents_in_site(SiteConfiguration.find(:first)).map(&:name).flatten.join(', ') #Warning: site hardcoded
+    self.parents_in_site(SiteConfiguration.find(:first)).map(&:name).flatten.join(', ') # ToDo: Warning - site hardcoded
   end
 
   def parents_names=(parents_name)
-    #need remove nodes when remove from parents_name
+    # Need remove nodes when remove from parents_name
     parents_name.split(",").each do |p|
       parent = Category.find_or_create_by_name(p.strip, :conditions => ["name LIKE ?", p.strip])
-      category_as_child.build(:category_id => parent.id, :child_id => self.id, :site_id => $site_id) unless relationship_in_site?($site_id, parent.id) #Warning: site_id harcoded
+      category_as_child.build(:category_id => parent.id, :child_id => self.id, :site_id => $site_id) unless relationship_in_site?($site_id, parent.id)
     end
   end
 
   def self.find_with_like_by_name(name)
     find(:first, :conditions => ["name LIKE ?", name])
   end
+
 end

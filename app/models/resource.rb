@@ -1,7 +1,9 @@
 require 'paperclip'
 class Resource < ActiveRecord::Base
+  # Relationships
   belongs_to :application
   
+  # Validations
   validates_presence_of :application_id
   validates_associated :application
   

@@ -1,8 +1,11 @@
 require 'digest/sha1'
+
 class User < ActiveRecord::Base
+  
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
+  # Validations
   validates_presence_of     :login, :email
   validates_presence_of     :password,                   :if => :password_required?
   validates_presence_of     :password_confirmation,      :if => :password_required?
@@ -13,16 +16,20 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :login, :email, :case_sensitive => false, :message => 'Ya existe'
   validates_format_of       :email, :with => /(^([^@\s]+)@((?:[-_a-z0-9]+\.)+[a-z]{2,})$)|(^$)/i
   
+  # Relationships
   has_many :permissions
   has_many :roles, :through => :permissions
   
   before_save :encrypt_password
   before_create :make_activation_code 
+
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
+
   attr_accessible :login, :email, :password, :password_confirmation
 
   class ActivationCodeNotFound < StandardError; end
+
   class AlreadyActivated < StandardError
     attr_reader :user, :message;
     def initialize(user, message=nil)
@@ -35,6 +42,7 @@ class User < ActiveRecord::Base
   # Raises:
   #  +User::ActivationCodeNotFound+ if there is no user with the corresponding activation code
   #  +User::AlreadyActivated+ if the user with the corresponding activation code has already activated their account
+
   def self.find_and_activate!(activation_code)
     raise ArgumentError if activation_code.nil?
     user = find_by_activation_code(activation_code)
@@ -161,7 +169,6 @@ class User < ActiveRecord::Base
     def make_password_reset_code
       self.password_reset_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
     end
-
 
   private
   

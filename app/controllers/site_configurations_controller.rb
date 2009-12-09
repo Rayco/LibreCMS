@@ -1,5 +1,6 @@
 class SiteConfigurationsController < ApplicationController
   before_filter :check_administrator_role
+
   # GET /site_configurations
   # GET /site_configurations.xml
   def index
@@ -92,4 +93,5 @@ class SiteConfigurationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
 end

@@ -10,20 +10,18 @@
       <td>Windows</td>
       <td>
         <% for installer in @installer32 %>
-  		    <%= link_to installer.name, installer.installer.url, 
-            :title => 'descarga ' + installer.name if installer.version %>
+          <%= link_to installer.name, installer.installer.url, :title => 'descarga ' + installer.name if installer.version %>
         <% end %>
       </td>
       <td>
         <% for installer in @installer64 %>
-  		    <%= link_to installer.name, installer.installer.url, 
-            :title => 'descarga ' + installer.name if installer.version %>
+          <%= link_to installer.name, installer.installer.url, :title => 'descarga ' + installer.name if installer.version %>
         <% end %>
       </td>
     </tr>
   </table>
 
   <% if logged_in? and current_user.has_role?('administrator') %>
-  	<%= link_to 'New installer', new_application_installer_path(@tags, @application) %>
+    <%= link_to 'New installer', new_application_installer_path(@tags, @application) %>
   <% end %>
 </div>

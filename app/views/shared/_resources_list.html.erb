@@ -2,19 +2,18 @@
   <h4>Recursos</h4>
   <div class="generic-right-box">
   <ul>
-	  <% for resource in @application.resources %>
-  	<li>
-                <%= link_to resource.name, resource.resource.url,
-                        :title => resource.description if resource.website == "" %>
-                <%= link_to resource.name, resource.website,
-                        :title => resource.description, :popup => true if resource.website != "" %>
-  	</li>
-	  <% end %>
+    <% for resource in @application.resources %>
+      <li>
+        <%= link_to resource.name, resource.resource.url, :title => resource.description if resource.website == "" %>
+        <%= link_to resource.name, resource.website, :title => resource.description, :popup => true if resource.website != "" %>
+      </li>
+    <% end %>
   </ul>
 	
   <% if logged_in? and current_user.has_role?('administrator') %>
-	  <%= link_to 'New resource', new_application_resource_path(@tags, @application) %>
+    <%= link_to 'New resource', new_application_resource_path(@tags, @application) %>
   <% end %>
   </div>
 </div>
+
 <div class="column-right-bottom">&nbsp;</div>

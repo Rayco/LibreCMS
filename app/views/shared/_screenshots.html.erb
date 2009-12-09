@@ -8,7 +8,7 @@
           :alt => @screenshots.first.name, :title => @screenshots.first.name),
           @screenshots.first.image.url, {:rel => "lightbox[screenshots]", :title => "<text class='shot_text'>#{@screenshots.first.name}</text>"} %>
       <% else %>
-  		<%= link_to '',
+  	<%= link_to '',
         screenshot.image.url, {:rel => "lightbox[screenshots]", :title => "<text class='shot_text'>#{screenshot.name}</text>"} %>
       <% end %>
     <% end %>
@@ -18,4 +18,5 @@
     <%=h shot_text %>
   </div>
 </div>
+
 <div class="column-right-bottom">&nbsp;</div>

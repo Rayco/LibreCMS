@@ -1,8 +1,10 @@
 require 'paperclip'
 
 class Installer < ActiveRecord::Base
+  # Relationships
   belongs_to :application
   
+  # Validations
   acts_as_taggable_on :platforms, :languages, :licenses
   
   validates_presence_of :application_id

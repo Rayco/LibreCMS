@@ -1,12 +1,14 @@
 require 'paperclip'
 
 class Application < ActiveRecord::Base
+  # Relationships
   has_many :resources, :dependent => :destroy
   has_many :screenshots, :dependent => :destroy
   has_many :installers, :dependent => :destroy
   
   acts_as_taggable_on :tags
   
+  # Validations
   validates_presence_of :name
   validates_uniqueness_of :name, :case_sensitive => false, :message => 'Ya existe'
   
@@ -22,18 +24,11 @@ class Application < ActiveRecord::Base
     find(:first, :conditions => ["name LIKE ?", name])
   end
 
-#  def languages
-#    installers.map(&:language_list).flatten.uniq.sort
-#  end
-#  
-#  def licenses
-#    installers.map(&:license_list).flatten.uniq.sort
-#  end
-
   def to_param
     unless name.nil?
       app_url = String.new(name)
       "#{app_url.to_url}"
     end
   end
+
 end

@@ -27,14 +27,23 @@
 </head>
 
 <body>
+
 <div id="border">
-<div id="wrapper">
+<div id="wrapper" class=nivel2>
+
+<!-- Login -->
+<div class=login_menu>
+  <% if logged_in? and current_user.has_role?('administrator') %>
+    <%= render :partial => '/shared/login_menu' %>
+  <% end %>
+</div>
+<!-- Login end -->
 
 <!-- Header -->
 <div id="header">
   <%= link_to (image_tag "ull.png", :alt => "Universidad de La Laguna", :class => "header-ull"), 'http://www.ull.es', :title => "Universidad de La Laguna", :popup => true %>
   <%= link_to (image_tag "osl_text.png", :alt => "Oficina de Software Libre", :class => "header-osl"), 'http://osl.ull.es/', :title => "Oficina de Software Libre", :popup => true %>
-  <h1 align="center"><%= link_to @site_config.header, root_path %></h1>
+  <h1><%= link_to @site_config.header, root_path %></h1>
 </div>
 <!-- Header end -->
 
@@ -67,6 +76,7 @@
     <!-- Content right -->
     <div class="content-box-right">
       <div class="content-box-right-in">
+
         <% if @application and !@application.resources.empty? %>
           <%= render :partial => '/shared/resources_list' %>
         <% end %>
@@ -78,6 +88,7 @@
         <% unless @application or @cloud.empty? %>
           <%= render :partial => '/shared/vertical_tag_cloud' %>
         <% end %>
+
       </div>
     </div>
     <!-- Content right end -->
@@ -97,9 +108,6 @@
     <!-- Content center end -->
 
     <div class="cleaner">&nbsp;</div>			
-      <% if logged_in? and current_user.has_role?('administrator') %>
-        <%= render :partial => '/shared/login_menu' %>
-      <% end %>
     </div>
   </div>
 	
@@ -123,7 +131,6 @@
       <p align="center"><a href="/static/<%= $credits %>">Créditos</p></a>
     <% end %>
     <!-- Credits end -->
-
   </div>
 </div>
 

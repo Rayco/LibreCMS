@@ -4,8 +4,8 @@
     <ul>
     <% for category in @categories %>
     	<li>
-    		<%= link_to (image_tag category.icon.url(:small), :class => 'category_icon'), applications_path(category) %>
-    		<%= link_to category.name, applications_path(category) %>
+    	  <%= link_to (image_tag category.icon.url(:small), :class => 'category_icon'), applications_path(category) %>
+    	  <%= link_to category.name, applications_path(category) %>
     	</li>
     <% end %>
     </ul>
@@ -15,4 +15,5 @@
     <% end %>
   </div>
 </div>
+
 <div class="column-right-bottom">&nbsp;</div>

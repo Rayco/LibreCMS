@@ -1,16 +1,16 @@
 <h3>Login with User ID and Password:</h3>
 
 <% form_tag session_path do -%>
-<p><b><label for="login">Login</label></b><br/>
-<%= text_field_tag 'login' %></p>
+  <p><b><label for="login">Login</label></b><br/>
+  <%= text_field_tag 'login' %></p>
 
-<p><b><label for="password">Password</label></b><br/>
-<%= password_field_tag 'password' %></p>
+  <p><b><label for="password">Password</label></b><br/>
+  <%= password_field_tag 'password' %></p>
 
-<!-- Uncomment this if you want this functionality -->
-<p><b><label for="remember_me">Remember me:</label></b>
-<%= check_box_tag 'remember_me' %></p>
+  <!-- Uncomment this if you want this functionality -->
+  <p><b><label for="remember_me">Remember me:</label></b>
+  <%= check_box_tag 'remember_me' %></p>
 
+  <p><%= submit_tag 'Log in' %> <%= link_to "Sign Up", new_user_path %></p>
 
-<p><%= submit_tag 'Log in' %> <%= link_to "Sign Up", new_user_path %></p>
 <% end -%>

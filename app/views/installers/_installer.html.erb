@@ -4,13 +4,18 @@
   <p>
     <b>Tags Platforms and Architecture (Separated by commas):</b><br/>
     <%= f.text_field :platform_list %>
+  </p>
+
   <p>
     <b>Version</b><br />
     <%= f.text_field :version %>
   </p>
+
   <p>
     <b>File Name</b><br />
     <%= f.file_field :installer %>
   </p>
+
   <p><%= f.submit button_name %></p>
+
 <% end %>

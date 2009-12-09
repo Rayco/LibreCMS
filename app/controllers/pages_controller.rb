@@ -65,4 +65,5 @@ class PagesController < ApplicationController
     flash[:notice] = "Successfully destroyed page."
     redirect_to pages_url
   end
+
 end

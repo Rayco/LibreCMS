@@ -16,10 +16,28 @@ html {
 body {
 	height: 100%;
 	text-align: center;
-	font: 1.3em Helvetica, Verdana, Arial, sans-serif;
+        font-family: Helvetica, Verdana, Arial, sans-serif;
+        /* font-size: 1.3em; */
 	background-color: #ffffff;
 	min-width: 960px;
 }
+
+/* Fuente pequeña */
+.nivel1 {
+	font-size: 1.2em;
+}
+
+/* Fuente normal */
+.nivel2 {
+	font-size: 1.3em;
+}
+
+/* Fuente grande */
+.nivel3 {
+	font-size: 1.4em;
+} 
+
+
 
 a:link, a:visited {
 	color: #00598D;
@@ -73,11 +91,12 @@ p.text-content:first-letter {
 h1 {
 	font: 2.6em Arial, Sans-Serif;
 	/*letter-spacing: 1px;*/
-	margin: 0 0 10px 40px;
+	margin: 0 0 0px 0px;
 	white-space: nowrap;
 	/*border-bottom: 1px solid #4C8CA6;*/
-	width: 55%;
-	padding: 24px 0 5px 0;
+	width: 100%;
+	text-align: center;
+	padding: 24px 0 0 0;
 }
 
 h1 a:link, h1 a:visited {
@@ -169,7 +188,7 @@ ul {
 }
 
 .header-ull {
-	margin: 0 70px 0 20px;
+	margin: 0 0 0 20px;
 	border: none;
 	float: left;
 }
@@ -189,10 +208,10 @@ ul {
 /* Login Menu -- no se esta usando */
 
 #login_menu {
+	text-align: right;
 	width: 100%;
-	background: #ffffff;
-	margin-top: 5px;
-	padding-top: 5px;
+	background: #FFFFFF;
+	padding: 2px 0 2px 0;
 }
 
 #login_menu ul {
@@ -203,7 +222,7 @@ ul {
 
 #login_menu li {
 	margin: 0;
-	padding: 0 0 0 9px;
+	padding: 0 10px 0 0;
 	display: inline;
 }
 
