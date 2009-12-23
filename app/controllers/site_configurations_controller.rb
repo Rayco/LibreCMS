@@ -43,8 +43,7 @@ class SiteConfigurationsController < ApplicationController
   # POST /site_configurations.xml
   def create
     site = params[:site_configuration]
-    # site[:root_category_id] = site[:name]
-    site[:root_category_id] = Category.find_or_create_by_name(site[:root_category_id], :conditions => ["name LIKE ?", site[:root_category_id]]).id
+    site[:root_category_id] = Category.find_or_create_by_name(site[:name]).id
     @site_configuration = SiteConfiguration.new(site)
 
     respond_to do |format|
@@ -67,7 +66,7 @@ class SiteConfigurationsController < ApplicationController
     respond_to do |format|
       site = params[:site_configuration]
       if @site_configuration.name == "Default"
-        site[:root_category_id] = Category.find_or_create_by_name(site[:root_category_id], :conditions => ["name LIKE ?", site[:root_category_id]]).id
+        site[:root_category_id] = Category.find_or_create_by_name(site[:name]).id
       else
         site[:root_category_id] = @site_configuration.root_category_id
       end
