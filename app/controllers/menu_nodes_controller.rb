@@ -47,7 +47,7 @@ class MenuNodesController < ApplicationController
     respond_to do |format|
       if @menu_node.save
         flash[:notice] = 'MenuNode was successfully created.'
-        format.html { redirect_to(@menu_node) }
+        format.html { redirect_to :action => "index"}
         format.xml  { render :xml => @menu_node, :status => :created, :location => @menu_node }
       else
         format.html { render :action => "new" }
@@ -84,5 +84,4 @@ class MenuNodesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
 end

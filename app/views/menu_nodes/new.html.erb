@@ -1,25 +1,44 @@
-<h3>New menu_node</h3>
+<h3>New Menu Node</h3>
 
 <% form_for(@menu_node) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :parent_id %><br />
-    <%= f.text_field :category_id %>
-  </p>
+  <table cellspacing=10>
+  <td>
+    <b>Site:</b>
+    <select name="menu_node[site_id]">
+      <% SiteConfiguration.find(:all, :order => 'name').each do |site| %>
+        <option value="<%= site.id %>">    
+          <%= site.name %>
+        </option>
+      <% end %>
+    </select>
+    
+  <b>Parent:</b>
+    <select name="menu_node[category_id]">
+      <% Category.find(:all, :order => 'name').each do |parent| %> 
+        <option value="<%= parent.id %>">    
+          <%= parent.name %>
+        </option>
+      <% end %>
+    </select>
 
-  <p>
-    <%= f.label :child_id %><br />
-    <%= f.text_field :child_id %>
-  </p>
-
-  <p>
-    <%= f.label :site_id %><br />
-    <%= f.text_field :site_id %>
-  </p>
-
-  <p>
-    <%= f.submit "Create" %>
+    <b>Child:</b>
+    <select name="menu_node[child_id]">
+      <% Category.find(:all, :order => 'name').each do |child| 
+        if SiteConfiguration.find_by_name(child.name).nil? %>
+          <option value="<%= child.id %>">    
+            <%= child.name %>
+          </option>
+        <% end %>
+      <% end %>
+    </select>
+  </td>
+  <td> 
+    &nbsp; &nbsp; <%= f.submit "Create" %>
+  </td>
+  </table>
   </p>
 <% end %>
 

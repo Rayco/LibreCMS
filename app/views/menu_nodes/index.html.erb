@@ -1,24 +1,26 @@
-<h3>Listing menu_nodes</h3>
+<div class="app_details">
 
-<table>
-  <tr>
+<h3>Listing Menu Nodes</h3>
+
+<table cellspacing=5>
+  <tr align=center>
+    <th>Site</th>
     <th>Parent</th>
     <th>Child</th>
-    <th>Site</th>
   </tr>
 
 <% for menu_node in @menu_nodes %>
-  <tr>
-    <td><%=h menu_node.category_id %></td>
-    <td><%=h menu_node.child_id %></td>
-    <td><%=h menu_node.site_id %></td>
-    <td><%= link_to 'Show', menu_node %></td>
+  <tr align=center>
+    <td><%=h Category.find_by_id(menu_node.site_id).name if !Category.find_by_id(menu_node.site_id).nil? %></td>
+    <td><%=h Category.find_by_id(menu_node.category_id).name if !Category.find_by_id(menu_node.category_id).nil? %></td>
+    <td><%=h Category.find_by_id(menu_node.child_id).name if !Category.find_by_id(menu_node.child_id).nil? %></td>
+    <!-- <td><%= link_to 'Show', menu_node %></td> -->
     <td><%= link_to 'Edit', edit_menu_node_path(menu_node) %></td>
     <td><%= link_to 'Destroy', menu_node, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
+</div>
 <br />
 
-<%= link_to 'New menu_node', new_menu_node_path %>
+<%= link_to 'New Menu Node', new_menu_node_path %>

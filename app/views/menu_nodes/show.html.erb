@@ -1,16 +1,16 @@
 <p>
+  <b>Site:</b>
+  <%=h Category.find_by_id(@menu_node.site_id).name if !Category.find_by_id(@menu_node.site_id).nil? %>
+</p>
+
+<p>
   <b>Parent:</b>
-  <%=h @menu_node.category_id %>
+  <%=h Category.find_by_id(@menu_node.category_id).name if !Category.find_by_id(@menu_node.category_id).nil? %>
 </p>
 
 <p>
   <b>Child:</b>
-  <%=h @menu_node.child_id %>
-</p>
-
-<p>
-  <b>Site:</b>
-  <%=h @menu_node.site_id %>
+  <%=h Category.find_by_id(@menu_node.child_id).name if !Category.find_by_id(@menu_node.child_id).nil? %>
 </p>
 
 <%= link_to 'Edit', edit_menu_node_path(@menu_node) %> |

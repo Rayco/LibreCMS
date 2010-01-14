@@ -439,3 +439,8 @@ a.tag6 { font-size:1.8em; color:#003553; line-height:1em; }
     width: 80px;
     height: 106px;
 }
+
+select { 
+    width: 150px;
+}
+ 

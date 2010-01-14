@@ -1,28 +1,55 @@
-<h3>Editing menu_node</h3>
+<h3>Editing Menu Node</h3>
 
 <% form_for(@menu_node) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :parent_id %><br />
-    <%= f.text_field :category_id %>
+  <table cellspacing=10>
+  <td>
+    <b>Site:</b>
+    <% @site = Category.find_by_id(MenuNode.find_by_id(params[:id]).site_id) %>
+    <select name="menu_node[site_id]">
+      <option selected value="<%= @site.id %>"> <%= @site.name %> </option>
+      <% SiteConfiguration.find(:all, :order => "name").each do |site| %>
+        <% if site.name !~ Regexp.compile(@site.name) %>
+          <option value="<%= site.id %>">
+            <%= site.name %>
+          </option>
+        <% end %>
+      <% end %>
+    </select>
+ 
+    <b>Parent:</b>
+    <% @parent = Category.find_by_id(MenuNode.find_by_id(params[:id]).category_id) %>
+    <select name="menu_node[category_id]">
+      <option selected value="<%= @parent.id %>"> <%= @parent.name %> </option>
+      <% Category.find(:all, :order => "name").each do |category| %>
+        <% if category.name !~ Regexp.compile(@parent.name) %>
+          <option value="<%= category.id %>">
+            <%= category.name %>
+          </option>
+        <% end %>
+      <% end %>
+    </select>
+ 
+    <b>Child:</b>
+    <% @child = Category.find_by_id(MenuNode.find_by_id(params[:id]).child_id) %>
+    <select name="menu_node[child_id]">
+      <option selected value="<%= @child.id %>"> <%= @child.name %> </option>
+      <% Category.find(:all, :order => "name").each do |category| %>
+        <% if category.name !~ Regexp.compile(@child.name) %>
+          <option value="<%= category.id %>">
+            <%= category.name %>
+          </option>
+        <% end %>
+      <% end %>
+    </select>
+  </td>
+  <td>
+    &nbsp; &nbsp; <%= f.submit "Update" %>
+  </td>
+  </table>
   </p>
-
-  <p>
-    <%= f.label :child_id %><br />
-    <%= f.text_field :child_id %>
-  </p>
-
-  <p>
-    <%= f.label :site_id %><br />
-    <%= f.text_field :site_id %>
-  </p>
-
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-
 <% end %>
 
-<%= link_to 'Show', @menu_node %> |
 <%= link_to 'Back', menu_nodes_path %>
