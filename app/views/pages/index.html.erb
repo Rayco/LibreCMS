@@ -2,25 +2,29 @@
 
 <div class="app_details">
 
-<h3>Listing Static Page</h3>
+<h3>List of Static Pages</h3>
 
-<table cellspacing=5>
-  <tr align=center>
-    <th>Site Name</th>
-    <th>Page Name</th>
-    <th>Permanent Link</th>
-  </tr>
-  <% for page in @pages %>
+<% if @pages.empty? %>
+  <p><b> No static pages that show </b></p>
+<% else %>
+  <table cellspacing=5>
     <tr align=center>
-      <td><%=h page.site%></td>
-      <td><%=h page.name %></td>
-      <td><%=h page.permalink %></td>
-      <td><%= link_to "Show", page %></td>
-      <td><%= link_to "Edit", edit_page_path(page) %></td>
-      <td><%= link_to "Destroy", page, :confirm => 'Are you sure?', :method => :delete %></td>
+      <th>Page for</th>
+      <th>Display name</th>
+      <th>Permanent link</th>
     </tr>
+    <% for page in @pages %>
+      <tr align=center>
+        <td><%=h page.site%></td>
+        <td><%=h page.name %></td>
+        <td><%=h page.permalink %></td>
+        <td><%= link_to "Show", page %></td>
+        <td><%= link_to "Edit", edit_page_path(page) %></td>
+        <td><%= link_to "Destroy", page, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </table>
   <% end %>
-</table>
 </div>
 
 <p><%= link_to "New Page", new_page_path %></p>

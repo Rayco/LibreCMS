@@ -3,17 +3,24 @@
 <% form_for @page do |f| %>
 
   <p>
-    <b>Site Name (Empty for all sites)</b><br />
-    <%= f.text_field :site %>
+    <b>Page for: </b>
+    <select name="page[site]">
+      <option selected value=""> <%= "All Sites" %> </option>
+      <% SiteConfiguration.find(:all, :order => "name").each do |site| %>
+        <option value="<%= site.name %>">
+          <%= site.name %>
+        </option>
+      <% end %>
+    </select>
   </p>
 
   <p>
-    <b>Page Name</b><br />
+    <b>Display name</b><br />
     <%= f.text_field :name %>
   </p>
 
   <p>
-    <b>Permanent Link</b><br />
+    <b>Permanent link</b><br />
     <%= f.text_field :permalink %>
   </p>
 
@@ -25,3 +32,4 @@
   <p><%= f.submit "Submit" %></p>
 
 <% end %>
+

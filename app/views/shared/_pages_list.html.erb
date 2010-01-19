@@ -1,5 +1,5 @@
 <% for page in @pages %>
-  <% if page.site == @site_config.name or page.site.nil? or page.site.empty? %>
+  <% if page.site == @site_config.name or page.site.empty? %>
     <li><%= link_to page.name, "/static/#{page.permalink}", :class => "active" %></li>
   <% end %>
 <% end %>
