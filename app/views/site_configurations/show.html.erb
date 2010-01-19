@@ -1,15 +1,12 @@
 <h3>Configuration <%=h @site_configuration.name %></h3>
 
 <p>
-  <b>ID:</b>
+  <b>Site ID:</b>
   <%=h @site_configuration.id %>
 </p>
+
 <p>
-  <b>Name:</b>
-  <%=h @site_configuration.name %>
-</p>
-<p>
-  <b>Site Domain:</b>
+  <b>Domain:</b>
   <%=h @site_configuration.website %>
 </p>
 
@@ -24,13 +21,8 @@
 </p>
 
 <p>
-  <b>Code Google Analytics:</b>
+  <b>Tracking Code (Google Analytics):</b>
   <%=h @site_configuration.code %>
-</p>
-
-<p>
-  <b>Root category:</b>
-  <%=h @site_configuration.root_category_id %>
 </p>
 
 <%= link_to 'Edit', edit_site_configuration_path(@site_configuration) %> |
