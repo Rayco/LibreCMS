@@ -1,15 +1,17 @@
+<div class="app_details">
+
 <h3>Editing Site Configuration</h3>
 
 <% form_for(@site_configuration) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <b>Name</b><br />
-    <%= f.text_field :name %>
+    <span class="asterisk">* </span><b>Name</b><br />
+    <%= f.text_field :name, :required => true%>
   </p>
 
   <p>
-    <b>Domain</b><br />
+    <span class="asterisk">* </span><b>Domain</b><br />
     <%= f.text_field :website %>
   </p>
 
@@ -36,3 +38,5 @@
 
 <%= link_to 'Show', @site_configuration %> |
 <%= link_to 'Back', site_configurations_path %>
+
+</div>

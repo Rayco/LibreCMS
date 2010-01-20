@@ -443,4 +443,8 @@ a.tag6 { font-size:1.8em; color:#003553; line-height:1em; }
 select { 
     width: 150px;
 }
- 
+
+.asterisk {
+    font-weight: bold;
+    color: red;
+} 
