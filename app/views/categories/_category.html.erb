@@ -2,15 +2,15 @@
 
 <% form_for ([@category]), :url => category_path(@category), :html => { :multipart => true } do |f| %>
   <p>
-    <b>Category Name</b><br />
+    <span class="asterisk">* </span><b>Name</b><br />
     <%= f.text_field :publicname %>
   </p>
 
   <p>
-    <b>Permanent Link</b><br />
+    <span class="asterisk">* </span><b>Permanent Link</b><br />
     <%= f.text_field :name %>
   </p>
-  
+ 
   <p>
     <b>Icon</b><br />
     <%= f.file_field :icon %>
@@ -20,7 +20,9 @@
     <b>Parent Categories (Must write the Permanent Link, not the Category Name, separated by commas)</b><br />
     <%= f.text_field :parents_names %>
   </p>
-  
+
+  <p><span class="asterisk">* </span><b>Required field</b></p> 
+ 
   <p>
     <%= f.submit button_name %>
   </p>

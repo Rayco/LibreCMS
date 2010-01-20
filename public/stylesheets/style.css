@@ -17,27 +17,10 @@ body {
 	height: 100%;
 	text-align: center;
         font-family: Helvetica, Verdana, Arial, sans-serif;
-        /* font-size: 1.3em; */
+        font-size: 1.3em; 
 	background-color: #ffffff;
 	min-width: 960px;
 }
-
-/* Fuente pequeña */
-.nivel1 {
-	font-size: 1.2em;
-}
-
-/* Fuente normal */
-.nivel2 {
-	font-size: 1.3em;
-}
-
-/* Fuente grande */
-.nivel3 {
-	font-size: 1.4em;
-} 
-
-
 
 a:link, a:visited {
 	color: #00598D;

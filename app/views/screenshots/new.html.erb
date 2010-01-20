@@ -1,7 +1,11 @@
 <% title "New Screenshot" %>
 
+<div class="app_details">
+
 <h3>New <%= @application.name %> Screenshot</h3>
 
 <%= render :partial => @screenshot, :locals => { :button_name => "Create" } %>
 
-<p><%= link_to "Back to List", application_screenshots_path(@tags, @application) %></p>
+<p><%= link_to "Back", application_screenshots_path(@tags, @application) %></p>
+
+</div>

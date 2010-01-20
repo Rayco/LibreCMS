@@ -2,27 +2,31 @@
 
 <div class="app_details">
 
-<h3>Listing <%=h @application.name %> Resources</h3>
+<h3>List of <%=h @application.name %> Resources</h3>
 
-<table cellspacing=5>
-  <tr align=center>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
+<% if @resources.empty? %>
+  <p><b> No Resources that show </b></p>
+<% else %>
+  <table cellspacing=5>
+    <tr align=center>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
 
-<% for resource in @resources %>
-  <tr align=center>
-    <td><%=h resource.name %></td>
-    <td><%=h resource.description %></td>
-    <td><%= link_to 'Show', application_resource_path(@tags, @application, resource) %></td>
-    <td><%= link_to 'Edit', edit_application_resource_path(@tags, @application, resource) %></td>
-    <td><%= link_to 'Destroy', application_resource_path(@tags, @application, resource), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <% for resource in @resources %>
+    <tr align=center>
+      <td><%=h resource.name %></td>
+      <td><%=h resource.description %></td>
+      <td><%= link_to 'Show', application_resource_path(@tags, @application, resource) %></td>
+      <td><%= link_to 'Edit', edit_application_resource_path(@tags, @application, resource) %></td>
+      <td><%= link_to 'Destroy', application_resource_path(@tags, @application, resource), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+  </table>
 <% end %>
-</table>
 
 </div>
 
 <br />
 
-<%= link_to 'New resource', new_application_resource_path(@tags, @application) %>
+<%= link_to 'New Resource', new_application_resource_path(@tags, @application) %>
