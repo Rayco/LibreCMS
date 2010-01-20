@@ -3,7 +3,7 @@
 <% form_for @page do |f| %>
 
   <p>
-    <b>Page for: </b>
+    <span class="asterisk">* </span><b>Page for: </b>
     <select name="page[site]">
       <option selected value=""> <%= "All Sites" %> </option>
       <% SiteConfiguration.find(:all, :order => "name").each do |site| %>
@@ -20,7 +20,7 @@
   </p>
 
   <p>
-    <b>Permanent link</b><br />
+    <span class="asterisk">* </span><b>Permanent link</b><br />
     <%= f.text_field :permalink %>
   </p>
 
@@ -28,6 +28,8 @@
     <b>Content</b><br />
     <%= f.text_area :content %>
   </p>
+
+  <p><span class="asterisk">* </span><b>Required field</b></p>
 
   <p><%= f.submit "Submit" %></p>
 

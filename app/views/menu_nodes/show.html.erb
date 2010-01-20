@@ -1,3 +1,5 @@
+<div class="app_details">
+
 <p>
   <b>Site:</b>
   <%=h Category.find_by_id(@menu_node.site_id).name if !Category.find_by_id(@menu_node.site_id).nil? %>
@@ -15,3 +17,5 @@
 
 <%= link_to 'Edit', edit_menu_node_path(@menu_node) %> |
 <%= link_to 'Back', menu_nodes_path %>
+
+</div>
