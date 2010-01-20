@@ -2,8 +2,14 @@
 <% form_for ([@application, @installer]), :url => application_installer_path(@tags, @application, installer), :html => { :multipart => true } do |f| %>
 
   <p>
-    <span class="asterisk">* </span><b>Tags Platforms and Architecture (Separated by commas):</b><br/>
-    <%= f.text_field :platform_list %>
+    <span class="asterisk">* </span><b>Platforms and Architecture: </b>
+    <select name="installer[platform_list]">
+      <option selected value="Windows, 32bits"> <%= "Windows 32 Bits" %> </option>
+      <option selected value="Windows, 64bits"> <%= "Windows 64 Bits" %> </option>
+      <option selected value="Linux"> <%= "GNU/Linux" %> </option>
+      <option selected value="Mac"> <%= "Mac" %> </option>
+      <option selected value="Multiplatform"> <%= "Multiplatform" %> </option>
+    </select>
   </p>
 
   <p>
