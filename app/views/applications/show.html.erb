@@ -1,4 +1,6 @@
-<table class="app_details">
+<div class="app_details">
+
+<table>
 <td valign="top">
   <%= image_tag @application.logo.url(:normal), :class => "app_logo", :alt => @application.name, :title => @application.name %>
 </td>
@@ -11,7 +13,7 @@
     <% end %>
   </p>
 
-<% if !@application.license.nil? and !@application.license.empty? %>
+  <% if !@application.license.nil? and !@application.license.empty? %>
     <p><b>Licencia:</b> <%=h @application.license %></p>
   <% end %>
 
@@ -42,15 +44,13 @@
 </td>
 </table>
 
-<div class="app_details">
-  <% if !@win32.empty? or !@win64.empty? or !@linux.empty? or !@mac.empty? or !@multiplatform.empty? %>
+<% if !@win32.empty? or !@win64.empty? or !@linux.empty? or !@mac.empty? or !@multiplatform.empty? %>
   <div id="installers">
-    <table summary="Relación de instaladores y arquitecturas">
-      <caption>Descargar:</caption> 
-      <tbody>
-      <tr valign=top>
-        <td>
-         
+  <table summary="Relación de instaladores y arquitecturas">
+    <caption>Descargar:</caption> 
+    <tbody>
+    <tr valign=top>
+      <td>       
       <% if !@win32.empty? %>
         <table>
           <% installer = @win32[@win32.size - 1] %>
@@ -152,8 +152,8 @@
       </tr>
     </table>
     
-      </tbody>
-    </table>
+    </tbody>
+  </table>
   </div>
   <% end %>
 </div>
