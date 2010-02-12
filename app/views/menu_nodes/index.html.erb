@@ -17,9 +17,20 @@
       <td><%=h Category.find_by_id(menu_node.site_id).name if !Category.find_by_id(menu_node.site_id).nil? %></td>
       <td><%=h Category.find_by_id(menu_node.category_id).name if !Category.find_by_id(menu_node.category_id).nil? %></td>
       <td><%=h Category.find_by_id(menu_node.child_id).name if !Category.find_by_id(menu_node.child_id).nil? %></td>
-      <!-- <td><%= link_to 'Show', menu_node %></td> -->
-      <td><%= link_to 'Edit', edit_menu_node_path(menu_node) %></td>
-      <td><%= link_to 'Destroy', menu_node, :confirm => 'Are you sure?', :method => :delete %></td>
+      <!--
+      <td>
+        <%= link_to (image_tag "show.png", :alt => "Show", :class => "option"), menu_node, :title => "Show" %>
+        <%= link_to 'Show', menu_node %>
+      </td>
+      -->
+      <td>
+        <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_menu_node_path(menu_node), :title => "Edit" %>
+        <%= link_to 'Edit', edit_menu_node_path(menu_node) %>
+      </td>
+      <td>
+        <%= link_to (image_tag "delete.png", :alt => "Delete", :class => "option"), menu_node, :title => "Delete", :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to 'Delete', menu_node, :confirm => 'Are you sure?', :method => :delete %>
+      </td>
     </tr>
   <% end %>
   </table>
@@ -27,4 +38,4 @@
 </div>
 <br />
 
-<%= link_to 'New Menu Node', new_menu_node_path %>
+<%= link_to 'Create Node', new_menu_node_path %>

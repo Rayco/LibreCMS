@@ -15,7 +15,7 @@
   <%=h Category.find_by_id(@menu_node.child_id).name if !Category.find_by_id(@menu_node.child_id).nil? %>
 </p>
 
-<%= link_to 'Edit', edit_menu_node_path(@menu_node) %> |
-<%= link_to 'Back', menu_nodes_path %>
+<input type="button" onclick="parent.location='/menu_nodes/<%=@menu_node.id%>/edit'" value="Edit" /> &nbsp;
+<input type="button" onclick="parent.location='/menu_nodes'" value="Back" />
 
 </div>

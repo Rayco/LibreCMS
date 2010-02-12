@@ -9,17 +9,29 @@
 	<% else %>
 	  <%= link_to category.name, applications_path(url_param) %>
 	<% end %>
-      <% else %> 
+        <div class="category">
+        <% if logged_in? and current_user.has_role?('administrator') %>
+	  <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_category_path(category), :title => "Edit" %>
+          <%= link_to 'Edit', edit_category_path(category) %> &nbsp; 
+    	  <%= link_to (image_tag "delete.png", :alt => "Delete", :class => "option"), category_path(category), :title => "Delete", :confirm => 'Are you sure?', :method => :delete %>
+	  <%= link_to 'Delete', category_path(category), :confirm => 'Are you sure?', :method => :delete %>
+        <% end %>
+        </div>
+      <% else %>
         <%= link_to (image_tag category.icon.url(:big)), categories_path(url_param) %><br />
 	<% if !category.publicname.nil? and !category.publicname.empty? %>
-	  <%= link_to category.publicname, categories_path(url_param) %><br /><br />
+	  <%= link_to category.publicname, categories_path(url_param) %>
 	<% else %>
-	  <%= link_to category.name, categories_path(url_param) %><br /><br />
+	  <%= link_to category.name, categories_path(url_param) %>
 	<% end %>
-      <% end %>
-      <% if logged_in? and current_user.has_role?('administrator') %>
-        <%= link_to 'Edit', edit_category_path(category) %> | 
-    	<%= link_to 'Destroy', category_path(category), :confirm => 'Are you sure?', :method => :delete %>
+        <div class="category">
+        <% if logged_in? and current_user.has_role?('administrator') %>
+	  <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_category_path(category), :title => "Edit" %>
+          <%= link_to 'Edit', edit_category_path(category) %> &nbsp; 
+    	  <%= link_to (image_tag "delete.png", :alt => "Delete", :class => "option"), category_path(category), :title => "Delete", :confirm => 'Are you sure?', :method => :delete %>
+	  <%= link_to 'Delete', category_path(category), :confirm => 'Are you sure?', :method => :delete %>
+        <% end %>
+        </div>
       <% end %>
   </li>
 <% end %>
@@ -30,4 +42,3 @@
 <% if logged_in? and current_user.has_role?('administrator') %>
   <%= link_to 'New category', new_category_path %>
 <% end %>
-

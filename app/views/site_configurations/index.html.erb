@@ -17,9 +17,18 @@
       <td><%=h site_configuration.name %></td>
       <td><%=h site_configuration.website %></td>
       <td><%=h site_configuration.header %></td>
-      <td><%= link_to 'Show', site_configuration %></td>
-      <td><%= link_to 'Edit', edit_site_configuration_path(site_configuration) %></td>
-      <td><%= link_to 'Destroy', site_configuration, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td>
+	<%= link_to (image_tag "show.png", :alt => "Show", :class => "option"), site_configuration, :title => "Show" %> 
+        <%= link_to 'Show', site_configuration %>
+      </td>
+      <td>
+	<%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_site_configuration_path(site_configuration), :title => "Edit" %>
+        <%= link_to 'Edit', edit_site_configuration_path(site_configuration) %>
+      </td>
+      <td>
+        <%= link_to (image_tag "delete.png", :alt => "Delete", :class => "option"), site_configuration, :title => "Delete", :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to 'Delete', site_configuration, :confirm => 'Are you sure?', :method => :delete %>
+      </td>
     </tr>
   <% end %>
   </table>
@@ -27,4 +36,4 @@
 </div>
 <br />
 
-<%= link_to 'New Site Configuration', new_site_configuration_path %>
+<%= link_to 'Create Site', new_site_configuration_path %>

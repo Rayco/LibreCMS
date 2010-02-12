@@ -47,13 +47,9 @@
       <% end %>
     </select>
   </td>
-  <td>
-    &nbsp; &nbsp; <%= f.submit "Update" %>
-  </td>
   </table>
+  <br />&nbsp; <%= f.submit "Update" %> &nbsp; <input type="button" onclick="parent.location='/menu_nodes'" value="Cancel" />
   </p>
 <% end %>
-
-<%= link_to 'Back', menu_nodes_path %>
 
 </div>

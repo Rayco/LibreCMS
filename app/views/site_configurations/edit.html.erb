@@ -33,12 +33,9 @@
   <p><span class="asterisk">* </span><b>Required field</b></p>
 
   <p>
-    <%= f.submit "Update" %>
+    <%= f.submit "Update" %> &nbsp; <input type="button" onclick="parent.location='/site_configurations'" value="Cancel" />
   </p>
 
 <% end %>
-
-<%= link_to 'Show', @site_configuration %> |
-<%= link_to 'Back', site_configurations_path %>
 
 </div>
