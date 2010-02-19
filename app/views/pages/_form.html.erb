@@ -31,7 +31,9 @@
 
   <p><span class="asterisk">* </span><b>Required field</b></p>
 
-  <p><%= f.submit "Submit" %></p>
+  <p>
+    <%= f.submit button_name %> &nbsp; <input type="button" onclick="parent.location='/pages'" value="Cancel" />
+  </p>
 
 <% end %>
 

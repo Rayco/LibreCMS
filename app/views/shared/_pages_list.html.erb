@@ -5,5 +5,5 @@
 <% end %>
 
 <% if logged_in? and current_user.has_role?('administrator') %>
-  <li><%= link_to 'New page', new_page_path %></li>
+  <li><%= link_to 'Create Page', new_page_path %></li>
 <% end %>

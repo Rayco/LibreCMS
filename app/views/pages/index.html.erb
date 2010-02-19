@@ -18,13 +18,22 @@
         <td><%=h page.site%></td>
         <td><%=h page.name %></td>
         <td><%=h page.permalink %></td>
-        <td><%= link_to "Show", page %></td>
-        <td><%= link_to "Edit", edit_page_path(page) %></td>
-        <td><%= link_to "Destroy", page, :confirm => 'Are you sure?', :method => :delete %></td>
+        <td>
+          <%= link_to (image_tag "show.png", :alt => "Show", :class => "option"), page, :title => "Show" %>
+          <%= link_to 'Show', page %>
+        </td>        
+        <td>
+          <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_page_path(page), :title => "Edit" %>
+          <%= link_to 'Edit', edit_page_path(page) %>
+        </td>
+        <td>
+          <%= link_to (image_tag "delete.png", :alt => "Delete", :class => "option"), page, :title => "Delete", :confirm => 'Are you sure?', :method => :delete %>
+          <%= link_to 'Delete', page, :confirm => 'Are you sure?', :method => :delete %>
+        </td>
       </tr>
     <% end %>
   </table>
   <% end %>
 </div>
 
-<p><%= link_to "New Page", new_page_path %></p>
+<p><%= link_to "Create Page", new_page_path %></p>
