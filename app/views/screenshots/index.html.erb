@@ -23,8 +23,15 @@
         <td><%=h screenshot.image_content_type %></td>
         <td><%=h screenshot.image_file_size %></td>
         <!-- <td><%= link_to "Show", application_screenshot_path(@tags, @application, screenshot) %></td> -->
-        <td><%= link_to "Edit", edit_application_screenshot_path(@tags, @application, screenshot) %></td>
-        <td><%= link_to "Destroy", application_screenshot_path(@tags, @application, screenshot), :confirm => 'Are you sure?', :method => :delete %></td>
+        <td>
+	  <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_application_screenshot_path(@tags, @application, screenshot), :title => "Edit" %>
+          <%= link_to "Edit", edit_application_screenshot_path(@tags, @application, screenshot) %>
+        </td>
+        <td>
+          <%= link_to (image_tag "delete.png", :alt => "Delete", :class => "option"),
+        	application_screenshot_path(@tags, @application, screenshot), :title => "Delete", :confirm => 'Are you sure?', :method => :delete %>
+          <%= link_to "Destroy", application_screenshot_path(@tags, @application, screenshot), :confirm => 'Are you sure?', :method => :delete %>
+	</td>
       </tr>
     <% end %>
   </table>
@@ -32,4 +39,4 @@
 
 </div>
 
-<p><%= link_to "New Screenshot", new_application_screenshot_path(@tags, @application) %></p>
+<p><%= link_to "Create Screenshot", new_application_screenshot_path(@tags, @application) %></p>

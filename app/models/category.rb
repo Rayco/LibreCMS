@@ -10,8 +10,8 @@ class Category < ActiveRecord::Base
   has_many :children, :through => :category_as_parent,  :order => 'name'
     
   # Validations
-  validates_presence_of :name
-  validates_uniqueness_of :name, :case_sensitive => false, :message => 'Ya existe'
+  validates_presence_of :name, :message => 'of the Permanent is invalid'
+  validates_uniqueness_of :name, :case_sensitive => false, :message => 'of the Permanent already exists'
   
   has_attached_file :icon, :styles => { :normal => "32x32", :big => "128x128", :small => "16x16" },
                     :url => "/attached/:class/:id/:attachment/:style_:basename.:extension",

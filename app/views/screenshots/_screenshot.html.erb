@@ -8,12 +8,12 @@
   </p>
 
   <p>
-    <span class="asterisk">* </span><b>Image File Name</b><br />
+    <span class="asterisk">* </span><b>Image File</b><br />
     <%= f.file_field :image %>
   </p>
   
   <p><span class="asterisk">* </span><b>Required field</b></p>
 
-  <p><%= f.submit button_name %></p>
+  <p><%= f.submit button_name %>  &nbsp; <input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/screenshots'" value="Cancel" /></p>
 
 <% end %>

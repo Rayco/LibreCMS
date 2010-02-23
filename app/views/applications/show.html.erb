@@ -6,12 +6,21 @@
 </td>
 <td valign="top">		
   <p><b>Aplicaci&oacute;n:</b> <%=h @application.name %></p>
-  <p><b>P&aacute;gina web:</b> <%= link_to @application.website.split(/\/\//)[1], @application.website, :popup => true unless @application.website.nil? %></p>
+
+  <% if !@application.website.nil? and !@application.website.empty? %>  
+    <p>
+      <b>P&aacute;gina web:</b> 
+      <%= link_to @application.website.split(/\/\//)[1], @application.website, :popup => true unless @application.website.nil? %>
+    </p>
+  <% end %>
+  
+  <% if !@application.tag_list.nil? and !@application.tag_list.empty? %>  
   <p id="taglist"><b>Etiquetas:</b>
     <% tag_cloud @application.tag_counts.sort { |x, y| x.name <=> y.name }, @css_classes do |tag, css_class| %>
       <%= link_to tag, applications_path(String.new(tag.name).to_url), :class => css_class %>
     <% end %>
   </p>
+  <% end %>
 
   <% if !@application.license.nil? and !@application.license.empty? %>
     <p><b>Licencia:</b> <%=h @application.license %></p>
@@ -22,14 +31,15 @@
   <% if !@application.demo.nil? and !@application.demo.empty? %>
   <p><%= link_to "Pruébelo On-Line", @application.demo, :popup => true %></p>
   <% end %>
-  
-  <% expr = /^(\s*)<p>(.*)<\/p>(\s*)$/ %>
-  
-  <p><b>Descripci&oacute;n:</b> <%= @application.name + " " %>
-  <% if description = expr.match(@application.description) %>
-    <%= description[2] %></p>
-  <% else %>
-    <%= @application.description %></p> 
+
+  <% if !@application.description.nil? and !@application.description.empty? %>  
+    <% expr = /^(\s*)<p>(.*)<\/p>(\s*)$/ %> 
+    <p><b>Descripci&oacute;n:</b> <%= @application.name + " " %>
+    <% if description = expr.match(@application.description) %>
+      <%= description[2] %></p>
+    <% else %>
+      <%= @application.description %></p> 
+    <% end %>
   <% end %>
   
   <% if !@application.requisitos.nil? and !@application.requisitos.empty? %> 
@@ -62,7 +72,9 @@
           <tr valign=top>
             <td>
     	      <%= link_to "Windows x32", installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
-    	      <p>Versión <%= installer.version%> </p> 
+	       <% if installer.version.nil? or !installer.version.empty? %>
+		 <p><%= "Versión" + installer.version%> </p> 
+               <% end %>
             </td>
           </tr>
         </table>
@@ -82,7 +94,9 @@
   	  <tr>
     	    <td valign=top>
     	       <%= link_to "Windows x64", installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
-    	       <p>Versión <%= installer.version%> </p> 
+	       <% if installer.version.nil? or !installer.version.empty? %>
+		 <p><%= "Versión" + installer.version%> </p> 
+               <% end %>
             </td>
           </tr>
 	</table>
@@ -102,7 +116,9 @@
   	  <tr>
     	    <td valign=top>
     	       <%= link_to "GNU/Linux", installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
-    	       <p>Versión <%= installer.version%> </p> 
+	       <% if installer.version.nil? or !installer.version.empty? %>
+		 <p><%= "Versión" + installer.version%> </p> 
+               <% end %>
             </td>
           </tr>
 	</table>
@@ -122,7 +138,9 @@
   	  <tr>
     	    <td valign=top>
     	       <%= link_to "Mac OS", installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
-    	       <p>Versión <%= installer.version%> </p> 
+	       <% if installer.version.nil? or !installer.version.empty? %>
+		 <p><%= "Versión" + installer.version%> </p> 
+               <% end %>
             </td>
           </tr>
 	</table>
@@ -142,7 +160,9 @@
   	  <tr>
     	    <td valign=top>
     	       <%= link_to "Multiplataforma", installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
-    	       <p>Versión <%= installer.version%> </p> 
+	       <% if installer.version.nil? or !installer.version.empty? %>
+		 <p><%= "Versión" + installer.version%> </p> 
+               <% end %>
             </td>
           </tr>
 	</table>
@@ -161,9 +181,19 @@
 <div id="app_details_bottom">&nbsp;</div>
 
 <% if logged_in? and current_user.has_role?('administrator') %>
-  <%= link_to 'Edit', edit_application_path(@tags, @application.to_param) %> | 
-  <%= link_to 'Screenshots', application_screenshots_path(@tags, @application) %> | 
-  <%= link_to 'Resources', application_resources_path(@tags, @application) %> |
-  <%= link_to 'Installers', application_installers_path(@tags, @application) %> |
-  <%= link_to "Destroy", application_path(@tags, @application), :confirm => 'Are you sure?', :method => :delete %></td>
+  <p>
+  <%= link_to 'Screenshots', application_screenshots_path(@tags, @application) %>
+ 
+  <%= link_to 'Resources', application_resources_path(@tags, @application) %>
+
+  <%= link_to 'Installers', application_installers_path(@tags, @application) %>
+  </p>
+  <p> 
+  <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_application_path(@tags, @application.to_param), :title => "Edit" %>
+  <%= link_to 'Edit', edit_application_path(@tags, @application.to_param) %>
+ 
+  <%= link_to (image_tag "delete.png", :alt => "Delete", :class => "option"), 
+	application_path(@tags, @application), :title => "Delete", :confirm => 'Are you sure?', :method => :delete %>
+  <%= link_to "Delete", application_path(@tags, @application), :confirm => 'Are you sure?', :method => :delete %></td>
+  </p>
 <% end %>

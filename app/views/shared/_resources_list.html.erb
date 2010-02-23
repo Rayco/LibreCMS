@@ -10,9 +10,6 @@
     <% end %>
   </ul>
 	
-  <% if logged_in? and current_user.has_role?('administrator') %>
-    <%= link_to 'New resource', new_application_resource_path(@tags, @application) %>
-  <% end %>
   </div>
 </div>
 

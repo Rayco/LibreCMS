@@ -22,7 +22,9 @@
     <%=h @resource.website%>
   </p>
 
-<%= link_to 'Edit', edit_application_resource_path(@tags, @application, @resource) %> |
-<%= link_to 'Back', application_resources_path(@tags, @application) %>
+<p>
+  <input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/resources/<%=@resource.id%>/edit'" value="Edit" /> &nbsp;
+  <input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/resources'" value="Back" />
+</p>
 
 </div>

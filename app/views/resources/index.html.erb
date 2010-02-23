@@ -17,9 +17,19 @@
     <tr align=center>
       <td><%=h resource.name %></td>
       <td><%=h resource.description %></td>
-      <td><%= link_to 'Show', application_resource_path(@tags, @application, resource) %></td>
-      <td><%= link_to 'Edit', edit_application_resource_path(@tags, @application, resource) %></td>
-      <td><%= link_to 'Destroy', application_resource_path(@tags, @application, resource), :confirm => 'Are you sure?', :method => :delete %></td>
+      <td>
+        <%= link_to (image_tag "show.png", :alt => "Show", :class => "option"), application_resource_path(@tags, @application, resource), :title => "Show" %>
+	<%= link_to 'Show', application_resource_path(@tags, @application, resource) %>
+      </td>
+      <td>
+        <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_application_resource_path(@tags, @application, resource), :title => "Edit" %>
+	<%= link_to 'Edit', edit_application_resource_path(@tags, @application, resource) %>
+      </td>
+      <td>
+        <%= link_to (image_tag "delete.png", :alt => "Delete", :class => "option"), 
+			application_resource_path(@tags, @application, resource), :title => "Delete", :confirm => 'Are you sure?', :method => :delete %>
+	<%= link_to 'Destroy', application_resource_path(@tags, @application, resource), :confirm => 'Are you sure?', :method => :delete %>
+      </td>
     </tr>
   <% end %>
   </table>
@@ -29,4 +39,4 @@
 
 <br />
 
-<%= link_to 'New Resource', new_application_resource_path(@tags, @application) %>
+<%= link_to 'Create Resource', new_application_resource_path(@tags, @application) %>

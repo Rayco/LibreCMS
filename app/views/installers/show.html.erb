@@ -27,7 +27,9 @@
   <%=h @installer.installer_file_size %>
 </p>
 
-<%= link_to 'Edit', edit_application_installer_path(@tags, @application, @installer) %> |
-<%= link_to 'Back', application_installers_path(@tags, @application) %>
+<p>
+  <input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/installers/<%=@installer.id%>/edit'" value="Edit" /> &nbsp;
+  <input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/installers'" value="Back" />
+</p>
 
 </div>

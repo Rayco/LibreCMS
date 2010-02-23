@@ -14,5 +14,7 @@ class Screenshot < ActiveRecord::Base
                     :default_style => :normal,
                     :url => "/attached/:class/:id/:attachment/:style_:basename.:extension",
                     :path => ":rails_root/public/attached/:class/:id/:attachment/:style_:basename.:extension"
+
+  validates_attachment_presence :image
                    
 end

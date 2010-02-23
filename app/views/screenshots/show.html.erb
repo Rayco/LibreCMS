@@ -27,8 +27,8 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_application_screenshot_path(@tags, @application, @screenshot) %> |
-  <%= link_to "View All", application_screenshots_path(@tags, @application) %>
+  <input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/screenshots/<%=@screenshot.id%>/edit'" value="Edit" /> &nbsp;
+  <input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/screenshots'" value="Back" />
 </p>
 
 </div>

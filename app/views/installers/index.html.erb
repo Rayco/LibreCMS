@@ -15,15 +15,25 @@
   <% for installer in @installers %>
     <tr align=center>
       <td><%=h installer.platform_list %></td>
-      <td><%=h installer.version %></td>
+      <td><%=h installer.version %></td> 
       <td><%=h installer.installer_file_name %></td>
-      <td><%= link_to 'Show', application_installer_path(@tags, @application, installer) %></td>
-      <td><%= link_to 'Edit', edit_application_installer_path(@tags, @application, installer) %></td>
-      <td><%= link_to 'Destroy', application_installer_path(@tags, @application, installer), :confirm => 'Are you sure?', :method => :delete %></td>
+      <td>
+        <%= link_to (image_tag "show.png", :alt => "Show", :class => "option"), application_installer_path(@tags, @application, installer), :title => "Show" %>
+	<%= link_to 'Show', application_installer_path(@tags, @application, installer) %>
+      </td>
+      <td>
+        <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_application_installer_path(@tags, @application, installer), :title => "Edit" %>
+	<%= link_to 'Edit', edit_application_installer_path(@tags, @application, installer) %>
+      </td>
+      <td>
+	<%= link_to (image_tag "delete.png", :alt => "Delete", :class => "option"), 
+			application_installer_path(@tags, @application, installer), :title => "Delete", :confirm => 'Are you sure?', :method => :delete %>
+	<%= link_to 'Destroy', application_installer_path(@tags, @application, installer), :confirm => 'Are you sure?', :method => :delete %> 
+    </td>
     </tr>
   <% end %>
   </table>
 <% end %>
 </div>
 
-<p><%= link_to 'New Installer', new_application_installer_path(@tags, @application) %></p>
+<p><%= link_to 'Create Installer', new_application_installer_path(@tags, @application) %></p>
