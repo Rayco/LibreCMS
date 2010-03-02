@@ -1,14 +1,18 @@
 <div class="app_details">
 
-<h3>Listing All Users</h3>
+<h3>List of Users</h3>
 
 <table cellspacing=5>
   <tr align=center>
     <th>Username</th>
     <th>E-mail</th>
-    <th>Enabled</th>
+    <th>State</th>
     <th>Roles</th>
   </tr>
   <%= render :partial => 'user', :collection => @users %>
 </table>
+
 </div>
+
+<br />
+<%= link_to 'Create User', signup_path %>
