@@ -5,11 +5,16 @@
   <p>
     <span class="asterisk">* </span><b>Page for: </b>
     <select name="page[site]">
-      <option selected value=""> <%= "All Sites" %> </option>
+      <% if !@page.site.nil? and !@page.site.empty? %>
+        <option selected value="<%= @page.site %>"> <%= @page.site %> </option>
+      <% end %>
+      <% if @page.site !~ Regexp.compile("All Sites") %>
+        <option value=""> <%= "All Sites" %> </option>
+      <% end %>
       <% SiteConfiguration.find(:all, :order => "name").each do |site| %>
-        <option value="<%= site.name %>">
-          <%= site.name %>
-        </option>
+        <% if @page.site !~ Regexp.compile(site.name) %>
+          <option value="<%= site.name %>"> <%= site.name %> </option>
+        <% end %>
       <% end %>
     </select>
   </p>

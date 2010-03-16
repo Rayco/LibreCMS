@@ -15,7 +15,13 @@
     </tr>
     <% for page in @pages %>
       <tr align=center>
-        <td><%=h page.site%></td>
+        <td>
+          <% if page.site.empty? %>
+            <p>All Sites</p>
+          <% else %>
+            <%=h page.site%>
+          <% end %>
+        </td>
         <td><%=h page.name %></td>
         <td><%=h page.permalink %></td>
         <td>
