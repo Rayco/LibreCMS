@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/activate/:id', :controller => 'accounts', :action => 'show'
   map.forgot_password '/forgot_password', :controller => 'passwords', :action => 'new'
   map.reset_password '/reset_password/:id', :controller => 'passwords', :action => 'edit'
-  map.change_password '/change_password', :controller => 'accounts', :action => 'edit'
+  map.change_password '/change_password', :controller => 'accounts', :action => 'update'
 
   map.static 'static/:permalink', :controller => 'pages', :action => 'show'
   map.resources :pages
