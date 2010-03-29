@@ -157,7 +157,7 @@ ul {
 
 #header {
 	margin: 0 auto;
-	height: 90px;
+	height: 110px; /* 90px; */
 	position: relative;
 	background: #004E6C url('/images/header-bg.gif') repeat-x 0 0;
 	border-top: 4px solid #003042;
@@ -520,7 +520,19 @@ select {
 	border: 0px;
 }
 
-#configuraton a:link, a:visited {
+#configuration a:link, a:visited {
         text-decoration: underline;
 }
 
+/**************** Search ****************/
+
+.search {
+	float:right; 
+	clear:both; 
+	margin-top: 6px; 
+	margin-right: 15px;
+}
+
+.search_text {
+	background: #FFFFFF url('/images/search.png') no-repeat right;
+}

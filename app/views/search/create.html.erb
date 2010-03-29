@@ -1,0 +1,30 @@
+<% if @search.empty? %>
+  <div align=center>
+    <br /><br />
+    <table>
+      <th>
+        <p style="color: red; font-size: 14pt" align=center> No hay resultados para su búsqueda </p>
+      </th>
+      <th>
+        <img src="/images/aviso.png" alt="Aviso" width="82" height="74" />
+      </th>
+    </table>
+  </div>
+<% else %>
+  <% for search in @search %>
+    <p class="application">
+      <%= link_to (image_tag search.logo.url, :class => "app_logo", :alt => search.name,
+    			:title => search.name), application_path('search', search) %>
+      <%= link_to search.name, application_path('search', search) %>
+      <% if !search.description.nil? %>
+        <%  maxIndex = strip_tags(search.description).index(' ', 260)
+            maxIndex = 260 if maxIndex.nil? %>
+        <%= strip_tags(search.description)[0,maxIndex] %>
+        <%= link_to "...", application_path('search', search) if strip_tags(search.description).length > 260 %><br />
+      <% end %>
+    </p>
+  <% end %>
+<% end %>
+
+<br />
+

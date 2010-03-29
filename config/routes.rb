@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :menu_nodes
   map.resources :site_configurations
   map.resources :configurations
+  map.resources :search
 
   map.resources :users, :member => { :enable => :put } do |users|
     users.resource :account

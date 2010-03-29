@@ -44,6 +44,11 @@
   <%= link_to (image_tag "ull.png", :alt => "Universidad de La Laguna", :class => "header-ull"), 'http://www.ull.es', :title => "Universidad de La Laguna", :popup => true %>
   <%= link_to (image_tag "osl_text.png", :alt => "Oficina de Software Libre", :class => "header-osl"), 'http://osl.ull.es/', :title => "Oficina de Software Libre", :popup => true %>
   <h1><%= link_to @site_config.header, root_path %></h1>
+
+  <!-- Barra de busqueda -->
+  <%= render :partial => "/shared/search" %>
+  <!-- Barra de busqueda end-->
+
 </div>
 <!-- Header end -->
 
