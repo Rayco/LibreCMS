@@ -1,6 +1,6 @@
-set :user, 'rails'
-set :group, 'rails'
-set :domain, 'mechada.osl.ull.es'
+set :user, 'adminosl'
+set :group, 'adminosl'
+set :domain, 'librecms.osl.ull.es'
 set :project, 'windowsLibre'
 set :application, 'windowsLibre'
 set :applicationdir, "/var/rails/#{application}"
@@ -9,12 +9,12 @@ set :applicationdir, "/var/rails/#{application}"
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
 # set :scm, :subversion
-set :repository,  "http://svn.osl.ull.es/windowsLibre/tags/release-0.0.7.5"
+set :repository,  "http://svn.osl.ull.es/windowsLibre/tags/release-0.0.7.6"
 
 # Roles (servers)
-role :app, "windowsLibre.osl.ull.es"
-role :web, "windowsLibre.osl.ull.es"
-role :db,  "windowsLibre.osl.ull.es", :primary => true
+role :app, "librecms.osl.ull.es"
+role :web, "librecms.osl.ull.es"
+role :db,  "librecms.osl.ull.es", :primary => true
 
 # Deploy config
 # If you aren't deploying to /u/apps/#{application} on the target
