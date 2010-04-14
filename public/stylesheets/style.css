@@ -56,6 +56,12 @@ a:hover {
 	background: #e65b5b;
 }
 
+.actualizacion {
+	font-size: 80%; 
+	font-style: italic; 
+	text-align: right;
+}
+
 /* Paragraphs, headings, ... */
 
 p {
@@ -157,7 +163,7 @@ ul {
 
 #header {
 	margin: 0 auto;
-	height: 110px; /* 90px; */
+	height: 90px; /* 110px; */
 	position: relative;
 	background: #004E6C url('/images/header-bg.gif') repeat-x 0 0;
 	border-top: 4px solid #003042;
@@ -224,6 +230,10 @@ ul {
 	width: 960px;
 	margin: 0 auto;
 	background: #4A4A4A url('/images/menu-bg.gif') repeat-x 0 0;
+}
+
+#menu ul {
+	width: 730px;
 }
 
 #menu li {
@@ -535,4 +545,5 @@ select {
 
 .search_text {
 	background: #FFFFFF url('/images/search.png') no-repeat right;
+	padding-right: 20px;
 }

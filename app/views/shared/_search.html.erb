@@ -1,10 +1,10 @@
 <% form_tag '/search' do %>
   <div class="search">
-    <% if !params[:s] or @search.empty? %>
-      <%# Si no se ha realizado un búsqueda se muestra el texto por defecto %>
+    <% if !params[:s] or @search.nil? %>
+      <%# If you have not done a search is shown the default text %>
       <%= text_field_tag :s, params[:s], :value => 'Buscar ...' , :onclick => "this.value =''", :class => "search_text" %>
     <% else %>
-      <%# Se muestra la cadena a buscar %>
+      <%# It shows the Buscar string %>
       <%= text_field_tag :s, params[:s], :class => "search_text"  %>
     <% end %>
   </div>

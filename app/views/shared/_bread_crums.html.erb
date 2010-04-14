@@ -2,7 +2,9 @@
   <%= link_to 'Cat&aacute;logo', categories_path %>
   <% cat_tags = [] %> 
   <% for tag in @tags %>
+		<% if !params[:s] %>
     > <%= link_to_if ((tag != @tags[-1]) or @application), String.new(tag).from_url, applications_path(cat_tags << tag) %>
+		<% end %>
   <% end %>
   <%=h '> ' + @application.name if @application and @application.name %>
 

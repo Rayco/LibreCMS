@@ -9,7 +9,7 @@
 <meta name="Description" content="..." />
 <meta name="Keywords" content="..." />
 <meta name="robots" content="all,follow" />
-<meta name="author" content="Rayco Abad Martin (es.linkedin.com/in/rabad) and Agustin Ancor Cruz Lorenzo (www.ancorcruz.com)" />
+<meta name="author" content="Rayco Abad Martin (es.linkedin.com/in/rabad), Eduardo Nacimiento Garcia (www.eduardonacimiento.com) and Agustin Ancor Cruz Lorenzo (www.ancorcruz.com)" />
 
 <!-- Javascript -->
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
@@ -45,19 +45,22 @@
   <%= link_to (image_tag "osl_text.png", :alt => "Oficina de Software Libre", :class => "header-osl"), 'http://osl.ull.es/', :title => "Oficina de Software Libre", :popup => true %>
   <h1><%= link_to @site_config.header, root_path %></h1>
 
-  <!-- Barra de busqueda -->
-  <%= render :partial => "/shared/search" %>
   <!-- Barra de busqueda end-->
 
 </div>
 <!-- Header end -->
 
 <!-- Menu -->
+<div id="menu">
+  <!-- Search  -->
+  <%= render :partial => "/shared/search" %>
+  <!-- Search  end-->
 <a href="#skip-menu" class="hidden">Skip menu</a>
-<ul id="menu" class="cleaning-box">
+<ul class="cleaning-box">
   <li class="first"><%= link_to 'Portada', root_path, :class => "active" %></li>
   <%= render :partial => '/shared/pages_list' %> <!-- No shared -->
 </ul>
+</div>
 <!-- Menu end -->
 
 <hr class="noscreen" />
