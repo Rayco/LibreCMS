@@ -11,7 +11,7 @@ class SearchController < ApplicationController
       params[:s] = translate(params[:s])
       @search = Application.find(:all, :conditions => ["name LIKE ? OR license LIKE ?", "%#{params[:s]}%", "%#{params[:s]}%"])
       @search += Application.find_by_sql(['select * from applications where id IN 
-                                            (select taggable_id from taggings where tag_id LIKE 
+                                            (select taggable_id from taggings where tag_id IN 
                                               (select id from tags where name LIKE ? ))', "%#{params[:s]}%"]);
       @search += Application.find(:all, :conditions => ["description LIKE ?", "%#{params[:s]}%"])
       @search = @search.uniq
