@@ -9,6 +9,7 @@ class SearchController < ApplicationController
   def create
     if params[:s].length > 1 
       params[:s] = translate(params[:s])
+      params[:s] = params[:s].gsub(' ' , '%');
       @search = Application.find(:all, :conditions => ["name LIKE ? OR license LIKE ?", "%#{params[:s]}%", "%#{params[:s]}%"])
       @search += Application.find_by_sql(['select * from applications where id IN 
                                             (select taggable_id from taggings where tag_id IN 
