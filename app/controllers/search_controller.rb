@@ -16,6 +16,7 @@ class SearchController < ApplicationController
                                               (select id from tags where name LIKE ? ))', "%#{params[:s]}%"]);
       @search += Application.find(:all, :conditions => ["description LIKE ?", "%#{params[:s]}%"])
       @search = @search.uniq
+      params[:s] = params[:s].gsub('%' , ' ');
     end
   end
 
