@@ -41,7 +41,7 @@
 <% end %>
 <br />
 
-<% if !@search.nil? %>
+<% if !@search.nil? and !@search.empty? and @size > 10%>
 <% form_tag '/search' do %>
   <div style="text-align:center;">
       <%= hidden_field_tag :s, params[:s] %>
