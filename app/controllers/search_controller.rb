@@ -16,9 +16,6 @@ class SearchController < ApplicationController
                                               (select id from tags where name LIKE ? ))', "%#{params[:s]}%"]);
       @search += Application.find(:all, :conditions => ["description LIKE ?", "%#{params[:s]}%"])
       @search = @search.uniq
-<<<<<<< .copia-de-trabajo
-      params[:s] = params[:s].gsub('%' , ' ');
-=======
       params[:s] = params[:s].gsub('%' , ' ');
 			if params[:s].match(/ /)
 				param_search = params[:s].split;
@@ -43,7 +40,6 @@ class SearchController < ApplicationController
 				@end = 9
 			end
 			@search =  @search[@start..@end]
->>>>>>> .derecha-fusion.r308
     end
   end
 
