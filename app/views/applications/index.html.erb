@@ -14,6 +14,26 @@
 
 <br />
 
+<% form_tag './applications', {:method => :get} do %>
+  <div style="text-align:center;">
+      <%= hidden_field_tag :s, params[:s] %>
+      <%= hidden_field_tag :start, @start %>
+      <%= hidden_field_tag :end, @end %>
+			<% if @start > 0 %>
+				<%= image_submit_tag 'previous.png', {:name => :previous, :id => :previous, :value => true} %>
+			<% else %>
+				<%= image_tag 'previous_no.png', :alt => 'No more results' %>
+			<% end %>
+			<%= image_submit_tag 'home.png', {:name => :home, :id => :home, :value => true} %>
+			<% if @end < @size - 1 %>
+				<%= image_submit_tag 'next.png', {:name => :next, :id => :next, :value => true} %>
+			<% else %>
+				<%= image_tag 'next_no.png', :alt => 'No more results' %>
+			<% end %>
+  </div>
+<% end %>
+
+
 <% if logged_in? and current_user.has_role?('administrator') %>
   <%= link_to 'Create Application', new_application_path(@tags) %>
 <% end %>

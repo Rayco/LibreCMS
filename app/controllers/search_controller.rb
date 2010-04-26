@@ -16,7 +16,34 @@ class SearchController < ApplicationController
                                               (select id from tags where name LIKE ? ))', "%#{params[:s]}%"]);
       @search += Application.find(:all, :conditions => ["description LIKE ?", "%#{params[:s]}%"])
       @search = @search.uniq
+<<<<<<< .copia-de-trabajo
       params[:s] = params[:s].gsub('%' , ' ');
+=======
+      params[:s] = params[:s].gsub('%' , ' ');
+			if params[:s].match(/ /)
+				param_search = params[:s].split;
+				param_search.each do |p|
+		      @search += Application.find(:all, :conditions => ["name LIKE ? OR license LIKE ?", "%#{p}%", "%#{p}%"])
+ 		 	    @search += Application.find_by_sql(['select * from applications where id IN 
+    	      	                                  (select taggable_id from taggings where tag_id IN 
+      	  	                                      (select id from tags where name LIKE ? ))', "%#{p}%"]);
+    	 		@search += Application.find(:all, :conditions => ["description LIKE ?", "%#{p}%"])
+	     		@search = @search.uniq
+				end
+			end
+			@size = @search.size
+			if params[:next]
+				@start = params[:end].to_i + 1
+				@end = @start + 9
+			elsif params[:previous]
+				@start = params[:start].to_i - 10
+				@end = @start + 9
+			else 
+				@start = 0
+				@end = 9
+			end
+			@search =  @search[@start..@end]
+>>>>>>> .derecha-fusion.r308
     end
   end
 

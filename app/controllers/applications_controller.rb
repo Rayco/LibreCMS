@@ -22,6 +22,18 @@ class ApplicationsController < ApplicationController
   # GET /applications.xml
   def index
     @applications = Application.tagged_with(@tags.join(", "), :on => :tags, :match_all => true).sort { |x, y| x.name.downcase <=> y.name.downcase }
+		@size = @applications.size
+		if params[:next]
+			@start = params[:end].to_i + 1
+			@end = @start + 9
+		elsif params[:previous]
+			@start = params[:start].to_i - 10
+			@end = @start + 9
+		else 
+			@start = 0
+			@end = 9
+		end
+		@applications =  @applications[@start..@end]
 
     respond_to do |format|
       format.html # index.html.erb
