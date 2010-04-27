@@ -1,0 +1,48 @@
+<div class="app_details">
+
+<h3>List of Categories</h3>
+
+<% $category = "true" %>
+
+<% if @categories.empty? %>
+  <p><b> No Categories that show </b></p>
+<% else %>
+  <table cellspacing=5>
+
+  <% for category in @categories %>
+    <tr align=center>
+      <td>
+        <% if !MenuNode.find_by_category_id(category.id) and !MenuNode.find_by_child_id(category.id) %>
+          <% $category = "false" %>
+          <%= image_tag "aviso.png", :alt => "Aviso", :width => "32", :height => "28" %>
+        <% end %>
+      </td>
+      <td>
+        <%=h category.publicname %></td>
+      <td>
+        <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_category_path(category), :title => "Edit" %>
+        <%= link_to 'Edit', edit_category_path(category) %>
+      </td>
+      <td>
+        <%= link_to (image_tag "delete.png", :alt => "Delete", :class => "option"), category, :title => "Delete", :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to 'Delete', category, :confirm => 'Are you sure?', :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
+<% if $category == "false" %>
+  <br />
+  <p>
+    <%= image_tag "aviso.png", :alt => "Aviso", :width => "32", :height => "28" %> 
+    <b><font color="red">Category not assigned to any site</font></b>
+  </p>
+<% end %>
+
+</div>
+
+<br />
+<p>
+  <input type="button" onclick="parent.location='/categories/new'" value="Create" /> &nbsp; <input type="button" onclick="parent.location='/configurations'" value="Back" />
+</p>
