@@ -4,7 +4,7 @@ class SiteConfigurationsController < ApplicationController
   # GET /site_configurations
   # GET /site_configurations.xml
   def index
-    @site_configurations = SiteConfiguration.find(:all)
+    @site_configurations = SiteConfiguration.paginate :page => params[:page], :per_page => 10
 
     respond_to do |format|
       format.html # index.html.erb

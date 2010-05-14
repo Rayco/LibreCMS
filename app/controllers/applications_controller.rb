@@ -51,7 +51,7 @@ class ApplicationsController < ApplicationController
     @mac = @application.installers.tagged_with("Mac", :on => :platforms, :match_all => true).flatten
     @multiplatform = @application.installers.tagged_with("Multiplatform", :on => :platforms, :match_all => true).flatten
     @screenshots = @application.screenshots
-		@last_update = Installer.find(:last, :conditions => ["application_id LIKE ?", "%#{@application.id}%"])
+    @last_update = Installer.find(:last, :conditions => ["application_id LIKE ?", "%#{@application.id}%"])
 
     respond_to do |format|
       format.html # show.html.erb

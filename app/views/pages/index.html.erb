@@ -39,7 +39,8 @@
       </tr>
     <% end %>
   </table>
-  <% end %>
+<%= will_paginate @pages, :prev_label => '<< Anterior', :next_label => 'Siguiente >>' %>
+<% end %>
 </div>
 <br />
 <p>

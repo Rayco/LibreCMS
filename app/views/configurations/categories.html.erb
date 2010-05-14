@@ -4,7 +4,7 @@
 
 <% $category = "true" %>
 
-<% if @categories.empty? %>
+<% if @categories.nil? or @categories.empty? %>
   <p><b> No Categories that show </b></p>
 <% else %>
   <table cellspacing=5>
@@ -39,6 +39,8 @@
     <b><font color="red">Category not assigned to any site</font></b>
   </p>
 <% end %>
+
+<%= will_paginate @categories, :prev_label => '<< Anterior', :next_label => 'Siguiente >>' %>
 
 </div>
 

@@ -4,7 +4,7 @@ class MenuNodesController < ApplicationController
   # GET /menu_nodes
   # GET /menu_nodes.xml
   def index
-    @menu_nodes = MenuNode.find(:all)
+    @menu_nodes = MenuNode.paginate :page => params[:page], :per_page => 10
 
     respond_to do |format|
       format.html # index.html.erb

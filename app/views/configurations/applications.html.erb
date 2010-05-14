@@ -1,0 +1,55 @@
+<div class="app_details">
+
+<h3>List of Applications</h3>
+
+<% $public = "true" %>
+
+<% if @applications.nil? or @applications.empty? %>
+  <p><b> No Applications that show </b></p>
+<% else %>
+  <table cellspacing=5>
+  <% for application in @applications %>
+    <tr align=center>
+      <td>
+        <% if application.tag_list.nil? or application.tag_list.empty? %>
+          <% $public = "false" %>
+          <%= image_tag "aviso.png", :alt => "Aviso", :width => "32", :height => "28" %>
+        <% end %>
+      </td>
+      <td>
+        <%=h application.name %>
+      </td>
+      <td>
+        <%= link_to (image_tag "show.png", :alt => "Show", :class => "option"), application_path("search", application), :title => "Show" %>
+        <%= link_to 'Show', application_path("search", application) %>
+      </td>
+      <td>
+        <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_application_path("search", application), :title => "Edit" %>
+        <%= link_to 'Edit', edit_application_path("search", application) %>
+      </td>
+      <td>
+        <%= link_to (image_tag "delete.png", :alt => "Delete", :class => "option"), 
+            		application_path("search", application), :title => "Delete", :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to "Delete", application_path("search", application), :confirm => 'Are you sure?', :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
+<% if $public == "false" %>
+  <br />
+  <p>
+    <%= image_tag "aviso.png", :alt => "Aviso", :width => "32", :height => "28" %> 
+    <b><font color="red">Application not assigned to any category or tag</font></b>
+  </p>
+<% end %>
+    
+<%= will_paginate @applications, :prev_label => '<< Anterior', :next_label => 'Siguiente >>' %>
+
+</div>
+
+<br />
+<p>
+  <input type="button" onclick="parent.location='/search/applications/new'" value="Create" /> &nbsp; <input type="button" onclick="parent.location='/configurations'" value="Back" />
+</p>

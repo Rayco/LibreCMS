@@ -18,7 +18,7 @@ class PagesController < ApplicationController
    :only => [:new, :edit, :show, :index])
   
   def index
-    @pages = Page.find(:all)
+    @pages = Page.paginate :page => params[:page], :per_page => 10
   end
   
   def show

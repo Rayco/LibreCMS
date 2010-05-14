@@ -9,6 +9,9 @@ ActionController::Routing::Routes.draw do |map|
   map.reset_password '/reset_password/:id', :controller => 'passwords', :action => 'edit'
   map.change_password '/change_password', :controller => 'accounts', :action => 'update'
 
+  map.categories '/configurations/categories', :controller => 'configurations', :action => 'categories'
+  map.applications '/configurations/applications', :controller => 'configurations', :action => 'applications'
+
   map.static 'static/:permalink', :controller => 'pages', :action => 'show'
   map.resources :pages
   
