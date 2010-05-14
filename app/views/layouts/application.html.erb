@@ -29,10 +29,10 @@
 <body>
 
 <div id="border">
-<div id="wrapper" class=nivel2>
+<div id="wrapper" class="nivel2">
 
 <!-- Login -->
-<div class=login_menu>
+<div class="login_menu">
   <% if logged_in? and current_user.has_role?('administrator') %>
     <%= render :partial => '/shared/login_menu' %>
   <% end %>
@@ -150,5 +150,6 @@
   <%= @site_config.code %>
 <% end %>
 
+</div>
 </body>
 </html>
