@@ -44,7 +44,44 @@ class SearchController < ApplicationController
   end
 
   def show
-    redirect_to root_path 
+	# Últimas aplicaciones añadidas
+	if params[:id] == "a"
+		@last_updated_apps = Application.find(:all, :limit => 10, :order => "created_at DESC", :limit => "10" )
+	# Últimos instaladores añadidos
+	elsif params[:id] == "u"	
+		@last_updated_apps = Application.find(:all, :joins => :installers, :order => "installers.updated_at DESC", :limit => "10")
+		@last_updated_apps = @last_updated_apps.uniq
+	elsif params[:id] == "gnulinux"
+		@applications_all = Application.find(:all)
+		@applications = Array.new
+		@applications_all.each do |app|
+			if !(app.installers.tagged_with("Linux", :on => :platforms, :match_all => true).empty? &&
+				app.installers.tagged_with("Multiplatform", :on => :platforms, :match_all => true).empty?)
+				@applications << app
+			end
+		end
+	elsif params[:id] == "windows"
+		@applications_all = Application.find(:all)
+		@applications = Array.new
+		@applications_all.each do |app|
+			if !(app.installers.tagged_with("Windows, 32bits", :on => :platforms, :match_all => true).empty? && 
+				app.installers.tagged_with("Windows, 64bits", :on => :platforms, :match_all => true).empty? &&
+				app.installers.tagged_with("Multiplatform", :on => :platforms, :match_all => true).empty?)
+				@applications << app
+			end
+		end
+	elsif params[:id] == "macos"
+		@applications_all = Application.find(:all)
+		@applications = Array.new
+		@applications_all.each do |app|
+			if !(app.installers.tagged_with("Mac", :on => :platforms, :match_all => true).empty? &&
+				app.installers.tagged_with("Multiplatform", :on => :platforms, :match_all => true).empty?)
+				@applications << app
+			end
+		end
+else
+		redirect_to root_path 
+	end
   end
 
   def translate (parameters)

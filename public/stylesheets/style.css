@@ -585,3 +585,36 @@ select {
 	color: #ddd;
 }
 
+
+
+/* Advanced options*/
+
+ul#nav > li > ul { 
+	float: right; 
+	background: url("../images/filtros2.png") no-repeat;
+	position: relative;
+	top: -15px;
+	margin-right: 0px;
+	padding: 18px 2px 2px 2px; 
+}
+
+ul#nav > li > span {
+	float: right;
+	position: relative;
+	right: 150px;
+}
+
+ 
+ul#nav > li > ul > li { 
+	visibility: collapse;
+	display: block;
+	background-color: #005E85;
+	border: 1px dashed black;
+	margin: 0 0 2px 0px; 
+	padding: 5px 2px 2px 2px; 
+} 
+
+ul#nav > li > ul:hover > li { 
+	visibility: visible;
+	display: block; 
+}
