@@ -1,7 +1,7 @@
 <h4><%= link_to @page.name, "/static/#{@page.permalink}" %></h4>
 
 <%
-  content = @page.content.gsub(/<h\d/, '</div><div class="static_pages"><h3')
+  content = @page.content.gsub(/<h(\d)/, '</div><div class="static_pages"><h\1')
   content = content.sub(/^<\/div><div class="static_pages">/, '') 
 %>
 

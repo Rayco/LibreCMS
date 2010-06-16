@@ -43,11 +43,11 @@ class SessionsController < ApplicationController
     user = User.authenticate(login, password)
     if user == nil
       failed_login("Your username or password is incorrect.")
-    elsif user.activated_at.blank?  
-      failed_login("Your account is not active, please check your email for the activation code.")
     elsif user.enabled == false
       failed_login("Your account has been disabled.")
-    else
+  #  elsif user.activated_at.blank?  
+  #    failed_login("Your account is not active, please check your email for the activation code.")
+    elsif
       self.current_user = user
       successful_login
     end
@@ -57,7 +57,7 @@ class SessionsController < ApplicationController
   private
   
   def failed_login(message)
-    flash.now[:error] = message
+    @message = message
     render :action => 'new'
   end
 

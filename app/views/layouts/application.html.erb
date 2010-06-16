@@ -33,9 +33,7 @@
 
 <!-- Login -->
 <div class="login_menu">
-  <% if logged_in? and current_user.has_role?('administrator') %>
-    <%= render :partial => '/shared/login_menu' %>
-  <% end %>
+  <%= render :partial => '/shared/login_menu' %>
 </div>
 <!-- Login end -->
 

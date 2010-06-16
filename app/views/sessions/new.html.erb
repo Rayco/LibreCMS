@@ -1,5 +1,9 @@
 <h3>Login with User ID and Password:</h3>
 
+<% if !@message.nil? %> 
+<%= flash.now[:error] = @message %>
+<% end %>
+
 <% form_tag session_path do -%>
   <p><b><label for="login">Login</label></b><br/>
   <%= text_field_tag 'login' %></p>
