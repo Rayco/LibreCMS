@@ -2,37 +2,29 @@
 <% for category in @categories %>
   <li>
     <% url_param = Array.new(@tags) << category %>
-      <% if category.children_in_site(@site_config).empty? %>
-        <%= link_to (image_tag category.icon.url(:big)), applications_path(url_param) %><br />
-	<% if !category.publicname.nil? and !category.publicname.empty? %>
-	  <%= link_to category.publicname, applications_path(url_param) %>
-	<% else %>
-	  <%= link_to category.name, applications_path(url_param) %>
-	<% end %>
-        <div class="category">
-        <% if logged_in? and current_user.has_role?('administrator') %>
-	  <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_category_path(category), :title => "Edit" %>
-          <%= link_to 'Edit', edit_category_path(category) %> &nbsp; 
-    	  <%= link_to (image_tag "delete.png", :alt => "Delete", :class => "option"), category_path(category), :title => "Delete", :confirm => 'Are you sure?', :method => :delete %>
-	  <%= link_to 'Delete', category_path(category), :confirm => 'Are you sure?', :method => :delete %>
-        <% end %>
-        </div>
+    <% if category.children_in_site(@site_config).empty? %>
+      <%= link_to (image_tag category.icon.url(:big)), applications_path(url_param) %><br />
+      <% if !category.publicname.nil? and !category.publicname.empty? %>
+        <%= link_to category.publicname, applications_path(url_param) %>
       <% else %>
-        <%= link_to (image_tag category.icon.url(:big)), categories_path(url_param) %><br />
-	<% if !category.publicname.nil? and !category.publicname.empty? %>
-	  <%= link_to category.publicname, categories_path(url_param) %>
-	<% else %>
-	  <%= link_to category.name, categories_path(url_param) %>
-	<% end %>
-        <div class="category">
-        <% if logged_in? and current_user.has_role?('administrator') %>
-	  <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_category_path(category), :title => "Edit" %>
-          <%= link_to 'Edit', edit_category_path(category) %> &nbsp; 
-    	  <%= link_to (image_tag "delete.png", :alt => "Delete", :class => "option"), category_path(category), :title => "Delete", :confirm => 'Are you sure?', :method => :delete %>
-	  <%= link_to 'Delete', category_path(category), :confirm => 'Are you sure?', :method => :delete %>
-        <% end %>
-        </div>
+        <%= link_to category.name, applications_path(url_param) %>
       <% end %>
+    <% else %>
+      <%= link_to (image_tag category.icon.url(:big)), categories_path(url_param) %><br />
+      <% if !category.publicname.nil? and !category.publicname.empty? %>
+        <%= link_to category.publicname, categories_path(url_param) %>
+      <% else %>
+        <%= link_to category.name, categories_path(url_param) %>
+      <% end %>
+    <% end %>
+    <div class="category">
+      <% if logged_in? and current_user.has_role?('administrator') %>
+        <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_category_path(category), :title => "Edit" %>
+        <%= link_to 'Edit', edit_category_path(category) %> &nbsp; 
+    	<%= link_to (image_tag "delete.png", :alt => "Delete", :class => "option"), category_path(category), :title => "Delete", :confirm => 'Are you sure?', :method => :delete %>
+	<%= link_to 'Delete', category_path(category), :confirm => 'Are you sure?', :method => :delete %>
+      <% end %>
+    </div>
   </li>
 <% end %>
 </ul>

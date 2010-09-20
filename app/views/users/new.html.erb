@@ -17,7 +17,7 @@
 
   <p>
     <span class="asterisk">* </span><b>Password</b><br />
-    <%= f.password_field :password %>
+    <%= f.password_field :password %> <small>Between 4 and 40 characters</small>
   </p>
 
   <p>
@@ -26,7 +26,7 @@
   </p>
 
   <p>
-    <%= submit_tag 'Sign up' %> &nbsp; <input type="button" onclick="parent.location='/users'" value="Cancel" />
+    <%= submit_tag 'Create' %> &nbsp; <input type="button" onclick="parent.location='/users'" value="Cancel" />
   </p>
 
 <% end %>

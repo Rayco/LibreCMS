@@ -17,71 +17,72 @@ class SearchController < ApplicationController
       @search += Application.find(:all, :conditions => ["description LIKE ?", "%#{params[:s]}%"])
       @search = @search.uniq
       params[:s] = params[:s].gsub('%' , ' ');
-			if params[:s].match(/ /)
-				param_search = params[:s].split;
-				param_search.each do |p|
-		      @search += Application.find(:all, :conditions => ["name LIKE ? OR license LIKE ?", "%#{p}%", "%#{p}%"])
- 		 	    @search += Application.find_by_sql(['select * from applications where id IN 
-    	      	                                  (select taggable_id from taggings where tag_id IN 
+      if params[:s].match(/ /)
+        param_search = params[:s].split;
+	param_search.each do |p|
+	  @search += Application.find(:all, :conditions => ["name LIKE ? OR license LIKE ?", "%#{p}%", "%#{p}%"])
+ 	  @search += Application.find_by_sql(['select * from applications where id IN 
+    	    	                                  (select taggable_id from taggings where tag_id IN 
       	  	                                      (select id from tags where name LIKE ? ))', "%#{p}%"]);
-    	 		@search += Application.find(:all, :conditions => ["description LIKE ?", "%#{p}%"])
-	     		@search = @search.uniq
-				end
-			end
-			@size = @search.size
-			if params[:next]
-				@start = params[:end].to_i + 1
-				@end = @start + 9
-			elsif params[:previous]
-				@start = params[:start].to_i - 10
-				@end = @start + 9
-			else 
-				@start = 0
-				@end = 9
-			end
-			@search =  @search[@start..@end]
+    	  @search += Application.find(:all, :conditions => ["description LIKE ?", "%#{p}%"])
+	  @search = @search.uniq
+	end
+      end
+   
+      @size = @search.size
+      if params[:next]
+ 	@start = params[:end].to_i + 1
+	@end = @start + 9
+      elsif params[:previous]
+	@start = params[:start].to_i - 10
+	@end = @start + 9
+      else 
+	@start = 0
+	@end = 9
+      end
+      @search =  @search[@start..@end]
     end
   end
 
   def show
-	# Últimas aplicaciones añadidas
-	if params[:id] == "a"
-		@last_updated_apps = Application.find(:all, :limit => 10, :order => "created_at DESC", :limit => "10" )
-	# Últimos instaladores añadidos
-	elsif params[:id] == "u"	
-		@last_updated_apps = Application.find(:all, :joins => :installers, :order => "installers.updated_at DESC", :limit => "10")
-		@last_updated_apps = @last_updated_apps.uniq
-	elsif params[:id] == "gnulinux"
-		@applications_all = Application.find(:all)
-		@applications = Array.new
-		@applications_all.each do |app|
-			if !(app.installers.tagged_with("Linux", :on => :platforms, :match_all => true).empty? &&
-				app.installers.tagged_with("Multiplatform", :on => :platforms, :match_all => true).empty?)
-				@applications << app
-			end
-		end
-	elsif params[:id] == "windows"
-		@applications_all = Application.find(:all)
-		@applications = Array.new
-		@applications_all.each do |app|
-			if !(app.installers.tagged_with("Windows, 32bits", :on => :platforms, :match_all => true).empty? && 
-				app.installers.tagged_with("Windows, 64bits", :on => :platforms, :match_all => true).empty? &&
-				app.installers.tagged_with("Multiplatform", :on => :platforms, :match_all => true).empty?)
-				@applications << app
-			end
-		end
-	elsif params[:id] == "macos"
-		@applications_all = Application.find(:all)
-		@applications = Array.new
-		@applications_all.each do |app|
-			if !(app.installers.tagged_with("Mac", :on => :platforms, :match_all => true).empty? &&
-				app.installers.tagged_with("Multiplatform", :on => :platforms, :match_all => true).empty?)
-				@applications << app
-			end
-		end
-else
-		redirect_to root_path 
+    # Últimas aplicaciones añadidas
+    if params[:id] == "a"
+      @last_updated_apps = Application.find(:all, :limit => 10, :order => "created_at DESC", :limit => "10" )
+    # Últimos instaladores añadidos
+    elsif params[:id] == "u"	
+      @last_updated_apps = Application.find(:all, :joins => :installers, :order => "installers.updated_at DESC", :limit => "10")
+      @last_updated_apps = @last_updated_apps.uniq
+    elsif params[:id] == "gnulinux"
+      @applications_all = Application.find(:all)
+      @applications = Array.new
+      @applications_all.each do |app|
+        if !(app.installers.tagged_with("Linux", :on => :platforms, :match_all => true).empty? &&
+             app.installers.tagged_with("Multiplatform", :on => :platforms, :match_all => true).empty?)
+          @applications << app
+        end
+      end
+    elsif params[:id] == "windows"
+      @applications_all = Application.find(:all)
+      @applications = Array.new
+      @applications_all.each do |app|
+        if !(app.installers.tagged_with("Windows, 32bits", :on => :platforms, :match_all => true).empty? && 
+	     app.installers.tagged_with("Windows, 64bits", :on => :platforms, :match_all => true).empty? &&
+	     app.installers.tagged_with("Multiplatform", :on => :platforms, :match_all => true).empty?)
+	  @applications << app
 	end
+      end
+    elsif params[:id] == "macos"
+      @applications_all = Application.find(:all)
+      @applications = Array.new
+      @applications_all.each do |app|
+        if !(app.installers.tagged_with("Mac", :on => :platforms, :match_all => true).empty? &&
+	     app.installers.tagged_with("Multiplatform", :on => :platforms, :match_all => true).empty?)
+	  @applications << app
+	end
+      end
+    else
+      redirect_to root_path 
+    end
   end
 
   def translate (parameters)

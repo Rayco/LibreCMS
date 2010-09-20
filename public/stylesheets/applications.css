@@ -1,11 +1,12 @@
 .application {
-	height: 75px;
+	min-height: 65px;
 	margin-top: 15px;
 	padding: 10px;
 	/* border: thin solid #005E85; */
 	background-color: #EEEEFF;
 	text-align: justify;
 	font-size: 1em;
+	overflow: hidden;	
 }
 
 .app_logo {

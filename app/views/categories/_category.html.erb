@@ -1,6 +1,6 @@
-<%= error_messages_for :category %>
-
 <% form_for ([@category]), :url => category_path(@category), :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+
   <p>
     <span class="asterisk">* </span><b>Name</b><br />
     <%= f.text_field :publicname %>

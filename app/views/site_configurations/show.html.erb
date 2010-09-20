@@ -19,11 +19,11 @@
 
 <p>
   <b>Web ISO:</b>
-  <%=h @site_configuration.webiso %>
+  <%= link_to @site_configuration.webiso, @site_configuration.webiso %>
 </p>
 
 <p>
-  <b>Tracking Code (Google Analytics):</b>
+  <b>Tracking Code:</b>
   <%=h @site_configuration.code %>
 </p>
 

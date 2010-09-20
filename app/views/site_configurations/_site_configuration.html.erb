@@ -1,0 +1,35 @@
+<% form_for(@site_configuration) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <span class="asterisk">* </span><b>Name</b><br />
+    <%= f.text_field :name, :required => true%>
+  </p>
+
+  <p>
+    <b>Domain</b><br />
+    <%= f.text_field :website %>
+  </p>
+
+  <p>
+    <b>Header</b><br />
+    <%= f.text_field :header %>
+  </p>
+
+  <p>
+    <b>Web ISO</b><br />
+    <%= f.text_field :webiso %>
+  </p>
+
+  <p>
+    <b>Tracking Code</b><br />
+    <%= f.text_area :code %>
+  </p>
+
+  <p><span class="asterisk">* </span><b>Required field</b></p>
+
+  <p>
+    <%= f.submit button_name %> &nbsp; <input type="button" onclick="parent.location='/site_configurations'" value="Cancel" />
+  </p>
+
+<% end %>
