@@ -185,6 +185,7 @@
 
 <div id="app_details_bottom">&nbsp;</div>
 
+<%= render :partial => 'shared/social'  %>
 <% if logged_in? and current_user.has_role?('administrator') %>
   <p>
   <%= link_to 'Screenshots', application_screenshots_path(@tags, @application) %>

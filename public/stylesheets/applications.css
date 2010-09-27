@@ -5,7 +5,7 @@
 	/* border: thin solid #005E85; */
 	background-color: #EEEEFF;
 	text-align: justify;
-	font-size: 1em;
+	overflow: hidden;
 	overflow: hidden;	
 }
 

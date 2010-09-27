@@ -62,6 +62,17 @@ a:hover {
 	text-align: right;
 }
 
+.social {
+	border: 2px dashed gray;
+	font-style: italic; 
+	text-align: right;
+	float: right;
+}
+
+.social > a > img {
+	border: 0px;
+}
+
 /* Paragraphs, headings, ... */
 
 p {
