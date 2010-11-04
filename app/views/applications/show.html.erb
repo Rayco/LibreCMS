@@ -1,41 +1,51 @@
 <div class="app_details">
 
 <table>
+<tr>
 <td valign="top">
   <%= image_tag @application.logo.url(:normal), :class => "app_logo", :alt => @application.name, :title => @application.name %>
 </td>
-<td valign="top">		
+<td valign="bottom">		
   <p><b>Aplicaci&oacute;n:</b> <%=h @application.name %></p>
+</td>
+<td valign="bottom">
+  <% @download = Download.find_by_application_id(@application.id)
+  if !@download.nil?
+    $result = @download.windows + @download.linux + @download.mac + @download.multiplatform
+    if $result != 0 %>
+      <p align=right>
+        <b>Descargas:</b> <%= $result %>
+      </p>
+ <% end
+  end %>
+</td>
+</tr>
 
+<tr>
+<td></td>
+<td colspan="2" valign="top">
   <% if !@application.website.nil? and !@application.website.empty? %>  
     <p>
-      <b>P&aacute;gina web:</b> 
+      <b>P&aacute;gina Web:</b> 
       <%= link_to @application.website.split(/\/\//)[1], @application.website, :popup => true unless @application.website.nil? %>
     </p>
   <% end %>
   
-  <% if !@application.tag_list.nil? and !@application.tag_list.empty? %>  
-  <p id="taglist"><b>Etiquetas:</b>
-    <% tag_cloud @application.tag_counts.sort { |x, y| x.name <=> y.name }, @css_classes do |tag, css_class| %>
-      <%= link_to tag, applications_path(String.new(tag.name).to_url), :class => css_class %>
-    <% end %>
-  </p>
-  <% end %>
-
   <% if !@application.license.nil? and !@application.license.empty? %>
-		<% if @application.license_url.nil? or @application.license_url.empty? %>
-	   <p><b>Licencia:</b> <%=h @application.license %></p>
-		<% else %>	
-	    <p><b>Licencia:</b> <%= link_to @application.license, @application.license_url, :popup => true %></p>
-		<% end %>
+    <% if @application.license_url.nil? or @application.license_url.empty? %>
+      <p><b>Licencia:</b> <%=h @application.license %></p>
+    <% else %>	
+      <p><b>Licencia:</b> <%= link_to @application.license, @application.license_url, :popup => true %></p>
+    <% end %>
   <% end %>
-
-  <!-- <p><b>Idioma:</b></p> -->
   
   <% if !@application.demo.nil? and !@application.demo.empty? %>
-  <p><%= link_to "Pruébelo On-Line", @application.demo, :popup => true %></p>
+    <p>
+      <b>Demo On-Line:</b> 
+      <%= link_to @application.demo.split(/\/\//)[1], @application.demo, :popup => true %>
+    </p>
   <% end %>
-
+  
   <% if !@application.description.nil? and !@application.description.empty? %>  
     <% expr = /^(\s*)<p>(.*)<\/p>(\s*)$/ %> 
     <p><b>Descripci&oacute;n:</b> <%= @application.name + " " %>
@@ -47,7 +57,7 @@
   <% end %>
   
   <% if !@application.requisitos.nil? and !@application.requisitos.empty? %> 
-    <p><b>Requisitos recomendados:</b> 
+    <p><b>Requisitos:</b> 
       <% if requisitos = expr.match(@application.requisitos) %>
         <%= requisitos[2] %></p>
       <% else %>
@@ -56,6 +66,7 @@
   <% end %>
 
 </td>
+</tr>
 </table>
 
 <% if !@win32.empty? or !@win64.empty? or !@linux.empty? or !@mac.empty? or !@multiplatform.empty? %>
@@ -70,12 +81,12 @@
           <% installer = @win32[@win32.size - 1] %>
           <tr class="heading">
             <th>
-              <%= link_to (image_tag "win32.png", :border => "0"), installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
+              <%= link_to (image_tag "win32.png", :border => "0"), installer.installer.url, :title => 'descargar ' + installer.name, :onclick => remote_function(:url => { :action => "counter", :id => @application.id, :platform => "windows" }) if installer.version %><br/>
             </th> 
             </tr>
           <tr valign=top>
             <td>
-    	      <%= link_to "Windows x32", installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
+    	      <%= link_to "Windows x32", installer.installer.url, :title => 'descargar ' + installer.name , :onclick => remote_function(:url => { :action => "counter", :id => @application.id, :platform => "windows" }) if installer.version %><br/>
 	       <% if installer.version.nil? or !installer.version.empty? %>
 		 <p><%= "Versión " + installer.version%> </p> 
                <% end %>
@@ -92,12 +103,12 @@
           <% installer = @win64[@win64.size - 1] %>
  	  <tr class="heading">
             <th>
-            <%= link_to (image_tag "win64.png", :border => "0"), installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
+            <%= link_to (image_tag "win64.png", :border => "0"), installer.installer.url, :title => 'descargar ' + installer.name, :onclick => remote_function(:url => { :action => "counter", :id => @application.id, :platform => "windows" }) if installer.version %><br/>
 	    </th>
           </tr>
   	  <tr>
     	    <td valign=top>
-    	       <%= link_to "Windows x64", installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
+    	       <%= link_to "Windows x64", installer.installer.url, :title => 'descargar ' + installer.name, :onclick => remote_function(:url => { :action => "counter", :id => @application.id, :platform => "windows" }) if installer.version %><br/>
 	       <% if installer.version.nil? or !installer.version.empty? %>
 		 <p><%= "Versión " + installer.version%> </p> 
                <% end %>
@@ -114,12 +125,12 @@
           <% installer = @linux[@linux.size - 1] %>
  	  <tr class="heading">
             <th>
-            <%= link_to (image_tag "linux.png", :border => "0"), installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
+            <%= link_to (image_tag "linux.png", :border => "0"), installer.installer.url, :title => 'descargar ' + installer.name, :onclick => remote_function(:url => { :action => "counter", :id => @application.id, :platform => "linux" }) if installer.version %><br/>
 	    </th>
           </tr>
   	  <tr>
     	    <td valign=top>
-    	       <%= link_to "GNU/Linux", installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
+    	       <%= link_to "GNU/Linux", installer.installer.url, :title => 'descargar ' + installer.name, :onclick => remote_function(:url => { :action => "counter", :id => @application.id, :platform => "linux" }) if installer.version %><br/>
 	       <% if installer.version.nil? or !installer.version.empty? %>
 		 <p><%= "Versión " + installer.version%> </p> 
                <% end %>
@@ -136,12 +147,12 @@
           <% installer = @mac[@mac.size - 1] %>
  	  <tr class="heading">
             <th>
-            <%= link_to (image_tag "mac.png", :border => "0"), installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
+            <%= link_to (image_tag "mac.png", :border => "0"), installer.installer.url, :title => 'descargar ' + installer.name, :onclick => remote_function(:url => { :action => "counter", :id => @application.id, :platform => "mac" }) if installer.version %><br/>
 	    </th>
           </tr>
   	  <tr>
     	    <td valign=top>
-    	       <%= link_to "Mac OS", installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
+    	       <%= link_to "Mac OS", installer.installer.url, :title => 'descargar ' + installer.name, :onclick => remote_function(:url => { :action => "counter", :id => @application.id, :platform => "mac" }) if installer.version %><br/>
 	       <% if installer.version.nil? or !installer.version.empty? %>
 		 <p><%= "Versión " + installer.version%> </p> 
                <% end %>
@@ -158,12 +169,12 @@
           <% installer = @multiplatform[@multiplatform.size - 1] %>
  	  <tr class="heading">
             <th>
-            <%= link_to (image_tag "multi.png", :border => "0"), installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
+            <%= link_to (image_tag "multi.png", :border => "0"), installer.installer.url, :title => 'descargar ' + installer.name, :onclick => remote_function(:url => { :action => "counter", :id => @application.id, :platform => "multiplatform" }) if installer.version %><br/>
 	    </th>
           </tr>
   	  <tr>
     	    <td valign=top>
-    	       <%= link_to "Multiplataforma", installer.installer.url, :title => 'descargar ' + installer.name if installer.version %><br/>
+    	       <%= link_to "Multiplataforma", installer.installer.url, :title => 'descargar ' + installer.name, :onclick => remote_function(:url => { :action => "counter", :id => @application.id, :platform => "multiplatform" }) if installer.version %><br/>
 	       <% if installer.version.nil? or !installer.version.empty? %>
 		 <p><%= "Versión " + installer.version%> </p> 
                <% end %>
@@ -179,11 +190,14 @@
     </tbody>
   </table>
   </div>
-	<p class="actualizacion"><b>Última actualización:</b> <%= @last_update.updated_at.strftime("%d-%m-%Y") %></p>
   <% end %>
+  <p class="app_update">
+    <b>Última actualización:</b> 
+    <%= @last_update.updated_at.strftime("%d-%m-%Y") %>
+  </p>
+  <%= render :partial => 'shared/social' %>
+  <br /> 
 </div>
-
-<div id="app_details_bottom">&nbsp;</div>
 
 <%= render :partial => 'shared/social'  %>
 <% if logged_in? and current_user.has_role?('administrator') %>

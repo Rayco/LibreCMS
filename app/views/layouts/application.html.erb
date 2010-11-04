@@ -83,12 +83,16 @@
     <div class="content-box-right">
       <div class="content-box-right-in">
 
-        <% if @application and !@application.resources.empty? %>
-          <%= render :partial => '/shared/resources_list' %>
+        <% if @application and !@application.tag_list.empty? %>
+	  <%= render :partial => '/shared/application_tag_cloud' %>
         <% end %>
-
-        <% if @screenshots and !@screenshots.empty? %>
+        
+	<% if @screenshots and !@screenshots.empty? %>
 	  <%= render :partial => '/shared/screenshots' %> <!-- Usar content_for -->
+        <% end %>
+        
+	<% if @application and !@application.resources.empty? %>
+          <%= render :partial => '/shared/resources_list' %>
         <% end %>
 
         <% unless @application or @cloud.empty? %>

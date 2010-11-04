@@ -1,5 +1,5 @@
 class ApplicationsController < ApplicationController
-  before_filter :check_administrator_role, :except => [:show, :index]
+  before_filter :check_administrator_role, :except => [:show, :index, :counter]
 
   uses_tiny_mce(:options => {
    :theme => 'advanced',
@@ -108,6 +108,26 @@ class ApplicationsController < ApplicationController
       format.html { redirect_to(applications_url(@tags)) }
       format.xml  { head :ok }
     end
+  end
+
+  def counter
+    if Download.find_by_application_id(params[:id]).nil?
+      @download = Download.new(:application_id => params[:id])
+      @download.save
+    end
+    @download = Download.find_by_application_id(params[:id])
+    case params[:platform]
+      when "windows"
+	@download.windows += 1;
+      when "linux"
+	@download.linux += 1;
+      when "mac"
+	@download.mac += 1;
+      when "multiplatform"
+	@download.multiplatform += 1;
+    end
+    @download.save
+    render :nothing => true, :status => 200
   end
 
 end

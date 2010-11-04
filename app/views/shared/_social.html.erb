@@ -3,23 +3,34 @@
 <% @url_app = @url_app.gsub('%20', '_') %>
 
 <!-- TEST URL -->
-<%  #@url_app = "http://openpyme.osl.ull.es/CMS/applications/Drupal"%>
+<%#  @url_app = "http://openpyme.osl.ull.es/CMS/applications/Drupal"%>
 
 <% require 'open-uri' %>
  
-<% Kernel.open('http://t.osl.ull.es/url/'+@url_app+'?out=1') do |f|
-  @p=f.read
+<% Kernel.open('http://t.osl.ull.es/url/' + @url_app + '?out=1') do |f|
+  @p = f.read
 end %>
 
-<p class="social"> <strong>
-<%= link_to "Compartir:", 'http://'+@p %>
-</strong> 
-<%= text_field "compartir", "name", "size" => 15, "value" => @p %>
-<%= link_to image_tag("fb.png"), "http://www.facebook.com/share.php?u=#{@p}" %>
-<%= link_to image_tag("twitter.png"), "http://twitter.com/home?status=#{@p}" %>
-<%= link_to image_tag("identica.png"), "http://identi.ca/index.php?action=newnotice&status_textarea=#{@p}" %> 
-<%= link_to image_tag("buzz.png"), "http://www.google.com/buzz/post?url=#{@p}" %>
-<%= link_to image_tag("ff.png"), "http://friendfeed.com/?url=#{@p}" %>
-<%= link_to image_tag("delicious.png"), "http://del.icio.us/post?url=#{@p}" %>
-<%= link_to image_tag("linkedin2.png"), "http://www.linkedin.com/shareArticle?mini=true&url=#{@p}" %>
+<p class="social"> 
+  <strong>
+    <%= link_to "Compartir:", 'http://' + @p, :alt => "Compartir esta aplicación", :title => "Compartir esta aplicación", :popup => true %>
+  </strong> 
+  <%= text_field "compartir", "name", :size => 16, :value => 'http://' + @p, :readonly => true %>
+  
+  <%= link_to (image_tag "fb.png", :alt => "Compartir en Facebook"), 
+		"http://www.facebook.com/share.php?u=#{@p}", :title => "Compartir en Facebook", :popup => true %>
+  <%= link_to (image_tag "twitter.png", :alt => "Compartir en Twitter"), 
+		"http://twitter.com/home?status=#{@p}", :title => "Compartir en Twitter", :popup => true %>
+  <%= link_to (image_tag "identica.png", :alt => "Compartir en Identi.ca"), 
+		"http://identi.ca/index.php?action=newnotice&status_textarea=#{@p}", :title => "Compartir en Identi.ca", :popup => true %>
+  <%= link_to (image_tag "buzz.png", :alt => "Compartir en Buzz"), 
+		"http://www.google.com/buzz/post?url=#{@p}", :title => "Compartir en Buzz", :popup => true %>
+  <%= link_to (image_tag "ff.png", :alt => "Compartir en FriendFeed"), 
+		"http://friendfeed.com/?url=#{@p}", :title => "Compartir en FriendFeed", :popup => true %>
+  <%= link_to (image_tag "delicious.png", :alt => "Compartir en Delicious"), 
+		"http://del.icio.us/post?url=#{@p}", :title => "Compartir en Delicious", :popup => true %>
+  <%= link_to (image_tag "linkedin2.png", :alt => "Compartir en LinkedIn"), 
+		"http://www.linkedin.com/shareArticle?mini=true&url=#{@p}", :title => "Compartir en LinkedIn", :popup => true %>
+  <br /><br />
 </p>
+

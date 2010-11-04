@@ -1,0 +1,10 @@
+<div class="column-right-box">
+  <h4>Nube de etiquetas</h4>
+  <div class="generic-right-box" id="tagcloud">
+    <% tag_cloud @application.tag_counts.sort { |x, y| x.name <=> y.name }, @css_classes do |tag, css_class| %>
+      <%= link_to tag, applications_path(String.new(tag.name).to_url), :class => css_class %>
+    <% end %>
+  </div>
+</div>
+
+<div class="column-right-bottom">&nbsp;</div>

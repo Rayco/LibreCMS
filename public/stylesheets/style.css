@@ -56,7 +56,7 @@ a:hover {
 	background: #e65b5b;
 }
 
-.actualizacion {
+.app_update {
 	font-size: 80%; 
 	font-style: italic; 
 	text-align: right;
@@ -150,7 +150,6 @@ h5 {
 ul {
 	list-style-type: none; 
 }
-
 
 /* Site wrapper */
 
@@ -596,7 +595,16 @@ select {
 	color: #ddd;
 }
 
+/*************** Social Network ***************/
 
+.social {
+	text-align: right;
+	float: right;
+}
+
+.social > a > img {
+	border: 0px;
+}
 
 /* Advanced options*/
 
