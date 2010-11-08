@@ -199,7 +199,6 @@
   <br /> 
 </div>
 
-<%= render :partial => 'shared/social'  %>
 <% if logged_in? and current_user.has_role?('administrator') %>
   <p>
   <%= link_to 'Screenshots', application_screenshots_path(@tags, @application) %>

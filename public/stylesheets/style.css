@@ -63,8 +63,6 @@ a:hover {
 }
 
 .social {
-	border: 2px dashed gray;
-	font-style: italic; 
 	text-align: right;
 	float: right;
 }
