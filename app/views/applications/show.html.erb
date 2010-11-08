@@ -191,10 +191,12 @@
   </table>
   </div>
   <% end %>
-  <p class="app_update">
-    <b>Última actualización:</b> 
-    <%= @last_update.updated_at.strftime("%d-%m-%Y") %>
-  </p>
+  <% if !@last_update.nil? %>
+    <p class="app_update">
+      <b>Última actualización:</b> 
+      <%= @last_update.updated_at.strftime("%d-%m-%Y") %>
+    </p>
+  <% end %>
   <%= render :partial => 'shared/social' %>
   <br /> 
 </div>
