@@ -1,5 +1,5 @@
 class ApplicationsController < ApplicationController
-  before_filter :check_administrator_role, :except => [:show, :index, :counter]
+  before_filter :check_administrator_role, :except => [:show, :index, :counter, :vote_up, :vote_down]
 
   uses_tiny_mce(:options => {
    :theme => 'advanced',
@@ -128,6 +128,35 @@ class ApplicationsController < ApplicationController
     end
     @download.save
     render :nothing => true, :status => 200
+  end
+
+  def vote_up
+    @ip = request.remote_ip
+    @application = Application.find_by_id(params[:id])
+    if Votes.find(:first, :conditions => {:application_id => @application.id, :ip_address => @ip }).nil?
+      @application.vote_up += 1;
+      @application.save
+      render(:update) { |page| page.call 'location.reload' }
+      @votes = Votes.new(:application_id => @application.id, :ip_address => @ip)
+      @votes.save
+    else
+      render :nothing => true, :status => 200
+    end
+  end
+
+  def vote_down
+    @ip = request.remote_ip
+    @application = Application.find_by_id(params[:id])
+    if Votes.find(:first, :conditions => {:application_id => @application.id, :ip_address => @ip }).nil?
+      @application = Application.find_by_id(params[:id])
+      @application.vote_down += 1;
+      @application.save
+      render(:update) { |page| page.call 'location.reload' }
+      @votes = Votes.new(:application_id => @application.id, :ip_address => @ip)
+      @votes.save
+    else
+      render :nothing => true, :status => 200
+    end
   end
 
 end

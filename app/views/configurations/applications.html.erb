@@ -8,7 +8,21 @@
   <p><b> No Applications that show </b></p>
 <% else %>
   <table cellspacing=5>
+    <tr align=center>
+      <th></th>
+      <th>Application</th>
+      <th>Downloads:</th>
+      <th><%= image_tag "win32.png", :alt => "Windows", :class => "option" %></th>
+      <th><%= image_tag "linux.png", :alt => "GNU/Linux", :class => "option" %></th>
+      <th><%= image_tag "mac.png", :alt => "Mac", :class => "option" %></th>
+      <th><%= image_tag "multi.png", :alt => "Multiplatform", :class => "option" %></th>
+      <th>Votes:</th>
+      <th><%= image_tag "up.png", :alt => "Positive Votes", :class => "votes" %></th>
+      <th><%= image_tag "down.png", :alt => "Negative Votes", :class => "votes" %></th>
+    </tr>
+
   <% for application in @applications %>
+    <% @download = Download.find_by_application_id(application.id) %>
     <tr align=center>
       <td>
         <% if application.tag_list.nil? or application.tag_list.empty? %>
@@ -16,12 +30,32 @@
           <%= image_tag "aviso.png", :alt => "Aviso", :width => "32", :height => "28" %>
         <% end %>
       </td>
-      <td>
-        <%=h application.name %>
+      <td align=left>
+        <%= link_to application.name, application_path("search", application), :title => "Show" %>
       </td>
       <td>
-        <%= link_to (image_tag "show.png", :alt => "Show", :class => "option"), application_path("search", application), :title => "Show" %>
-        <%= link_to 'Show', application_path("search", application) %>
+        <b><%= @download.windows + @download.linux + @download.mac + @download.multiplatform if !@download.nil? %></b>
+      </td>
+      <td>
+        <%= @download.windows if !@download.nil? %>
+      </td>
+      <td>
+        <%= @download.linux if !@download.nil? %>
+      </td>
+      <td>
+        <%= @download.mac if !@download.nil? %>
+      </td>
+      <td>
+        <%= @download.multiplatform if !@download.nil? %>
+      </td>
+      <td>
+        <b><%= application.vote_up + application.vote_down%></b>
+      </td>
+      <td>
+        <%= application.vote_up %>
+      </td>
+      <td>
+        <%= application.vote_down %>
       </td>
       <td>
         <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_application_path("search", application), :title => "Edit" %>
@@ -44,7 +78,8 @@
     <b><font color="red">Application not assigned to any category or tag</font></b>
   </p>
 <% end %>
-    
+
+<br />    
 <%= will_paginate @applications, :prev_label => '<< Anterior', :next_label => 'Siguiente >>' %>
 
 </div>

@@ -1,72 +1,80 @@
 <div class="app_details">
 
 <table>
-<tr>
-<td valign="top">
-  <%= image_tag @application.logo.url(:normal), :class => "app_logo", :alt => @application.name, :title => @application.name %>
-</td>
-<td valign="bottom">		
-  <p><b>Aplicaci&oacute;n:</b> <%=h @application.name %></p>
-</td>
-<td valign="bottom">
-  <% @download = Download.find_by_application_id(@application.id)
-  if !@download.nil?
-    $result = @download.windows + @download.linux + @download.mac + @download.multiplatform
-    if $result != 0 %>
-      <p align=right>
-        <b>Descargas:</b> <%= $result %>
-      </p>
- <% end
-  end %>
-</td>
-</tr>
+  <tr>
+    <td valign="top">
+      <%= image_tag @application.logo.url(:normal), :class => "app_logo", :alt => @application.name, :title => @application.name %>
+    </td>
 
-<tr>
-<td></td>
-<td colspan="2" valign="top">
-  <% if !@application.website.nil? and !@application.website.empty? %>  
-    <p>
-      <b>P&aacute;gina Web:</b> 
-      <%= link_to @application.website.split(/\/\//)[1], @application.website, :popup => true unless @application.website.nil? %>
-    </p>
-  <% end %>
-  
-  <% if !@application.license.nil? and !@application.license.empty? %>
-    <% if @application.license_url.nil? or @application.license_url.empty? %>
-      <p><b>Licencia:</b> <%=h @application.license %></p>
-    <% else %>	
-      <p><b>Licencia:</b> <%= link_to @application.license, @application.license_url, :popup => true %></p>
-    <% end %>
-  <% end %>
-  
-  <% if !@application.demo.nil? and !@application.demo.empty? %>
-    <p>
-      <b>Demo On-Line:</b> 
-      <%= link_to @application.demo.split(/\/\//)[1], @application.demo, :popup => true %>
-    </p>
-  <% end %>
-  
-  <% if !@application.description.nil? and !@application.description.empty? %>  
-    <% expr = /^(\s*)<p>(.*)<\/p>(\s*)$/ %> 
-    <p><b>Descripci&oacute;n:</b> <%= @application.name + " " %>
-    <% if description = expr.match(@application.description) %>
-      <%= description[2] %></p>
-    <% else %>
-      <%= @application.description %></p> 
-    <% end %>
-  <% end %>
-  
-  <% if !@application.requisitos.nil? and !@application.requisitos.empty? %> 
-    <p><b>Requisitos:</b> 
-      <% if requisitos = expr.match(@application.requisitos) %>
-        <%= requisitos[2] %></p>
-      <% else %>
-        <%= @application.requisitos %></p>
+    <td valign="bottom">		
+      <p><b>Aplicaci&oacute;n:</b> <%=h @application.name %></p>
+      <% if !@application.website.nil? and !@application.website.empty? %>  
+        <p>
+          <b>P&aacute;gina Web:</b> 
+          <%= link_to @application.website.split(/\/\//)[1], @application.website, :popup => true unless @application.website.nil? %>
+        </p>
       <% end %>
-  <% end %>
+    </td>
 
-</td>
-</tr>
+    <td valign="top">
+      <p align=right>
+        <%= link_to_remote (image_tag "up.png", :class => "votes"), :url => {:action => 'vote_up', :id => @application.id } %>
+        <%= @application.vote_up %>
+        &nbsp;
+	<%= link_to_remote (image_tag "down.png", :class => "votes"), :url => {:action => 'vote_down', :id => @application.id } %>
+        <%= @application.vote_down %>
+     	<br />
+        <% @download = Download.find_by_application_id(@application.id)
+        if !@download.nil?
+          $result = @download.windows + @download.linux + @download.mac + @download.multiplatform
+          if $result != 0 %>
+            <b>Descargas:</b> <%= $result %>
+       <% end
+        end %>
+      </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+    </td>
+
+    <td colspan="2" valign="top">
+      <% if !@application.license.nil? and !@application.license.empty? %>
+        <% if @application.license_url.nil? or @application.license_url.empty? %>
+          <p><b>Licencia:</b> <%=h @application.license %></p>
+        <% else %>	
+          <p><b>Licencia:</b> <%= link_to @application.license, @application.license_url, :popup => true %></p>
+        <% end %>
+      <% end %>
+  
+      <% if !@application.demo.nil? and !@application.demo.empty? %>
+        <p>
+          <b>Demo On-Line:</b> 
+          <%= link_to @application.demo.split(/\/\//)[1], @application.demo, :popup => true %>
+        </p>
+      <% end %>
+  
+      <% if !@application.description.nil? and !@application.description.empty? %>  
+        <% expr = /^(\s*)<p>(.*)<\/p>(\s*)$/ %> 
+        <p><b>Descripci&oacute;n:</b> <%= @application.name + " " %>
+        <% if description = expr.match(@application.description) %>
+          <%= description[2] %></p>
+        <% else %>
+          <%= @application.description %></p> 
+        <% end %>
+      <% end %>
+  
+      <% if !@application.requisitos.nil? and !@application.requisitos.empty? %> 
+        <p><b>Requisitos:</b> 
+        <% if requisitos = expr.match(@application.requisitos) %>
+          <%= requisitos[2] %></p>
+        <% else %>
+          <%= @application.requisitos %></p>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
 </table>
 
 <% if !@win32.empty? or !@win64.empty? or !@linux.empty? or !@mac.empty? or !@multiplatform.empty? %>

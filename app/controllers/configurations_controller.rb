@@ -12,7 +12,7 @@ class ConfigurationsController < ApplicationController
   end
 
   def applications
-    @applications = Application.paginate :page => params[:page], :per_page => 10
+    @applications = Application.paginate :page => params[:page], :per_page => 10, :order => "name"
   end
 
 end
