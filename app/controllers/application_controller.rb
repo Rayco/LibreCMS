@@ -38,6 +38,21 @@ class ApplicationController < ActionController::Base
   end
 
   def prepare_cloud
+    @cloud_site = []
+    Application.all.each do |app|
+      $good = 0
+      app.tag_counts.each do |tag|
+        if c = Category.find_by_name(tag.name)
+          if !MenuNode.find(:first, :conditions => ["child_id LIKE ? AND site_id LIKE ?", c.id, $site_id]).nil?
+            $good = 1
+            break
+          end
+        end
+      end
+      @cloud_site << app.tag_counts if $good == 1
+    end
+    @cloud_site = @cloud_site.flatten.uniq.sort { |x, y| x.name <=> y.name }
+    
     @cloud = Application.tag_counts.sort { |x, y| x.name <=> y.name }
     @css_classes = (1 .. 6).map { |i| "tag#{i}" }
   end

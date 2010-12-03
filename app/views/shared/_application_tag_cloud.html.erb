@@ -1,10 +1,17 @@
 <div class="column-right-box">
   <h4>Nube de etiquetas</h4>
   <div class="generic-right-box" id="tagcloud">
-    <% tag_cloud @application.tag_counts.sort { |x, y| x.name <=> y.name }, @css_classes do |tag, css_class| %>
-      <%= link_to tag, applications_path(String.new(tag.name).to_url), :class => css_class %>
+    <% tag_cloud @cloud, @css_classes  do |tag, css_class| %>
+      <% if @application.tag_counts.member?(tag) %>
+        <% if Category.find_by_name(tag.name) and !Category.find_by_name(tag.name).publicname.nil? and !Category.find_by_name(tag.name).publicname.empty? %>
+	  <%= link_to Category.find_by_name(tag.name).publicname, applications_path(String.new(tag.name).to_url), :class => css_class %>
+        <% else %>
+	  <%= link_to tag, applications_path(String.new(tag.name).to_url), :class => css_class %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>
 
 <div class="column-right-bottom">&nbsp;</div>
+
