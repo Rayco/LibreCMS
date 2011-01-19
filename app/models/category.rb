@@ -31,14 +31,17 @@ class Category < ActiveRecord::Base
 
   def parents_in_site(site_config)
     parents = []
-    self.category_as_child.each do |relation|
-      parents << relation.parent if relation.site_id == site_config.id
+    site_config.each do |site|
+      self.category_as_child.each do |relation|
+        parents << relation.parent.name if relation.site_id == SiteConfiguration.find_by_name(site).id
+      end
     end
-    return parents.sort {|x,y| x.name.downcase <=> y.name.downcase }
+    parents = parents.flatten.uniq.join(', ')
+    return parents.sort {|x,y| x.downcase <=> y.downcase }
   end
 
-  def relationship_in_site?(site_id, category_id)
-    !MenuNode.find(:first, :conditions => ["site_id = ? AND category_id = ? AND child_id = ?", site_id, category_id, self.id]).nil?
+  def relationship_in_site?(site_id, parent_id)
+    !MenuNode.find(:first, :conditions => ["site_id = ? AND category_id = ? AND child_id = ?", site_id, parent_id, self.id]).nil?
   end
   
   def to_param
@@ -49,14 +52,23 @@ class Category < ActiveRecord::Base
   end
 
   def parents_names
-    self.parents_in_site(SiteConfiguration.find(:first)).map(&:name).flatten.join(', ') # ToDo: Warning - site hardcoded
+    self.parents_in_site(SiteConfiguration.find(:all).map(&:name))
   end
 
   def parents_names=(parents_name)
-    # Need remove nodes when remove from parents_name
+    MenuNode.find(:all, :conditions => ["child_id = ?", self.id]).each do |node|
+      if !parents_name.member?(Category.find_by_id(node.category_id).name)
+        node.destroy
+      end
+    end
     parents_name.split(",").each do |p|
       parent = Category.find_or_create_by_name(p.strip, :conditions => ["name LIKE ?", p.strip])
-      category_as_child.build(:category_id => parent.id, :child_id => self.id, :site_id => $site_id) unless relationship_in_site?($site_id, parent.id)
+      if !SiteConfiguration.find_by_name(p.strip).nil?
+        site = SiteConfiguration.find_by_name(p.strip).id
+        category_as_child.build(:category_id => parent.id, :child_id => self.id, :site_id => site) unless relationship_in_site?(site, parent.id)
+      else  
+        category_as_child.build(:category_id => parent.id, :child_id => self.id, :site_id => $site_id) unless relationship_in_site?($site_id, parent.id)
+      end
     end
   end
 
