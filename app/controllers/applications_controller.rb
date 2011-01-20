@@ -105,6 +105,7 @@ class ApplicationsController < ApplicationController
     @application.destroy
     
     respond_to do |format|
+      flash[:notice] = 'Application was successfully destroyed.'
       format.html { redirect_to(applications_url(@tags)) }
       format.xml  { head :ok }
     end

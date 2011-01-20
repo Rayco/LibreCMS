@@ -48,7 +48,7 @@
     </select>
   </td>
   </table>
-  <br />&nbsp; <%= f.submit "Update" %> &nbsp; <input type="button" onclick="parent.location='/menu_nodes'" value="Cancel" />
+  <br />&nbsp; <%= f.submit "Update" %> &nbsp; <input type="button" onclick="history.go(-1); return false;" value="Back" />
   </p>
 <% end %>
 

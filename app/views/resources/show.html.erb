@@ -24,7 +24,7 @@
 
 <p>
   <input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/resources/<%=@resource.id%>/edit'" value="Edit" /> &nbsp;
-  <input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/resources'" value="Back" />
+  <input type="button" onclick="history.go(-1); return false;" value="Back" />
 </p>
 
 </div>
