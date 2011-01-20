@@ -18,7 +18,12 @@
         <% end %>
       </td>
       <td>
-        <%=h category.publicname %></td>
+        <% if !category.publicname.nil? %>
+          <%=h category.publicname %>
+        <% else %>
+          <%=h category.name %>
+        <% end %>
+      </td>
       <td>
         <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_category_path(category), :title => "Edit" %>
         <%= link_to 'Edit', edit_category_path(category) %>
