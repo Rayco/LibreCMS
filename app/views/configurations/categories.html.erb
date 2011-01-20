@@ -18,7 +18,7 @@
         <% end %>
       </td>
       <td>
-        <% if !category.publicname.nil? %>
+        <% if !category.publicname.nil? and !category.publicname.empty? %>
           <%= link_to category.publicname, applications_path(category) %>
         <% else %>
           <%= link_to category.name, applications_path(category) %>

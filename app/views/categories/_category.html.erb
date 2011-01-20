@@ -2,7 +2,7 @@
   <%= f.error_messages %>
 
   <p>
-    <span class="asterisk">* </span><b>Name</b><br />
+    <b>Name</b><br />
     <%= f.text_field :publicname %>
   </p>
 
@@ -24,7 +24,7 @@
   <p><span class="asterisk">* </span><b>Required field</b></p> 
  
   <p>
-    <%= f.submit button_name %> &nbsp; <input type="button" onclick="parent.location='/configurations/categories'" value="Cancel" />
+    <%= f.submit button_name %> &nbsp; <input type="button" onclick="parent.location='/configurations/categories'" value="Back" />
   </p>
 
 <% end %>

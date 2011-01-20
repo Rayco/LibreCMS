@@ -50,7 +50,7 @@ class SiteConfigurationsController < ApplicationController
       if @site_configuration.save
         flash[:notice] = 'SiteConfiguration was successfully created.'
         format.html { redirect_to(site_configurations_url) }
-        format.xml  { render :xml => @site_configuration, :status => :created, :location => site_configurations_url }
+        format.xml  { render :xml => @site_configuration, :status => :created, :location => @site_configuration }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @site_configuration.errors, :status => :unprocessable_entity }
@@ -82,7 +82,7 @@ class SiteConfigurationsController < ApplicationController
       end
       if @site_configuration.update_attributes(site)
         flash[:notice] = 'SiteConfiguration was successfully updated.'
-        format.html { redirect_to(@site_configuration) }
+        format.html { redirect_to(site_configurations_url) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -98,6 +98,7 @@ class SiteConfigurationsController < ApplicationController
     @site_configuration.destroy
 
     respond_to do |format|
+      flash[:notice] = 'SiteConfiguration was successfully destroyed.'
       format.html { redirect_to(site_configurations_url) }
       format.xml  { head :ok }
     end
