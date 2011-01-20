@@ -49,8 +49,8 @@ class SiteConfigurationsController < ApplicationController
     respond_to do |format|
       if @site_configuration.save
         flash[:notice] = 'SiteConfiguration was successfully created.'
-        format.html { redirect_to(@site_configuration) }
-        format.xml  { render :xml => @site_configuration, :status => :created, :location => @site_configuration }
+        format.html { redirect_to(site_configurations_url) }
+        format.xml  { render :xml => @site_configuration, :status => :created, :location => site_configurations_url }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @site_configuration.errors, :status => :unprocessable_entity }
