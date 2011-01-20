@@ -65,6 +65,16 @@ class SiteConfigurationsController < ApplicationController
 
     respond_to do |format|
       site = params[:site_configuration]
+      if @site_configuration.name != site[:name]
+        Category.find(:all, :conditions => ["name = ?", @site_configuration.name]).each do |category|
+          category.name = site[:name]
+          category.save
+        end
+        Page.find(:all, :conditions => ["site = ?", @site_configuration.name]).each do |page|
+          page.site = site[:name]
+          page.save
+        end
+      end
       if @site_configuration.name == "Default"
         site[:root_category_id] = Category.find_or_create_by_name(site[:name]).id
       else
