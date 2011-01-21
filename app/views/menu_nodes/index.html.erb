@@ -15,8 +15,26 @@
   <% for menu_node in @menu_nodes %>
     <tr align=center>
       <td><%=h SiteConfiguration.find_by_id(menu_node.site_id).name if !SiteConfiguration.find_by_id(menu_node.site_id).nil? %></td>
-      <td><%=h Category.find_by_id(menu_node.category_id).name if !Category.find_by_id(menu_node.category_id).nil? %></td>
-      <td><%=h Category.find_by_id(menu_node.child_id).name if !Category.find_by_id(menu_node.child_id).nil? %></td>
+      <td>
+        <% if !Category.find_by_id(menu_node.category_id).nil?
+             category = Category.find_by_id(menu_node.category_id)
+             if !category.publicname.nil? and !category.publicname.empty? %>
+	       <%=h category.publicname %>
+          <% else %>
+               <%=h category.name %>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <% if !Category.find_by_id(menu_node.child_id).nil?
+             category = Category.find_by_id(menu_node.child_id)
+             if !category.publicname.nil? and !category.publicname.empty? %>
+	       <%=h category.publicname %>
+          <% else %>
+               <%=h category.name %>
+          <% end %>
+        <% end %>
+      </td>
       <!--
       <td>
         <%= link_to (image_tag "show.png", :alt => "Show", :class => "option"), menu_node, :title => "Show" %>

@@ -21,7 +21,11 @@
     <select name="menu_node[category_id]">
       <% Category.find(:all, :order => 'name').each do |parent| %> 
         <option value="<%= parent.id %>">    
-          <%= parent.name %>
+          <% if !parent.publicname.nil? and !parent.publicname.empty? %>
+            <%= parent.publicname %>
+          <% else %>
+            <%= parent.name %>
+          <% end %>
         </option>
       <% end %>
     </select>
@@ -31,7 +35,11 @@
       <% Category.find(:all, :order => 'name').each do |child| 
         if SiteConfiguration.find_by_name(child.name).nil? %>
           <option value="<%= child.id %>">    
-            <%= child.name %>
+            <% if !child.publicname.nil? and !child.publicname.empty? %>
+              <%= child.publicname %>
+            <% else %>
+              <%= child.name %>
+            <% end %>
           </option>
         <% end %>
       <% end %>

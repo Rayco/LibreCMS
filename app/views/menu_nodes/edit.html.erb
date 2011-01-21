@@ -9,7 +9,7 @@
   <table cellspacing=10>
   <td>
     <b>Site:</b>
-    <% @site = Category.find_by_id(MenuNode.find_by_id(params[:id]).site_id) %>
+    <% @site = SiteConfiguration.find_by_id(MenuNode.find_by_id(params[:id]).site_id) %>
     <select name="menu_node[site_id]">
       <option selected value="<%= @site.id %>"> <%= @site.name %> </option>
       <% SiteConfiguration.find(:all, :order => "name").each do |site| %>
@@ -24,11 +24,21 @@
     <b>Parent:</b>
     <% @parent = Category.find_by_id(MenuNode.find_by_id(params[:id]).category_id) %>
     <select name="menu_node[category_id]">
-      <option selected value="<%= @parent.id %>"> <%= @parent.name %> </option>
+      <option selected value="<%= @parent.id %>"> 
+        <% if !@parent.publicname.nil? and !@parent.publicname.empty? %>
+          <%= @parent.publicname %>
+        <% else %>
+          <%= @parent.name %> 
+        <% end %>
+      </option>
       <% Category.find(:all, :order => "name").each do |category| %>
         <% if category.name !~ Regexp.compile(@parent.name) %>
           <option value="<%= category.id %>">
-            <%= category.name %>
+            <% if !category.publicname.nil? and !category.publicname.empty? %>
+              <%= category.publicname %>
+            <% else %>
+              <%= category.name %>
+            <% end %>
           </option>
         <% end %>
       <% end %>
@@ -37,11 +47,21 @@
     <b>Child:</b>
     <% @child = Category.find_by_id(MenuNode.find_by_id(params[:id]).child_id) %>
     <select name="menu_node[child_id]">
-      <option selected value="<%= @child.id %>"> <%= @child.name %> </option>
+      <option selected value="<%= @child.id %>"> 
+        <% if !@child.publicname.nil? and !@child.publicname.empty? %>
+          <%= @child.publicname %>
+        <% else %>
+          <%= @child.name %>
+        <% end %>
+      </option>
       <% Category.find(:all, :order => "name").each do |category| %>
         <% if category.name !~ Regexp.compile(@child.name) %>
           <option value="<%= category.id %>">
-            <%= category.name %>
+            <% if !category.publicname.nil? and !category.publicname.empty? %>
+              <%= category.publicname %>
+            <% else %>
+              <%= category.name %>
+            <% end %>
           </option>
         <% end %>
       <% end %>
