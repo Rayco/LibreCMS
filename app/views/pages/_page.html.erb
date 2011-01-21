@@ -3,17 +3,17 @@
 <% form_for @page do |f| %>
 
   <p>
-    <span class="asterisk">* </span><b>Page for: </b>
+    <b>Page for: </b>
     <select name="page[site]">
       <% if !@page.site.nil? and !@page.site.empty? %>
-        <option selected value="<%= @page.site %>"> <%= @page.site %> </option>
+          <option selected value="<%= @page.site %>"> <%= @page.site %> </option>
       <% end %>
       <% if @page.site !~ Regexp.compile("All Sites") %>
-        <option value=""> <%= "All Sites" %> </option>
+          <option value=""> <%= "All Sites" %> </option>
       <% end %>
       <% SiteConfiguration.find(:all, :order => "name").each do |site| %>
         <% if @page.site !~ Regexp.compile(site.name) %>
-          <option value="<%= site.name %>"> <%= site.name %> </option>
+            <option value="<%= site.name %>"> <%= site.name %> </option>
         <% end %>
       <% end %>
     </select>
