@@ -80,6 +80,7 @@ class MenuNodesController < ApplicationController
     @menu_node.destroy
 
     respond_to do |format|
+      flash[:notice] = 'MenuNode was successfully destroyed.'
       format.html { redirect_to(menu_nodes_url) }
       format.xml  { head :ok }
     end
