@@ -4,17 +4,26 @@
 
 <h3>List of Static Pages</h3>
 
+<% $page = "true" %>
+
 <% if @pages.empty? %>
   <p><b> No static pages that show </b></p>
 <% else %>
   <table cellspacing=5>
     <tr align=center>
+      <th></th>
       <th>Page for</th>
       <th>Display name</th>
       <th>Permanent link</th>
     </tr>
     <% for page in @pages %>
       <tr align=center>
+        <td>
+          <% if (page.name.nil? or page.name.empty?) and !page.permalink.match("_credits") %>
+            <% $page = "false" %>
+            <%= image_tag "aviso.png", :alt => "Aviso", :width => "32", :height => "28" %>
+          <% end %>
+        </td>
         <td>
           <% if page.site.empty? %>
             <p>All Sites</p>
@@ -39,9 +48,21 @@
       </tr>
     <% end %>
   </table>
-<%= will_paginate @pages, :prev_label => '<< Anterior', :next_label => 'Siguiente >>' %>
+
+  <% if $page == "false" %>
+    <br />
+    <p>
+      <%= image_tag "aviso.png", :alt => "Aviso", :width => "32", :height => "28" %>
+      <b><font color="red">Page isn't published on any site</font></b>
+    </p>
+  <% end %>
+
 <% end %>
+
+<%= will_paginate @pages, :prev_label => '<< Anterior', :next_label => 'Siguiente >>' %>
+
 </div>
+
 <br />
 <p>
   <input type="button" onclick="parent.location='/pages/new'" value="Create" /> &nbsp; <input type="button" onclick="parent.location='/configurations'" value="Back" />
