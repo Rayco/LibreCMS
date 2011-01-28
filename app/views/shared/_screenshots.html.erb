@@ -17,6 +17,11 @@
     <% shot_text = shot_text.pluralize if @screenshots.length > 1 %>
     <%=h shot_text %>
   </div>
+  
+  <% if logged_in? and current_user.has_role?('administrator') %>
+       &nbsp; <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), application_screenshots_path(@tags, @application), :title => "Edit" %>
+       <%= link_to 'Edit', application_screenshots_path(@tags, @application) %>
+       <br /><br />
+  <% end %>
 </div>
-
-<div class="column-right-bottom">&nbsp;</div>
+<br />

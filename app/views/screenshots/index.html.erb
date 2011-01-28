@@ -36,7 +36,10 @@
     <% end %>
   </table>
 <% end %>
-
 </div>
 
-<p><%= link_to "Create Screenshot", new_application_screenshot_path(@tags, @application) %></p>
+<br />
+
+<input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/screenshots/new'" value="Create" /> 
+&nbsp; 
+<input type="button" onclick="history.go(-1); return false;" value="Back" />

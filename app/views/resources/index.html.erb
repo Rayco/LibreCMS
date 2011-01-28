@@ -38,5 +38,6 @@
 </div>
 
 <br />
-
-<%= link_to 'Create Resource', new_application_resource_path(@tags, @application) %>
+<input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/resources/new'" value="Create" />
+&nbsp;
+<input type="button" onclick="history.go(-1); return false;" value="Back" />

@@ -1,16 +1,20 @@
 <div class="column-right-box">
   <h4>Recursos</h4>
   <div class="generic-right-box">
-  <ul>
-    <% for resource in @application.resources %>
-      <li>
-        <%= link_to resource.name, resource.resource.url, :title => resource.description if resource.website == "" %>
-        <%= link_to resource.name, resource.website, :title => resource.description, :popup => true if resource.website != "" %>
-      </li>
-    <% end %>
-  </ul>
-	
+    <ul>
+      <% for resource in @application.resources %>
+        <li>
+          <%= link_to resource.name, resource.resource.url, :title => resource.description if resource.website == "" %>
+          <%= link_to resource.name, resource.website, :title => resource.description, :popup => true if resource.website != "" %>
+        </li>
+      <% end %>
+    </ul>
   </div>
+  <br />
+  <% if logged_in? and current_user.has_role?('administrator') %>
+       &nbsp; <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), application_resources_path(@tags, @application), :title => "Edit" %>
+       <%= link_to 'Edit', application_resources_path(@tags, @application) %>
+       <br /><br />
+  <% end %>
 </div>
-
-<div class="column-right-bottom">&nbsp;</div>
+<br />
