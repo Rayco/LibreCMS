@@ -13,7 +13,7 @@
   <br />
   <% if logged_in? and current_user.has_role?('administrator') %>
        &nbsp; <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), application_resources_path(@tags, @application), :title => "Edit" %>
-       <%= link_to 'Edit', application_resources_path(@tags, @application) %>
+       <%= link_to 'Edit Resources', application_resources_path(@tags, @application) %>
        <br /><br />
   <% end %>
 </div>

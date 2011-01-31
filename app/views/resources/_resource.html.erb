@@ -1,3 +1,5 @@
+<%= error_messages_for :resource %>
+
 <% form_for ([@application, @resource]), :url => application_resource_path(@tags, @application, resource), :html => { :multipart => true } do |f| %>
   
   <p>

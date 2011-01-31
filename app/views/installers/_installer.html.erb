@@ -4,11 +4,24 @@
   <p>
     <span class="asterisk">* </span><b>Platforms and Architecture: </b>
     <select name="installer[platform_list]">
-      <option selected value="Windows, 32bits"> <%= "Windows 32 Bits" %> </option>
-      <option selected value="Windows, 64bits"> <%= "Windows 64 Bits" %> </option>
-      <option selected value="Linux"> <%= "GNU/Linux" %> </option>
-      <option selected value="Mac"> <%= "Mac" %> </option>
-      <option selected value="Multiplatform"> <%= "Multiplatform" %> </option>
+      <% if !@installer.platform_list.nil? and !@installer.platform_list.empty? %>
+        <option selected value=<%= @installer.platform_list %>> <%= @installer.platform_list %> </option>
+      <% end %>
+      <% if @installer.platform_list.to_s !~ Regexp.compile("Windows, 32Bits") %>   
+        <option value="Windows, 32Bits"> <%= "Windows, 32Bits" %> </option>
+      <% end %>
+      <% if @installer.platform_list.to_s !~ Regexp.compile("Windows, 64Bits") %>   
+        <option value="Windows, 64Bits"> <%= "Windows, 64Bits" %> </option>
+      <% end %>
+      <% if @installer.platform_list.to_s !~ Regexp.compile("Linux") %>   
+        <option value="Linux"> <%= "GNU/Linux" %> </option>
+      <% end %>
+      <% if @installer.platform_list.to_s !~ Regexp.compile("Mac") %>   
+        <option value="Mac"> <%= "Mac" %> </option>
+      <% end %>
+      <% if @installer.platform_list.to_s !~ Regexp.compile("Multiplatform") %>   
+        <option value="Multiplatform"> <%= "Multiplatform" %> </option>
+      <% end %>
     </select>
   </p>
 
