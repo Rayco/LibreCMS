@@ -17,7 +17,7 @@ class ScreenshotsController < ApplicationController
   def create
     @screenshot = @application.screenshots.new(params[:screenshot])
     if @screenshot.save
-      flash[:notice] = "Successfully created screenshot."
+      flash[:notice] = 'Screenshot was successfully created.'
       redirect_to(application_screenshots_url(@tags, @application))
     else
       render :action => 'new'
@@ -31,7 +31,7 @@ class ScreenshotsController < ApplicationController
   def update
     @screenshot = @application.screenshots.find(params[:id])
     if @screenshot.update_attributes(params[:screenshot])
-      flash[:notice] = "Successfully updated screenshot."
+      flash[:notice] = 'Screenshot was successfully updated.'
       redirect_to(application_screenshot_url(@tags, @application, @screenshot))
     else
       render :action => 'edit'
@@ -41,7 +41,7 @@ class ScreenshotsController < ApplicationController
   def destroy
     @screenshot = @application.screenshots.find(params[:id])
     @screenshot.destroy
-    flash[:notice] = "Successfully destroyed screenshot."
+    flash[:notice] = 'Screenshot was successfully destroyed.'
     redirect_to(application_screenshots_url(@tags, @application))
   end
 

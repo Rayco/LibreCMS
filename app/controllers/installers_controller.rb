@@ -68,7 +68,7 @@ class InstallersController < ApplicationController
     @installer.destroy
     
     respond_to do |format|
-      flash[:notice] = "Successfully destroyed installer."
+      flash[:notice] = 'Installer was successfully destroyed.'
       format.html { redirect_to(application_installers_url(@tags, @application)) }
       format.xml  { head :ok }
     end

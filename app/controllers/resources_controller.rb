@@ -81,6 +81,7 @@ class ResourcesController < ApplicationController
     @resource.destroy
 
     respond_to do |format|
+      flash[:notice] = 'Resource was successfully destroyed.'
       format.html { redirect_to(application_resources_url(@tags, @application)) }
       format.xml  { head :ok }
     end
