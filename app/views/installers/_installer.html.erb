@@ -2,7 +2,7 @@
 <% form_for ([@application, @installer]), :url => application_installer_path(@tags, @application, installer), :html => { :multipart => true } do |f| %>
 
   <p>
-    <span class="asterisk">* </span><b>Platforms and Architecture: </b>
+    <b>Platforms and Architecture: </b>
     <select name="installer[platform_list]">
       <% if !@installer.platform_list.nil? and !@installer.platform_list.empty? %>
         <option selected value=<%= @installer.platform_list %>> <%= @installer.platform_list %> </option>
