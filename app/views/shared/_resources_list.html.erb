@@ -4,7 +4,7 @@
     <ul>
       <% for resource in @application.resources %>
         <li>
-          <%= link_to resource.name, resource.resource.url, :title => resource.description if resource.website == "" %>
+          <%= link_to resource.name, resource.resource.url, :title => resource.description, :popup => true if resource.website == "" %>
           <%= link_to resource.name, resource.website, :title => resource.description, :popup => true if resource.website != "" %>
         </li>
       <% end %>
