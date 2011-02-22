@@ -9,7 +9,7 @@ set :applicationdir, "/var/rails/#{application}"
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
 # set :scm, :subversion
-set :repository,  "http://svn.osl.ull.es/windowsLibre/tags/release-0.0.8.4"
+set :repository,  "http://svn.osl.ull.es/windowsLibre/tags/release-0.0.8.5"
 
 # Roles (servers)
 role :app, "librecms.osl.ull.es"
@@ -45,6 +45,7 @@ namespace :deploy do
 #    run "rm -drf #{release_path}/public/attached" #Not remove public/attached please!
     run "ln -s #{shared_path}/attached #{release_path}/public/attached"
     run "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -s #{shared_path}/config/twitter_oauth.yml #{release_path}/config/twitter_oauth.yml"
     run "ln -s #{shared_path}/staticImages #{release_path}/public/staticImages"
   end
 end
