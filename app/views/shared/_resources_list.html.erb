@@ -14,6 +14,21 @@
   <% if logged_in? and current_user.has_role?('administrator') %>
        &nbsp; <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), application_resources_path(@tags, @application), :title => "Edit" %>
        <%= link_to 'Edit Resources', application_resources_path(@tags, @application) %>
+       <%
+         require 'open-uri'
+         begin
+           @url_app = "http://" + request.subdomains.join(".") + "." + request.domain + application_path(@tags, @application)
+           f = open('http://t.osl.ull.es/url/' + @url_app + '?out=1')
+           @url = f.read
+       %>
+       <%= link_to_remote (image_tag "twittear.png", :alt => "Share on Twitter", :class => "option"),  
+		:url => {:action => 'twittear', 
+		:message => '[Update] Nuevos recursos sobre #' + @application.name + ' disponibles en http://' + @url} %>
+       <%
+         rescue
+           false  
+         end
+       %>
        <br /><br />
   <% end %>
 </div>

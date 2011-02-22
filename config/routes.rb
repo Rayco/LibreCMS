@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.counter '/counter', :controller => 'applications', :action => 'counter'
   map.vote_up '/vote_up', :controller => 'applications', :action => 'vote_up'
   map.vote_down '/vote_down', :controller => 'applications', :action => 'vote_down'
+  map.twittear '/twittear', :controller => 'applications', :action => 'twittear'
 
   map.categories '/configurations/categories', :controller => 'configurations', :action => 'categories'
   map.applications '/configurations/applications', :controller => 'configurations', :action => 'applications'

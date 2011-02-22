@@ -59,9 +59,21 @@ Rails::Initializer.run do |config|
   # config.active_record.default_timezone = :utc
   config.gem "RedCloth", :version => "= 4.0.4", :source => "http://code.whytheluckystiff.net"
   config.gem "mbleigh-acts-as-taggable-on", :source => "http://gems.github.com", :lib => "acts-as-taggable-on"
-  # paperclip
-  # will_paginate
+  config.gem "paperclip"
+  config.gem "twitter"
+end
+
+# Twitter OAuth 
+@twitter = YAML.load_file(File.join("#{Rails.root}", "config", "twitter_oauth.yml"))
+Twitter.configure do |config|
+  config.consumer_key = @twitter['consumer_key']
+  config.consumer_secret = @twitter['consumer_secret']
+  config.oauth_token = @twitter['oauth_token']
+  config.oauth_token_secret = @twitter['oauth_token_secret']
 end
 
 require "will_paginate"
 require "extended_string"
+require "rubygems"
+require "twitter"
+

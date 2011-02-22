@@ -71,6 +71,16 @@ class ApplicationsController < ApplicationController
 
     respond_to do |format|
       if @application.save
+	require 'open-uri'
+        begin
+          @url_app = "http://" + request.subdomains.join(".") + "." + request.domain + application_path(@tags, @application)
+          f = open('http://t.osl.ull.es/url/' + @url_app + '?out=1')
+          @url = f.read
+          client = Twitter::Client.new
+          client.update("[New] #" + @application.name + " ya disponible en http://" + @url)
+	rescue
+          false
+        end
         flash[:notice] = 'Application was successfully created.'
         format.html { redirect_to(application_path(@tags, @application)) }
         format.xml  { render :xml => @application, :status => :created, :location => @application }
@@ -158,6 +168,17 @@ class ApplicationsController < ApplicationController
     else
       render :nothing => true, :status => 200
     end
+  end
+
+  def twittear
+    begin
+      msg = "" + params[:message]
+      client = Twitter::Client.new
+      client.update(msg)
+    rescue
+      false
+    end
+    render :nothing => true, :status => 200
   end
 
 end

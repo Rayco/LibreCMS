@@ -125,6 +125,21 @@
            &nbsp; <%= link_to (image_tag "edit.png", :alt => "Edit Installers", :class => "option"),
                                application_installers_path(@tags, @application), :title => "Edit Installers" %>
            <%= link_to 'Edit Installers', application_installers_path(@tags, @application) %>
+           <%
+               require 'open-uri'
+               begin
+                 @url_app = "http://" + request.subdomains.join(".") + "." + request.domain + application_path(@tags, @application)
+                 f = open('http://t.osl.ull.es/url/' + @url_app + '?out=1')
+                 @url = f.read
+           %>
+           <%=   link_to_remote (image_tag "twittear.png", :alt => "Share on Twitter", :class => "option"),  
+			:url => {:action => 'twittear', 
+			:message => '[Update] Nueva versión de #' + @application.name + ' disponible en http://' + @url} %>
+           <%
+               rescue
+          	 false
+               end
+	   %>
            <br /><br />
          </p>
     <% end %>
