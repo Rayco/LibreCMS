@@ -73,7 +73,7 @@ class ApplicationsController < ApplicationController
       if @application.save
 	require 'open-uri'
         begin
-          @url_app = "http://" + request.subdomains.join(".") + "." + request.domain + application_path(@tags, @application)
+          @url_app = @site_config.website + application_path(@tags, @application)
           f = open('http://t.osl.ull.es/url/' + @url_app + '?out=1')
           @url = f.read
           client = Twitter::Client.new
