@@ -74,8 +74,8 @@ class ApplicationsController < ApplicationController
 	require 'open-uri'
         begin
           @url_app = @site_config.website + application_path(@tags, @application)
-          @url_app = @url_app.gsub('Ñ', 'N;')
-          @url_app = @url_app.gsub('Á', 'A;')
+          @url_app = @url_app.gsub('Ñ', 'N')
+          @url_app = @url_app.gsub('Á', 'A')
           @url_app = @url_app.gsub('É', 'E')
           @url_app = @url_app.gsub('Í', 'I')
           @url_app = @url_app.gsub('Ó', 'O')
