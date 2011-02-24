@@ -129,6 +129,19 @@
                require 'open-uri'
                begin
                  @url_app = @site_config.website + application_path(@tags, @application)
+	         @url_app = @url_app.gsub('Ñ', 'N;')
+    		 @url_app = @url_app.gsub('Á', 'A;')
+		 @url_app = @url_app.gsub('É', 'E')
+    		 @url_app = @url_app.gsub('Í', 'I')
+    		 @url_app = @url_app.gsub('Ó', 'O')
+                 @url_app = @url_app.gsub('Ú', 'U')
+                 @url_app = @url_app.gsub('ñ', 'n')
+                 @url_app = @url_app.gsub('á', 'a')
+                 @url_app = @url_app.gsub('é', 'e')
+                 @url_app = @url_app.gsub('í', 'i')
+                 @url_app = @url_app.gsub('ó', 'o')
+                 @url_app = @url_app.gsub('ú', 'u')
+
                  f = open('http://t.osl.ull.es/url/' + @url_app + '?out=1')
                  @url = f.read
            %>
