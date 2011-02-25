@@ -100,4 +100,9 @@
 	application_path(@tags, @application), :title => "Delete", :confirm => 'Are you sure?', :method => :delete %>
   <%= link_to "Delete", application_path(@tags, @application), :confirm => 'Are you sure?', :method => :delete %></td>
   </p>
+  <p>
+  <%= link_to 'Screenshots', application_screenshots_path(@tags, @application) if @screenshots.empty? %>
+  <%= link_to 'Resources', application_resources_path(@tags, @application) if @application.resources.empty? %>
+  <%= link_to 'Installers', application_installers_path(@tags, @application) if @application.installers.empty? %>
+  </p>
 <% end %>
