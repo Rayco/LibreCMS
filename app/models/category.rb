@@ -66,8 +66,11 @@ class Category < ActiveRecord::Base
       if !SiteConfiguration.find_by_name(p.strip).nil?
         site = SiteConfiguration.find_by_name(p.strip).id
         category_as_child.build(:category_id => parent.id, :child_id => self.id, :site_id => site) unless relationship_in_site?(site, parent.id)
-      else  
-        category_as_child.build(:category_id => parent.id, :child_id => self.id, :site_id => $site_id) unless relationship_in_site?($site_id, parent.id)
+      else
+	MenuNode.find(:all, :conditions => ["child_id = ?", parent.id]).each do |node|  
+          category_as_child.build(:category_id => parent.id, :child_id => self.id, 
+				  :site_id => node.site_id) unless relationship_in_site?(node.site_id, parent.id)
+        end
       end
     end
   end
