@@ -241,7 +241,7 @@ ul {
 }
 
 #menu li.first a {
-	margin-left: 1.6em;
+	margin-left: 0.5em;
 	display: inline;
 }
 
@@ -252,7 +252,6 @@ ul {
 	text-decoration: none;
 	font-size: 1.1em;
 	line-height: 33px;
-	margin: 0 0.5em;
 	padding: 0 1em;
 }
 
