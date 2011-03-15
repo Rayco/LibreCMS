@@ -1,10 +1,10 @@
 <div id="breadcrums">
-  <%= link_to 'Cat&aacute;logo', categories_path %>
+  <%= link_to @site_config.name, categories_path %>
   <% cat_tags = [] %> 
   <% for tag in @tags %>
-		<% if tag != 'search' %>
-    > <%= link_to_if ((tag != @tags[-1]) or @application), String.new(tag).from_url, applications_path(cat_tags << tag) %>
-		<% end %>
+    <% if tag != 'search' %>
+      > <%= link_to_if ((tag != @tags[-1]) or @application), String.new(tag).from_url, applications_path(cat_tags << tag) %>
+    <% end %>
   <% end %>
   <%=h '> ' + @application.name if @application and @application.name %>
 
