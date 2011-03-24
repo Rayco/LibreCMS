@@ -295,6 +295,7 @@ ul {
 	/*border: 2px solid #FFFFFF;*/
 	border: none;
 	/*margin-top: 7px;*/
+	margin-bottom: 5px;
 	padding: 6px 10px;
 }
 
@@ -357,15 +358,15 @@ ul {
 }
 
 .column-right-box {
-	background-color: #EEEEFF;
+	background-color: #FFFFFF;
 }
 
 .column-right-bottom {
 	/* background: #EEEEFF url('/images/column-right-bottom.gif') no-repeat 0 0; */
-	background: #EEEEFF;
+	background: #FFFFFF;
 	width: 185px;
 	height: 19px;
-  margin-bottom: 0.5em;
+ 	margin-bottom: 0.5em;
 }
 
 .generic-right-box {
@@ -398,8 +399,7 @@ ul {
 
 /* TagCloug and TagList */
 .horizontal-cloud {
-	/* border: thin solid #005E85; */
-	background-color: #EEEEFF;
+	background-color: #FFFFFF;
 	padding: 10px;
  	margin-bottom: 15px;
 }

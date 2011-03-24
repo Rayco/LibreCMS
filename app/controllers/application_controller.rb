@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :get_site_configuration, :get_pages, :get_tags, :prepare_cloud #, :get_categories
+  before_filter :get_site_configuration, :get_pages, :get_tags, :prepare_cloud, :get_new_apps, :get_update_apps, :get_downloads #, :get_categories
   include AuthenticatedSystem
   helper :all # include all helpers, all the time
 
@@ -12,6 +12,30 @@ class ApplicationController < ActionController::Base
   
   private
   
+  def get_new_apps
+    @new_apps = Application.find(:all, :limit => 5, :order => "created_at DESC")
+  end
+
+  def get_update_apps
+    @update_apps = Application.find(:all, :joins => :installers, :order => "installers.updated_at DESC").uniq
+    @update_apps = @update_apps[0..4]
+  end
+
+  def get_downloads
+    @downloads = Array.new
+    app = Struct.new(:pos, :app, :value)
+    Download.all.each do |counter|
+      @downloads << app.new(1, counter.application_id, counter.windows + counter.linux + counter.mac + counter.multiplatform)
+    end
+    @downloads = @downloads.sort {|x, y| y.value <=> x.value }
+    $i = 1
+    @downloads.each do |counter|
+      counter.pos = $i
+      $i += 1
+    end
+    @downloads = @downloads.paginate :page => params[:page], :per_page => 5
+  end
+
   def get_application
     @application = Application.find_by_name(params[:application_id].from_url)
   end

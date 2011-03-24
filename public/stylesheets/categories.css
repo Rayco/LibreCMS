@@ -1,16 +1,16 @@
 #categories_index {
 	text-align: center;
 	margin: 0 auto;
-	margin-left: 32px;
-	font-size: 1.5em;
+	margin-left: 5px;
+	font-size: 1.4em;
 }
 
 #categories_index li {
 	display: inline;
 	float: left;
-	margin: 0.5em 1em;
-	width: 130px;
-        height: 220px; 
+	margin: 0.5em 0.5em;
+	width: 125px;
+        height: 210px; 
 }
 
 #categories_index li img {

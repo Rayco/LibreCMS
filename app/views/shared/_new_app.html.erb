@@ -1,0 +1,17 @@
+<div class="column-right-box">
+  <h4>Novedades</h4>
+  <div class="generic-right-box">
+    <ul>
+      <% for app in @new_apps %>
+        <p>
+	  <%= app.updated_at.strftime("%d") %>
+	  <%= app.updated_at.strftime("%b") %>&nbsp;
+          <%= link_to (image_tag app.logo.url, :class => "option", :alt => app.name,
+                     :title => app.name), application_path('search', app) %>
+    	  <%= link_to app.name, application_path('search', app) %>
+        </p>
+      <% end %>
+    </ul>
+  </div>
+  <br />
+</div>

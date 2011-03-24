@@ -106,7 +106,28 @@
       <div class="content-box-center">
         <div class="content-box-center-in">
           <%= render :partial => '/shared/bread_crums' unless @tags.nil? || controller.params[:controller] == 'pages' %>	<!-- No shared -->
-          <%= yield %>
+          <% if controller.params[:controller] == 'pages' %>
+            <%= yield %>
+          <% else %>
+            <table>
+              <tr>
+                <td valign="top", width="80%" ><%= yield %></td>
+                <td valign="top", width="20%">
+                  <% if @downloads and controller.params[:controller] != 'pages' %>
+	            <%= render :partial => '/shared/download_app' %>
+                  <% end %>
+
+                  <% if @new_apps and controller.params[:controller] != 'pages' %>
+	            <%= render :partial => '/shared/new_app' %>
+                  <% end %>
+
+                  <% if @update_apps and controller.params[:controller] != 'pages' %>
+	            <%= render :partial => '/shared/update_app' %>
+                  <% end %>
+                </td>
+              </tr>
+            </table>
+          <% end %>
           <% unless @cloud.empty? %>
           <%= render :partial => '/shared/horizontal_tag_cloud' %>
           <% end %>
