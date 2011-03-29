@@ -4,8 +4,8 @@
     <ul>
       <% for app in @new_apps %>
         <p>
-	  <%= app.updated_at.strftime("%d") %>
-	  <%= app.updated_at.strftime("%b") %>&nbsp;
+	  <%= app.created_at.strftime("%d") %>
+	  <%= app.created_at.strftime("%b") %>&nbsp;
           <%= link_to (image_tag app.logo.url, :class => "option", :alt => app.name,
                      :title => app.name), application_path('search', app) %>
     	  <%= link_to app.name, application_path('search', app) %>
