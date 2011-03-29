@@ -17,8 +17,13 @@ class ApplicationController < ActionController::Base
   end
 
   def get_update_apps
-    @update_apps = Application.find(:all, :joins => :installers, :order => "installers.updated_at DESC").uniq
-    @update_apps = @update_apps[0..4]
+    @update_apps = Array.new
+    app = Struct.new(:app, :date)
+    @apps = Application.find(:all, :joins => :installers, :order => "installers.updated_at DESC").uniq
+    @apps = @apps[0..4]
+    @apps.each do |i|
+      @update_apps << app.new(i, Installer.find(:last, :conditions => ["application_id LIKE ?", "%#{i.id}%"]).updated_at)
+    end
   end
 
   def get_downloads

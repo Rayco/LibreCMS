@@ -2,13 +2,13 @@
   <h4>Actualizaciones</h4>
   <div class="generic-right-box">
     <ul>
-      <% for app in @update_apps %>
+      <% for application in @update_apps %>
         <p>
-	  <%= app.updated_at.strftime("%d") %>
-	  <%= app.updated_at.strftime("%b") %>&nbsp;
-          <%= link_to (image_tag app.logo.url, :class => "option", :alt => app.name,
-                     :title => app.name), application_path('search', app) %>
-    	  <%= link_to app.name, application_path('search', app) %>
+	  <%= application.date.strftime("%d") %>
+	  <%= application.date.strftime("%b") %>&nbsp;
+          <%= link_to (image_tag application.app.logo.url, :class => "option", :alt => application.app.name,
+                     :title => application.app.name), application_path('search', application.app) %>
+    	  <%= link_to application.app.name, application_path('search', application.app) %>
         </p>
       <% end %>
     </ul>
