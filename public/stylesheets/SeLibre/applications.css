@@ -2,11 +2,9 @@
 	min-height: 65px;
 	margin-top: 15px;
 	padding: 10px;
-	/* border: thin solid #005E85; */
 	background-color: #EEEEFF;
 	text-align: justify;
 	overflow: hidden;
-	overflow: hidden;	
 }
 
 .app_logo {
@@ -22,7 +20,6 @@
 }
 
 #app_details_bottom {
-	/* background: #EEEEFF url('../images/column-left-bottom.gif') no-repeat 0 0; */
 	background: #EEEEFF;
 	height: 20px;
 }
@@ -43,27 +40,25 @@
 
 /* Installers */
 #installers {
-  margin-top: 30px
+	margin-top: 30px
 }
 
 #installers table th{
-  width: 40%;
+	width: 40%;
 }
 
 #installers table, #installers th, #installers td {
-  border-collapse: collapse;
-  /*border: 1px solid black;*/
-  margin: 15px auto;
-  text-align: center;
+	border-collapse: collapse;
+	margin: 15px auto;
+	text-align: center;
 }
 
 #installers table tr.heading th {
-/*  background: #005e85;*/
-  color: #fff;
+	color: #fff;
 }
 
 #installers table caption {
-  font-weight: bold;
+	font-weight: bold;
 }  
 
 #screenshots {

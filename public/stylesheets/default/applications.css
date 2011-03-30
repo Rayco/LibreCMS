@@ -1,0 +1,80 @@
+.application {
+	min-height: 65px;
+	margin-top: 15px;
+	padding: 10px;
+	background-color: #EEEEFF;
+	text-align: justify;
+	overflow: hidden;
+}
+
+.app_logo {
+	float: left;
+	border: none;
+	margin: 5px 10px 0 0;
+}
+
+.app_details {
+	background-color: #EEEEFF;
+	padding: 15px;
+	text-align: justify;
+}
+
+#app_details_bottom {
+	background: #EEEEFF;
+	height: 20px;
+}
+
+.app_download {
+	float: right;
+	border: none;
+	width: 130px;
+	margin: 10px 10px;
+	text-align: center
+}
+
+.app_download img {
+	border: none;
+	width: 98px;
+}
+
+
+/* Installers */
+#installers {
+	margin-top: 30px
+}
+
+#installers table th{
+	width: 40%;
+}
+
+#installers table, #installers th, #installers td {
+	border-collapse: collapse;
+	margin: 15px auto;
+	text-align: center;
+}
+
+#installers table tr.heading th {
+	color: #fff;
+}
+
+#installers table caption {
+	font-weight: bold;
+}  
+
+#screenshots {
+	padding-top: 7px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+#screenshots a img, #screenshots a:visited img {
+	border: 4px solid #005e85;
+}
+
+#screenshots a:hover img {
+	border: 4px solid #74BDDC;
+}
+
+.shot_text {
+	font-size: medium;
+}

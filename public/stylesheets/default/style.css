@@ -1,0 +1,634 @@
+/* This template was created by Mantis-a [http://www.mantisa.cz/]. For more templates visit Free website templates [http://www.mantisatemplates.com/]. */
+/* CSS Document */
+
+/* General */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	height: 100%;
+	font-size: 62.5%;
+}
+
+body {
+	height: 100%;
+	text-align: center;
+        font-family: Helvetica, Verdana, Arial, sans-serif;
+        font-size: 1.3em; 
+	background-color: #ffffff;
+	min-width: 960px;
+}
+
+a:link, a:visited {
+	color: #00598D;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.cleaner {
+	clear: both;
+	height: 0;
+	font-size: 0;
+	visibility: hidden;
+}
+
+.noscreen {
+	display: none;
+}
+
+.notice {
+	margin: 0 0 0 27px;
+	color: green;
+}
+
+.status {
+	border: thin solid red;
+	margin: 5px 27px 2px 27px;
+	padding: 5px 10px 5px 10px;
+	text-align: justify;
+	background: #e65b5b;
+}
+
+.app_update {
+	font-size: 80%; 
+	font-style: italic; 
+	text-align: right;
+}
+
+/* Paragraphs, headings, ... */
+
+p {
+	line-height: 1.9;
+	margin-bottom: 7px;
+}
+
+p.text-content:first-letter {
+	font-size: 1.4em;
+	font-weight: bold;
+	line-height: 0.9;
+	color: #202020;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+h1 {
+	font: 2.6em Arial, Sans-Serif;
+	/*letter-spacing: 1px;*/
+	margin: 0 0 0px 0px;
+	white-space: nowrap;
+	/*border-bottom: 1px solid #4C8CA6;*/
+	width: 100%;
+	text-align: center;
+	padding: 24px 0 0 0;
+}
+
+h1 a:link, h1 a:visited {
+	font-weight: normal;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+h2 {
+	font: 1.2em Helvetica, Verdana, Arial, sans-serif;
+	letter-spacing: 1px;
+	color: #FF0000;
+	border-left: 3px;
+	padding-left: 14px;
+	margin: 12px 0 0 40px;
+}
+
+h3 {
+	color: #00598D;
+	font: 1.7em Georgia, "Times New Roman", Times, serif;
+	letter-spacing: 1px;
+	background: url('/images/h3-bg.gif') no-repeat 0 50%;
+	padding-left: 35px;
+	margin: 18px 0 10px 0;
+}
+
+h4 {
+	font-size: 1em;
+	background-color: #005E85;
+	color: #FFFFFF;
+	letter-spacing: 1px;
+	/*border: 2px solid #FFFFFF;*/
+	border: none;
+	/*margin-top: 7px;*/
+	padding: 6px 10px;
+}
+
+h4 a:link, h4 a:visited {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+h4 a:hover {
+	text-decoration: underline;
+}
+
+h5 {
+	font-size: 1.5em;
+}
+
+ul {
+	list-style-type: none; 
+}
+
+/* Site wrapper */
+
+#border {
+	background: #ffffff url(/images/body_bg.jpg) top center repeat-y;
+	width: 100%;
+}
+
+#wrapper {
+	width: 960px;
+	margin: 0 auto 80px auto;
+	margin-bottom: 0;
+	position: relative;
+	background-color: #FFFFFF;
+	display: table; /* margin-bottom for FF   (?) */
+	text-align: left;
+}
+
+
+/* Header */
+
+#header {
+	margin: 0 auto;
+	height: 90px; /* 110px; */
+	position: relative;
+	background: #004E6C url('/images/header-bg.gif') repeat-x 0 0;
+	border-top: 4px solid #003042;
+	border-bottom: 1px solid #46A0CA;
+}
+
+.header-osl {
+	margin: 0 20px 0 0;
+	border: none;
+	float: right;
+}
+
+.header-ull {
+	margin: 0 0 0 20px;
+	border: none;
+	float: left;
+}
+
+.dark  { 
+	color: #97B3C1;
+	background: inherit;
+	font-weight: bold;
+}
+
+.mini {
+	vertical-align: top;
+	font-size: 0.5em;
+	color: #ffffff;
+}
+
+/* Login Menu -- no se esta usando */
+
+#login_menu {
+	text-align: right;
+	width: 100%;
+	background: #FFFFFF;
+	padding: 2px 0 2px 0;
+}
+
+#login_menu ul {
+	margin: 0;
+	list-style: none;
+	padding: 0;
+}
+
+#login_menu li {
+	margin: 0;
+	padding: 0 10px 0 0;
+	display: inline;
+}
+
+#login_menu a {
+	color: #000000;
+}
+
+#login_menu a:hover {
+	color: #6C757A;
+}
+
+
+/* Menu */
+
+#menu {
+	width: 960px;
+	margin: 0 auto;
+	background: #4A4A4A url('/images/menu-bg.gif') repeat-x 0 0;
+}
+
+#menu ul {
+	width: 730px;
+}
+
+#menu li {
+	display: inline;
+	list-style-type: none;
+}
+
+#menu li.first a {
+	margin-left: 0.5em;
+	display: inline;
+}
+
+#menu li a {
+	float: left;
+	color: #FFFFFF;
+	font-weight: normal;
+	text-decoration: none;
+	font-size: 1.1em;
+	line-height: 33px;
+	padding: 0 1em;
+}
+
+#menu li a:hover {
+	text-decoration: underline;
+}
+
+#menu li a.active {
+	font-weight: bold;
+	color: #B1EEFF;
+}
+
+.cleaning-box { 
+	min-height: 1px;
+}
+
+.cleaning-box:after {
+	display: block; 
+	clear: both; 
+	visibility: hidden; 
+	height: 0; 
+	font-size: 0; 
+	content: ' ';
+}
+
+.hidden { /* Skip menu */
+	position: absolute;
+	top: -10000px;
+	left: 0;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+/* BreadCrums */
+#breadcrums {
+	font-size: 1em;
+	background-color: #005E85;
+	color: #FFFFFF;
+	letter-spacing: 1px;
+	/*border: 2px solid #FFFFFF;*/
+	border: none;
+	/*margin-top: 7px;*/
+	margin-bottom: 5px;
+	padding: 6px 10px;
+}
+
+#breadcrums a:link, #breadcrums a:visited {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#breadcrums a:hover {
+	text-decoration: underline;
+}
+
+#breadcrums .goto {
+  position: absolute;
+  right: 225px;
+}
+
+#breadcrums .gotocenter {
+  position: absolute;
+  right: 25px;
+}
+
+/* Content boxes */
+
+#content-box {
+	width: 100%;
+	margin: 0 auto;
+	color: #151515;
+	position: relative;
+}
+
+#content-box-in {
+	width: 100%;
+}
+
+.content-box-left {
+	float: left;
+	width: 755px;
+}
+
+.content-box-right {
+	float: right;
+	width: 205px;
+}
+
+.content-box-center {
+	width: 960px;
+}
+
+.content-box-left-in {
+	margin: 0.4em 0.5em 0 1em;
+}
+
+.content-box-right-in {
+	margin: 0.4em 1em 0 0.5em;
+}
+
+.content-box-center-in {
+	margin: 0.4em 1em 0 1em;
+}
+
+.column-right-box {
+	background-color: #FFFFFF;
+}
+
+.column-right-bottom {
+	background: #FFFFFF;
+	width: 185px;
+	height: 19px;
+ 	margin-bottom: 0.5em;
+}
+
+.generic-right-box {
+  padding: 7px 7px 0 7px;
+}
+
+/* Footer */
+
+#footer {
+	background-color: #FFFFFF;
+	text-align: center;
+	color: white;
+	width: 960px;
+	height: 100px;
+	margin-top: 0.5em;
+	font-size: 0.9em;
+	border-bottom: 2px solid #003042;
+}
+/*
+#footer a, #footer a:visited {
+	font-weight: bold !important;
+	color: white;
+}
+*/
+#footer p {
+	display: inline;
+	margin-bottom: 0;
+	line-height: 30px;
+}
+
+/* TagCloug and TagList */
+.horizontal-cloud {
+	background-color: #FFFFFF;
+	padding: 10px;
+ 	margin-bottom: 15px;
+}
+
+#tagcloud { text-align: center; }
+
+a.tag1 { font-size:0.8em; color:#3E84A2; line-height:1em; }
+a.tag2 { font-size:1.0em; color:#3E84A2; line-height:1em; }
+a.tag3 { font-size:1.2em; color:#00598D; line-height:1em; }
+a.tag4 { font-size:1.4em; color:#00598D; line-height:1em; }
+a.tag5 { font-size:1.6em; color:#003553; line-height:1em; }
+a.tag6 { font-size:1.8em; color:#003553; line-height:1em; }
+ 
+#tagcloud a { text-decoration:none; }
+#tagcloud a:hover { text-decoration:underline; }
+
+#taglist a { text-decoration:none; }
+#taglist a:hover { text-decoration:underline; }
+
+/* Descargar ISO */
+
+#descarga-iso {
+    display: block;
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    background-image: url('/images/dvd.png');
+    width: 80px;
+    height: 106px;
+}
+
+select { 
+    width: 150px;
+}
+
+.asterisk {
+    font-weight: bold;
+    color: red;
+}
+
+.option {
+	border:	0px;
+	width:	20px;
+	height:	20px;
+}
+
+/*** Configurations Menu ***/
+
+.configuration {
+	width: 98%;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #005E85;
+	padding: 5px;
+	margin-bottom: 5px;
+	overflow: hidden;
+	display: block;
+	float: middle;
+}
+
+.configuration:hover {
+	border-width: 2px;
+	border-style: solid;
+	border-color: #005E85;
+	background-color: #FFFFFF;
+	background-image: none;
+	background-repeat: repeat;
+	background-attachment: scroll;
+	background-position: 0% 0%;
+	text-decoration: none;
+}
+
+#configuration_content {
+	float: left;
+	width: 85%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+#configuration_tit {
+	font-family: Verdana;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: normal;
+	font-size-adjust: none;
+	font-stretch: normal;
+	-x-system-font: none;
+	color: #000000;
+	text-align: center;
+	padding-bottom: 5px;
+	clear: both;
+}
+
+#configuration_txt {
+	font-family: Verdana;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	font-size: 11px;
+	line-height: normal;
+	font-size-adjust: none;
+	font-stretch: normal;
+	-x-system-font: none;
+	color: #777777;
+	text-align: justify;
+	margin-top: 0px;
+	margin-right: 10px;
+	margin-bottom: 0px;
+	margin-left: 10px;
+	border-top-width: 2px;
+	border-top-style: solid;
+	border-top-color: #005E85;
+	padding-top: 5px;
+}
+
+#configuration_img {
+	width: 15%;
+	float: left;
+	text-align: center;
+	overflow: hidden;
+}
+
+#configuration_img img {
+	border: 0px;
+}
+
+#configuration a:link, a:visited {
+        text-decoration: underline;
+}
+
+/**************** Search ****************/
+
+.search {
+	float:right; 
+	clear:both; 
+	margin-top: 6px; 
+	margin-right: 15px;
+}
+
+.search_text {
+	background: #FFFFFF url('/images/search.png') no-repeat right;
+	padding-right: 20px;
+}
+
+/*************** Paginate ***************/
+
+.pagination {
+	padding: 3px;
+	margin: 3px;
+        text-align: right;
+}
+
+.pagination a {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #aaaadd;
+	text-decoration: none;
+	color: #000099;
+}
+
+.pagination a:hover, .pagination a:active {
+	border: 1px solid #000099;
+	color: #000;
+}
+
+.pagination span.current {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #000099;
+	font-weight: bold;
+	background-color: #000099;
+	color: #FFF;
+}
+ 
+.pagination span.disabled {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #eee;
+	color: #ddd;
+}
+
+/*************** Social Network ***************/
+
+.social {
+	text-align: right;
+	float: right;
+}
+
+.social > a > img {
+	border: 0px;
+}
+
+/*************** Social Network ***************/
+
+.votes {
+	border:	0px;
+	width:	25px;
+	height:	25px;
+}
+
+/* Advanced options*/
+
+ul#nav > li > ul { 
+	float: right; 
+	background: url("../images/filtros2.png") no-repeat;
+	position: relative;
+	top: -15px;
+	margin-right: 0px;
+	padding: 18px 2px 2px 2px; 
+}
+
+ul#nav > li > span {
+	float: right;
+	position: relative;
+	right: 150px;
+}
+
+ 
+ul#nav > li > ul > li { 
+	visibility: collapse;
+	display: block;
+	background-color: #005E85;
+	border: 1px dashed black;
+	margin: 0 0 2px 0px; 
+	padding: 5px 2px 2px 2px; 
+} 
+
+ul#nav > li > ul:hover > li { 
+	visibility: visible;
+	display: block; 
+}
