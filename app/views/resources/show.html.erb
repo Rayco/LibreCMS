@@ -22,10 +22,16 @@
     <%=h @resource.website%>
   </p>
 
+<%
+  path = ''
+  @tags.each do |tag|
+    path += '/' + tag
+  end
+%>
 <p>
-  <input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/resources/<%=@resource.id%>/edit'" value="Edit" /> 
+  <input type="button" onclick="parent.location='<%=h path%>/applications/<%=@application.name%>/resources/<%=@resource.id%>/edit'" value="Edit" /> 
 &nbsp;
-  <input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/resources'" value="Back" /> 
+  <input type="button" onclick="parent.location='<%=h path%>/applications/<%=@application.name%>/resources'" value="Back" /> 
 </p>
 
 </div>

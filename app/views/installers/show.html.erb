@@ -27,10 +27,16 @@
   <%=h @installer.installer_file_size %>
 </p>
 
+<% 
+  path = ''
+  @tags.each do |tag|
+    path += '/' + tag
+  end
+%>
 <p>
-  <input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/installers/<%=@installer.id%>/edit'" value="Edit" /> 
+  <input type="button" onclick="parent.location='<%=h path%>/applications/<%=@application.name%>/installers/<%=@installer.id%>/edit'" value="Edit" /> 
 &nbsp;
-  <input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/installers'" value="Back" /> 
+  <input type="button" onclick="parent.location='<%=h path%>/applications/<%=@application.name%>/installers'" value="Back" /> 
 </p>
 
 </div>

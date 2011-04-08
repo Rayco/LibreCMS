@@ -26,10 +26,16 @@
   <%=h @screenshot.image_file_size %>
 </p>
 
+<%
+  path = ''
+  @tags.each do |tag|
+    path += '/' + tag
+  end
+%>
 <p>
-  <input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/screenshots/<%=@screenshot.id%>/edit'" value="Edit" /> 
+  <input type="button" onclick="parent.location='<%=h path%>/applications/<%=@application.name%>/screenshots/<%=@screenshot.id%>/edit'" value="Edit" /> 
 &nbsp;
-  <input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/screenshots'" value="Back" /> 
+  <input type="button" onclick="parent.location='<%=h path%>/applications/<%=@application.name%>/screenshots'" value="Back" /> 
 </p>
 
 </div>

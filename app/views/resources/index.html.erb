@@ -38,6 +38,12 @@
 </div>
 
 <br />
-<input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/resources/new'" value="Create" />
+<%
+  path = ''
+  @tags.each do |tag|
+    path += '/' + tag
+  end
+%>
+<input type="button" onclick="parent.location='<%=h path%>/applications/<%=@application.name%>/resources/new'" value="Create" />
 &nbsp;
-<input type="button" onclick="parent.location='/<%=@tags%>/applications/<%=@application.name%>/'" value="Back" />
+<input type="button" onclick="parent.location='<%=h path%>/applications/<%=@application.name%>/'" value="Back" />
