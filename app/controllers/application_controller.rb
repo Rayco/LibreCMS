@@ -33,12 +33,15 @@ class ApplicationController < ActionController::Base
       @downloads << app.new(1, counter.application_id, counter.windows + counter.linux + counter.mac + counter.multiplatform)
     end
     @downloads = @downloads.sort {|x, y| y.value <=> x.value }
+    @downloads = @downloads[0..19]
     $i = 1
     @downloads.each do |counter|
       counter.pos = $i
       $i += 1
     end
-    @downloads = @downloads.paginate :page => params[:page], :per_page => 5
+    if params[:controller] != 'pages'
+      @downloads = @downloads.paginate :page => params[:page], :per_page => 5
+    end
   end
 
   def get_application
