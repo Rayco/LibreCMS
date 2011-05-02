@@ -120,22 +120,14 @@
           <%= render :partial => '/shared/bread_crums' unless @tags.nil? || controller.params[:controller] == 'pages' %>	<!-- No shared -->
           <% if controller.params[:controller] == 'pages' %>
             <%= yield %>
-          <% else %>
+          <% elsif controller.params[:controller] == 'categories' %>
             <table>
               <tr>
                 <td valign="top", width="80%" ><%= yield %></td>
                 <td valign="top", width="20%">
-                  <% if @downloads and controller.params[:controller] != 'pages' %>
-	            <%= render :partial => '/shared/download_app' %>
-                  <% end %>
-
-                  <% if @new_apps and controller.params[:controller] != 'pages' %>
-	            <%= render :partial => '/shared/new_app' %>
-                  <% end %>
-
-                  <% if @update_apps and controller.params[:controller] != 'pages' %>
-	            <%= render :partial => '/shared/update_app' %>
-                  <% end %>
+	          <%= render :partial => '/shared/download_app' if @downloads %>
+	          <%= render :partial => '/shared/new_app' if @new_apps %>
+	          <%= render :partial => '/shared/update_app' if @update_apps %>
                 </td>
               </tr>
             </table>

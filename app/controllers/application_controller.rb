@@ -13,14 +13,39 @@ class ApplicationController < ActionController::Base
   private
   
   def get_new_apps
-    @new_apps = Application.find(:all, :limit => 5, :order => "created_at DESC")
+    @new_apps = Array.new
+    Application.find(:all, :order => "created_at DESC").each do |app|
+      $good = 0
+      app.tag_list.each do |tag|
+        if c = Category.find_by_name(tag)
+          if !MenuNode.find(:first, :conditions => ["child_id LIKE ? AND site_id LIKE ?", c.id, $site_id]).nil?
+            $good = 1
+            break
+          end
+        end
+      end
+      @new_apps << app if $good == 1
+      break if @new_apps.size == 5
+    end
   end
 
   def get_update_apps
     @update_apps = Array.new
+    @apps = Array.new
     app = Struct.new(:app, :date)
-    @apps = Application.find(:all, :joins => :installers, :order => "installers.updated_at DESC").uniq
-    @apps = @apps[0..4]
+    Application.find(:all, :joins => :installers, :order => "installers.updated_at DESC").uniq.each do |application|
+      $good = 0
+      application.tag_list.each do |tag|
+        if c = Category.find_by_name(tag)
+          if !MenuNode.find(:first, :conditions => ["child_id LIKE ? AND site_id LIKE ?", c.id, $site_id]).nil?
+            $good = 1
+            break
+          end
+        end 
+      end
+      @apps << application if $good == 1
+      break if @apps.size == 5
+    end
     @apps.each do |i|
       @update_apps << app.new(i, Installer.find(:last, :conditions => ["application_id LIKE ?", "%#{i.id}%"]).updated_at)
     end
@@ -30,7 +55,19 @@ class ApplicationController < ActionController::Base
     @downloads = Array.new
     app = Struct.new(:pos, :app, :value)
     Download.all.each do |counter|
-      @downloads << app.new(1, counter.application_id, counter.windows + counter.linux + counter.mac + counter.multiplatform)
+      application = Application.find_by_id(counter.application_id)
+      $good = 0
+      if !application.nil?
+        application.tag_list.each do |tag|
+          if c = Category.find_by_name(tag)
+            if !MenuNode.find(:first, :conditions => ["child_id LIKE ? AND site_id LIKE ?", c.id, $site_id]).nil?
+              $good = 1
+              break
+            end
+          end
+        end
+      end
+      @downloads << app.new(1, counter.application_id, counter.windows + counter.linux + counter.mac + counter.multiplatform) if $good == 1
     end
     @downloads = @downloads.sort {|x, y| y.value <=> x.value }
     @downloads = @downloads[0..19]
