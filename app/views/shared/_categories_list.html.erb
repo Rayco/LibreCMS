@@ -4,8 +4,8 @@
     <ul>
     <% for category in @categories %>
     	<li>
-    	  <%= link_to (image_tag category.icon.url(:small), :class => 'category_icon'), applications_path(category) %>
-    	  <%= link_to category.name, applications_path(category) %>
+    	  <%= link_to (image_tag category.icon.url(:small), :class => 'category_icon'), categories_path(category) + "/applications" %>
+    	  <%= link_to category.name, categories_path(category) + "/applications" %>
     	</li>
     <% end %>
     </ul>
