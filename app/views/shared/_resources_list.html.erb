@@ -36,7 +36,7 @@
        %>
        <%= link_to_remote (image_tag "twittear.png", :alt => "Share on Twitter", :class => "option"),  
 		:url => {:action => 'twittear', 
-		:message => '[Update] Nuevos recursos sobre #' + @application.name + ' disponibles en http://' + @url} %>
+		:message => '[Update] Nuevos recursos sobre #' + @application.name.gsub(/\s/,"") + ' disponibles en http://' + @url} %>
        <%
          rescue
            false  
