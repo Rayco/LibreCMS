@@ -9,7 +9,19 @@
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 
 <!-- CSS -->
-<%= stylesheet_link_tag 'style', 'categories', 'applications', 'pages', 'lightbox' %>
+<% if File.directory?("public/stylesheets/#{@site_config.name}") %>
+  <%= stylesheet_link_tag "/stylesheets/#{@site_config.name}/style" %>
+  <%= stylesheet_link_tag "/stylesheets/#{@site_config.name}/categories" %>
+  <%= stylesheet_link_tag "/stylesheets/#{@site_config.name}/applications" %>
+  <%= stylesheet_link_tag "/stylesheets/#{@site_config.name}/pages" %>
+  <%= stylesheet_link_tag "/stylesheets/#{@site_config.name}/lightbox" %>
+<% else %>
+  <%= stylesheet_link_tag "/stylesheets/default/style" %>
+  <%= stylesheet_link_tag "/stylesheets/default/categories" %>
+  <%= stylesheet_link_tag "/stylesheets/default/applications" %>
+  <%= stylesheet_link_tag "/stylesheets/default/pages" %>
+  <%= stylesheet_link_tag "/stylesheets/default/lightbox" %>
+<% end %>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
