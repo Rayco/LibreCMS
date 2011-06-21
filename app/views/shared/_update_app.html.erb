@@ -1,17 +1,19 @@
-<div class="column-right-box">
-  <h4>Actualizaciones</h4>
-  <div class="generic-right-box">
-    <ul>
-      <% for application in @update_apps %>
-        <p>
-	  <%= application.date.strftime("%d") %>
-	  <%= application.date.strftime("%b") %>&nbsp;
-          <%= link_to (image_tag application.app.logo.url, :class => "option", :alt => application.app.name,
-                     :title => application.app.name), application_path('search', application.app) %>
-    	  <%= link_to application.app.name, application_path('search', application.app) %>
-        </p>
-      <% end %>
-    </ul>
+<% if !@update_apps.nil? and !@update_apps.empty? %>
+  <div class="column-right-box">
+    <h4>Actualizaciones</h4>
+    <div class="generic-right-box">
+      <ul>
+        <% for application in @update_apps %>
+          <p>
+	    <%= application.date.strftime("%d") %>
+	    <%= application.date.strftime("%b") %>&nbsp;
+            <%= link_to (image_tag application.app.logo.url, :class => "option", :alt => application.app.name,
+            	         :title => application.app.name), application_path('search', application.app) %>
+            <%= link_to application.app.name, application_path('search', application.app) %>
+          </p>
+        <% end %>
+      </ul>
+    </div>
+    <br />
   </div>
-  <br />
-</div>
+<% end %>

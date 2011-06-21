@@ -1,22 +1,24 @@
-<div class="column-right-box">
-  <h4>Top Descargas</h4>
-  <div class="generic-right-box">
-    <table>
-      <% for download in @downloads %>
-        <% app = Application.find_by_id(download.app) %>
-        <tr>
-          <td width="20%">
-	    <b><%= download.pos %>.</b>&nbsp;
-          </td>
-          <td width="80%">
-            <%= link_to (image_tag app.logo.url, :class => "option", :alt => app.name,
-                     :title => app.name), application_path('search', app) %>
-    	    <%= link_to app.name, application_path('search', app) %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
-      <%= will_paginate @downloads, :previous_label => '<<', :next_label => '>>', :inner_window => -1, :outer_window => -1 %>
+<% if !@downloads.nil? and !@downloads.empty? %>
+  <div class="column-right-box">
+    <h4>Top Descargas</h4>
+    <div class="generic-right-box">
+      <table>
+        <% for download in @downloads %>
+          <% app = Application.find_by_id(download.app) %>
+          <tr>
+            <td width="20%">
+	      <b><%= download.pos %>.</b>&nbsp;
+            </td>
+            <td width="80%">
+              <%= link_to (image_tag app.logo.url, :class => "option", :alt => app.name,
+              	       :title => app.name), application_path('search', app) %>
+    	      <%= link_to app.name, application_path('search', app) %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+        <%= will_paginate @downloads, :previous_label => '<<', :next_label => '>>', :inner_window => -1, :outer_window => -1 %>
+    </div>
+    <br />
   </div>
-  <br />
-</div>
+<% end %>
