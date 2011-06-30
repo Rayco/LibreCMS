@@ -39,6 +39,8 @@ ActionController::Routing::Routes.draw do |map|
     application.resources :installers
   end
   
+  map.resources :ratings, :member => { :rate => :post }
+  
   # http://www.myapp.com/tag1/tag2/tag3/apps/applink
   # map.applications_tagged_with '/*tags/apps', :controller => 'applications', :action => 'index'
   # map.app '/*tags/apps/:app_url', :controller => 'applications', :action => 'show'

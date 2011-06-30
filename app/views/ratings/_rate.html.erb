@@ -1,0 +1,42 @@
+<div class="star-ratings-block">
+  <%= number_with_precision(asset.rating, 1) %>/5 Estrellas (<%= asset.ratings.size %> votos)
+</div>
+
+<ul class='star-rating'>
+
+  <li class='current-rating' style='width:<%= (asset.rating * 30).to_i -%>px;'>
+    <%= number_with_precision(asset.rating, 1) %>/5 Estrellas (<%= asset.ratings.size %> votos)
+  </li>
+
+  <li>
+    <%= link_to_remote( "1", {:url => { :controller => "ratings",
+        :action => "rate", :id => asset.id, :rateable_type => asset.class.name, :rating => 1}},
+        :class => 'one-star', :name => '1 estrella de 5') %>
+  </li>
+
+  <li>
+    <%= link_to_remote( "2", {:url => { :controller => "ratings",
+        :action => "rate", :id => asset.id, :rateable_type => asset.class.name, :rating => 2}},
+        :class => 'two-stars', :name => '2 estrellas de 5') %>
+  </li>
+
+  <li>
+    <%= link_to_remote( "3", {:url => { :controller => "ratings",
+        :action => "rate", :id => asset.id, :rateable_type => asset.class.name, :rating => 3}},
+        :class => 'three-stars', :name => '3 estrellas de 5') %>
+  </li>
+
+  <li>
+    <%= link_to_remote( "4", {:url => { :controller => "ratings",
+        :action => "rate", :id => asset.id, :rateable_type => asset.class.name, :rating => 4}},
+        :class => 'four-stars', :name => '4 estrellas de 5') %>
+  </li>
+
+  <li>
+    <%= link_to_remote( "5", {:url => { :controller => "ratings",
+        :action => "rate", :id => asset.id, :rateable_type => asset.class.name, :rating => 5}},
+        :class => 'five-stars', :name => '5 estrellas de 5') %>
+  </li>
+
+</ul>
+

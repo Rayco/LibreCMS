@@ -7,6 +7,7 @@ class Application < ActiveRecord::Base
   has_many :installers, :dependent => :destroy
   
   acts_as_taggable_on :tags
+  acts_as_rateable
   
   # Validations
   validates_presence_of :name

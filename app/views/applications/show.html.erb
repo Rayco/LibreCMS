@@ -1,5 +1,4 @@
 <div class="app_details">
-
 <table>
   <tr>
     <td valign="top">
@@ -16,13 +15,18 @@
       <% end %>
     </td>
 
-    <td valign="top">
+    <td valign="top" width="20%">
       <p align=right>
-        <%= link_to_remote (image_tag "up.png", :class => "votes"), :url => {:action => 'vote_up', :id => @application.id } %>
-        <%= @application.vote_up %>
+        <div id="star-ratings-block">
+          <%= render :partial => "ratings/rate", :locals => { :asset => @application} %>
+        </div>
+<!--
+        <%#= link_to_remote (image_tag "up.png", :class => "votes"), :url => {:action => 'vote_up', :id => @application.id } %>
+        <%#= @application.vote_up %>
         &nbsp;
-	<%= link_to_remote (image_tag "down.png", :class => "votes"), :url => {:action => 'vote_down', :id => @application.id } %>
-        <%= @application.vote_down %>
+	<%#= link_to_remote (image_tag "down.png", :class => "votes"), :url => {:action => 'vote_down', :id => @application.id } %>
+        <%#= @application.vote_down %>
+-->
      	<br />
         <% @download = Download.find_by_application_id(@application.id)
         if !@download.nil?
