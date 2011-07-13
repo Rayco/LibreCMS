@@ -87,7 +87,7 @@ class ApplicationsController < ApplicationController
           @url_app = @url_app.gsub('ó', 'o')
           @url_app = @url_app.gsub('ú', 'u')
 
-          f = open('http://t.osl.ull.es/url/' + @url_app + '?out=1')
+          f = open('http://t.ull.es/url/' + @url_app + '?out=1')
           @url = f.read
           client = Twitter::Client.new
           client.update("[New] #" + @application.name.gsub(/\s/, "") + " ya disponible en http://" + @url)

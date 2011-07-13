@@ -31,7 +31,7 @@
            @url_app = @url_app.gsub('ó', 'o')
            @url_app = @url_app.gsub('ú', 'u')
            
-	   f = open('http://t.osl.ull.es/url/' + @url_app + '?out=1')
+	   f = open('http://t.ull.es/url/' + @url_app + '?out=1')
            @url = f.read
        %>
        <%= link_to_remote (image_tag "twittear.png", :alt => "Share on Twitter", :class => "option"),  
