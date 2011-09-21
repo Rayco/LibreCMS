@@ -16,9 +16,13 @@
       <th><%= image_tag "linux.png", :alt => "GNU/Linux", :class => "option" %></th>
       <th><%= image_tag "mac.png", :alt => "Mac", :class => "option" %></th>
       <th><%= image_tag "multi.png", :alt => "Multiplatform", :class => "option" %></th>
-      <th>Votes:</th>
+      <th>Votes</th>
+      <th>Score</th>
+      <!-- 
+      <th>Votes:</th> 
       <th><%= image_tag "up.png", :alt => "Positive Votes", :class => "votes" %></th>
       <th><%= image_tag "down.png", :alt => "Negative Votes", :class => "votes" %></th>
+      -->
     </tr>
 
   <% for application in @applications %>
@@ -49,14 +53,22 @@
         <%= @download.multiplatform if !@download.nil? %>
       </td>
       <td>
-        <b><%= application.vote_up + application.vote_down%></b>
+        <b><%= application.ratings.size %></b>
       </td>
       <td>
-        <%= application.vote_up %>
+        <b><%= number_with_precision(application.rating, 1) %></b>
+      </td>
+      <!--
+      <td>
+        <b><%#= application.vote_up + application.vote_down%></b>
       </td>
       <td>
-        <%= application.vote_down %>
+        <%#= application.vote_up %>
       </td>
+      <td>
+        <%#= application.vote_down %>
+      </td>
+      -->
       <td>
         <%= link_to (image_tag "edit.png", :alt => "Edit", :class => "option"), edit_application_path("search", application), :title => "Edit" %>
         <%= link_to 'Edit', edit_application_path("search", application) %>
