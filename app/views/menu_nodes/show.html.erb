@@ -2,7 +2,7 @@
 
 <p>
   <b>Site:</b>
-  <%=h Category.find_by_id(@menu_node.site_id).name if !Category.find_by_id(@menu_node.site_id).nil? %>
+  <%=h SiteConfiguration.find_by_id(@menu_node.site_id).name if !SiteConfiguration.find_by_id(@menu_node.site_id).nil? %>
 </p>
 
 <p>
