@@ -587,6 +587,7 @@ select {
 .social {
 	text-align: right;
 	float: right;
+	line-height: 4px;
 }
 
 .social > a > img {

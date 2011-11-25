@@ -13,7 +13,7 @@
   begin 
     f = open('http://t.ull.es/url/' + @url_app + '?out=1')
       @p = f.read %>
-      <p class="social"> 
+      <span class="social"> 
         <strong>
           <%= link_to "Compartir:", 'http://' + @p, :alt => "Compartir esta aplicación", :title => "Compartir esta aplicación", :popup => true %>
         </strong> 
@@ -34,7 +34,7 @@
         <%= link_to (image_tag "linkedin2.png", :alt => "Compartir en LinkedIn"), 
 			"http://www.linkedin.com/shareArticle?mini=true&url=#{@p}", :title => "Compartir en LinkedIn", :popup => true %>
         <br /><br />
-      </p>
+      </span>
     <% rescue
       false 
   end

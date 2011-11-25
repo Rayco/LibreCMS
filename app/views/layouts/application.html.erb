@@ -123,7 +123,8 @@
           <% if controller.params[:controller] == 'pages' %>
             <%= yield %>
           <% elsif controller.params[:controller] == 'categories' %>
-            <table>
+            <%= render :partial => 'shared/social' %>
+            <table width="100%">
               <tr>
                 <td valign="top", width="80%" ><%= yield %></td>
                 <td valign="top", width="20%">
