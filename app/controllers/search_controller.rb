@@ -28,6 +28,10 @@ class SearchController < ApplicationController
 	  @search = @search.uniq
 	end
       end
+ 
+      if @search.size == 1
+        redirect_to(application_path('search', @search))
+      end
    
       @size = @search.size
       if params[:next]
@@ -41,53 +45,6 @@ class SearchController < ApplicationController
 	@end = 9
       end
       @search =  @search[@start..@end]
-    end
-  end
-
-  def show
-    # Últimas aplicaciones añadidas
-    if params[:id] == "a"
-      @applications = Application.find(:all, :limit => 10, :order => "created_at DESC", :limit => "10" )
-      @applications = @applications.paginate :page => params[:page], :per_page => 10
-
-    # Últimos instaladores añadidos
-    elsif params[:id] == "u"	
-      @applications = Application.find(:all, :joins => :installers, :order => "installers.updated_at DESC", :limit => "10").uniq
-      @applications = @applications.paginate :page => params[:page], :per_page => 10
-
-    elsif params[:id] == "gnulinux"
-      @applications = Array.new
-      Application.all.each do |app|
-        if !(app.installers.tagged_with("Linux", :on => :platforms, :match_all => true).empty? &&
-          app.installers.tagged_with("Multiplatform", :on => :platforms, :match_all => true).empty?)
-          @applications << app
-        end
-      end
-      @applications = @applications.paginate :page => params[:page], :per_page => 10
-
-    elsif params[:id] == "windows"
-      @applications = Array.new
-      Application.all.each do |app|
-        if !(app.installers.tagged_with("Windows, 32bits", :on => :platforms, :match_all => true).empty? && 
-	  app.installers.tagged_with("Windows, 64bits", :on => :platforms, :match_all => true).empty? &&
-	  app.installers.tagged_with("Multiplatform", :on => :platforms, :match_all => true).empty?)
-	  @applications << app
-	end
-      end
-      @applications = @applications.paginate :page => params[:page], :per_page => 10
-
-    elsif params[:id] == "macos"
-      @applications = Array.new
-      Application.all.each do |app|
-        if !(app.installers.tagged_with("Mac", :on => :platforms, :match_all => true).empty? &&
-	  app.installers.tagged_with("Multiplatform", :on => :platforms, :match_all => true).empty?)
-	  @applications << app
-	end
-      end
-      @applications = @applications.paginate :page => params[:page], :per_page => 10
-
-    else
-      redirect_to root_path 
     end
   end
 
