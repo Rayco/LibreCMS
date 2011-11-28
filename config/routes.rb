@@ -9,9 +9,9 @@ ActionController::Routing::Routes.draw do |map|
   map.reset_password '/reset_password/:id', :controller => 'passwords', :action => 'edit'
   map.change_password '/change_password', :controller => 'accounts', :action => 'update'
   map.counter '/counter', :controller => 'applications', :action => 'counter'
-  map.vote_up '/vote_up', :controller => 'applications', :action => 'vote_up'
-  map.vote_down '/vote_down', :controller => 'applications', :action => 'vote_down'
   map.twittear '/twittear', :controller => 'applications', :action => 'twittear'
+  # map.vote_up '/vote_up', :controller => 'applications', :action => 'vote_up'
+  # map.vote_down '/vote_down', :controller => 'applications', :action => 'vote_down'
 
   map.categories '/configurations/categories', :controller => 'configurations', :action => 'categories'
   map.applications '/configurations/applications', :controller => 'configurations', :action => 'applications'
