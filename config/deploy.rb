@@ -1,7 +1,7 @@
 set :user, 'adminosl'
 set :group, 'adminosl'
 set :domain, 'librecms.osl.ull.es'
-set :project, 'windowsLibre'
+set :project, 'LibreCMS'
 set :application, 'windowsLibre'
 set :applicationdir, "/var/rails/#{application}"
 
@@ -9,7 +9,7 @@ set :applicationdir, "/var/rails/#{application}"
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
 # set :scm, :subversion
-set :repository,  "http://svn.osl.ull.es/windowsLibre/tags/release-0.0.9.1"
+set :repository,  "http://svn.osl.ull.es/LibreCMS/tags/release-0.0.9.1"
 
 # Roles (servers)
 role :app, "librecms.osl.ull.es"
