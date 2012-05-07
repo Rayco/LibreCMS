@@ -1,20 +1,20 @@
 set :user, 'adminosl'
 set :group, 'adminosl'
-set :domain, 'librecms.osl.ull.es'
+set :domain, 'railsapps1.osl.ull.es'
 set :project, 'LibreCMS'
-set :application, 'windowsLibre'
+set :application, 'LibreCMS'
 set :applicationdir, "/var/rails/#{application}"
 
 # Configuracion de control de versiones
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
 # set :scm, :subversion
-set :repository,  "http://svn.osl.ull.es/LibreCMS/tags/release-0.0.9.1"
+set :repository,  "http://svn.osl.ull.es/LibreCMS/tags/release-0.0.9.2"
 
 # Roles (servers)
-role :app, "librecms.osl.ull.es"
-role :web, "librecms.osl.ull.es"
-role :db,  "librecms.osl.ull.es", :primary => true
+role :app, "railsapps1.osl.ull.es"
+role :web, "railsapps1.osl.ull.es"
+role :db,  "railsapps1.osl.ull.es", :primary => true
 
 # Deploy config
 # If you aren't deploying to /u/apps/#{application} on the target
